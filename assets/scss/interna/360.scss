@@ -1,0 +1,101 @@
+/* ====================  */
+/* Página Interna: 360 */
+/* ====================  */
+
+#section_tres60,
+#section_arq_sos {
+  height: $vh100;
+  background-size: 100% auto;
+  background-position-y: 29%;
+}
+.tres60_section.section_left{
+  background-position: bottom right;
+  background-size: auto 100%;
+}
+.tres60_button_container {
+  @media #{$mobile_query} {
+    width: 100%;
+  }
+}
+.tres_60_white_wrap {
+  display: flex;
+  height: $vh100;
+  top: 0;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0 15px;
+
+  p {
+    font-family: "Quicksand";
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    color: #34343c;
+  }
+}
+.tres60_wrap_single {
+  // background: #00000094;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  // color: white;
+  justify-content: center;
+  &.left {
+    padding-left: 9vw;
+    @media #{$mobile_query} {
+      padding-left: 0vw;
+    }
+  }
+  &.right {
+    padding-right: 9vw;
+    @media #{$mobile_query} {
+      padding-right: 0vw;
+    }
+    align-items: flex-end;
+    .tres60_description_container {
+      font-size: 28px;
+      padding-right: 0px;
+      text-align: right;
+    }
+    .tres60_title_container h3 {
+      text-align: right;
+    }
+  }
+}
+
+.tres60_title_container {
+  @media #{$tablet_query} {
+    font-size: 40px;
+    width: 100%;
+  }
+
+  h3 {
+    @media #{$mobile_query} {
+      font-size: 29px !important;
+    }
+    font-size: 49px;
+    text-align: center
+  }
+}
+
+.tres60_description_container {
+  font-size: 28px;
+  padding-right: 40px;
+}
+
+#section_obra_nueva,#section_tres60 {
+	background-position-y: 80%;
+	background-size: auto 100%;
+}
+
+/* ====================  */
+/* Final Página Interna: 360 */
+/* ====================  */
+@media #{$desktop_query}{
+  #section_arq_sos{
+    background-size:auto 100%;
+  }
+}

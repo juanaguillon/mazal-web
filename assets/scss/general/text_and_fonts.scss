@@ -1,0 +1,89 @@
+.capitalize {
+  text-transform: capitalize;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+
+.font-1 {
+  font-family: "Quicksand";
+}
+.font-2 {
+  font-family: "Quicksand";
+}
+.font-3 {
+  font-family: "Bebas Neue";
+}
+
+.text2x {
+  font-size: 1.1rem !important;
+}
+.text3x {
+  font-size: 1.3rem !important;
+}
+.text4x {
+  font-size: 1.5rem;
+}
+.text5x {
+  font-size: 2rem;
+}
+.text6x {
+  font-size: 3rem;
+}
+.text-2x {
+  font-size: 0.9rem;
+}
+.text-3x {
+  font-size: 0.8rem;
+}
+.text-4x {
+  font-size: 0.7rem;
+}
+
+.text-light {
+  font-weight: lighter;
+}
+.text-regular {
+  font-weight: 400;
+}
+.text-bold {
+  font-weight: bold;
+}
+
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-justify {
+  text-align: justify;
+}
+
+.text-white {
+  color: white;
+}
+.text-gray {
+  color: gray;
+}
+.text-light-gray {
+  color: rgb(184, 184, 184);
+}
+.text-dark-gray {
+  color: rgb(80, 80, 80);
+}
+.text-yellow {
+  color: #dab27c;
+}
+.text-black {
+  color: black;
+}
+
+.hover-white:hover {
+  cursor: pointer;
+  text-shadow: 0 0 3px white, 0 0 3px white;
+}
+.hover-black:hover {
+  cursor: pointer;
+  text-shadow: 0 0 2px #000000;
+}

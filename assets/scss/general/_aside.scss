@@ -1,0 +1,24 @@
+
+.aside {
+ 	align-items: center;
+	display: flex;
+	flex-direction: column;
+	font-size: 16px !important;
+	margin-top: 20px;
+	justify-content: center;
+
+  i{
+  font-size: 16px !important;
+
+  }
+}
+
+#banner_right_toggle {
+  margin-bottom: 1.8vh;
+}
+
+@media #{$desktop_query}{
+	.aside{
+		display: none;
+	}
+}

@@ -1,0 +1,340 @@
+header {
+  @media #{$desktop_query} {
+    height: 60px;
+    background: rgba(0, 0, 0, 0.884);
+
+    .menu_logo i.icon-logo {
+      font-size: 25px;
+    }
+  }
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 160px;
+  left: 0;
+  text-transform: uppercase;
+  z-index: 10;
+  transition: all 0.3s;
+  z-index: 130;
+  &.in_scroll {
+    height: 70px;
+    background: rgba(0, 0, 0, 0.884);
+
+    .menu_logo i.icon-logo {
+      font-size: 35px;
+    }
+    @media #{$desktop_query} {
+      height: 60px;
+
+      .menu_logo i.icon-logo {
+        font-size: 25px;
+      }
+    }
+  }
+
+  .black_background {
+    background: rgba(0, 0, 0, 0.47);
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+95&0.75+0,0+93 */
+    background: -moz-linear-gradient(
+      top,
+      rgba(0, 0, 0, 0.65) 0%,
+      rgba(0, 0, 0, 0) 93%,
+      rgba(0, 0, 0, 0) 95%
+    ); /* FF3.6-15 */
+    background: -webkit-linear-gradient(
+      top,
+      rgba(0, 0, 0, 0.65) 0%,
+      rgba(0, 0, 0, 0) 93%,
+      rgba(0, 0, 0, 0) 95%
+    ); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.65) 0%,
+      rgba(0, 0, 0, 0) 93%,
+      rgba(0, 0, 0, 0) 95%
+    ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+  }
+
+  i.icon_logo {
+    transition: all 0.3s;
+  }
+
+  nav,
+  nav button {
+    font-family: "Quicksand", sans-serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+  }
+
+  #icon_bars {
+    z-index: 30;
+    display: none;
+    position: relative;
+
+    i {
+      font-size: 22px;
+    }
+  }
+}
+
+.header_top {
+  display: flex;
+  height: 100%;
+  max-height: 100px;
+  align-items: center;
+  padding: 0 30px;
+  position: relative;
+  z-index: 10;
+  transition: background $speedtransition;
+  &.black {
+    background: rgba(0, 0, 0, 0.884);
+  }
+}
+.super_menu_item_active > a.text-white {
+  font-weight: bold;
+}
+.header_top_submenu li {
+  color: white;
+  padding: 10px 0;
+}
+
+.header_top_left {
+  width: 25%;
+  z-index: 20;
+}
+.menu_logo_li {
+  min-width: 120px;
+  max-width: 225px;
+
+  .icon-logo {
+    font-size: 58px;
+  }
+  .menu_logo a {
+    padding: 20px 0;
+  }
+}
+
+.header_top_list {
+  @media #{$desktop_query} {
+    position: fixed;
+    top: 0;
+    right: 0;
+    flex-direction: column;
+    padding: 1em;
+    height: 100%;
+    width: 80%;
+    max-width: 350px;
+    background: #000000eb;
+    align-items: flex-end;
+    justify-content: flex-start;
+    text-align: right;
+    padding-top: 100px;
+    transition: transform $speedtransition $cubictransition;
+    transform: translateX(100%);
+
+    &.active {
+      transform: translateX(0%);
+    }
+  }
+
+  display: flex;
+  height: 100%;
+  align-items: center;
+  width: 100%;
+  justify-content: flex-end;
+
+  & > li {
+    @media #{$desktop_query} {
+      height: 50px;
+      animation-name: none !important;
+      animation-duration: 0s !important;
+      opacity: 1;
+    }
+    animation-delay: 0.9s;
+    opacity: 0;
+    animation-duration: 0.9s !important;
+    padding: 13px 0;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    a {
+      @media #{$fluid_query} {
+        font-size: 12px;
+      }
+
+      @media #{$desktop_query} {
+        font-size: inherit;
+      }
+
+      padding: 20px 1vw;
+      padding: 0px 1vw;
+      display: block;
+      font-size: 0.86rem;
+      cursor: pointer;
+      &:hover {
+        text-shadow: 0 0 5px white, 0 0 5px white;
+      }
+    }
+  }
+
+  li + li a {
+    @media screen and (min-width: $desktop_pixels) {
+      border-left: 1px solid white;
+    }
+  }
+}
+
+.header_top_list > li:after {
+  position: absolute;
+  content: "";
+  width: 80%;
+  left:10%;
+  opacity: 0;
+  height: 2px;
+  bottom: 20%;
+  background: white;
+}
+.header_top_list li.active::after{
+  opacity: 1;
+}
+
+.header_top_list > li.languages_header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 22px;
+  overflow: hidden;
+  padding: 0;
+
+  button.button {
+    width: 36px;
+    font-family: $font1;
+    color: white;
+    font-size: 18px;
+    padding: 0 9px;
+    transition: transform $speedtransition;
+  }
+  &.spanish button.button {
+    transform: translateY(100%);
+  }
+}
+
+.header_top_right {
+  width: 85%;
+  height: 100%;
+  justify-content: flex-end !important;
+}
+.dynamic_header_top {
+  border-top: 1px solid rgba(255, 255, 255, 0.623);
+  height: 230px;
+  display: flex;
+  background: rgba(0, 0, 0, 0.918);
+  align-items: center;
+  position: relative;
+  transition-duration: $speedtransition;
+  transform: translateY(-150%);
+  z-index: 0;
+
+  &.active {
+    transform: translateY(0%);
+    .dynamic_data.active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+.dynamic_data {
+  position: fixed;
+  width: 100%;
+  transition-property: opacity;
+  transition-duration: $speedtransition;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* .dynamic_list{
+  color: white;
+  height: 100%;
+  font-family: "Quicksand";
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+.dynamic_list li{
+	padding: 6px 0;
+	display: flex;
+	align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+  
+} */
+
+.dynamyc_description {
+  text-transform: initial;
+  padding: 10px 15px;
+  color: white;
+}
+.dynamic_images {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
+}
+.dynamic_image_single {
+  width: 230px;
+  min-width: 230px;
+  height: 230px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.dynamic_image_container {
+  width: 100%;
+  height: 85%;
+  overflow: hidden;
+}
+.dynamic_image_text {
+  color: white;
+  text-align: center;
+  font-family: Quicksand;
+  margin-top: 0.8em;
+  font-size: 0.7em;
+}
+
+.search_modal_form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.86);
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  display: none;
+  align-items: center;
+  padding: 0 15px;
+
+  button.button.button-cuadro {
+    position: absolute;
+    top: 11%;
+    color: white;
+    font-size: 30px;
+    right: 5%;
+    font-family: "Quicksand";
+  }
+
+  &.active {
+    display: flex;
+  }
+  .search_modal_form_wrap {
+    max-width: 550px;
+    width: 100%;
+  }
+}
+
+#icon_search {
+  font-size: 15px;
+  padding-right: 0;
+}

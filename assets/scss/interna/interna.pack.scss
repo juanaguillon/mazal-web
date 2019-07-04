@@ -1,0 +1,26 @@
+/**
+* 3. Página: Interna
+* 3.1 Página Interna: Galeria
+* 3.2 Página Interna: Lineas
+* 3.3 Página Interna: 360
+* 3.4 Página Interna: Antes y Despues
+* 3.5 Página Interna: Portafolio
+* 3.6 Página Interna: Clientes
+* 3.7 Página Interna: Contacto y Mapa
+* 3.8 Página Interna: Media Query 991px
+* 3.9 Página Interna: Media Query 768px
+
+*/
+
+@import "_base";
+
+@import "galeria.scss";
+@import "lineas.scss";
+@import "360.scss";
+@import "before_after.scss";
+@import "portafolio.scss";
+@import "clientes.scss";
+@import "contact_and_map.scss";
+@import "media_query.scss";
+
+@import "animations.scss";

@@ -1,0 +1,179 @@
+/* ====================  */
+/* Página Interna: Lineas */
+/* ====================  */
+
+
+.lineas_container {
+  height: $vh100;
+  position: relative;
+  background: black;
+  overflow: hidden;
+}
+
+.row_linea_container_left {
+  margin-left: 75px;
+}
+
+.row_linea_container_right {
+  margin-right: 75px;
+}
+
+.linea_label {
+  position: absolute;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  &.left {
+    left: 0;
+    transform: rotate(-90deg);
+    transform-origin: 0 0;
+    top: 60%;
+  }
+  &.right {
+    right: 33px;
+    transform: rotate(90deg);
+    transform-origin: right;
+    top: 55%;
+  }
+  span {
+    color: white;
+    font-family: $font3;
+    font-size: 36px;
+    letter-spacing: 4px;
+    font-weight: bold;
+  }
+}
+
+.single_linea_wrapper {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.single_linea_image {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  img {
+    transition: transform 0.8s;
+    transform: translateX(27px);
+  }
+}
+
+.single_linea_context {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  padding: 0 15px;
+  &:before {
+    content: "";
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20%;
+    background: rgba(0, 0, 0, 0.71);
+    background: -moz-linear-gradient(
+      top,
+      rgba(0, 0, 0, 0.71) 0%,
+      rgba(0, 0, 0, 0.09) 88%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    background: -webkit-gradient(
+      left top,
+      left bottom,
+      color-stop(0%, rgba(0, 0, 0, 0.71)),
+      color-stop(88%, rgba(0, 0, 0, 0.09)),
+      color-stop(100%, rgba(0, 0, 0, 0))
+    );
+    background: -webkit-linear-gradient(
+      top,
+      rgba(0, 0, 0, 0.71) 0%,
+      rgba(0, 0, 0, 0.09) 88%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    background: -o-linear-gradient(
+      top,
+      rgba(0, 0, 0, 0.71) 0%,
+      rgba(0, 0, 0, 0.09) 88%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    background: -ms-linear-gradient(
+      top,
+      rgba(0, 0, 0, 0.71) 0%,
+      rgba(0, 0, 0, 0.09) 88%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.71) 0%,
+      rgba(0, 0, 0, 0.09) 88%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=0 );
+  }
+  h3 {
+    font-size: 32px;
+    color: $yellowcolor;
+    font-family: $font2;
+    margin-top: 0.5em;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+    font-weight: lighter;
+    position: relative;
+
+    @media #{$tablet_query}{
+      font-size: 28px;
+    }
+  }
+  p {
+    color: white;
+    font-family: $font3;
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0;
+    margin-top: 0.3em;
+    letter-spacing: 2px;
+    position: relative;
+  }
+}
+
+.single_linea_zoom {
+  position: absolute;
+  transition-property: transform, opacity;
+  transition-duration: $speedtransition;
+  opacity: 0;
+  transform: translateY(30%);
+  i {
+    color: white;
+    font-size: 1.5em;
+  }
+}
+
+.single_linea_wrapper:hover {
+  .single_linea_image img {
+    transform: translateX(-27px) !important;
+  }
+  .single_linea_context {
+    background: rgba(0, 0, 0, 0.253);
+  }
+  .single_linea_zoom {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+/* ====================  */
+/* Final Página Interna: Lineas */
+/* ====================  */

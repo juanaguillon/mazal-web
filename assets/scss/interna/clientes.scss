@@ -1,0 +1,55 @@
+/* ====================  */
+/* Página Interna: Clientes */
+/* ====================  */
+
+.clietes_list {
+  display: flex;
+  li {
+    height: 150px;
+    width: 20%;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    padding: 1.7em;
+    img {
+      max-height: 100%;
+      width: auto;
+      height: auto;
+    }
+  }
+}
+
+.slick-dots {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 20px;
+  li {
+    width: 40px;
+    padding: 0;
+    align-items: center;
+    button {
+      font-size: 0;
+      padding: 5px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      background: #b3b3b3;
+      outline: none;
+      &:hover {
+        background: #8b8b8b;
+        background: #8b8b8b;
+      }
+    }
+    &.slick-active button {
+      background: #5a5a5a;
+    }
+  }
+}
+
+/* ====================  */
+/* Final Página Interna: Clientes */
+/* ====================  */

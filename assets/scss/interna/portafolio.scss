@@ -1,0 +1,133 @@
+/* ====================  */
+/* Página Interna: Portafolio */
+/* ====================  */
+
+.portafolio_show_more_wrap {
+  height: calc(100vh);
+  overflow: hidden;
+  position: relative;
+  .black_background {
+    background: rgba(52, 52, 52, 0.8);
+  }
+}
+
+.portafolio_show_more_content {
+  @media #{$mobile_query} {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    padding: 15px;
+    justify-content: space-around;
+  }
+}
+
+.portafilio_title {
+  transform: rotate(-90deg);
+  transform-origin: bottom;
+  position: absolute;
+  top: 10em;
+  left: -5.6em;
+
+  @media #{$desktop_query} {
+    transform: rotate(0);
+    font-size: 3em;
+    top: 1em;
+    left: 0.6em;
+  }
+  @media #{$mobile_query} {
+    font-size: 2.2em;
+    position: static;
+    text-align: center;
+  }
+}
+
+.portafolio_single_image {
+  height: 50vh;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.portafolio_button {
+  position: absolute;
+  bottom: 2em;
+  left: 2em;
+  @media #{$mobile_query} {
+    position: static;
+  }
+}
+
+.portafolio_single_image {
+  &:hover img {
+    transform: scale(1.1);
+  }
+  .black_background {
+    opacity: 0;
+  }
+  &:hover .black_background {
+    opacity: 1;
+  }
+}
+
+.portafolio_single_image_context {
+  z-index: 20;
+  position: absolute;
+  bottom: 0;
+  padding: 2em 3em;
+  width: 100%;
+  transition: transform $speedtransition;
+  transition-delay: 0s;
+  transform: translateY(100%);
+  & > {
+    h3 {
+      color: $yellowcolor;
+      font-size: 25px;
+      margin: 0;
+    }
+    p {
+      font-size: 17px;
+      margin: 0;
+      color: white;
+    }
+  }
+
+  @media #{$mobile_query} {
+    padding: 1em 15px;
+  }
+}
+
+.portafolio_single_image:hover {
+  .portafolio_single_image_context {
+    transform: translateY(0%);
+    transition-delay: 0.45s;
+  }
+  .portafolio_mazal_logo {
+    animation: portafolio_mazal 0.7s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+  }
+}
+
+.portafolio_mazal_logo {
+  position: absolute;
+  top: 0;
+  z-index: 40;
+  height: 100%;
+  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  figure {
+    height: 20%;
+    text-align: center;
+    img {
+      height: 100% !important;
+      position: static !important;
+    }
+  }
+}
+
+/* ====================  */
+/* Final Página Interna: Portafolio */
+/* ====================  */

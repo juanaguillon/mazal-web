@@ -1,0 +1,23 @@
+{
+  "name": "mazal",
+  "version": "1.0.0",
+  "description": "Mazal Web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "npx sass --watch assets/scss/index.scss:custom.min.css --style compressed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/juanaguillon19/mazal-web.git"
+  },
+  "author": "Juan Aguillon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/juanaguillon19/mazal-web/issues"
+  },
+  "homepage": "https://gitlab.com/juanaguillon19/mazal-web#readme",
+  "dependencies": {
+    "sass": "^1.21.0"
+  }
+}

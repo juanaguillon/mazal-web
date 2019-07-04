@@ -1,0 +1,17 @@
+
+@media (max-width: 991px) {
+  #icon_bars {
+    display: block !important;
+  }
+  .container {
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 768px) {
+  section.section_high{
+    min-height: auto;
+  }
+  section.section{
+    padding:70px 15px;
+  }
+}
