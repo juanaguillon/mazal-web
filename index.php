@@ -139,10 +139,6 @@
 
 		<!-- MARGEN ABAJO -->
 		<div class="banner_margin_bottom z2">
-
-
-
-
 			<div class="banner_bottom_context text-center">
 				<span class="text-white text-2x font-1">Derechos Reservados &#169; <strong>Mazal 2019</strong></span>
 
@@ -164,6 +160,7 @@
 						<li><i class="text-white icon-facebook hover-white"></i></li>
 						<li><i class="text-white icon-instagram hover-white"></i></li>
 						<li><i class="text-white icon-whatsapp hover-white"></i></li>
+						<li><i class="text-white icon-houzz hover-white"></i></li>
 					</ul>
 				</div>
 				<div class="mini_logo">

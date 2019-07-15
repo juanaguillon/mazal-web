@@ -95,8 +95,11 @@
 
                 <button class="button" id="language_en">
                   EN
+                  <i class="icon-arrow_down"></i>
                 </button>
                 <button class="button" id="language_es">
+                  <i class="icon-arrow_up"></i>
+
                   ES
                 </button>
               </li>
@@ -133,11 +136,11 @@
 
               <div class="col-md-3">
                 <!-- <ul class="dynamic_list">
-                                            <li>Videos</li>
-                                            <li>Imágenes</li>
-                                            <li>Galería</li>
-                                            <li>Proyectos</li>
-                                          </ul> -->
+                                                  <li>Videos</li>
+                                                  <li>Imágenes</li>
+                                                  <li>Galería</li>
+                                                  <li>Proyectos</li>
+                                                </ul> -->
                 <p class="dynamyc_description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil dolor quasi aspernatur
                   unde, et molestiae.</p>
               </div>
@@ -189,11 +192,11 @@
 
               <div class="col-md-3">
                 <!-- <ul class="dynamic_list">
-                                            <li>Videos</li>
-                                            <li>Imágenes</li>
-                                            <li>Galería</li>
-                                            <li>Proyectos</li>
-                                          </ul> -->
+                                                  <li>Videos</li>
+                                                  <li>Imágenes</li>
+                                                  <li>Galería</li>
+                                                  <li>Proyectos</li>
+                                                </ul> -->
                 <p class="dynamyc_description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil dolor quasi aspernatur unde, et molestiae.</p>
               </div>
               <div class="col-md-9">
