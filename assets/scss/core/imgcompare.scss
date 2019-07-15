@@ -1,0 +1,66 @@
+.imgcompare_wrapper {
+  width: 70%;
+  height: 70vh;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.imgcompare_left_side, .imgcompare_right_side {
+  height: 100%;
+  position: absolute;
+  top: 0;
+}
+
+.imgcompare_left_side {
+  overflow: hidden;
+  width: 50%;
+  z-index: 10;
+  img {
+    height: 100%;
+    max-width: inherit;
+    width: auto;
+  }
+}
+
+.imgcompare_right_side img {
+  height: 100%;
+  max-width: inherit;
+  width: auto;
+}
+
+.imgcompare_left_side img {
+  filter: sepia();
+}
+
+.imgcompare_divider {
+  position: absolute;
+  height: 100%;
+  width: 2px;
+  background: #ffffff;
+  z-index: 10;
+  left: 50%;
+  button {
+    width: 100%;
+    display: block;
+    padding: 12px;
+    background: white;
+    border-radius: 50%;
+    height: 5%;
+    position: relative;
+    border: none;
+    cursor: col-resize;
+    right: 0;
+    top: 50%;
+    transform: translate(-45%, -50%);
+    outline: none;
+    &::after {
+      content: "";
+      border: 2px solid white;
+      padding: 17px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+    }
+  }
+}

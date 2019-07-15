@@ -89,7 +89,7 @@ if (mazal_is_hogar_page()) :
     "section_arq_sos",
     "Clásico",
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique corrupti consequuntur odit mollitia soluta at!",
-    "image15.jpg"
+    "mazal_clasico.jpg"
   );
 
 endif;
@@ -103,14 +103,14 @@ if (mazal_is_corporativo_page()) :
     "section_constructoras",
     "Constructoras",
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique corrupti consequuntur odit mollitia soluta at!",
-    "image15.jpg"
+    "mazal_constructoras.jpg"
   );
   // Seccion Oficinas
   single_360_content(
     "section_oficinas",
     "Oficinas",
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique corrupti consequuntur odit mollitia soluta at!",
-    "image3.jpg",
+    "mazal_oficinas.jpg",
     false
   );
   // Seccion Holetes
@@ -118,7 +118,7 @@ if (mazal_is_corporativo_page()) :
     "section_hoteles",
     "Holetes",
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique corrupti consequuntur odit mollitia soluta at!",
-    "image23.jpg"
+    "mazal_hoteles.jpg"
   );
 
   // Sección Arqitectura Sostenible
@@ -126,7 +126,7 @@ if (mazal_is_corporativo_page()) :
     "section_centry_commercial",
     "Centros Comerciales",
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique corrupti consequuntur odit mollitia soluta at!",
-    "image10.jpg",
+    "mazal_centros_comerciales.jpg",
     false
   );
 
@@ -135,7 +135,7 @@ if (mazal_is_corporativo_page()) :
     "section_restaurantes",
     "Restaurantes",
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique corrupti consequuntur odit mollitia soluta at!",
-    "image19.jpg"
+    "mazal_restaurantes.jpg"
   );
 
 endif;

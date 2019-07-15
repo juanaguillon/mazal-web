@@ -19,6 +19,7 @@ $tablet_query: "screen and (max-width:#{$tablet_pixels})";
 $desktop_query: "screen and (max-width:#{$desktop_pixels})";
 $fluid_query: "screen and (max-width:#{$fluid_pixels})";
 
+@import "core/pack.core";
 @import "general/general.pack.scss";
 @import "banner/banner.pack.scss";
 @import "interna/interna.pack.scss";

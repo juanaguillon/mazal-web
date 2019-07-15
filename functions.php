@@ -10,7 +10,7 @@ function printcode($code){
  * Verificar si la actual página es "arquitectura"
  */
 function mazal_is_arquitectura_page( ){
-  return is_page(11);
+  return is_page(11) || is_page(30) ;
 }
 
 

@@ -331,7 +331,6 @@ function activeTheLineInTheHeaderMenuInScrolling() {
       sectionsElements.push(objAdded);
     }
   }
-  console.log(sectionsElements);
   $window.scroll(function() {
     var pagePosition = $("html").scrollTop();
 

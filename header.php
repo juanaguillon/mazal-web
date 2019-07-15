@@ -8,7 +8,6 @@
   <title>Mazal</title>
   <link rel="icon" type="image/png" sizes="32x32" href="<?php bloginfo('template_url') ?>/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,700|Lato:400,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="<?php bloginfo('template_url') ?>/assets/fonts/fonts.css">
   <link rel="stylesheet" href="<?php bloginfo('template_url') ?>/custom.min.css">
 </head>
 
@@ -42,10 +41,7 @@
 
 
         $ulList = array(
-          "lineas1" => array(
-            "text" => "Diseño Interior",
-            "dynamic" => "dynamic_data_2"
-          ),
+          "lineas1" => "Diseño Interior",
           "tres60" => "Arquitectura",
           "arq_sos" => "Arq. Sostenible",
           "obra_nueva" => "Obra Nueva",
@@ -55,10 +51,7 @@
         );
       } else if (mazal_is_corporativo_page()) {
         $ulList = array(
-          "constructoras" => array(
-            "text" => "Constructoras",
-            "dynamic" => "dynamic_data_2"
-          ),
+          "constructoras" => "Constructoras",
           "oficinas" => "Oficinas",
           "hoteles" => "Hoteles",
           "centry_commercial" => "Centros Comerciales",
