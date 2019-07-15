@@ -69,7 +69,7 @@
 			<div class="w-50 right_image_conent">
 				<div class="black_background z1"></div>
 
-				<div class="banner_right_img_wrapper banner_right_img_top">
+				<!-- <div class="banner_right_img_wrapper banner_right_img_top">
 					<a href="<?php echo get_permalink(9) ?>">
 						<div class="black_background z1"></div>
 						<div class="banner_logo_altern z2">
@@ -93,7 +93,7 @@
 						</div>
 						<img src="<?php bloginfo("template_url") ?>/images/interna/image13.jpg" alt="">
 					</a>
-				</div>
+				</div> -->
 				<div class="banner_img_container">
 
 					<img class="banner_img_right img_fill img_fill_h" src="<?php bloginfo("template_url") ?>/images/image_right.jpg" alt="" />
@@ -112,30 +112,25 @@
 						</h3>
 					</div>
 				</div>
-				<!-- <div class="banner_context_menu_container">
-							<div class="banner_context_menu right z2">
+				<div class="banner_context_menu_container">
+					<div class="banner_context_menu right z2">
 
-								<ul class="ul_banner_menu">
-									<li>
-										<a class="uppercase text-white" href="interna.html">
-											Hogar
-										</a>
-									</li>
-									<li class="no-borders">
-										<a class="uppercase text-white" href="interna.html">
-											Corporativo
-										</a>
-									</li>
-								</ul>
-							</div>
-						</div> -->
-
-
-
+						<ul class="ul_banner_menu">
+							<li>
+								<a class="uppercase text-white" href="interna.html">
+									Hogar
+								</a>
+							</li>
+							<li class="no-borders">
+								<a class="uppercase text-white" href="interna.html">
+									Corporativo
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
-
-
 
 		<!-- MARGEN ABAJO -->
 		<div class="banner_margin_bottom z2">

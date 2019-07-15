@@ -127,9 +127,9 @@
 /** More Code */
 
 .more {
-  &.right_image_conent .banner_context {
-    visibility: hidden;
-  }
+  // &.right_image_conent .banner_context {
+  //   visibility: hidden;
+  // }
   &.left_image_conent::after,
   &.right_image_conent::after {
     height: 50%;
