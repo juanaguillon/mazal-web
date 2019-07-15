@@ -381,7 +381,7 @@ $window.on("load", function() {
   toggleDynamicDataFromNav();
   changeTheSubmenuInHeader();
   toggleTheModalToSearchInWebsite();
-  changeTheLanguageLabelInHeader();
+  // changeTheLanguageLabelInHeader();
   activeTheLineInTheHeaderMenuInScrolling();
   makeScrollIfExistsTheQueryParam();
 });
