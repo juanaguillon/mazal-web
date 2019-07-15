@@ -197,6 +197,12 @@ form {
   height: auto;
   width: 100%;
 }
+#whatsapp_contact{
+  display: none;
+  &.whatsapp_active{
+    display: block;
+  }
+}
 .left_to_right_container {
   position: relative;
   img {

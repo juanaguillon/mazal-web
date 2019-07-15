@@ -154,8 +154,8 @@
 					<ul class="menu_banner_right">
 						<li><i class="text-white icon-facebook hover-white"></i></li>
 						<li><i class="text-white icon-instagram hover-white"></i></li>
-						<li><i class="text-white icon-whatsapp hover-white"></i></li>
 						<li><i class="text-white icon-houzz hover-white"></i></li>
+						<li id="whatsapp_contact"><i class="text-white icon-whatsapp hover-white"></i></li>
 					</ul>
 				</div>
 				<div class="mini_logo">

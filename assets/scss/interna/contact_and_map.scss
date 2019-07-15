@@ -28,7 +28,16 @@
   padding: 3em;
   padding-left: 8em;
 }
-
+.contact_social {
+  padding-left: 70px;
+  display: flex;
+  padding-top: 20px;
+  justify-content: center;
+  li {
+    padding: 0 15px;
+    font-size: 21px;
+  }
+}
 #contacto_form {
   padding-left: 6em;
   padding-bottom: 1.3em;

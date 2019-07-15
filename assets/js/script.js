@@ -316,7 +316,7 @@ function activeTheLineInTheHeaderMenuInScrolling() {
     "centry_commercial",
     "restaurantes",
     "clientes",
-    "contacto",
+    "contacto"
   ];
   var sectionsElements = [];
   for (var i = 0; i < sectionsSelector.length; i++) {
@@ -374,6 +374,18 @@ function makeScrollIfExistsTheQueryParam() {
   }
 }
 
+/**
+ * Esconder el icono/contacto de whatsapp despues de una hora especifica
+ */
+function showWhatsappInSpecificHours() {
+  var nowTime = new Date().getHours();
+  if (nowTime < 7 || nowTime > 19) {
+    $("#whatsapp_contact").remove();
+  }else{
+    $("#whatsapp_contact").addClass("whatsapp_active");
+  }
+}
+
 $window.on("load", function() {
   plugnsInit();
   changeCurrentImageInBeforeAfter();
@@ -384,6 +396,8 @@ $window.on("load", function() {
   // changeTheLanguageLabelInHeader();
   activeTheLineInTheHeaderMenuInScrolling();
   makeScrollIfExistsTheQueryParam();
+
+  showWhatsappInSpecificHours();
 });
 
 $window.on("load resize", function() {

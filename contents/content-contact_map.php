@@ -8,6 +8,7 @@
         </div>
         <div class="contacto_form_container">
           <form id="contacto_form">
+            <p class="text-white">Diligencia el formulario y ponte en contacto con nosotros:</p>
             <div class="field">
               <input placeholder="Nombre" type="text" class="text">
             </div>
@@ -24,6 +25,12 @@
               <button class="button general_button text-white"><span data-title="Enviar">Enviar</span></button>
             </div>
           </form>
+          <ul class="contact_social">
+            <li><i class="text-white icon-facebook hover-white"></i></li>
+            <li><i class="text-white icon-instagram hover-white"></i></li>
+            <li><i class="text-white icon-houzz hover-white"></i></li>
+            <li id="whatsapp_contact"><i class="text-white icon-whatsapp hover-white"></i></li>
+          </ul>
         </div>
 
       </div>
