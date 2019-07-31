@@ -28,7 +28,7 @@
       </div>
     </div>
     <div class="footer_foot text-center">
-      <span class="text-3x text-white">Mazal | Diseño industrial & ARquitectura 2019 - <strong>Todos los derechos
+      <span class="text-3x text-white">Mazal | Diseño industrial & Arquitectura 2019 - <strong>Todos los derechos
           reservados</strong></span>
     </div>
   </footer>

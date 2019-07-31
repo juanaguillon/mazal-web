@@ -25,7 +25,7 @@
   position: relative;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.9);
+  background: $chocolate;
   padding: 0 15px;
 
   p {
@@ -33,7 +33,7 @@
     width: 90%;
     max-width: 500px;
     text-align: center;
-    color: #34343c;
+    color: $blanco;
   }
 }
 .tres60_wrap_single {

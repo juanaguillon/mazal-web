@@ -25,8 +25,10 @@ function changeTheHeaderWhenScrolling() {
   $document.scroll(function() {
     if ($document.scrollTop() > 100) {
       header.addClass("in_scroll");
+      $("header .black_background").hide();
     } else {
       header.removeClass("in_scroll");
+      $("header .black_background").show();
     }
   });
 }

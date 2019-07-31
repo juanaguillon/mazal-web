@@ -1,23 +1,4 @@
-@import "general/style.scss";
-
-$speedtransition: 0.5s;
-$cubictransition: cubic-bezier(0.785, 0.135, 0.15, 0.86);
-$yellowcolor: #dab27c;
-$font1: "Quicksand";
-$font2: "Quicksand";
-$font3: "Bebas Neue";
-$vh100: calc(100vh - 70px);
-$vh100_mobile: calc(100vh - 50px);
-
-$mobile_pixels: 548px;
-$tablet_pixels: 768px;
-$desktop_pixels: 991px;
-$fluid_pixels: 1400px;
-
-$mobile_query: "screen and (max-width:#{$mobile_pixels})";
-$tablet_query: "screen and (max-width:#{$tablet_pixels})";
-$desktop_query: "screen and (max-width:#{$desktop_pixels})";
-$fluid_query: "screen and (max-width:#{$fluid_pixels})";
+@import "variable.scss";
 
 @import "core/pack.core";
 @import "general/general.pack.scss";

@@ -1,12 +1,12 @@
 footer {
-  background: #34343c;
+  background: $chocolate;
 }
 .footer_header {
   padding: 3em 0px;
 }
 .footer_foot {
   padding: 0.7em 0;
-  background-color: #242429;
+  background-color: $dorado;
 }
 
 @media #{$tablet_query} {

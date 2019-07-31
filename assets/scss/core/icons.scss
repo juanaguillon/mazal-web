@@ -1,29 +1,36 @@
 $icomoon-font-family: "mazal" !default;
 $icomoon-font-path: "assets/fonts" !default;
 
-$icon-arrow_left: "\e905";
-$icon-arrow_right: "\e906";
-$icon-arrow_up: "\e908";
-$icon-arrow_down: "\e909";
-$icon-search: "\e904";
+
+$icon-envelope1: "\e900";
+$icon-location: "\e901";
+$icon-phone-square1: "\e902";
+$icon-envelope-square: "\e903";
+$icon-envelope: "\e904";
+$icon-phone-square: "\e905";
+$icon-house: "\e906";
+$icon-logo: "\e907";
+$icon-logo_min: "\e908";
+$icon-bars: "\e909";
+$icon-search: "\e90a";
+$icon-arrow_left: "\e90b";
+$icon-arrow_right: "\e90c";
+$icon-houzz: "\e90d";
+$icon-arrow_up: "\e90e";
+$icon-arrow_down: "\e90f";
 $icon-facebook: "\ea90";
 $icon-instagram: "\ea92";
 $icon-whatsapp: "\ea93";
-$icon-house: "\e900";
-$icon-logo: "\e901";
-$icon-logo_min: "\e902";
-$icon-houzz: "\e907";
-$icon-bars: "\e903";
-
+$icon-phone: "\e942";
 
 
 @font-face {
   font-family: '#{$icomoon-font-family}';
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?139mkd');
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?139mkd#iefix') format('embedded-opentype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?139mkd') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?139mkd') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?139mkd##{$icomoon-font-family}') format('svg');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?ptbnpn');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?ptbnpn#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?ptbnpn') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?ptbnpn') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?ptbnpn##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -43,6 +50,61 @@ $icon-bars: "\e903";
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-envelope1 {
+  &:before {
+    content: $icon-envelope1; 
+  }
+}
+.icon-location {
+  &:before {
+    content: $icon-location; 
+  }
+}
+.icon-phone-square1 {
+  &:before {
+    content: $icon-phone-square1; 
+  }
+}
+.icon-envelope-square {
+  &:before {
+    content: $icon-envelope-square; 
+  }
+}
+.icon-envelope {
+  &:before {
+    content: $icon-envelope; 
+  }
+}
+.icon-phone-square {
+  &:before {
+    content: $icon-phone-square; 
+  }
+}
+.icon-house {
+  &:before {
+    content: $icon-house; 
+  }
+}
+.icon-logo {
+  &:before {
+    content: $icon-logo; 
+  }
+}
+.icon-logo_min {
+  &:before {
+    content: $icon-logo_min; 
+  }
+}
+.icon-bars {
+  &:before {
+    content: $icon-bars; 
+  }
+}
+.icon-search {
+  &:before {
+    content: $icon-search; 
+  }
+}
 .icon-arrow_left {
   &:before {
     content: $icon-arrow_left; 
@@ -53,6 +115,11 @@ $icon-bars: "\e903";
     content: $icon-arrow_right; 
   }
 }
+.icon-houzz {
+  &:before {
+    content: $icon-houzz; 
+  }
+}
 .icon-arrow_up {
   &:before {
     content: $icon-arrow_up; 
@@ -61,11 +128,6 @@ $icon-bars: "\e903";
 .icon-arrow_down {
   &:before {
     content: $icon-arrow_down; 
-  }
-}
-.icon-search {
-  &:before {
-    content: $icon-search; 
   }
 }
 .icon-facebook {
@@ -83,31 +145,9 @@ $icon-bars: "\e903";
     content: $icon-whatsapp; 
   }
 }
-.icon-house {
+.icon-phone {
   &:before {
-    content: $icon-house; 
-  }
-}
-.icon-logo {
-  &:before {
-    content: $icon-logo;     
-    color: #fff;
-  }
-}
-.icon-logo_min {
-  &:before {
-    content: $icon-logo_min;     
-    color: #fff;
-  }
-}
-.icon-houzz {
-  &:before {
-    content: $icon-houzz; 
-  }
-}
-.icon-bars {
-  &:before {
-    content: $icon-bars; 
+    content: $icon-phone; 
   }
 }
 

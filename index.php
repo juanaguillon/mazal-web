@@ -6,6 +6,15 @@
 ?>
 
 <?php get_header(); ?>
+<section id="mobiliario">
+	<div class="container-fluid p-0">
+		<div class="row">
+			<div class="col-md-6"></div>
+			<div class="col-md-6"></div>
+		</div>
+	</div>
+
+</section>
 <section id="section_banner_index">
 	<div class="container-fluid p-0">
 		<div class="row no-gutters">
@@ -112,23 +121,23 @@
 						</h3>
 					</div>
 				</div>
-				<div class="banner_context_menu_container">
+				<!-- <div class="banner_context_menu_container">
 					<div class="banner_context_menu right z2">
 
 						<ul class="ul_banner_menu">
 							<li>
-								<a class="uppercase text-white" href="interna.html">
+								<a class="uppercase text-white" href="<?php echo get_permalink(9) ?>">
 									Hogar
 								</a>
 							</li>
 							<li class="no-borders">
-								<a class="uppercase text-white" href="interna.html">
+								<a class="uppercase text-white" href="<?php echo get_permalink(25) ?>">
 									Corporativo
 								</a>
 							</li>
 						</ul>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 

@@ -103,8 +103,8 @@ section h3 {
       transition: 0.3s ease-in-out all;
       transform-origin: 50% 0;
       transform: translate3d(0px, 105%, 0px) rotateX(-90deg);
-      background-color: #dab27c;
-      color: #000;
+      background-color:$dorado;
+      color: #fff;
       font-weight: bold;
       width: 100%;
       opacity: 0;
@@ -122,19 +122,32 @@ section h3 {
 
   &.button_dark span {
     color: white;
-    background: black;
-    border: none !important;
+    /*background: black;
+    border: none !important;*/
+    border: 1px solid #fff;
 
     &:after {
       transform: translate3d(0px, 100%, 0px) rotateX(-90deg);
     }
   }
 
+
   @media #{$mobile_query} {
     display: block;
     width: 100%;
   }
 }
+
+/* Font weight */
+
+  .bold{
+    font-weight: bold;
+  }
+
+  /* Color fonts */
+  .blanco{
+    color: $blanco ;
+  }
 /* .button.general_button {
   font-size: 17px;
   padding: 15px 30px;

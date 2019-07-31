@@ -6,6 +6,13 @@
   background: rgba(0, 0, 0, 0.72);
 }
 
+.datos
+{
+  line-height: 52px;
+  i{
+    margin-right: 12px;
+  }
+}
 .contacto_container {
   height: 100%;
   position: relative;
@@ -31,11 +38,13 @@
 .contact_social {
   padding-left: 70px;
   display: flex;
+  padding-left: 0;
   padding-top: 20px;
   justify-content: center;
   li {
     padding: 0 15px;
-    font-size: 21px;
+    font-size: 1.5em;
+    margin: 0 4%;
   }
 }
 #contacto_form {

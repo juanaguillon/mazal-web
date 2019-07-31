@@ -1,6 +1,17 @@
 // Se extenderá por las propiedades de los elementos html
 // Ejemplo .class_css{ @extend %right_and_left_props }
 
+/* Mobiliario */
+
+#mobiliario
+{
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
 %right_and_left_props {
   position: absolute;
   min-width: 50%;
@@ -509,7 +520,7 @@
   right: 0;
 }
 .popup_left {
-  width: 45%;
+  width: 50%;
   position: relative;
   height: 100%;
   overflow: hidden;
@@ -528,8 +539,8 @@
 }
 
 .popup_right {
-  width: 55%;
-  padding: 2rem;
+  width: 50%;
+  padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -625,7 +636,7 @@
     .banner_img_container,
     .banner_context,
     & > .black_background {
-      display: none;
+      // display: none;
     }
   }
   .banner_bottom_context {
@@ -680,7 +691,7 @@
     overflow: hidden;
   }
   #section_banner_index {
-    height: 300vh;
+    height: 200vh;
   }
   .right_image_conent,
   .left_image_conent {

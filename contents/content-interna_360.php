@@ -29,7 +29,7 @@ function single_360_content($id_container, $title, $description, $image, $in_rig
         <div class="col-md-6 tres60_container wow fadeInDown <?php if ($in_right) echo "offset-md-6" ?>">
           <div class="tres_60_white_wrap">
             <div class="tres60_title_container">
-              <h3 class="font-2 text-regular text-dark-gray"><?php echo mb_strtoupper($title, "UTF-8"); ?></h3>
+              <h3 class="font-2 text-regular blanco"><?php echo mb_strtoupper($title, "UTF-8"); ?></h3>
             </div>
             <p><?php echo $description ?></p>
             <div class="tres60_button_container">

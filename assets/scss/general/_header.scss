@@ -19,7 +19,7 @@ header {
   z-index: 130;
   &.in_scroll {
     height: 70px;
-    background: rgba(0, 0, 0, 0.884);
+    background: $dorado;
 
     .menu_logo i.icon-logo {
       font-size: 35px;
@@ -69,6 +69,9 @@ header {
   }
 
   #icon_bars {
+    @media (max-width: 991px) {
+      padding: 10px 0px;
+    }
     z-index: 30;
     display: none;
     position: relative;
