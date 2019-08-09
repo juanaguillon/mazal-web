@@ -1,0 +1,58 @@
+.banner-categoria{
+    padding: 50px;
+    height: 100vh;
+    background: url(images/interna/image23.jpg);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    h2{
+        margin: 0;
+    font-size: 40px;
+    color: white;
+    }
+    i{
+        position: absolute;
+        bottom: 0;
+        left: 50vw;
+        &::before{
+            color:white;
+        }
+    }
+    p{
+        color:white;
+    }
+}
+
+.projects-prev{
+    height: calc(50vh - 35px);
+}
+
+.contenido-proyectos{
+    position: relative;
+}
+
+.bread-crumb{
+    height: 80px;
+    background:gray;
+    ul{
+        
+    }
+}
+
+.t-proyectos{
+    
+}
+
+.t-categoria{
+    transform: rotate(-90deg);
+    transform-origin: bottom;
+    position: absolute;
+}
+
+.fw-4{
+    font-weight: 400;
+}
+.fw-3{
+    font-weight: 300;
+}

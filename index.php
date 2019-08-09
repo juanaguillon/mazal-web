@@ -6,15 +6,7 @@
 ?>
 
 <?php get_header(); ?>
-<section id="mobiliario">
-	<div class="container-fluid p-0">
-		<div class="row">
-			<div class="col-md-6"></div>
-			<div class="col-md-6"></div>
-		</div>
-	</div>
 
-</section>
 <section id="section_banner_index">
 	<div class="container-fluid p-0">
 		<div class="row no-gutters">
@@ -108,7 +100,7 @@
 					<img class="banner_img_right img_fill img_fill_h" src="<?php bloginfo("template_url") ?>/images/image_right.jpg" alt="" />
 				</div>
 
-				<div class="banner_context z2">
+				<div class="banner_context z2 mobiliario">
 					<div class="banner_logo">
 						<img src="<?php bloginfo("template_url") ?>/images/icons/logo.svg" alt="" />
 					</div>
@@ -137,7 +129,7 @@
 							</li>
 						</ul>
 					</div>
-				</div> -->
+				</div>  -->
 			</div>
 		</div>
 
@@ -180,7 +172,7 @@
 
 <!-- POPUP -->
 
-<div class="popup_container z3 flex-center-xy">
+<div class="popup_container z3 flex-center-xy" id="agendar">
 	<div class="popup_wrapper">
 		<div class="popup_close"><button class="button cuadro text2x">&#x58;</button></div>
 		<div class="popup_left">
@@ -209,5 +201,28 @@
 </div>
 
 <!-- FINAL POPUP -->
+
+<!-- POPUP MOBILIARIO-->
+
+<div class="popup_container z3 flex-center-xy" id="mobiliario_popup">
+	<div class="popup_wrapper">
+		<!--<div class="screen_black"></div>-->
+		<div class="popup_close"><button class="button cuadro text2x">&#x58;</button></div>
+		<a class="popup_left" href="<?php echo get_permalink(9) ?>">
+			<h3 class="text-white banner_context_subtitle text-bold">
+				HOGAR
+			</h3>
+			<img src="<?php bloginfo("template_url") ?>/images/interna/image12.jpg" alt="">
+		</a>
+		<a class="popup_right" href="<?php echo get_permalink(25) ?>">
+			<h3 class="text-white banner_context_subtitle text-bold">
+				CORPORATIVO
+			</h3>
+			<img src="<?php bloginfo("template_url") ?>/images/interna/image13.jpg" alt="">
+		</a>
+	</div>
+</div>
+
+<!-- FINAL POPUP MOBILIARIO -->
 
 <?php get_footer(); ?>

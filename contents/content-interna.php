@@ -128,24 +128,30 @@
     </div>
 
     <div class="row no-gutters">
-      <div class="col-lg-1 ">
+      <div class="col-lg-1 col-md-12 col-sm-12 ">
         <div class="bef_aft_images_container">
+          <div class="arrow_up arrows"><i class="icon-arrow_up"></i></div>
           <div class="bef_aft_images_gallery">
-            <div class="bef_aft_image_photo wow fadeInLeft">
+            <div class="bef_aft_image_photo">
               <img data-before="<?php bloginfo("template_url") ?>/images/interna/image3.jpg" data-after="<?php bloginfo("template_url") ?>/images/interna/image3.jpg" class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/image3.jpg" alt="">
             </div>
-            <div class="bef_aft_image_photo wow fadeInLeft" data-wow-delay="0.3s">
+            <div class="bef_aft_image_photo">
               <img data-before="<?php bloginfo("template_url") ?>/images/interna/image4.jpg" data-after="<?php bloginfo("template_url") ?>/images/interna/image4.jpg" class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/image4.jpg" alt="">
             </div>
-            <div class="bef_aft_image_photo wow fadeInLeft" data-wow-delay="0.6s">
+            <div class="bef_aft_image_photo">
               <img data-before="<?php bloginfo("template_url") ?>/images/interna/image8.jpg" data-after="<?php bloginfo("template_url") ?>/images/interna/image8.jpg" class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/image8.jpg" alt="">
             </div>
-            <div class="bef_aft_image_photo wow fadeInLeft" data-wow-delay="0.9s">
+            <div class="bef_aft_image_photo">
               <img data-before="<?php bloginfo("template_url") ?>/images/interna/image10.jpg" data-after="<?php bloginfo("template_url") ?>/images/interna/image10.jpg" class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/image10.jpg" alt="">
             </div>
-
-
+            <div class="bef_aft_image_photo">
+              <img data-before="<?php bloginfo("template_url") ?>/images/interna/mazal_hoteles.jpg" data-after="<?php bloginfo("template_url") ?>/images/interna/mazal_hoteles.jpg" class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/mazal_hoteles.jpg" alt="">
+            </div>
+            <div class="bef_aft_image_photo">
+              <img data-before="<?php bloginfo("template_url") ?>/images/interna/mazal_banos.jpg" data-after="<?php bloginfo("template_url") ?>/images/interna/mazal_banos.jpg" class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/mazal_banos.jpg" alt="">
+            </div>
           </div>
+          <div class="arrow_down arrows"><i class="icon-arrow_down"></i></div>
         </div>
       </div>
       <div class="col-lg-11 wow slideInRight">

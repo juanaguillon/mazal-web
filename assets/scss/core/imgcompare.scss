@@ -30,7 +30,8 @@
 }
 
 .imgcompare_left_side img {
-  filter: sepia();
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
 }
 
 .imgcompare_divider {
@@ -63,4 +64,19 @@
       position: absolute;
     }
   }
+}
+
+/* Slider Compare */
+.arrows{
+  cursor: pointer;
+  border: 1px solid red;
+}
+.arrow_up i, .arrow_down i{
+  color: #333;
+}
+.bef_aft_images_container{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

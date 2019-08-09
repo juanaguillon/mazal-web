@@ -172,8 +172,19 @@ function hidePopup() {
 }
 
 function showPopup() {
-  if ($(".popup_container").is(":hidden")) {
-    $(".popup_container")
+  if ($("#agendar").is(":hidden")) {
+    $("#agendar")
+      .css("display", "flex")
+      .hide()
+      .fadeIn(300);
+
+    $(".popup_wrapper").addClass("move");
+  }
+}
+
+function showPopupMobiliario() {
+  if ($("#mobiliario_popup").is(":hidden")) {
+    $("#mobiliario_popup")
       .css("display", "flex")
       .hide()
       .fadeIn(300);
@@ -197,6 +208,13 @@ $("html, body").keydown(function(e) {
 
 $(".popup_wrapper").click(function(e) {
   e.stopPropagation();
+});
+
+// Abre las categorias de mobiliario
+
+$(".mobiliario").click(function(e) {
+  e.stopPropagation();
+  showPopupMobiliario();
 });
 
 /**
@@ -270,6 +288,42 @@ function plugnsInit() {
     nextArrow: $("#banner_nav_next")
   };
 
+  /*var slickCompareOptions = {
+    nextArrow: ".arrow_down",
+    prevArrow: ".arrow_up",
+    dots: false,
+    vertical: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 5,
+    slidesToScroll: 3,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 3
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          vertical: false,
+          slidesToShow: 5,
+          slidesToScroll: 3
+        }
+      },
+      {
+        breakpoint: 548,
+        settings: {
+          vertical: false,
+          slidesToShow: 5,
+          slidesToScroll: 3
+        }
+      }
+    ]
+  };*/
+
   $(".galeria_photo_wrap, .galeria_principal_image > a").imagefill();
   $(".bef_aft_image_photo").imagefill();
   $(".dynamic_image_container").imagefill();
@@ -278,15 +332,67 @@ function plugnsInit() {
   $(".bf_image_sized").imageCompare();
 
   $(".clietes_list").slick(slickClientsOptions);
+  /*$(".bef_aft_images_gallery").slick(slickCompareOptions);*/
   $("#section_banner_carousel").slick(slickBannerOptions);
   $(".galeria_container").lightGallery({
     selector: $("a.gallery_light"),
-    mode: "lg-fade"
+    mode: "lg-fade",
+    download: false
   });
   new WOW({
     mobile: false
   }).init();
 }
+
+ $(document).ready(function() {
+   $(".bef_aft_images_gallery").slick({
+     nextArrow: ".arrow_down",
+     prevArrow: ".arrow_up",
+     dots: false,
+     infinite: true,
+     speed: 300,
+     vertical: true,
+     slidesToShow: 5,
+     slidesToScroll: 3,
+     responsive: [
+       {
+         breakpoint: 1024,
+         settings: {
+           slidesToShow: 5,
+           slidesToScroll: 3,
+           infinite: true
+         }
+       },
+       {
+         breakpoint: 992,
+         settings: {
+           vertical: false,
+           slidesToShow: 5,
+           slidesToScroll: 3
+         }
+       },
+       {
+         breakpoint: 768,
+         settings: {
+           vertical: false,
+           slidesToShow: 5,
+           slidesToScroll: 3
+         }
+       },
+       {
+         breakpoint: 480,
+         settings: {
+           vertical: false,
+           slidesToShow: 2,
+           slidesToScroll: 1
+         }
+       }
+       // You can unslick at a given breakpoint now by adding:
+       // settings: "unslick"
+       // instead of a settings object
+     ]
+   });
+ });
 
 /* Final Inicializar Plugins */
 

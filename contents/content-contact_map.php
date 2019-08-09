@@ -1,6 +1,6 @@
 <section id="section_contacto" class="section_high">
 
-  <div class="row no-gutters h-100vh contacto_and_map_wrap">
+  <div class="row no-gutters contacto_and_map_wrap">
 
     <div class="col-md-7 wow slideInLeft" style="background-image: url(<?php bloginfo("template_url") ?>/images/interna/image2.jpg) ">
 
