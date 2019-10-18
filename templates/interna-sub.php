@@ -35,86 +35,55 @@ function single_linea($title, $description, $image)
 ?>
 
 <?php get_header(); ?>
-<section class="banner-categoria">
-<div>
-   <h2 class="fw-4">Diseño interior</h2>
+<section class="banner-categoria banner-interna">
+<div class="">
+   <h2 class="fw-4">CARPINTERÍA</h2>
    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto eum laboriosam, perferendis optio odit. Quasi incidunt amet, molestiae eius dolore dolorem, ipsam sunt fugiat magnam est architecto, enim voluptatibus rerum.
 </div>
    
-    <i class="icon-arrow_down"></i>
+    <div class="menu-page-interna">
+      <ul>
+        <li><a class="active" href="#">CARPINTERÍA</a></li>
+        <li><a href="#">MOBILIARÍO</a></li>
+        <li><a href="#">CLÁSICO</a></li>
+      </ul>
+    </div>
     
 </section>
-<!--<section class="bread-crumb">
-    <ul>
-        <li>Arquitectura</li>
-        <li>Arquitectura</li>
-        <li>Arquitectura</li>
-        <li>Arquitectura</li>
-    </ul>
-    
-</section>-->
 
-<!--<section class="container-fluid contenido-proyectos">
-   
-   <h3 class="t-proyectos fw-4">Proyectos</h3>
-   <div class="row">
-       
-   <div class="t-categoria col-md-2">
-       <h4>Categoria</h4>
-   </div>
-   
-   <div class="exp-proyectos col-md-10">
-        <div class="row">    
+<section class="interna-descripcion">
+  <h3>DESCRIPCIÓN</h3>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio sint enim sunt, laborum repudiandae ducimus perspiciatis totam corrupti saepe provident, earum rem modi! Sunt, voluptatibus cumque. Reiciendis laborum ipsam cum!Libero omnis voluptatibus magni soluta pariatur vero sapiente consequuntur nostrum cumque dolore aliquam ipsa deleniti dolor officia molestias, placeat impedit natus necessitatibus dolorem. Dignissimos atque blanditiis, illum aliquam voluptatibus ab.</p>
+</section>
 
-            <div class="col-4">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, non. Vero cum iste fugit illum praesentium, beatae nihil expedita, quia voluptas.</p>
-            </div>
-            <div class="col-4">
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius distinctio quos at quidem quaerat laborum sequi! Itaque, nostrum assumenda .</p> 
-            </div>
-            <div class="col-4">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum aperiam totam pariatur? Ducimus, nobis eos ex? Voluptatibus non laboriosam, hic vero exce.</p>  
-            </div>
+<section class="interna-categoria int-var-1">
+<div class="interna-categoria-descripcion">
+  <h4>COCINA</h4>
+  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique atque tempora temporibus animi earum optio, explicabo numquam laborum velit praesentium vel voluptate perspiciatis labore vitae, dignissimos rem ab quae tenetur?</p>
+  <button class="mt-5 button general_button text-yellow">
+            <span class="text-yellow" data-title="Ver Galería">
+              Ver Galería
+            </span>
+          </button>
+</div>
+<div class="interna-categoria-imagenes">
+  <div class="contenido-imagen">
+    <img src="<?php bloginfo("template_url") ?>/images/interna/image6.jpg" alt="">
+  </div>
+  <div class="contenido-imagen">
+    <img src="<?php bloginfo("template_url") ?>/images/interna/image6.jpg" alt="">
+  </div>
+  <div class="contenido-imagen">
+    <img src="<?php bloginfo("template_url") ?>/images/interna/image6.jpg" alt="">
+  </div>
+  <div class="contenido-imagen">
+    <img src="<?php bloginfo("template_url") ?>/images/interna/image6.jpg" alt="">
+  </div>
+  
+</div>
+</section>
 
-        </div>
-      
-       
-   </div>
-       
-   </div>
-   
-</section>-->
-<section id="section_lineas1" class="projects-prev">
-    <div class="container-fluid p-0">
-      <div class="lineas_container projects-prev">
-        <div class="linea_label left"><span>CARPINTERÍA</span></div>
-        <div class="row no-gutters h-100 row_linea_container_left ">
-          <?php single_linea("Cocina", "Lorem, ipsum dolor.", "image9.jpg") ?>
-          <?php single_linea("Closets", "Lorem, ipsum dolor.", "image8.jpg") ?>
-          <?php single_linea("Muebles", "Lorem, ipsum dolor.", "image7.jpg") ?>
-          <?php single_linea("Puertas", "Lorem, ipsum dolor.", "image6.jpg") ?>
-        </div>
 
-      </div>
-    </div>
-
-  </section>
-
-  <section id="section_lineas2" class="projects-prev">
-    <div class="container-fluid p-0">
-
-      <div class="lineas_container projects-prev">
-        <div class="row no-gutters h-100 row_linea_container_right">
-          <?php single_linea("Sala", "Lorem, ipsum dolor.", "image13.jpg") ?>
-          <?php single_linea("Comedor", "Lorem, ipsum dolor.", "image12.jpg") ?>
-          <?php single_linea("Habitación", "Lorem, ipsum dolor.", "image11.jpg") ?>
-          <?php single_linea("Studio", "Lorem, ipsum dolor.", "image10.jpg") ?>
-
-        </div>
-        <div class="linea_label right"><span>MOBILIARIO</span></div>
-      </div>
-    </div>
-  </section>
 
 
 
