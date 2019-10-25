@@ -40,6 +40,83 @@
 <script src="<?php bloginfo('template_url') ?>/assets/js/core.min.js"></script>
 <script src="<?php bloginfo('template_url') ?>/assets/js/script.js"></script>
 
+<?php 
+// se muestra pagina interna-sub.php
+if(is_page(36)){
+  ?>
+  <script src="<?php bloginfo('template_url') ?>/assets/js/bootstrap-multiselect.js"></script>
+  <script type="text/javascript" src="<?php bloginfo('template_url') ?>/assets/js/isotope.pkgd.min.js"></script>
+  <script type="text/javascript">
+    var $grid = $('.grid-item-category').isotope({
+      itemSelector: '.col-item',
+      layoutMode: 'fitRows'
+    });
+   $('.iso-filter').click(function(){
+       var filter = $(this).data('filter') 
+       $grid.isotope({ filter: filter });
+   })
+      
+    </script>
+    <script type="text/javascript">
+
+$(function() {
+
+    $('#chkveg').multiselect({
+
+        includeSelectAllOption: true
+    });
+
+    $('#btnget').click(function(){
+
+        alert($('#chkveg').val());
+    });
+});
+
+</script>
+
+<?php 
+}
+// se muestra pagina item-page.php
+if(is_page(39)){
+  ?>
+  <script src="<?php bloginfo('template_url') ?>/assets/js/swiper.js"></script>
+  <script type="text/javascript">
+    var galleryThumbs = new Swiper('.gallery-thumbs', {
+      spaceBetween: 10,
+      slidesPerView: 5,
+      loop: true,
+      freeMode: true,
+      loopedSlides: 5, //looped slides should be the same
+      watchSlidesVisibility: true,
+      watchSlidesProgress: true,
+    });
+    var galleryTop = new Swiper('.gallery-top', {
+      spaceBetween: 10,
+      loop:true,
+      loopedSlides: 5, //looped slides should be the same
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      keyboard: {
+    enabled: true,
+    onlyInViewport: false,
+  },
+      thumbs: {
+        swiper: galleryThumbs,
+      },
+    });
+      
+    </script>
+
+<?php
+}
+
+?>
+  
+
+  
+
 </body>
 
 </html>

@@ -7,8 +7,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mazal</title>
   <link rel="icon" type="image/png" sizes="32x32" href="<?php bloginfo('template_url') ?>/favicon.ico">
-  <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,700|Lato:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,600,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="<?php bloginfo('template_url') ?>/custom.min.css">
+ 
+
 </head>
 
 <body class="<?php if (is_front_page()) echo "index_body_class" ?>">
@@ -61,9 +63,16 @@
         );
       }
       ?>
-
-      <header>
-        <div class="black_background"></div>
+  <?php 
+  $classHeader = "";
+  $showBlackBg = "";
+  if ( is_page(39)){
+    $showBlackBg = "display:none;";
+    $classHeader = "in_scroll";
+  }
+   ?> 
+      <header class="<?php echo $classHeader ?>">
+        <div class="black_background" style="<?php echo $showBlackBg ?>"></div>
         <nav class="header_top">
           <div class="header_top_left">
             <div class="menu_logo_li">

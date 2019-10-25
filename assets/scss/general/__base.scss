@@ -3,7 +3,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-size: 18px;
+  font-size: 16px;
   font-family: "Quicksand";
   overflow-x: hidden;
 }
@@ -20,6 +20,26 @@ h6 {
 
 img {
   max-width: 100%;
+}
+
+
+.fw-3{
+  font-weight: 300;
+}
+.fw-4{
+  font-weight: 400;
+}
+.fw-5{
+  font-weight: 500;
+}
+.fw-6{
+  font-weight: 600;
+}
+.fw-7{
+  font-weight: 700;
+}
+.fw-8{
+  font-weight: 800;
 }
 
 a,
