@@ -44,7 +44,8 @@ function toggleClassToMenuInResponse() {
 
 function changeTheHeaderWhenScrolling() {
 
-  var header = $("header");
+  // En algunas páginas se desea que no exista el comportamiento de cambiar el estilo del header
+  var header = $("header.enable_scroll");
 
   $document.scroll(function() {
 
@@ -52,13 +53,13 @@ function changeTheHeaderWhenScrolling() {
 
       header.addClass("in_scroll");
 
-      $("header .black_background").hide();
+      $("header.enable_scroll .black_background").hide();
 
     } else {
 
       header.removeClass("in_scroll");
 
-      $("header .black_background").show();
+      $("header.enable_scroll .black_background").show();
 
     }
 

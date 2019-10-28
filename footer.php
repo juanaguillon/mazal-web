@@ -1,7 +1,3 @@
-
-
-
-
 <?php if (!is_front_page()) : ?>
   <footer>
     <div class="footer_header">
@@ -40,9 +36,9 @@
 <script src="<?php bloginfo('template_url') ?>/assets/js/core.min.js"></script>
 <script src="<?php bloginfo('template_url') ?>/assets/js/script.js"></script>
 
-<?php 
+<?php
 // se muestra pagina interna-sub.php
-if(is_page(36)){
+if (is_page(36)) {
   ?>
   <script src="<?php bloginfo('template_url') ?>/assets/js/bootstrap-multiselect.js"></script>
   <script type="text/javascript" src="<?php bloginfo('template_url') ?>/assets/js/isotope.pkgd.min.js"></script>
@@ -51,35 +47,35 @@ if(is_page(36)){
       itemSelector: '.col-item',
       layoutMode: 'fitRows'
     });
-   $('.iso-filter').click(function(){
-       var filter = $(this).data('filter') 
-       $grid.isotope({ filter: filter });
-   })
-      
-    </script>
-    <script type="text/javascript">
+    $('.iso-filter').click(function() {
+      var filter = $(this).data('filter')
+      $grid.isotope({
+        filter: filter
+      });
+    })
+  </script>
+  <script type="text/javascript">
+    $(function() {
 
-$(function() {
-
-    $('#chkveg').multiselect({
+      $('#chkveg').multiselect({
 
         includeSelectAllOption: true
-    });
+      });
 
-    $('#btnget').click(function(){
+      $('#btnget').click(function() {
 
         alert($('#chkveg').val());
+      });
     });
-});
+  </script>
 
-</script>
-
-<?php 
+<?php
 }
-// se muestra pagina item-page.php
-if(is_page(39)){
+// se muestra pagina item-page.php ( /producto )
+if (is_page(39)) {
   ?>
   <script src="<?php bloginfo('template_url') ?>/assets/js/swiper.js"></script>
+
   <script type="text/javascript">
     var galleryThumbs = new Swiper('.gallery-thumbs', {
       spaceBetween: 10,
@@ -87,11 +83,11 @@ if(is_page(39)){
       loopedSlides: 5, //looped slides should be the same
       watchSlidesVisibility: true,
       watchSlidesProgress: true,
-      
+
     });
     var galleryTop = new Swiper('.gallery-top', {
       spaceBetween: 10,
-      loop:true,
+      loop: true,
       loopedSlides: 5, //looped slides should be the same
       navigation: {
         nextEl: '.swiper-button-next',
@@ -105,16 +101,15 @@ if(is_page(39)){
         type: 'fraction',
       },
     });
-      
-    </script>
+  </script>
 
 <?php
 }
 
 ?>
-  
 
-  
+
+
 
 </body>
 

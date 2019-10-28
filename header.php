@@ -66,9 +66,13 @@
   <?php 
   $classHeader = "";
   $showBlackBg = "";
+  // Si es /producto ( item-page.php )
   if ( is_page(39)){
     $showBlackBg = "display:none;";
     $classHeader = "in_scroll";
+  }else{
+    $showBlackBg = "display:block;";
+    $classHeader = "enable_scroll";
   }
    ?> 
       <header class="<?php echo $classHeader ?>">
