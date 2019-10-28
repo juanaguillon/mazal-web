@@ -70,7 +70,7 @@
 				</div>
 
 				<div class="swiper-container gallery-thumbs">
-					<div class="swiper-button-next swiper-button-white"></div>
+					<div class="swiper-button-next"></div>
 					<div class="swiper-wrapper">
 						<div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)"></div>
 						<div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)"></div>
@@ -78,7 +78,7 @@
 						<div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)"></div>
 						<div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)"></div>
 					</div>
-					<div class="swiper-button-prev swiper-button-white"></div>
+					<div class="swiper-button-prev"></div>
 				</div>
 
 
