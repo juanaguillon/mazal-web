@@ -51,10 +51,11 @@ max-width: 530px;
     margin-top: 35px;
     display: flex;
     .add{
-        width: 70%;
+        width: 60%;
+        margin-right: 20px;
     }
     .add-love{
-        width:30%;
+        width:15%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -62,6 +63,15 @@ max-width: 530px;
             width: 28px;
         }
     }
+    .share-whatsapp{
+        width:15%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img{
+            width: 28px;
+        }
+    } 
 
 }
 
@@ -152,7 +162,7 @@ max-width: 530px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat; 
-    min-height: 230px;
+    min-height: 250px;
     display: flex;  
     align-items: center;
     margin: 40px auto;
@@ -244,19 +254,26 @@ max-width: 530px;
               text-transform: uppercase;
               line-height: 1;
               margin-bottom: 0;
+              
           }
           span{
               font-size: 16px;
           }
           a{
               display: flex;
+              color:rgba(10,1,1,.91);
+              transition:all 0.3s;
+              &:hover{
+                    color:rgba(36, 8, 8, 0.91);
+              }
           }
       }
   }
 
   .compartir-area{
       display: flex;
-      margin-top: 40px;
+      flex-direction: column; 
+      margin-top: 30px;
       justify-content: space-between;
       max-width: 370px;
       img{
@@ -267,11 +284,13 @@ max-width: 530px;
           font-weight: 600;
       }
       .redes-compartir{
+        margin-top: 20px;
+        margin-left: 20px;
           li{
-              margin-right: 20px;
+              margin-right: 30px;
               &:last-child{
                   margin-right: 0;
-              }
+              } 
           }
       }
   }

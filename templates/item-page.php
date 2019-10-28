@@ -113,21 +113,23 @@
                 </div>
 
                 <div class="action-for-item">
-                <button class=" m-auto button fill-button add">
+                <button class=" button fill-button add">
                     <span data-title="cargar mas">
-                    Agregar a favoritos
+                    Solicitar cotización
                     </span>
                 </button>
+                    <a href="#" class="share-whatsapp"><img src="http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/whastapp-social-media.svg" alt=""></a>
                     <a href="#" class="add-love"><img src="http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/favorite.svg" alt=""></a>
+                     
                 </div>
 
                 <div class="compartir-area">
                         <span>Compartir producto</span>
                         <div class="redes-compartir">
                             <ul class="d-flex">
-                                <li><a href="#"><img src="http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/pinterest-social-media.svg" alt=""></a></li>
+                                <li><a href="#"><img src="http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/instagram-social-media.svg" alt=""></a></li>
                                 <li><a href="#"><img src="http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/facebook-social-media.svg" alt=""></a></li>
-                                <li><a href="#"><img src="http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/twitter-social-media.svg" alt=""></a></li>
+                                <li><a href="#"><img src="http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/houzz-social-media.svg" alt=""></a></li>
                             </ul>
                         </div>
                 </div>

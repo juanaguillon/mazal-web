@@ -84,11 +84,10 @@ if(is_page(39)){
     var galleryThumbs = new Swiper('.gallery-thumbs', {
       spaceBetween: 10,
       slidesPerView: 5,
-      loop: true,
-      freeMode: true,
       loopedSlides: 5, //looped slides should be the same
       watchSlidesVisibility: true,
       watchSlidesProgress: true,
+      
     });
     var galleryTop = new Swiper('.gallery-top', {
       spaceBetween: 10,
@@ -98,12 +97,12 @@ if(is_page(39)){
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
       },
-      keyboard: {
-    enabled: true,
-    onlyInViewport: false,
-  },
       thumbs: {
         swiper: galleryThumbs,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        type: 'fraction',
       },
     });
       
