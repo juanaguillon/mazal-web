@@ -1,14 +1,14 @@
 <section id="section_banner_intern" class="section_high">
   <div id="section_banner_carousel">
-    <div class="banner_item">
+    <!-- <div class="banner_item">
       <div class="banner_image">
 
-        <!-- <img src="<?php bloginfo("template_url") ?>/images/interna/image15.jpg" alt=""> -->
+        <img src="<?php bloginfo("template_url") ?>/images/interna/image15.jpg" alt="">
         <video loop autoplay muted poster="<?php bloginfo("template_url") ?>/videos/mazal_video_cover.jpg">
           <source src="<?php bloginfo("template_url") ?>/videos/mazal.mp4" type="video/mp4">
           <source src="<?php bloginfo("template_url") ?>/videos/mazal.ogv" type="video/ogg">
           <source src="<?php bloginfo("template_url") ?>/videos/mazal.webm" type="video/webm">
-        </video>
+        </video> 
       </div>
       <div class="banner_caption">
         <h3 class="text-yellow font-2">Segundo Item</h3>
@@ -17,20 +17,29 @@
           <span data-title="Ver más">Ver Más</span>
         </button>
       </div>
-    </div>
-    <div class="banner_item">
-      <div class="banner_image">
+    </div> -->
+    <?php
+    $banners = new WP_Query(array(
+      "post_type" => "banner",
+    ));
+    $bannerPosts = $banners->posts;
+    foreach ($bannerPosts as $banner) :
 
-        <img src="<?php bloginfo("template_url") ?>/images/interna/image14.jpg" alt="">
+      $button = get_field("link", $banner);
+      ?>
+      <div class="banner_item">
+        <div class="banner_image">
+          <img src="<?php echo get_the_post_thumbnail_url($banner, "full") ?>" alt="">
+        </div>
+        <div class="banner_caption">
+          <h3 class="text-yellow font-2"><?php echo $banner->post_title ?></h3>
+          <p class="text-white font-2"><?php echo $banner->post_excerpt ?></p>
+          <a target="<?php echo $button["target"]; ?>" href="<?php echo $button["url"] ?>" class="button general_button mt-3 ml-0">
+            <span data-title="<?php echo $button["title"] ?>"><?php echo $button["title"] ?></span>
+          </a>
+        </div>
       </div>
-      <div class="banner_caption">
-        <h3 class="text-yellow font-2">Primer Item</h3>
-        <p class="text-white font-2">Lorem ipsum dolor sit amet consectetur <br>adipisicing elit. Commodi, nam!</p>
-        <button class="button general_button mt-3 ml-0">
-          <span data-title="Ver más">Ver Más</span>
-        </button>
-      </div>
-    </div>
+    <?php endforeach; ?>
 
   </div>
   <div class="banner_navigation_buttons">
@@ -80,22 +89,21 @@
         </div>
       </div>
       <div class="col-md-6 d-md-flex wow slideInRight" data-wow-offset="20">
+        <?php
+
+        // Quienes | Somos
+        $titleQuienes = explode(" | ", mazal_get_acf_field("quienes_titulo_")); // [0 => "Quienes",1 => "Somos"]
+        ?>
         <div class="galeria_title_container">
 
-          <h3 class="font-2 text-yellow text-light uppercase"><span>Quienes</span><br>Somos</h3>
+          <h3 class="font-2 text-yellow text-light uppercase"><span><?php echo $titleQuienes[0] ?></span><br><?php echo $titleQuienes[1] ?></h3>
 
         </div>
         <p class="galeria_description font-1 text-light">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam voluptas veritatis hic porro debitis
-          cumque ea ducimus illum similique odio.
-
-          <br><br>
-
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima vel id deserunt nulla qui non natus enim
-          obcaecati tempore corporis animi esse vero numquam, voluptas fuga cum odit? Praesentium, laborum.
+          <?php echo mazal_get_acf_field("quienes_texto_") ?>
           <button class="mt-5 button general_button text-yellow">
-            <span class="text-yellow" data-title="Ver Galería">
-              Ver Galería
+            <span class="text-yellow" data-title="<?php echo mazal_get_acf_field("quienes_boton_") ?>">
+              <?php echo mazal_get_acf_field("quienes_boton_") ?>
             </span>
           </button>
         </p>
@@ -104,16 +112,7 @@
   </div>
 </section>
 
-
-
-
-<?php get_template_part("contents/content", "interna_lineas"); ?>
 <?php get_template_part("contents/content", "interna_360"); ?>
-
-
-
-
-
 
 <section id="section_before_after" class="section section_high">
   <div class="container">
@@ -124,7 +123,9 @@
       </div>
     </div>
     <div class="bef_aft_title_container mb-5">
-      <h3 class="text-center wow slideInDown font-2 text-regular text-dark-gray">ANTES & DESPUÉS</h3>
+      <h3 class="text-center wow slideInDown font-2 text-regular text-dark-gray">
+        <?php echo mazal_get_acf_field("antesdes_titulo_") ?>
+      </h3>
     </div>
 
     <div class="row no-gutters">
@@ -163,20 +164,14 @@
           <div class="bef_aft_left_side wow slideInLeft">
             <div class="bef_aft_descriptions_container flex-center-xy text-gray">
               <span class="bef_aft_number font-2">1</span>
-              <p class="font-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque ipsa reprehenderit
-                similique error
-                possimus ipsam natus architecto nemo. Fugiat consequatur nobis necessitatibus, ab laborum molestiae
-                beatae repudiandae atque dolores quae!</p>
+              <p class="font-1"><?php echo mazal_get_acf_field("antesdes_texto1_") ?></p>
             </div>
           </div>
           <div class="bef_aft_right_side wow slideInRight">
 
             <div class="bef_aft_descriptions_container flex-center-xy text-gray">
               <span class="bef_aft_number font-2">2</span>
-              <p class="font-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque ipsa reprehenderit
-                similique error
-                possimus ipsam natus architecto nemo. Fugiat consequatur nobis necessitatibus, ab laborum molestiae
-                beatae repudiandae atque dolores quae!</p>
+              <p class="font-1"><?php echo mazal_get_acf_field("antesdes_texto2_") ?></p>
             </div>
           </div>
 
@@ -187,7 +182,6 @@
   </div>
 
 </section>
-
 
 <section id="section_portafolio" class="section_high">
   <div class="row no-gutters flex-lg-row flex-column-reverse">
@@ -268,10 +262,15 @@
         <img class="portfolio_show_more_image h-100 w-init" src="<?php bloginfo("template_url") ?>/images/interna/image7.jpg" alt="">
         <div class="portafolio_show_more_content">
           <div class="portafilio_title">
-            <h3 class="text-yellow font-2 capitalize text-regular">PORTAFOLIO</h3>
+            <h3 class="text-yellow font-2 capitalize text-regular">
+              <?php echo strtoupper(mazal_get_acf_field("portafolio_titulo_")) ?>
+            </h3>
           </div>
           <div class="portafolio_button">
-            <button class="button general_button text-yellow"><span data-title="Ver Más">Ver Más</span></button>
+            <button class="button general_button text-yellow">
+              <span data-title="<?php echo mazal_get_acf_field("portafolio_boton_") ?>"><?php echo mazal_get_acf_field("portafolio_boton_") ?>
+              </span>
+            </button>
           </div>
         </div>
       </div>
@@ -284,7 +283,11 @@
 
 <section id="section_clientes" class="section wow fadeIn" data-wow-offset="40" data-wow-delay="0.5s">
   <div class="container">
-    <h3 class="text-center mb-4 text-regular font-2 text-dark-gray">CLIENTES</h3>
+    <?php if (mazal_is_language()) : ?>
+      <h3 class="text-center mb-4 text-regular font-2 text-dark-gray">CLIENTES</h3>
+    <?php else : ?>
+      <h3 class="text-center mb-4 text-regular font-2 text-dark-gray">CUSTOMERS</h3>
+    <?php endif; ?>
     <ul class="clietes_list">
       <li><img src="<?php bloginfo("template_url") ?>/images/clientes/amarillo.png" alt=""></li>
       <li><img src="<?php bloginfo("template_url") ?>/images/clientes/babaria.png" alt=""></li>

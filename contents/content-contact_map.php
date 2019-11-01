@@ -10,7 +10,7 @@
 
         <div class="contacto_title">
 
-          <h3 class="text-center text-white text-light font-2">CONTACTO</h3>
+          <h3 class="text-center text-white text-light font-2"><?php echo strtoupper(mazal_get_acf_field("contacto_titulo_")) ?></h3>
 
         </div>
 
@@ -18,43 +18,43 @@
 
           <form id="contacto_form">
 
-            <p class="text-white bold">Diligencia el formulario y ponte en contacto con nosotros:</p>
+            <p class="text-white bold"><?php echo mazal_get_acf_field("contacto_descripcion_") ?></p>
 
             <ul class="datos">
 
-              <li class="text-white"><i class="icon-phone text-white hover-white"></i><span>Teléfono:</span> Teléfono (57)(1)602 6541</li>
+              <li class="text-white"><i class="icon-phone text-white hover-white"></i><span><?php echo mazal_get_acf_field("contacto_telefono_") ?>:</span> (57)(1)602 6541</li>
               <li class="text-white"><i class="icon-envelope text-white hover-white"></i><span>Email:</span> sebastian.camacho@mazal.co</li>
-              <li class="text-white"><i class="icon-location text-white hover-white"></i><span>Ubicación:</span> Calle 109 # 18b - 52 Local 102</li>
+              <li class="text-white"><i class="icon-location text-white hover-white"></i><span><?php echo mazal_get_acf_field("contacto_direccion_") ?>:</span> Calle 109 # 18b - 52 Local 102</li>
 
             </ul>
 
             <div class="field">
 
-              <input placeholder="Nombre" type="text" class="text">
+              <input placeholder="<?php echo mazal_get_acf_field("contacto_campo_nombre_") ?>" type="text" class="text">
 
             </div>
 
             <div class="field">
 
-              <input placeholder="Email" type="email" class="text">
+              <input placeholder="<?php echo mazal_get_acf_field("contacto_campo_email_") ?>" type="email" class="text">
 
             </div>
 
             <div class="field">
 
-              <input placeholder="Teléfono" type="number" class="text">
+              <input placeholder="<?php echo mazal_get_acf_field("contacto_campo_telefono_") ?>" type="number" class="text">
 
             </div>
 
             <div class="field">
 
-              <textarea placeholder="Mensaje" cols="30" rows="7" class="text"></textarea>
+              <textarea placeholder="<?php echo mazal_get_acf_field("contacto_campo_mensaje_") ?>" cols="30" rows="7" class="text"></textarea>
 
             </div>
 
             <div class="field">
 
-              <button class="button general_button text-white"><span data-title="Enviar">Enviar</span></button>
+              <button class="button general_button text-white"><span data-title="<?php echo mazal_get_acf_field("contacto_boton_") ?>"><?php echo mazal_get_acf_field("contacto_boton_") ?></span></button>
 
             </div>
 

@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="<?php bloginfo('template_url') ?>/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,600,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="<?php bloginfo('template_url') ?>/custom.min.css">
- 
+
 
 </head>
 
@@ -18,63 +18,32 @@
   <main id="main_interna">
 
     <?php
-    if (is_front_page() || is_page(7)) {
+    if (mazal_is_front_page()) {
       get_template_part("contents/content", "header_index");
     } else {
 
+      /** Theme location o slug-menu de el menú actual, dependerá de la página en donde se esté navegando */
+      $menu = "";
       if (mazal_is_hogar_page()) {
-        $ulList = array(
-          "lineas1" => array(
-            "text" => "Carpintería",
-            "has_dynamic" => true,
-            "dynamic" => "dynamic_data_1"
-          ),
-          "lineas2" => array(
-            "text" => "Mobiliario",
-            "has_dynamic" => true,
-            "dynamic" => "dynamic_data_2"
-          ),
-          "tres60" => "Clásico",
-          "portafolio" => "Proyectos",
-          "clientes" => "Clientes",
-          "contacto" => "Contacto",
-        );
+        $menu = "hogar-menu";
       } else if (mazal_is_arquitectura_page()) {
-
-
-        $ulList = array(
-          "lineas1" => "Diseño Interior",
-          "tres60" => "Arquitectura",
-          "arq_sos" => "Arq. Sostenible",
-          "obra_nueva" => "Obra Nueva",
-          "before_after" => "Remodelación",
-          "clientes" => "Clientes",
-          "contacto" => "Contacto",
-        );
+        $menu = "hogar-arquitectura";
       } else if (mazal_is_corporativo_page()) {
-        $ulList = array(
-          "constructoras" => "Constructoras",
-          "oficinas" => "Oficinas",
-          "hoteles" => "Hoteles",
-          "centry_commercial" => "Centros Comerciales",
-          "restaurantes" => "Restaurantes",
-          "clientes" => "Clientes",
-          "contacto" => "Contacto",
-        );
+        $menu = "hogar-corporativo";
       }
       ?>
-  <?php 
-  $classHeader = "";
-  $showBlackBg = "";
-  // Si es /producto ( item-page.php )
-  if ( is_page(39)){
-    $showBlackBg = "display:none;";
-    $classHeader = "in_scroll";
-  }else{
-    $showBlackBg = "display:block;";
-    $classHeader = "enable_scroll";
-  }
-   ?> 
+      <?php
+        $classHeader = "";
+        $showBlackBg = "";
+        // Si es /producto ( item-page.php )
+        if (is_singular("producto")) {
+          $showBlackBg = "display:none;";
+          $classHeader = "in_scroll";
+        } else {
+          $showBlackBg = "display:block;";
+          $classHeader = "enable_scroll";
+        }
+        ?>
       <header class="<?php echo $classHeader ?>">
         <div class="black_background" style="<?php echo $showBlackBg ?>"></div>
         <nav class="header_top">
@@ -91,25 +60,22 @@
           <div class="header_top_right flex-center-xy">
             <ul class="header_top_list">
 
-              <?php foreach ($ulList as $kli => $li) : ?>
-
-                <?php
-                $className = $kli;
-                if (is_array($li)) $className .= " has_dynamic";
+              <?php
+                wp_nav_menu(array(
+                  "theme_location" => $menu,
+                  "walker" => new Mazal_Walker_Menu,
+                  'items_wrap' => '%3$s',
+                  "container" => ""
+                ));
                 ?>
 
-                <li class="<?php echo $className ?>" data-dynamic="<?php if (is_array($li)) echo $li["dynamic"] ?>">
-                  <a class="text-white" data-scroll="<?php echo $kli ?>"><?php echo (is_array($li)) ? $li["text"] : $li ?></a>
-                </li>
-              <?php endforeach; ?>
-
-
               <li class="languages_header">
-                <button class="button language_active" id="language_es">
+                <?php $isEs = mazal_is_language(); ?>
+                <button class="button <?php echo $isEs ? "language_active" : "" ?>" id="language_es">
                   ES
                 </button>
                 <span>/</span>
-                <button class="button " id="language_en">
+                <button class="button <?php echo !$isEs ? "language_active" : "" ?>" id="language_en">
                   EN
                 </button>
               </li>
@@ -128,12 +94,21 @@
         <div class="search_modal_form">
           <button class="button button-cuadro">x</button>
           <div class="search_modal_form_wrap">
+            <?php
+              if ($isEs) {
+                $suffix = "es";
+              } else {
+                $suffix = "en";
+              }
+              $placeholder = get_field("campo_buscar_-_" . $suffix, "option");
+              $search = get_field("boton_enviar_-_" . $suffix, "option");
+              ?>
             <form>
               <div class="field">
-                <input placeholder="¿Qué Buscas?" type="text" class="text">
+                <input placeholder="<?php echo $placeholder; ?>" type="text" class="text">
               </div>
               <div class="field">
-                <button class="button general_button text-white"><span data-title="Buscar">Buscar</span></button>
+                <button class="button general_button text-white"><span data-title="Buscar"><?php echo $search; ?></span></button>
               </div>
             </form>
           </div>
@@ -141,16 +116,12 @@
         </div>
 
         <div class="dynamic_header_top">
+          <!-- Se mostrará en caso que se agregue el attr data-dynamic="dynamic_data_1" y class="has_dynamic" en el li del header -->
           <div class="dynamic_data dynamic_data_1">
             <div class="row no-gutters">
 
               <div class="col-md-3">
-                <!-- <ul class="dynamic_list">
-                                                            <li>Videos</li>
-                                                            <li>Imágenes</li>
-                                                            <li>Galería</li>
-                                                            <li>Proyectos</li>
-                                                          </ul> -->
+
                 <p class="dynamyc_description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil dolor quasi aspernatur
                   unde, et molestiae.</p>
               </div>
@@ -197,16 +168,11 @@
               </div>
             </div>
           </div>
+          <!-- Se mostrará en caso que se agregue el attr data-dynamic="dynamic_data_2" y class="has_dynamic" en el li del header -->
           <div class="dynamic_data dynamic_data_2">
             <div class="row no-gutters">
 
               <div class="col-md-3">
-                <!-- <ul class="dynamic_list">
-                                                                <li>Videos</li>
-                                                                <li>Imágenes</li>
-                                                                <li>Galería</li>
-                                                                <li>Proyectos</li>
-                                                              </ul> -->
                 <p class="dynamyc_description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil dolor quasi aspernatur unde, et molestiae.</p>
               </div>
               <div class="col-md-9">

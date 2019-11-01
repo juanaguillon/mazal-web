@@ -1,4 +1,13 @@
 <?php if (!is_front_page()) : ?>
+
+  <?php
+    $isEs = mazal_is_language();
+    if ($isEs) {
+      $suffix = "_-_es";
+    } else {
+      $suffix = "_-_en";
+    }
+    ?>
   <footer>
     <div class="footer_header">
       <div class="container">
@@ -9,23 +18,26 @@
             </h5>
           </div>
           <div class="col-md-3 footer_list_item wow fadeInDown" data-wow-delay="0.3s">
-            <h4 class="footer_title_list text-white">Teléfono</h4>
-            <span class="text-white">Teléfono (57)(1)602 6541</span>
+            <h4 class="footer_title_list text-white"><?php the_field("contacto_telefono" . $suffix, "option") ?></h4>
+            <span class="text-white">(57)(1)602 6541</span>
           </div>
           <div class="col-md-3 footer_list_item wow fadeInDown" data-wow-delay="0.6s">
             <h4 class="footer_title_list text-white">Email</h4>
             <span class="text-white">sebastian.camacho@mazal.co</span>
           </div>
           <div data-wow-delay="0.9s" class="col-md-3 footer_list_item wow fadeInRight">
-            <h4 class="footer_title_list text-white">Ubicación</h4>
+            <h4 class="footer_title_list text-white"><?php the_field("contacto_direccion" . $suffix, "option") ?></h4>
             <span class="text-white">Calle 109 # 18b - 52 Local 102</span>
           </div>
         </div>
       </div>
     </div>
     <div class="footer_foot text-center">
-      <span class="text-3x text-white">Mazal | Diseño industrial & Arquitectura 2019 - <strong>Todos los derechos
-          reservados</strong></span>
+      <?php
+        $rigths1 = explode(" - ", get_field("copyright" . $suffix, "option"))[0];
+        $rigths2 = explode(" - ", get_field("copyright" . $suffix, "option"))[1];
+        ?>
+      <span class="text-3x text-white"><?php echo $rigths1 ?> - <strong><?php echo $rigths2 ?></strong></span>
     </div>
   </footer>
 
@@ -37,8 +49,8 @@
 <script src="<?php bloginfo('template_url') ?>/assets/js/script.js"></script>
 
 <?php
-// se muestra pagina interna-sub.php
-if (is_page(36)) {
+// se muestra pagina (/pagina-interna) interna-sub.php
+if (is_tax("categoria")) {
   ?>
   <script src="<?php bloginfo('template_url') ?>/assets/js/bootstrap-multiselect.js"></script>
   <script type="text/javascript" src="<?php bloginfo('template_url') ?>/assets/js/isotope.pkgd.min.js"></script>
@@ -47,47 +59,127 @@ if (is_page(36)) {
       itemSelector: '.col-item',
       layoutMode: 'fitRows'
     });
-    $('.iso-filter').click(function() {
-      var filter = $(this).data('filter')
-      $grid.isotope({
-        filter: filter
+    /**
+     * Crear filtro de checkbox en la página interna (interna-sub.php)
+     */
+    var $el = $(".dropdown");
+    var currentSlugClassName = "<?php echo get_queried_object()->slug ?>";
+    $grid.isotope({
+      filter: "." + currentSlugClassName
+    });
+
+    function updateStatus(label, result) {
+      if (!result.length) {
+        label.text(label.data("emplabel"));
+      }
+    }
+
+    $el.each(function(i, element) {
+      var $list = $(this).find(".dropdown-list"),
+        $label = $(this).find(".dropdown-label"),
+        $inputs = $(this).find(".check"),
+        unique = $(this).find(".check-unique"),
+        result = [];
+
+      $label.on("click", () => {
+        $(this).toggleClass("open");
       });
-    })
+      unique.on("change", function() {
+        var subcat = $(this).data("subcat");
+        var text = $(this).next().text();
+        $(".sublist_children").removeClass("show")
+        $("#sublist_children_" + subcat).addClass("show");
+        $label.text(text)
+
+        $grid.isotope({
+          filter: $(this).data("filter")
+        });
+
+      });
+      $inputs.on("change", function() {
+        // var checked = $(this).is(":checked");
+
+        var checkeds = [];
+        $inputs.each(function(e) {
+          if ($(this).prop("checked")) {
+            checkeds.push($(this));
+          }
+        });
+        // console.log(checkeds)
+
+        if (checkeds.length > 0) {
+          var text = checkeds[0].first().next().text();
+          if (checkeds.length > 1) {
+            text += " " + (checkeds.length - 1) + "+";
+          }
+        }
+        $label.text(text)
+        updateStatus($label, checkeds);
+
+        // ================
+        var filtering = "";
+        var isFirst = true;
+        $inputs.each(function(i) {
+          if ($(this).prop("checked")) {
+            if (isFirst) {
+              filtering += $(this).data("filter");
+              isFirst = false;
+            } else {
+              filtering += "," + $(this).data("filter");
+            }
+          }
+        });
+        $grid.isotope({
+          filter: filtering
+        });
+        // ================
+      });
+
+      $(document).on("click touchstart", e => {
+        if (!$(e.target).closest($(this)).length) {
+          $(this).removeClass("open");
+        }
+      });
+    });
   </script>
   <script type="text/javascript">
     $(function() {
 
       $('#chkveg').multiselect({
-
         includeSelectAllOption: true
       });
-
-      $('#btnget').click(function() {
-
-        alert($('#chkveg').val());
-      });
+      // $('#btnget').click(function() {
+      //   alert($('#chkveg').val());
+      // });
     });
   </script>
 
 <?php
 }
 // se muestra pagina item-page.php ( /producto )
-if (is_page(39)) {
+if (is_singular("producto")) {
   ?>
   <script src="<?php bloginfo('template_url') ?>/assets/js/swiper.js"></script>
 
   <script type="text/javascript">
     var galleryThumbs = new Swiper('.gallery-thumbs', {
-      spaceBetween: 10,
+      spaceBetween: 8,
       slidesPerView: 5,
+      // centeredSlides: true,
+      grabCursor: true,
+      // navigation: {
+      //   nextEl: '.swiper-button-next',
+      //   prevEl: '.swiper-button-prev',
+      // },
       loopedSlides: 5, //looped slides should be the same
-      watchSlidesVisibility: true,
-      watchSlidesProgress: true,
+      // watchSlidesVisibility: true,
+      // watchSlidesProgress: true,
 
     });
     var galleryTop = new Swiper('.gallery-top', {
       spaceBetween: 10,
       loop: true,
+      grabCursor: true,
       loopedSlides: 5, //looped slides should be the same
       navigation: {
         nextEl: '.swiper-button-next',

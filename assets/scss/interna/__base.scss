@@ -28,6 +28,7 @@
 
   p {
     margin: 20px 0px;
+    max-width: 540px;
   }
 }
 
@@ -41,18 +42,17 @@
   li.slick-active button {
     background: $yellowcolor;
   }
-  li button{
-  background: #e9e9e9;
-
+  li button {
+    background: #e9e9e9;
   }
 }
 #banner_nav_prev,
 #banner_nav_next {
   position: absolute;
-	top: 50%;
-	color: #ffebd2;
-	font-size: 3rem;
-	padding: 5px 15px;
+  top: 50%;
+  color: #ffebd2;
+  font-size: 3rem;
+  padding: 5px 15px;
 }
 #banner_nav_next {
   right: 0;

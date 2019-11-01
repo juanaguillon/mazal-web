@@ -11,8 +11,16 @@
 	<div class="container-fluid p-0">
 		<div class="row no-gutters">
 			<div class="w-50 left_image_conent">
+				<?php
+				$idArq = pll_get_post(11);
+				$idCorp = pll_get_post(25);
+				$idHog = pll_get_post(9);
+				$linkArquitectura = get_permalink($idArq);
+				$linkCorp = get_permalink($idCorp);
+				$linkHogar = get_permalink($idHog);
 
-				<a href="<?php echo get_permalink(11) ?>">
+				?>
+				<a href="<?php echo $linkArquitectura ?>">
 					<div class="banner_img_container">
 						<div class="black_background z1"></div>
 						<img class="banner_img_left img_fill img_fill_h" src="<?php bloginfo("template_url") ?>/images/image_left.jpg" alt="" />
@@ -26,7 +34,7 @@
 							<img src="<?php bloginfo("template_url") ?>/images/icons/logo.svg" alt="" />
 						</div>
 						<div class="heading3 text4x font-3 capitalize">
-							<h3 class="text-white banner_context_subtitle">Arquitectura</h3>
+							<h3 class="text-white banner_context_subtitle"><?php echo get_the_title($idArq) ?></h3>
 						</div>
 					</div>
 					<div class="banner_context_menu_container">
@@ -35,27 +43,27 @@
 
 							<ul class="ul_banner_menu">
 								<li>
-									<a class="uppercase text-white" href="<?php echo get_permalink(11) ?>?section=tres60">
+									<a class="uppercase text-white" href="<?php echo $linkArquitectura ?>?section=tres60">
 										Arquitectura
 									</a>
 								</li>
 								<li>
-									<a class="uppercase text-white" href="<?php echo get_permalink(11) ?>?section=arq_sos">
+									<a class="uppercase text-white" href="<?php echo $linkArquitectura ?>?section=arq_sos">
 										Arquitectura Sostenible
 									</a>
 								</li>
 								<li>
-									<a class="uppercase text-white" href="<?php echo get_permalink(11) ?>?section=lineas1">
+									<a class="uppercase text-white" href="<?php echo $linkArquitectura ?>?section=lineas1">
 										Diseño Interior
 									</a>
 								</li>
 								<li>
-									<a class="uppercase text-white" href="<?php echo get_permalink(11) ?>?section=obra_nueva">
+									<a class="uppercase text-white" href="<?php echo $linkArquitectura ?>?section=obra_nueva">
 										Obra Nueva
 									</a>
 								</li>
 								<li class="no-borders">
-									<a class="uppercase text-white" href="<?php echo get_permalink(11) ?>?section=before_after">
+									<a class="uppercase text-white" href="<?php echo $linkArquitectura ?>?section=before_after">
 										Remodelación
 									</a>
 								</li>
@@ -109,7 +117,12 @@
 					</div>
 					<div class="heading3 text4x font-3 capitalize">
 						<h3 class="text-white banner_context_subtitle text-bold">
-							Mobiliario
+							<?php
+							if (mazal_is_language()) : ?>
+								MOBILIARIO
+							<?php else : ?>
+								FURNITURE
+							<?php endif; ?>
 						</h3>
 					</div>
 				</div>
@@ -208,15 +221,15 @@
 	<div class="popup_wrapper">
 		<!--<div class="screen_black"></div>-->
 		<div class="popup_close"><button class="button cuadro text2x">&#x58;</button></div>
-		<a class="popup_left" href="<?php echo get_permalink(9) ?>">
+		<a class="popup_left" href="<?php echo $linkHogar ?>">
 			<h3 class="text-white banner_context_subtitle text-bold">
-				HOGAR
+				<?php echo get_the_title($idHog) ?>
 			</h3>
 			<img src="<?php bloginfo("template_url") ?>/images/interna/image12.jpg" alt="">
 		</a>
-		<a class="popup_right" href="<?php echo get_permalink(25) ?>">
+		<a class="popup_right" href="<?php echo $linkCorp ?>">
 			<h3 class="text-white banner_context_subtitle text-bold">
-				CORPORATIVO
+				<?php echo get_the_title($idCorp) ?>
 			</h3>
 			<img src="<?php bloginfo("template_url") ?>/images/interna/image13.jpg" alt="">
 		</a>

@@ -99,9 +99,11 @@
   .feature {
     span:first-child {
       font-weight: 600;
+      color: #666666;
     }
-    span:last-child {
-      margin-left: 5px;
+    a, span:last-child {
+      color: #000;
+      font-weight: 600;
     }
   }
 }
@@ -202,9 +204,14 @@
   margin-left: auto;
   margin-right: auto;
 }
-.swiper-wrapper {
-  width: 80%;
-  max-width: 500px;
+// .swiper-wrapper {
+//   width: 80%;
+//   max-width: 500px;
+// }
+.gallery-thumbs .swiper-wrapper {
+  width: 85%;
+  margin: auto;
+  overflow: hidden;
 }
 .swiper-slide {
   background-size: cover;

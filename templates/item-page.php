@@ -59,11 +59,7 @@
 
 							</div>
 						</div>
-						<div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)">
-							<div class="swiper-zoom-container" data-swiper-zoom="5">
-
-							</div>
-						</div>
+					
 					</div>
 					<!-- Add Arrows -->
 

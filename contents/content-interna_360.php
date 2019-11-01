@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Mostrar una seccion 360.
+ * Mostrar una seccion de contenido simple.
  * @param String $id_container ID HTML para la sección
  * @param String $title Titulo de la sección
  * @param Sring $description Descripcion de la sección.
@@ -9,29 +9,25 @@
  * @param Boolean $in_right ¿El título, descripción y botón se mostrará a el lado derecho en modo escritorio?
  * @param Array $button Botón de sección Arra("text" => "Texto de botón", "link"=> "Link de botón");
  */
-function single_360_content($id_container, $title, $description, $image, $in_right = true, $button = array())
+function mazal_simple_content($term, $in_right = true)
 {
-  if (empty($button)) {
-    $button = array(
-      "text" => "Ver más",
-      "link" => "#"
-    );
-  }
+  $image =  get_field("imagen", $term);
+  $button = array(
+    "link" => get_term_link($term),
+    "text" => mazal_is_language() ? "Ver Más" : "See more"
+  );
+
   ?>
 
-  <section id="<?php echo $id_container ?>" class="section_high tres60_section <?php if (!$in_right) echo "section_left" ?>" style="background-image: url(<?php bloginfo("template_url") ?>/images/interna/<?php echo $image ?>)">
+  <section id="<?php echo $term->slug ?>" class="section_high tres60_section <?php if (!$in_right) echo "section_left" ?>" style="background-image: url(<?php echo $image["url"] ?>)">
     <div class="container-fluid p-0 h-100">
       <div class="row no-gutters h-100">
-        <!-- <div class="col-md-6 tres60_container">
-                                        <div class="tres60_wrap_single left">
-                                        </div>
-                                      </div> -->
         <div class="col-md-6 tres60_container wow fadeInDown <?php if ($in_right) echo "offset-md-6" ?>">
           <div class="tres_60_white_wrap">
             <div class="tres60_title_container">
-              <h3 class="font-2 text-regular blanco"><?php echo mb_strtoupper($title, "UTF-8"); ?></h3>
+              <h3 class="font-2 text-regular blanco"><?php echo mb_strtoupper($term->name, "UTF-8"); ?></h3>
             </div>
-            <p><?php echo $description ?></p>
+            <p><?php echo $term->description ?></p>
             <div class="tres60_button_container">
               <a href="<?php echo $button["link"] ?>" class="button general_button button_dark text-yellow mt-4">
                 <span data-title="<?php echo $button["text"] ?>"><?php echo $button["text"] ?></span>
@@ -43,100 +39,151 @@ function single_360_content($id_container, $title, $description, $image, $in_rig
     </div>
   </section>
 
-<?php } ?>
+<?php }
+
+/**
+ * Mostrar una subcategoría dentro de el diseño de "Subcategorías"
+ *
+ * @param $title Titulo de la línea
+ * @param $description Descripción de la linea
+ * @param $image Imagen que estará dentro de la carpeta images/interna
+ * @return void
+ */
+function mazal_single_subcat($title, $description, $image, $link)
+{
+  ?>
+  <div class="col-md-3">
+    <a href="<?php echo $link ?>">
+
+      <div class="single_linea_wrapper">
+        <div class="single_linea_image">
+          <img class="img_fill" src="<?php echo $image ?>" alt="">
+        </div>
+        <div class="single_linea_context">
+          <h3><?php echo $title ?></h3>
+          <p><?php echo $description ?></p>
+        </div>
+        <div class="single_linea_zoom">
+          <i class="icon-new-tab"></i>
+        </div>
+      </div>
+    </a>
+
+  </div>
 
 <?php
-if (mazal_is_arquitectura_page()) :
-  // Seccion Diseo Interior
-  single_360_content(
-    "section_lineas1",
-    "Diseño Interior",
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique corrupti consequuntur odit mollitia soluta at!",
-    "image3.jpg",
-    false
-  );
-  // Seccion Arquitectura
-  single_360_content(
-    "section_tres60",
-    "Arquitectura",
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique corrupti consequuntur odit mollitia soluta at!",
-    "image23.jpg"
-  );
+}
 
-  // Sección Arqitectura Sostenible
-  single_360_content(
-    "section_arq_sos",
-    "Arquitectura Sostenible",
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique corrupti consequuntur odit mollitia soluta at!",
-    "image10.jpg",
-    false
-  );
+/**
+ * Mostrar diseño de "subcategorías"
+ *
+ * @param string $title Título de la categoría
+ * @param boolean $labelToLeft La etiqueta de la categoría irá a la izquierda?
+ * @return void
+ */
+function mazal_subcat_content($title, $labelToLeft, $subcats)
+{
+  ?>
+  <section id="section_lineas1" class="section_high">
+    <div class="container-fluid p-0">
+      <div class="lineas_container">
+        <?php
+          if ($labelToLeft) : ?>
+          <div class="linea_label left"><span><?php echo $title ?></span></div>
+        <?php endif; ?>
+        <div class="row no-gutters h-100 row_linea_container_left">
+          <?php foreach ($subcats as $subcat) :
+              $minitext = get_field("minitexto", $subcat);
+              $imagen = get_field("imagen", $subcat);
+              $link = get_term_link($subcat);
+              ?>
+            <?php mazal_single_subcat($subcat->name, $minitext, $imagen["url"], $link); ?>
+          <?php endforeach; ?>
+        </div>
+        <?php
+          if ($labelToLeft) : ?>
+          <div class="linea_label left"><span><?php echo $title ?></span></div>
+        <?php endif; ?>
 
-  // Sección Obra Nueva
-  single_360_content(
-    "section_obra_nueva",
-    "Obra Nueva",
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique corrupti consequuntur odit mollitia soluta at!",
-    "image19.jpg"
-  );
-endif;
+      </div>
+    </div>
+
+  </section>
+
+
+
+<?php
+}
 ?>
 
-<?php
-if (mazal_is_hogar_page()) :
-  // Sección Clásico
-  single_360_content(
-    "section_arq_sos",
-    "Clásico",
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique corrupti consequuntur odit mollitia soluta at!",
-    "mazal_clasico.jpg"
-  );
-
-endif;
-?>
-
 
 <?php
-if (mazal_is_corporativo_page()) :
-  // Sección Constructoras
-  single_360_content(
-    "section_constructoras",
-    "Constructoras",
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique corrupti consequuntur odit mollitia soluta at!",
-    "mazal_constructoras.jpg"
-  );
-  // Seccion Oficinas
-  single_360_content(
-    "section_oficinas",
-    "Oficinas",
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique corrupti consequuntur odit mollitia soluta at!",
-    "mazal_oficinas.jpg",
-    false
-  );
-  // Seccion Holetes
-  single_360_content(
-    "section_hoteles",
-    "Holetes",
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique corrupti consequuntur odit mollitia soluta at!",
-    "mazal_hoteles.jpg"
-  );
 
-  // Sección Arqitectura Sostenible
-  single_360_content(
-    "section_centry_commercial",
-    "Centros Comerciales",
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique corrupti consequuntur odit mollitia soluta at!",
-    "mazal_centros_comerciales.jpg",
-    false
-  );
+$terms = get_terms(array(
+  "taxonomy" => "categoria",
+  "parent" => 0,
+  "hide_empty" => false
+));
 
-  // Sección Obra Nueva
-  single_360_content(
-    "section_restaurantes",
-    "Restaurantes",
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique corrupti consequuntur odit mollitia soluta at!",
-    "mazal_restaurantes.jpg"
-  );
 
-endif;
+// Obtener el term id de la categoría dependiendo el idioma y la página actual
+// printcode( $terms );
+$dataFilter = null;
+
+// Página Arquitectura
+if (mazal_is_arquitectura_page()) {
+  if (mazal_is_language()) {
+    $dataFilter = 91;
+  } else {
+    $dataFilter = 97;
+  }
+}
+
+// Página Corporativa
+if (mazal_is_corporativo_page()) {
+  if (mazal_is_language()) {
+    $dataFilter = 93;
+  } else {
+    $dataFilter = 101;
+  }
+}
+
+// Página Hogar
+if (mazal_is_hogar_page()) {
+  if (mazal_is_language()) {
+    $dataFilter = 89;
+  } else {
+    $dataFilter = 99;
+  }
+}
+
+
+
+$categoriesArr = get_terms(array(
+  "taxonomy" => "categoria",
+  "parent" => $dataFilter,
+  "hide_empty" => false
+));
+
+
+foreach ($categoriesArr as $catID => $catVal) {
+  $toRight = $catID % 2 === 0;
+  // printcode(get_fields($catVal));
+
+  // echo get_field("diseno_", $catVal);
+  if (get_field("diseno_", $catVal)  === "Diseño simple") {
+    mazal_simple_content(
+      $catVal,
+      $toRight
+    );
+  } else {
+    $childCats = get_terms(array(
+      "parent" => $catVal->term_id,
+      "taxonomy" => $catVal->taxonomy,
+      "hide_empty" => false
+    ));
+    mazal_subcat_content($catVal->name, $toRight, $childCats);
+  }
+}
+
 ?>
