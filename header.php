@@ -50,7 +50,7 @@
           <div class="header_top_left">
             <div class="menu_logo_li">
               <h1 class="menu_logo">
-                <a class="text-white" href="<?php echo home_url() ?>">
+                <a class="text-white" href="<?php echo esc_attr(home_url())  ?>">
                   <i class="icon-logo"></i>
                 </a>
               </h1>
@@ -67,17 +67,43 @@
                   'items_wrap' => '%3$s',
                   "container" => ""
                 ));
+
+                if (is_page() || is_singular("producto")) {
+                  $chLink =  get_queried_object()->ID;
+                  if (mazal_is_language()) {
+                    $linkID = pll_get_post($chLink, "en");
+                  } else {
+                    $linkID = pll_get_post($chLink, "es");
+                  }
+                  $link = get_permalink($linkID);
+                } else if (is_tax("categoria")) {
+                  $chLink =  get_queried_object()->term_id;
+                  if (mazal_is_language()) {
+                    $linkID = pll_get_term($chLink, "en");
+                  } else {
+                    $linkID = pll_get_term($chLink, "es");
+                  }
+                  $link = get_term_link($linkID);
+                }
+
+
+                // echo pll_get_post($linkID, "es");
+                // echo pll_get_post($linkID, "en");
                 ?>
 
+
               <li class="languages_header">
-                <?php $isEs = mazal_is_language(); ?>
-                <button class="button <?php echo $isEs ? "language_active" : "" ?>" id="language_es">
-                  ES
-                </button>
-                <span>/</span>
-                <button class="button <?php echo !$isEs ? "language_active" : "" ?>" id="language_en">
-                  EN
-                </button>
+                <a rel="nofollow" href="<?php echo esc_attr($link); ?>">
+                  <?php $isEs = mazal_is_language(); ?>
+                  <span class="language <?php echo $isEs ? "language_active" : "" ?>" id="language_es">
+                    ES
+                  </span>
+                  <span>/</span>
+                  <span class="language <?php echo !$isEs ? "language_active" : "" ?>" id="language_en">
+                    EN
+                  </span>
+                </a>
+
               </li>
             </ul>
             <button id="icon_search" class="button">

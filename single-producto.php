@@ -8,7 +8,7 @@ $producto = get_queried_object();
 
 <div class="pagina-producto">
 
-  <section class="migadepan container-fluid" style="padding: 0 30px;">
+  <section class="migadepan container" style="padding: 0 30px;">
 
     <div class="direccion-pagina">
       <div class="direccion-back">
@@ -19,26 +19,30 @@ $producto = get_queried_object();
 
       <?php
 
-      // $terms = get_the_terms($producto->ID, 'categoria');
-      // // $d = get_ancestors($producto->ID, "producto", "post_type");
-      // echo wp_list_categories(array(
-      //   "taxonomy" => "categoria",
-      //   "hierarchical" => true,
-      //   "include" => get_terms($terms[0]->term_id)
-      // ));
+
+      add_filter("term_links-categoria", function ($links) {
+        $linksOut = array();
+        foreach ($links as $link) {
+          $linksOut[] = "<li>" . $link . "</li>";
+        }
+        return $linksOut;
+      });
+
       ?>
       <ul>
-        <li><a href="#">Home</a></li>
+        <?php echo get_the_term_list($producto, "categoria"); ?>
+        <li><?php echo $producto->post_title; ?></li>
+        <!-- <li><a href="#">Home</a></li>
         <li><a href="#">Mobiliario Hogar</a></li>
         <li><a href="#">Carpinteria</a></li>
         <li><a href="#">Cocinas</a></li>
-        <li><a href="#">Cocinas integrales</a></li>
+        <li><a href="#">Cocinas integrales</a></li> -->
       </ul>
     </div>
 
   </section>
 
-  <section class="item-view container-fluid">
+  <section class="item-view container">
 
     <div class="row m-0">
       <div class="col-md-7">
@@ -93,22 +97,32 @@ $producto = get_queried_object();
       <div class="col-md-5">
         <div class="item-information">
           <h2 class="item-title"><?php echo $producto->post_title; ?></h2>
-          <span class="item-ref">Ref:3161516511</span>
+          <span class="item-ref">Ref: 785-001</span>
           <p class="item-description"><?php echo wp_kses_post($producto->post_content); ?></p>
 
           <div class="item-features">
-            <div class="feature">
+            <!-- <div class="feature">
               <span>Colección:</span><span>some text</span>
             </div>
             <div class="feature">
               <span>Dimensiones:</span><span>some text</span>
-            </div>
+            </div> -->
             <div class="feature">
+              <?php
+              add_filter("term_links-categoria", function ($links) {
+                $linksOut = array();
+                foreach ($links as $link) {
+                  // Eliminar etiqutas li
+                  $linksOut[] = preg_replace('/<(\/)?li>/', '', $link);
+                }
+                return $linksOut;
+              });
+              ?>
               <span>Categoría: </span><?php echo get_the_term_list($producto, "categoria", "", ", ") ?>
             </div>
-            <div class="feature">
+            <!-- <div class="feature">
               <span>Material: </span><?php echo get_the_term_list($producto, "material", "", ", ") ?>
-            </div>
+            </div> -->
             <div class="feature">
               <span>Color: </span><span id="color_changer">Natural</span>
             </div>
@@ -205,52 +219,54 @@ $producto = get_queried_object();
   <section class="container related-items">
     <?php
     if (mazal_is_language()) : ?>
-      <h3 class="">PRODUCTOS RELACIONADOS</h3>
+      <h3>PRODUCTOS RELACIONADOS</h3>
     <?php else : ?>
       <h3>RELATED PRODUCTS</h3>
     <?php endif; ?>
 
 
-    <?php $tersRelated = get_the_terms($producto, "categoria") ?>
-    <div class="row">
-      <div class="col-md-4">
-        <div class="related-item">
-          <div class="image-related-item item">
-            <a href="#"><img src="http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/cocina-7.jpg" alt=""></a>
-            <div class="item-content">
-              <span class="item-nombre-proyecto">Proyecto Colina Brillo</span>
-            </div>
-          </div>
-          <h4><a href="#">Some item title</a></h4>
-          <span>Some item category</span>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="related-item">
-          <div class="image-related-item item">
-            <a href="#"><img src="http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/cocina-4.jpg" alt=""></a>
-            <div class="item-content">
-              <span class="item-nombre-proyecto">Proyecto Colina Brillo</span>
-            </div>
-          </div>
-          <h4><a href="#">Some item title</a></h4>
-          <span>Some item category</span>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="related-item">
-          <div class="image-related-item item">
-            <a href="#"><img src="http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/cocina-2.jpg" alt=""></a>
-            <div class="item-content">
-              <span class="item-nombre-proyecto">Proyecto Colina Brillo</span>
-            </div>
-          </div>
-          <h4><a href="#">Some item title</a></h4>
-          <span>Some item category</span>
-        </div>
-      </div>
-    </div>
+    <?php
+    $tersRelated = get_the_terms($producto, "categoria");
+    $termsKeys = array();
+    foreach ($tersRelated as $term) {
+      $termsKeys[] = $term->term_id;
+    }
+    // printcode($termsKeys);
+    $queryRel = new WP_Query(array(
+      "post_type" => "producto",
+      "posts_per_page" => 3,
+      "orderby" => "rand",
+      "post__not_in" => array( $producto->ID),
+      "tax_query" => array(
+        array(
+          'taxonomy' => 'categoria',
+          'field'    => 'term_id',
+          'terms'    => $termsKeys,
+        )
+      )
+    ));
 
+    ?>
+    <div class="row">
+      <?php
+      foreach ($queryRel->posts as $relProducto) : ?>
+        <div class="col-md-4">
+          <a href="<?php echo get_permalink($relProdCat) ?>">
+            <div class="related-item">
+              <div class="image-related-item item">
+                <img src="<?php echo get_the_post_thumbnail_url($relProducto, "medium") ?>" alt="">
+                <div class="item-content">
+                  <span class="item-nombre-proyecto"><?php echo $relProducto->post_title ?></span>
+                </div>
+              </div>
+              <h4><?php echo $relProducto->post_title ?></h4>
+              <?php $relProdCat = get_the_terms($relProducto, "categoria")[0]; ?>
+              <span><?php echo $relProdCat->name ?></span>
+            </div>
+          </a>
+        </div>
+      <?php endforeach; ?>
+    </div>
   </section>
 
 </div>

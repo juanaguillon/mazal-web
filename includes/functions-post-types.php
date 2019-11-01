@@ -70,7 +70,7 @@ function __mazal_register_post_type($name, $icon, $isMale = true, $supports = ar
  * @param array $otherArgs Este será definido para ajustes de esta taxonomía. La clave "Labels" Se ajustarán y no podrán sobreescribrse.
  * @see https://codex.wordpress.org/Function_Reference/register_taxonomy
  */
-function __mazal_register_taxonomy($name, $is_male = true, $asTag = false, $prural = "s", $otherArgs = array() )
+function __mazal_register_taxonomy($name, $is_male = true, $asTag = false, $prural = "s", $otherArgs = array())
 {
   $theName = ucfirst($name);
   $pluralName = $theName . $prural;
@@ -145,7 +145,8 @@ function mazal_register_the_posts_types()
       "title",
       "excerpt"
     )),
-    "producto" => __mazal_register_post_type("producto", "dashicons-products")
+    "producto" => __mazal_register_post_type("producto", "dashicons-products"),
+    "cliente" => __mazal_register_post_type("cliente", "dashicons-businesswoman", true, ["title", "thumbnail"] )
   );
   foreach ($postTypes as $ptkey => $ptvalue) {
     register_post_type($ptkey, $ptvalue);
@@ -155,7 +156,7 @@ function mazal_register_the_posts_types()
     "producto" => array(
       // "tipo" => __mazal_register_taxonomy("tipo", false, true),
       "categoria" => __mazal_register_taxonomy("categoria", false),
-      "material" => __mazal_register_taxonomy("material", false, false, "es" ),
+      "material" => __mazal_register_taxonomy("material", false, false, "es"),
       "medida" => __mazal_register_taxonomy("medida", false),
       "coleccion" => __mazal_register_taxonomy("collecion", false, false, "es"),
     )

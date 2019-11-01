@@ -285,7 +285,7 @@ foreach ($posts as $post) {
       <div class="col-item<?php echo $filterString ?>">
         <a href="<?php echo get_permalink($wpPost); ?>">
           <div class="item">
-            <img src="<?php echo get_the_post_thumbnail_url($wpPost, array(450, 450)) ?>" alt="">
+            <img src="<?php echo get_the_post_thumbnail_url($wpPost, "medium") ?>" alt="">
             <div class="item-content">
               <span class="item-nombre-proyecto"><?php echo wp_kses_post($wpPost->post_title) ?></span>
             </div>

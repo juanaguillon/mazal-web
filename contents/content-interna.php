@@ -129,14 +129,30 @@
     </div>
 
     <div class="row no-gutters">
+      <?php
+      $antesDesImg = get_field("antsesdes_imagenes", "option");
+      ?>
       <div class="col-lg-1 col-md-12 col-sm-12 ">
         <div class="bef_aft_images_container">
           <div class="arrow_up arrows"><i class="icon-arrow_up"></i></div>
           <div class="bef_aft_images_gallery">
-            <div class="bef_aft_image_photo">
-              <img data-before="<?php bloginfo("template_url") ?>/images/interna/image3.jpg" data-after="<?php bloginfo("template_url") ?>/images/interna/image3.jpg" class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/image3.jpg" alt="">
-            </div>
-            <div class="bef_aft_image_photo">
+            <?php
+            foreach ($antesDesImg as $imgs) : ?>
+
+              <div class="bef_aft_image_photo">
+                <?php
+                  $suffix = "";
+                  if (mazal_is_language()) {
+                    $suffix = "_es";
+                  } else {
+                    $suffix = "_en";
+                  }
+                  ?>
+                <img data-tb="<?php echo $imgs["texto_antes" . $suffix] ?>" data-ta="<?php echo $imgs["texto_despues" . $suffix] ?>" data-before="<?php echo $imgs["imagen_antes"]["url"] ?>" data-after="<?php echo $imgs["imagen_despues"]["url"] ?>" class="img_fill" src="<?php echo $imgs["imagen_despues"]["sizes"]["thumbnail"] ?>" alt="">
+              </div>
+            <?php endforeach; ?>
+
+            <!-- <div class="bef_aft_image_photo">
               <img data-before="<?php bloginfo("template_url") ?>/images/interna/image4.jpg" data-after="<?php bloginfo("template_url") ?>/images/interna/image4.jpg" class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/image4.jpg" alt="">
             </div>
             <div class="bef_aft_image_photo">
@@ -150,7 +166,7 @@
             </div>
             <div class="bef_aft_image_photo">
               <img data-before="<?php bloginfo("template_url") ?>/images/interna/mazal_banos.jpg" data-after="<?php bloginfo("template_url") ?>/images/interna/mazal_banos.jpg" class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/mazal_banos.jpg" alt="">
-            </div>
+            </div> -->
           </div>
           <div class="arrow_down arrows"><i class="icon-arrow_down"></i></div>
         </div>
@@ -289,13 +305,15 @@
       <h3 class="text-center mb-4 text-regular font-2 text-dark-gray">CUSTOMERS</h3>
     <?php endif; ?>
     <ul class="clietes_list">
-      <li><img src="<?php bloginfo("template_url") ?>/images/clientes/amarillo.png" alt=""></li>
-      <li><img src="<?php bloginfo("template_url") ?>/images/clientes/babaria.png" alt=""></li>
-      <li><img src="<?php bloginfo("template_url") ?>/images/clientes/claro.png" alt=""></li>
-      <li><img src="<?php bloginfo("template_url") ?>/images/clientes/club.png" alt=""></li>
-      <li><img src="<?php bloginfo("template_url") ?>/images/clientes/huawei.png" alt=""></li>
-      <li><img src="<?php bloginfo("template_url") ?>/images/clientes/amarillo.png" alt=""></li>
-      <li><img src="<?php bloginfo("template_url") ?>/images/clientes/babaria.png" alt=""></li>
+      <?php
+      $clientesQ = new WP_Query(array(
+        "post_type" => "cliente",
+        "posts_per_page" => -1
+      ));
+      foreach ($clientesQ->posts as $client) : ?>
+        <li><img src="<?php echo get_the_post_thumbnail_url($client, "full") ?>" alt="<?php echo esc_attr($client->post_title) ?>"></li>
+      <?php endforeach; ?>
+
     </ul>
   </div>
 </section>

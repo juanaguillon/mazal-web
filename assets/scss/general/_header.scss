@@ -204,19 +204,19 @@ header {
 .header_top_list li.active::after {
   opacity: 1;
 }
-
-.header_top_list > li.languages_header {
-  // display: flex;
-  // align-items: center;
-  // justify-content: flex-end;
-  // height: 26px;
-  // overflow: hidden;
-  // padding: 0;
+.aside_language {
+  position: absolute;
+  top: 29px;
+  right: 100px;
+}
+a.languages_toggle {
+  display: flex;
+  align-items: center;
   span {
     color: white;
     font-size: 11px;
   }
-  button.button {
+  span.language {
     transition: transform $speedtransition;
     font-family: $font1;
     width: 20px;
@@ -231,7 +231,44 @@ header {
     i {
       margin: -3px 0;
     }
-    &.language_active{
+    &.language_active {
+      opacity: 1;
+      font-weight: bold;
+    }
+  }
+}
+
+.header_top_list > li.languages_header {
+  // display: flex;
+  // align-items: center;
+  // justify-content: flex-end;
+  // height: 26px;
+  // overflow: hidden;
+  // padding: 0;
+  a {
+    display: flex;
+    align-items: center;
+  }
+  span {
+    color: white;
+    font-size: 11px;
+  }
+  span.language {
+    transition: transform $speedtransition;
+    font-family: $font1;
+    width: 20px;
+    color: #fff;
+    font-size: 14px;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0px;
+    opacity: 0.6;
+    i {
+      margin: -3px 0;
+    }
+    &.language_active {
       opacity: 1;
       font-weight: bold;
     }

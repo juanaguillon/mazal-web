@@ -2,8 +2,11 @@
 /* Página Interna: Contacto y Mapa */
 /* ====================  */
 
-#section_contacto .black_background {
-  background: rgba(0, 0, 0, 0.72);
+#section_contacto {
+  background: #201818;
+  .black_background {
+    background: rgba(0, 0, 0, 0.72);
+  }
 }
 
 .datos {

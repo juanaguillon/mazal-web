@@ -148,8 +148,19 @@
 
 		<!-- MARGEN ABAJO -->
 		<div class="banner_margin_bottom z2">
+
+			<?php
+			$isEs = mazal_is_language();
+			if ($isEs) {
+				$suffix = "_-_es";
+			} else {
+				$suffix = "_-_en";
+			}
+			$rigths1 = explode(" - ", get_field("copyright" . $suffix, "option"))[0];
+			$rigths2 = explode(" - ", get_field("copyright" . $suffix, "option"))[1];
+			?>
 			<div class="banner_bottom_context text-center">
-				<span class="text-white text-2x font-1">Derechos Reservados &#169; <strong>Mazal 2019</strong></span>
+				<span class="text-white text-2x font-1"><?php echo $rigths1 ?> - <strong><?php echo $rigths2 ?></strong></span>
 
 			</div>
 
@@ -162,6 +173,38 @@
 		<div class="banner_margin_right z2">
 			<div class="banner_right_context">
 				<div class="aside">
+					<div class="aside_language">
+						<?php
+						if (is_page() || is_singular("producto")) {
+							$chLink =  get_queried_object()->ID;
+							if (mazal_is_language()) {
+								$linkID = pll_get_post($chLink, "en");
+							} else {
+								$linkID = pll_get_post($chLink, "es");
+							}
+							$link = get_permalink($linkID);
+						} else if (is_tax("categoria")) {
+							$chLink =  get_queried_object()->term_id;
+							if (mazal_is_language()) {
+								$linkID = pll_get_term($chLink, "en");
+							} else {
+								$linkID = pll_get_term($chLink, "es");
+							}
+							$link = get_term_link($linkID);
+						}
+						?>
+
+						<a class="languages_toggle" rel="nofollow" href="<?php echo esc_attr($link); ?>">
+							<?php $isEs = mazal_is_language(); ?>
+							<span class="language <?php echo $isEs ? "language_active" : "" ?>" id="language_es">
+								ES
+							</span>
+							<span>/</span>
+							<span class="language <?php echo !$isEs ? "language_active" : "" ?>" id="language_en">
+								EN
+							</span>
+						</a>
+					</div>
 					<button id="banner_right_toggle" class="button">
 						<i class="text-white icon-bars hover-white"></i>
 					</button>

@@ -101,7 +101,8 @@
       font-weight: 600;
       color: #666666;
     }
-    a, span:last-child {
+    a,
+    span:last-child {
       color: #000;
       font-weight: 600;
     }
@@ -254,6 +255,7 @@
         left: -999999px;
         right: -999999px;
         margin: auto;
+        width: 100%;
       }
     }
     h4 {
