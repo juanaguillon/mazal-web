@@ -15,6 +15,19 @@
 
 <body class="<?php if (is_front_page()) echo "index_body_class" ?>">
 
+  <!-- <div class="loader">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div> -->
+
+
   <main id="main_interna">
 
     <?php

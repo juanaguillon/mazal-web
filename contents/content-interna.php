@@ -151,43 +151,30 @@
                 <img data-tb="<?php echo $imgs["texto_antes" . $suffix] ?>" data-ta="<?php echo $imgs["texto_despues" . $suffix] ?>" data-before="<?php echo $imgs["imagen_antes"]["url"] ?>" data-after="<?php echo $imgs["imagen_despues"]["url"] ?>" class="img_fill" src="<?php echo $imgs["imagen_despues"]["sizes"]["thumbnail"] ?>" alt="">
               </div>
             <?php endforeach; ?>
-
-            <!-- <div class="bef_aft_image_photo">
-              <img data-before="<?php bloginfo("template_url") ?>/images/interna/image4.jpg" data-after="<?php bloginfo("template_url") ?>/images/interna/image4.jpg" class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/image4.jpg" alt="">
-            </div>
-            <div class="bef_aft_image_photo">
-              <img data-before="<?php bloginfo("template_url") ?>/images/interna/image8.jpg" data-after="<?php bloginfo("template_url") ?>/images/interna/image8.jpg" class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/image8.jpg" alt="">
-            </div>
-            <div class="bef_aft_image_photo">
-              <img data-before="<?php bloginfo("template_url") ?>/images/interna/image10.jpg" data-after="<?php bloginfo("template_url") ?>/images/interna/image10.jpg" class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/image10.jpg" alt="">
-            </div>
-            <div class="bef_aft_image_photo">
-              <img data-before="<?php bloginfo("template_url") ?>/images/interna/mazal_hoteles.jpg" data-after="<?php bloginfo("template_url") ?>/images/interna/mazal_hoteles.jpg" class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/mazal_hoteles.jpg" alt="">
-            </div>
-            <div class="bef_aft_image_photo">
-              <img data-before="<?php bloginfo("template_url") ?>/images/interna/mazal_banos.jpg" data-after="<?php bloginfo("template_url") ?>/images/interna/mazal_banos.jpg" class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/mazal_banos.jpg" alt="">
-            </div> -->
           </div>
           <div class="arrow_down arrows"><i class="icon-arrow_down"></i></div>
         </div>
       </div>
       <div class="col-lg-11 wow slideInRight">
+        <?php
+        $first = $antesDesImg[0];
+        ?>
         <div class="bf_image_sized">
-          <img src="<?php bloginfo("template_url") ?>/images/interna/image3.jpg" alt="">
-          <img src="<?php bloginfo("template_url") ?>/images/interna/image3.jpg" alt="">
+          <img src="<?php echo $first["imagen_antes"]["url"] ?>" alt="">
+          <img src="<?php echo $first["imagen_despues"]["url"] ?>" alt="">
         </div>
         <div class="bef_aft_sides">
           <div class="bef_aft_left_side wow slideInLeft">
             <div class="bef_aft_descriptions_container flex-center-xy text-gray">
               <span class="bef_aft_number font-2">1</span>
-              <p class="font-1"><?php echo mazal_get_acf_field("antesdes_texto1_") ?></p>
+              <p id="bef_aft_before" class="font-1"><?php echo $first["texto_antes" . $suffix] ?></p>
             </div>
           </div>
           <div class="bef_aft_right_side wow slideInRight">
 
             <div class="bef_aft_descriptions_container flex-center-xy text-gray">
               <span class="bef_aft_number font-2">2</span>
-              <p class="font-1"><?php echo mazal_get_acf_field("antesdes_texto2_") ?></p>
+              <p id="bef_aft_after" class="font-1"><?php echo $first["texto_despues" . $suffix] ?></p>
             </div>
           </div>
 
@@ -200,13 +187,20 @@
 </section>
 
 <section id="section_portafolio" class="section_high">
+  <?php
+  $projectsPfolio =  get_field("portafolio_-_mostrar_proyectos", "option");
+  $prpf1 = $projectsPfolio[0]["proyecto"];
+  $prpf2 = $projectsPfolio[1]["proyecto"];
+  $prpf3 = $projectsPfolio[2]["proyecto"];
+  $prpf4 = $projectsPfolio[3]["proyecto"];
+  ?>
   <div class="row no-gutters flex-lg-row flex-column-reverse">
     <div class="col-lg-9">
 
       <div class="row no-gutters">
         <div class="col-lg-8 col-md-6 wow fadeInLeft">
           <div class="portafolio_single_image">
-            <img class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/image1.jpg" alt="">
+            <img class="img_fill" src="<?php echo get_the_post_thumbnail_url($prpf1, "large") ?>" alt="">
             <div class="black_background"></div>
             <div class="portafolio_mazal_logo">
               <figure>
@@ -214,15 +208,15 @@
               </figure>
             </div>
             <div class="portafolio_single_image_context">
-              <h3 class="font-2">Piso Cerámico</h3>
-              <p>Lorem ipsum dolor sit amet consectetur.</p>
+              <h3 class="font-2"><?php echo $prpf1->post_title ?></h3>
+              <p><?php echo get_the_terms($prpf1, "categoria")[0]->name ?></p>
             </div>
           </div>
         </div>
         <div class="col-lg-4 col-md-6 wow fadeInDown">
           <div class="portafolio_single_image">
 
-            <img class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/image10.jpg" alt="">
+            <img class="img_fill" src="<?php echo get_the_post_thumbnail_url($prpf2, "large") ?>" alt="">
             <div class="black_background"></div>
             <div class="portafolio_mazal_logo">
               <figure>
@@ -230,8 +224,8 @@
               </figure>
             </div>
             <div class="portafolio_single_image_context">
-              <h3 class="font-2">Mueble</h3>
-              <p>Lorem ipsum dolor sit amet consectetur.</p>
+              <h3 class="font-2"><?php echo $prpf1->post_title ?></h3>
+              <p><?php echo get_the_terms($prpf1, "categoria")[0]->name ?></p>
             </div>
           </div>
         </div>
@@ -240,7 +234,7 @@
         <div class="col-lg-4 col-md-6 wow fadeInLeft">
           <div class="portafolio_single_image">
 
-            <img class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/image4.jpg" alt="">
+            <img class="img_fill" src="<?php echo get_the_post_thumbnail_url($prpf3, "large") ?>" alt="">
             <div class="black_background"></div>
             <div class="portafolio_mazal_logo">
               <figure>
@@ -248,15 +242,15 @@
               </figure>
             </div>
             <div class="portafolio_single_image_context">
-              <h3 class="font-2">Amoblado</h3>
-              <p>Lorem ipsum dolor sit amet consectetur.</p>
+              <h3 class="font-2"><?php echo $prpf1->post_title ?></h3>
+              <p><?php echo get_the_terms($prpf1, "categoria")[0]->name ?></p>
             </div>
           </div>
         </div>
         <div class="col-lg-8 col-md-6 wow fadeInUp">
           <div class="portafolio_single_image">
 
-            <img class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/image16.jpg" alt="">
+            <img class="img_fill" src="<?php echo get_the_post_thumbnail_url($prpf4, "large") ?>" alt="">
             <div class="black_background"></div>
             <div class="portafolio_mazal_logo">
               <figure>
@@ -264,8 +258,8 @@
               </figure>
             </div>
             <div class="portafolio_single_image_context">
-              <h3 class="font-2">Habitaciones</h3>
-              <p>Lorem ipsum dolor sit amet consectetur.</p>
+              <h3 class="font-2"><?php echo $prpf1->post_title ?></h3>
+              <p><?php echo get_the_terms($prpf1, "categoria")[0]->name ?></p>
             </div>
           </div>
         </div>
@@ -283,10 +277,10 @@
             </h3>
           </div>
           <div class="portafolio_button">
-            <button class="button general_button text-yellow">
+            <a href="<?php echo esc_url(get_permalink(pll_get_post(238))) ?>" class="button general_button text-yellow">
               <span data-title="<?php echo mazal_get_acf_field("portafolio_boton_") ?>"><?php echo mazal_get_acf_field("portafolio_boton_") ?>
               </span>
-            </button>
+            </a>
           </div>
         </div>
       </div>

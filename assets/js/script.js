@@ -254,42 +254,6 @@ function plugnsInit() {
     prevArrow: $("#banner_nav_prev"),
     nextArrow: $("#banner_nav_next")
   };
-
-  /*var slickCompareOptions = {
-    nextArrow: ".arrow_down",
-    prevArrow: ".arrow_up",
-    dots: false,
-    vertical: true,
-    infinite: true,
-    speed: 300,
-    slidesToShow: 5,
-    slidesToScroll: 3,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 5,
-          slidesToScroll: 3
-        }
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          vertical: false,
-          slidesToShow: 5,
-          slidesToScroll: 3
-        }
-      },
-      {
-        breakpoint: 548,
-        settings: {
-          vertical: false,
-          slidesToShow: 5,
-          slidesToScroll: 3
-        }
-      }
-    ]
-  };*/
   $(".galeria_photo_wrap, .galeria_principal_image > a").imagefill();
   $(".bef_aft_image_photo").imagefill();
   $(".dynamic_image_container").imagefill();
@@ -364,8 +328,13 @@ function changeCurrentImageInBeforeAfter() {
     var imgSelected = $(this).children("img");
     var before = imgSelected.data("before");
     var after = imgSelected.data("after");
+    var befText = imgSelected.data("tb");
+    var aftText = imgSelected.data("ta");
+    
     $(".imgcompare_left_side img").attr("src", before);
     $(".imgcompare_right_side img").attr("src", after);
+    $("#bef_aft_before").text(befText);
+    $("#bef_aft_after").text(aftText);
   });
 }
 /**

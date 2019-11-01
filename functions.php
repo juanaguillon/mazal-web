@@ -88,6 +88,14 @@ function mazal_get_acf_field($key)
 
 
 /**
+ * Verificar si es la página de portafolio
+ */
+function mazal_is_portfolio_page()
+{
+  return is_page(238) || is_page(240);
+}
+
+/**
  * Verificar si es la página frontal de la web.
  */
 function mazal_is_front_page()

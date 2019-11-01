@@ -2,6 +2,8 @@
 
 /**
  * Template Name: producto
+ * 
+ * ESTA PLANTILLA NO SE ESTÁ USANDO EN EL WORDPRESS, SE USA COMO BACKUP DE LA FICHA DE PRODUCTO.
  */
 ?>
 

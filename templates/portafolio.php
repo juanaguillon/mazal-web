@@ -1,52 +1,16 @@
 <?php
-
-/**
- * Template Name: Interna subcategoria
- *  * ESTA PLANTILLA NO SE ESTÁ USANDO EN EL WORDPRESS, SE USA COMO BACKUP DE LA FICHA DE PRODUCTO.
- */
+/* Template Name: Portafolio */
+get_header();
 ?>
-
-<?php get_header(); ?>
-<section class="banner-categoria banner-interna">
+<section class="banner-categoria banner-interna" style="background-image:url(<?php bloginfo("template_url") ?>/images/image_left.jpg)">
+  <div class="black_background"></div>
   <div class="banner-categoria-content">
-    <h2 class="fw-4">CARPINTERÍA</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto eum laboriosam, perferendis optio odit. Quasi incidunt amet, molestiae eius dolore dolorem, ipsam sunt fugiat magnam est architecto, enim voluptatibus rerum.
+    <h2 class="fw-4">PORTAFOLIO</h2>
+    <p>Conoce nuestro portafolio, en donde encontrarás múltiples proyectos en los que hemos trabajado y colaborados junto a nuestros clientes.</p>
   </div>
 
 
 </section>
-
-<section class="interna-descripcion container">
-  <h3 class="iso-filter">COCINAS</h3>
-  <p class="iso-filter">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio sint enim sunt, laborum repudiandae ducimus perspiciatis totam corrupti saepe provident, earum rem modi! Sunt, voluptatibus cumque. Reiciendis laborum ipsam cum!Libero omnis voluptatibus magni soluta pariatur vero sapiente consequuntur nostrum cumque dolore aliquam ipsa deleniti dolor officia molestias, placeat impedit natus necessitatibus dolorem. Dignissimos atque blanditiis, illum aliquam voluptatibus ab.</p>
-</section>
-
-<!-- <section class="interna-categoria int-var-1">
-<div class="interna-categoria-descripcion">
-  <h4>COCINA</h4>
-  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique atque tempora temporibus animi earum optio, explicabo numquam laborum velit praesentium vel voluptate perspiciatis labore vitae, dignissimos rem ab quae tenetur?</p>
-  <button class="mt-5 button general_button text-yellow">
-            <span class="text-yellow" data-title="Ver Galería">
-              Ver Galería
-            </span>
-          </button>
-</div>
-<div class="interna-categoria-imagenes">
-  <div class="contenido-imagen">
-    <img src="<?php bloginfo("template_url") ?>/images/interna/image6.jpg" alt="">
-  </div>
-  <div class="contenido-imagen">
-    <img src="<?php bloginfo("template_url") ?>/images/interna/image6.jpg" alt="">
-  </div>
-  <div class="contenido-imagen">
-    <img src="<?php bloginfo("template_url") ?>/images/interna/image6.jpg" alt="">
-  </div>
-  <div class="contenido-imagen">
-    <img src="<?php bloginfo("template_url") ?>/images/interna/image6.jpg" alt="">
-  </div>
-  
-</div>
-</section> -->
 
 <section class="category-filter-grid container p-0">
 

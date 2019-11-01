@@ -49,8 +49,7 @@
 <script src="<?php bloginfo('template_url') ?>/assets/js/script.js"></script>
 
 <?php
-// se muestra pagina (/pagina-interna) interna-sub.php
-if (is_tax("categoria")) {
+if (is_tax("categoria") || mazal_is_portfolio_page()) {
   ?>
   <script src="<?php bloginfo('template_url') ?>/assets/js/bootstrap-multiselect.js"></script>
   <script type="text/javascript" src="<?php bloginfo('template_url') ?>/assets/js/isotope.pkgd.min.js"></script>
@@ -63,10 +62,12 @@ if (is_tax("categoria")) {
      * Crear filtro de checkbox en la página interna (interna-sub.php)
      */
     var $el = $(".dropdown");
-    var currentSlugClassName = "<?php echo get_queried_object()->slug ?>";
-    $grid.isotope({
-      filter: "." + currentSlugClassName
-    });
+    <?php if (is_tax("categoria")) : ?>
+      var currentSlugClassName = "<?php echo get_queried_object()->slug ?>";
+      $grid.isotope({
+        filter: "." + currentSlugClassName
+      });
+    <?php endif; ?>
 
     function updateStatus(label, result) {
       if (!result.length) {
