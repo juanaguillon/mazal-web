@@ -227,7 +227,7 @@
 					<ul class="menu_banner_right">
 						<li><a target="_blank" href="https://www.facebook.com/MAZAL-Arquitectura-Dise%C3%B1o-Interior-2072804912955149/"><i class="text-white icon-facebook hover-white"></i></a> </li>
 						<li><a target="_blank" href="https://www.instagram.com/mazal_mobiliario_disenoint/?hl=es-la"><i class="text-white icon-instagram hover-white"></i></a> </li>
-						<li><a target="_blank" href=""><i class="text-white icon-houzz hover-white"></i></a> </li>
+						<li><a target="_blank" href="https://www.houzz.com/pro/sebastian-camacho/mazal-diseno-interior-and-arquitectura"><i class="text-white icon-houzz hover-white"></i></a> </li>
 						<li id="whatsapp_contact"><a href="https://wa.me/573108613043?text=Hola, estoy interesad@ en los productos de mazal." target="_blank"><i class="text-white icon-whatsapp hover-white"></i></a></li>
 					</ul>
 				</div>

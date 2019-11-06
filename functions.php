@@ -124,7 +124,8 @@ function mazal_single_product($post, $filterClass = "")
     // Estas se mostrarán en el select color negro como "Categoria"
     $childsCurrentObject = get_terms(array(
       "parent" => $currentObject->term_id,
-      "taxonomy" => "categoria"
+      "taxonomy" => "categoria",
+      "hide_empty" => false
     ));
 
 
@@ -184,14 +185,16 @@ function mazal_single_product($post, $filterClass = "")
             <label class="dropdown-label" data-emplabel="Categoría"><?php echo $isSubChildren ? $currentCategory->name : "Categoría" ?></label>
 
             <div class="dropdown-list">
-              <?php
-                  foreach ($childsCurrentObject as $childsCat) : ?>
+              <div class="checkbox">
+                <input data-filter=".<?php echo $currentObject->slug ?>" type="checkbox" class="check-unique check-all checkbox-custom" id="child_cat_filter_<?php echo $currentObject->term_id ?>" />
+                <label for="child_cat_filter_<?php echo $currentObject->term_id ?>" class="checkbox-custom-label">Todos</label>
+              </div>
+              <?php foreach ($childsCurrentObject as $childsCat) : ?>
                 <div class="checkbox">
                   <input data-subcat="<?php echo $childsCat->term_id ?>" data-filter=".<?php echo $childsCat->slug ?>" type="checkbox" name="dropdown-group-tipo-<?php echo $childsCat->slug ?>" class="check-unique check-all checkbox-custom" id="child_cat_filter_<?php echo $childsCat->term_id ?>" />
                   <label for="child_cat_filter_<?php echo $childsCat->term_id ?>" class="checkbox-custom-label"><?php echo $childsCat->name ?></label>
                 </div>
               <?php endforeach; ?>
-
             </div>
           </div>
         </li>

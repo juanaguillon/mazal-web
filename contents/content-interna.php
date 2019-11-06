@@ -130,7 +130,7 @@
                     $suffix = "_en";
                   }
                   ?>
-                <img data-tb="<?php echo $imgs["texto_antes" . $suffix] ?>" data-ta="<?php echo $imgs["texto_despues" . $suffix] ?>" data-before="<?php echo $imgs["imagen_antes"]["url"] ?>" data-after="<?php echo $imgs["imagen_despues"]["url"] ?>" class="img_fill" src="<?php echo $imgs["imagen_despues"]["sizes"]["thumbnail"] ?>" alt="">
+                <img data-tb="<?php echo $imgs["texto_antes" . $suffix] ?>" data-ta="<?php echo $imgs["texto_despues" . $suffix] ?>" data-before="<?php echo $imgs["imagen_antes"]["sizes"]["large"] ?>" data-after="<?php echo $imgs["imagen_despues"]["sizes"]["large"] ?>" class="img_fill" src="<?php echo $imgs["imagen_despues"]["sizes"]["thumbnail"] ?>" alt="">
               </div>
             <?php endforeach; ?>
           </div>
@@ -142,8 +142,8 @@
         $first = $antesDesImg[0];
         ?>
         <div class="bf_image_sized">
-          <img src="<?php echo $first["imagen_antes"]["url"] ?>" alt="">
-          <img src="<?php echo $first["imagen_despues"]["url"] ?>" alt="">
+          <img src="<?php echo $first["imagen_antes"]["sizes"]["large"] ?>" alt="">
+          <img src="<?php echo $first["imagen_despues"]["sizes"]["large"] ?>" alt="">
         </div>
         <div class="bef_aft_sides">
           <div class="bef_aft_left_side wow slideInLeft">

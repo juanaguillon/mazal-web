@@ -50,14 +50,17 @@ $producto = get_queried_object();
           <div class="swiper-wrapper">
             <div class="swiper-slide" style="background-image:url(<?php echo get_the_post_thumbnail_url($producto, "large") ?>)">
               <div class="swiper-zoom-container" data-swiper-zoom="5">
-
               </div>
             </div>
-            <!-- <div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)">
-              <div class="swiper-zoom-container" data-swiper-zoom="5">
-
+            <?php
+            foreach (get_field("galeria", $producto) as $imgGall) :
+              ?>
+              <div class="swiper-slide" style="background-image:url(<?php echo $imgGall["sizes"]["large"] ?>)">
+                <div class="swiper-zoom-container" data-swiper-zoom="5">
+                </div>
               </div>
-            </div>
+            <?php endforeach; ?>
+            <!-- 
             <div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)">
               <div class="swiper-zoom-container" data-swiper-zoom="5">
 
@@ -82,7 +85,13 @@ $producto = get_queried_object();
           <div class="swiper-button-next"></div>
           <div class="swiper-wrapper">
             <div class="swiper-slide" style="background-image:url(<?php echo get_the_post_thumbnail_url($producto, "large") ?>)"></div>
-            <!-- <div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)"></div>
+
+            <?php
+            foreach (get_field("galeria", $producto) as $imgGall) :
+              ?>
+              <div class="swiper-slide" style="background-image:url(<?php echo $imgGall["sizes"]["large"] ?>)"></div>
+            <?php endforeach; ?>
+            <!-- 
             <div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)"></div>
             <div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)"></div>
             <div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)"></div> -->
@@ -97,7 +106,14 @@ $producto = get_queried_object();
       <div class="col-md-5">
         <div class="item-information">
           <h2 class="item-title"><?php echo $producto->post_title; ?></h2>
-          <span class="item-ref">Ref: 785-001</span>
+          <?php
+          if (get_field("mostar_referencia", $producto)) {
+            ?>
+            <span class="item-ref">Ref: <?php echo get_field("referencia", $producto) ?></span>
+          <?php
+          }
+          ?>
+
           <p class="item-description"><?php echo wp_kses_post($producto->post_content); ?></p>
 
           <div class="item-features">
@@ -152,7 +168,7 @@ $producto = get_queried_object();
                 <?php endif; ?>
               </span>
             </button>
-            <a href="#" class="share-whatsapp"><img src="http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/whastapp-social-media.svg" alt=""></a>
+            <a target="_blank" href="https://wa.me/573108613043?text=Hola, estoy interesado en el siguiente producto: <?php echo esc_url(get_permalink($producto)) ?>... Me gustaría recibir más información." id="share_whatsapp_product" class="share-whatsapp"><img src="http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/whastapp-social-media.svg" alt=""></a>
             <a href="#" class="add-love"><img src="http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/favorite.svg" alt=""></a>
 
           </div>

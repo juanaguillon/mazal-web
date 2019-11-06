@@ -19,7 +19,7 @@ function mazal_simple_content($term, $in_right = true)
 
   ?>
 
-  <section id="section_<?php echo $term->slug ?>" class="section_high tres60_section <?php if (!$in_right) echo "section_left" ?>" style="background-image: url(<?php echo $image["url"] ?>)">
+  <section id="section_<?php echo $term->slug ?>" class="section_high tres60_section <?php if (!$in_right) echo "section_left" ?>" style="background-image: url(<?php echo $image["sizes"]["large"] ?>)">
     <div class="container-fluid p-0 h-100">
       <div class="row no-gutters h-100">
         <div class="col-md-6 tres60_container wow fadeInDown <?php if ($in_right) echo "offset-md-6" ?>">
