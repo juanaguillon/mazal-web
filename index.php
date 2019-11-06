@@ -18,12 +18,14 @@
 				$linkArquitectura = get_permalink($idArq);
 				$linkCorp = get_permalink($idCorp);
 				$linkHogar = get_permalink($idHog);
-
+				$archTerm = get_term(pll_get_term(91));
+				$hogarTerm = get_term(pll_get_term(89));
+				$corpTerm = get_term(pll_get_term(93));
 				?>
 				<a href="<?php echo $linkArquitectura ?>">
 					<div class="banner_img_container">
 						<div class="black_background z1"></div>
-						<img class="banner_img_left img_fill img_fill_h" src="<?php bloginfo("template_url") ?>/images/image_left.jpg" alt="" />
+						<img class="banner_img_left img_fill img_fill_h" src="<?php echo get_field("imagen", $archTerm)["url"] ?>" alt="" />
 					</div>
 
 					<div class="banner_context">
@@ -209,10 +211,10 @@
 						<i class="text-white icon-bars hover-white"></i>
 					</button>
 					<ul class="menu_banner_right">
-						<li><i class="text-white icon-facebook hover-white"></i></li>
-						<li><i class="text-white icon-instagram hover-white"></i></li>
-						<li><i class="text-white icon-houzz hover-white"></i></li>
-						<li id="whatsapp_contact"><i class="text-white icon-whatsapp hover-white"></i></li>
+						<li><a target="_blank" href="https://www.facebook.com/MAZAL-Arquitectura-Dise%C3%B1o-Interior-2072804912955149/"><i class="text-white icon-facebook hover-white"></i></a> </li>
+						<li><a target="_blank" href="https://www.instagram.com/mazal_mobiliario_disenoint/?hl=es-la"><i class="text-white icon-instagram hover-white"></i></a> </li>
+						<li><a target="_blank" href=""><i class="text-white icon-houzz hover-white"></i></a> </li>
+						<li id="whatsapp_contact"><a href="https://wa.me/573108613043?text=Hola, estoy interesad@ en los productos de mazal." target="_blank"><i class="text-white icon-whatsapp hover-white"></i></a></li>
 					</ul>
 				</div>
 				<div class="mini_logo">
@@ -268,13 +270,13 @@
 			<h3 class="text-white banner_context_subtitle text-bold">
 				<?php echo get_the_title($idHog) ?>
 			</h3>
-			<img src="<?php bloginfo("template_url") ?>/images/interna/image12.jpg" alt="">
+			<img src="<?php echo get_field("imagen", $hogarTerm)["url"] ?>" alt="">
 		</a>
 		<a class="popup_right" href="<?php echo $linkCorp ?>">
 			<h3 class="text-white banner_context_subtitle text-bold">
 				<?php echo get_the_title($idCorp) ?>
 			</h3>
-			<img src="<?php bloginfo("template_url") ?>/images/interna/image13.jpg" alt="">
+			<img src="<?php echo get_field("imagen", $corpTerm)["url"] ?>" alt="">
 		</a>
 	</div>
 </div>

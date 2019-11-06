@@ -49,7 +49,7 @@
 <script src="<?php bloginfo('template_url') ?>/assets/js/script.js"></script>
 
 <?php
-if (is_tax("categoria") || mazal_is_portfolio_page()) {
+if (is_tax("categoria") || mazal_is_portfolio_page() || is_search()) {
   ?>
   <script src="<?php bloginfo('template_url') ?>/assets/js/bootstrap-multiselect.js"></script>
   <script type="text/javascript" src="<?php bloginfo('template_url') ?>/assets/js/isotope.pkgd.min.js"></script>
@@ -63,7 +63,7 @@ if (is_tax("categoria") || mazal_is_portfolio_page()) {
      */
     var $el = $(".dropdown");
     <?php if (is_tax("categoria")) : ?>
-      var currentSlugClassName = "<?php echo get_queried_object()->slug ?>";
+      var currentSlugClassName = $("#current_category").val();
       $grid.isotope({
         filter: "." + currentSlugClassName
       });
@@ -76,9 +76,12 @@ if (is_tax("categoria") || mazal_is_portfolio_page()) {
     }
 
     $el.each(function(i, element) {
-      var $list = $(this).find(".dropdown-list"),
+
+      var $elm = $(this),
+        $list = $(this).find(".dropdown-list"),
         $label = $(this).find(".dropdown-label"),
         $inputs = $(this).find(".check"),
+        $inputsPort = $(this).find(".check_portfolio"),
         unique = $(this).find(".check-unique"),
         result = [];
 
@@ -88,15 +91,29 @@ if (is_tax("categoria") || mazal_is_portfolio_page()) {
       unique.on("change", function() {
         var subcat = $(this).data("subcat");
         var text = $(this).next().text();
+        var filter = $(this).data("filter");
         $(".sublist_children").removeClass("show")
         $("#sublist_children_" + subcat).addClass("show");
-        $label.text(text)
+        $("#current_category").val(filter.replace(".", ""))
+        $label.text(text);
+        $grid.isotope({
+          filter: filter
+        });
+      });
+
+      // Estos inputs serán visiblen el portafolio, se representan con el color "Dorado (Marrón)"
+      $inputsPort.on("change", function() {
+        var subcatContent = $(this).data("subcat_content");
+        var encampsuld = $(this).data("encapsuled");
+        $("." + encampsuld + ".subcat_content_portfolio").removeClass("show");
+        $("#subcat_content_" + subcatContent).addClass("show");
 
         $grid.isotope({
-          filter: $(this).data("filter")
+          itemSelector: '.col-item',
+          layoutMode: 'fitRows'
         });
+      })
 
-      });
       $inputs.on("change", function() {
         // var checked = $(this).is(":checked");
 
@@ -118,7 +135,9 @@ if (is_tax("categoria") || mazal_is_portfolio_page()) {
         updateStatus($label, checkeds);
 
         // ================
-        var filtering = "";
+
+
+        var filtering = "." + $("#current_category").val();
         var isFirst = true;
         $inputs.each(function(i) {
           if ($(this).prop("checked")) {
@@ -166,16 +185,8 @@ if (is_singular("producto")) {
     var galleryThumbs = new Swiper('.gallery-thumbs', {
       spaceBetween: 8,
       slidesPerView: 5,
-      // centeredSlides: true,
       grabCursor: true,
-      // navigation: {
-      //   nextEl: '.swiper-button-next',
-      //   prevEl: '.swiper-button-prev',
-      // },
       loopedSlides: 5, //looped slides should be the same
-      // watchSlidesVisibility: true,
-      // watchSlidesProgress: true,
-
     });
     var galleryTop = new Swiper('.gallery-top', {
       spaceBetween: 10,
@@ -200,9 +211,6 @@ if (is_singular("producto")) {
 }
 
 ?>
-
-
-
 
 </body>
 

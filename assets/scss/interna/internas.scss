@@ -238,6 +238,36 @@
   }
 }
 
+.general_dropdown {
+  width: 100%;
+  max-width: 270px;
+  margin-bottom: 15px;
+  .dropdown-list {
+    background: #8c7d6c !important;
+    z-index: 20 !important;
+    label {
+      color: white !important;
+    }
+  }
+  .dropdown-label {
+    z-index: 25 !important;
+    background: $dorado !important;
+    color: white;
+    &:before {
+      content: url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/drop-arrow-white.svg) !important;
+    }
+  }
+  .checkbox .checkbox-custom + .checkbox-custom-label:before,
+  .checkbox .checkbox-custom + .checkbox-custom-label:after {
+    display: none !important;
+  }
+}
+.subcat_content_portfolio {
+  display: none;
+  &.show {
+    display: block;
+  }
+}
 .category-filter-grid {
   padding: 80px 0;
 
@@ -559,6 +589,16 @@ select {
 @media (max-width: 768px) {
   .banner-categoria-content p {
     width: 100%;
+  }
+  .category-filter-grid .filtrado ul {
+    flex-wrap: wrap;
+    margin: 0;
+    li {
+      width: 100%;
+    }
+    .dropdown-list {
+      z-index: 30;
+    }
   }
 }
 

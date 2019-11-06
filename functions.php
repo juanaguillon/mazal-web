@@ -86,6 +86,218 @@ function mazal_get_acf_field($key)
 }
 
 
+/**
+ * Mostrar estructura de un producto en el loop los productos.
+ * @return void
+ */
+function mazal_single_product($post, $filterClass = "")
+{
+
+  ?>
+  <div class="col-item <?php echo $filterClass ?>">
+    <a href="<?php echo get_permalink($post); ?>">
+      <div class="item">
+        <img src="<?php echo get_the_post_thumbnail_url($post, "medium") ?>" alt="">
+        <div class="item-content">
+          <span class="item-nombre-proyecto"><?php echo wp_kses_post($post->post_title) ?></span>
+        </div>
+      </div>
+    </a>
+  </div>
+  <?php
+
+  }
+
+  /**
+   * En portafolio y en taxonomy-categoria se usa esta función para determinar las subcategorías y productos de la categoría pasada por parámetro
+   * Esta función imprimirá el html correspondiente.
+   * Puede ser confuso $currentObject y $currentCategory, simplemente $currentObject será la categoría general ( Categoría #2, por ejemplo carpintería ) y $currentObject es la categoría #3 ( Por ejemplo closest, muebles.)
+   * @param object $currentObject Categoría general para mostrar.
+   * @param object $currentCategory Categoría actual para mostrar.
+   * @param bool $isSubChildren ¿Es una categoría #3? (Revisar taxonomy-categoria para entender el número de categorías).
+   * @return void
+   */
+  function mazal_get_taxonomy_data($currentObject, $currentCategory, $isSubChildren)
+  {
+
+    // Se intenta obtener las categorías #3 
+    // Estas se mostrarán en el select color negro como "Categoria"
+    $childsCurrentObject = get_terms(array(
+      "parent" => $currentObject->term_id,
+      "taxonomy" => "categoria"
+    ));
+
+
+    $queryPosts = new WP_Query(array(
+      "post_type" => "producto",
+      "posts_per_page" => -1,
+      "tax_query" => array(
+        array(
+          "taxonomy" => $currentObject->taxonomy,
+          "terms" => $currentObject->term_id
+        )
+      )
+    ));
+    $posts = $queryPosts->posts;
+    if (count($posts) == 0) {
+      if (mazal_is_language()) {
+        $nofound = "Esta categoría no posee productos.";
+      } else {
+        $nofound = "This category don't have products.";
+      }
+      ?>
+    <div class="found_container found_empty">
+      <div class="text-center">
+        <h4><?php echo $nofound ?></h4>
+      </div>
+    </div>
+  <?php
+      return;
+    }
+    /**
+     * Se usará para mostrar los materiales disponibles en la categoría actual
+     */
+    $materiales = array();
+
+    /**
+     * Se usará para mostrar los productos de la categoría actual
+     */
+    $reposts = array();
+    foreach ($posts as $post) {
+      $materialTerms = get_the_terms($post, "material");
+      $categoriaTerms = get_the_terms($post, "categoria");
+      $reposts[] = array(
+        "post" => $post,
+        "material" => $materialTerms,
+        "categoria" => $categoriaTerms
+      );
+      foreach ($materialTerms as $mterm) {
+        $materiales[$mterm->slug] = $mterm;
+      }
+    }
+    ?>
+  <div id="<?php echo $currentObject->slug ?>" class="filtrado">
+    <ul>
+      <?php if (count($childsCurrentObject) > 0) :  ?>
+        <li>
+          <div class="dropdown first-filter">
+            <label class="dropdown-label" data-emplabel="Categoría"><?php echo $isSubChildren ? $currentCategory->name : "Categoría" ?></label>
+
+            <div class="dropdown-list">
+              <?php
+                  foreach ($childsCurrentObject as $childsCat) : ?>
+                <div class="checkbox">
+                  <input data-subcat="<?php echo $childsCat->term_id ?>" data-filter=".<?php echo $childsCat->slug ?>" type="checkbox" name="dropdown-group-tipo-<?php echo $childsCat->slug ?>" class="check-unique check-all checkbox-custom" id="child_cat_filter_<?php echo $childsCat->term_id ?>" />
+                  <label for="child_cat_filter_<?php echo $childsCat->term_id ?>" class="checkbox-custom-label"><?php echo $childsCat->name ?></label>
+                </div>
+              <?php endforeach; ?>
+
+            </div>
+          </div>
+        </li>
+        <?php
+            foreach ($childsCurrentObject as $childsCat) :
+              $additionClass = $childsCat->term_id === $currentCategory->term_id ? "show" : "";
+              ?>
+
+          <li class="sublist_children <?php echo $additionClass ?>" id="sublist_children_<?php echo $childsCat->term_id ?>">
+            <div class="dropdown">
+              <label class="dropdown-label" data-emplabel="Tipo de <?php echo $childsCat->name ?>">Tipo de <?php echo $childsCat->name ?></label>
+              <div class="dropdown-list">
+                <div class="checkbox">
+                  <input data-filter="*" type="checkbox" name="dropdown-group-tipo-<?php echo $childsCat->slug ?>" class="check-all checkbox-custom" id="filter_term_<?php echo $childsCat->term_id ?>" />
+                  <label for="filter_term_<?php echo $childsCat->term_id ?>" class="checkbox-custom-label">Todas</label>
+                </div>
+                <?php
+                      $argsTerms = array(
+                        "taxonomy" => "categoria",
+                        "child_of" => $childsCat->term_id
+                      );
+                      foreach (get_terms($argsTerms) as $subchild) : ?>
+                  <div class="checkbox">
+                    <input data-filter=".<?php echo $subchild->slug ?>" type="checkbox" name="dropdown-group-tipo-<?php echo $childsCat->slug ?>" class="check-all check checkbox-custom" id="filter_term_<?php echo $subchild->term_id ?>" />
+                    <label for="filter_term_<?php echo $subchild->term_id ?>" class="checkbox-custom-label"><?php echo $subchild->name ?></label>
+                  </div>
+                <?php endforeach; ?>
+
+              </div>
+            </div>
+          </li>
+        <?php endforeach; ?>
+      <?php endif; ?>
+
+      <li>
+        <div id="dropdown_materials" class="dropdown">
+          <label class="dropdown-label" data-emplabel="Material">Material</label>
+          <div class="dropdown-list">
+            <div class="checkbox">
+              <input data-filter="*" type="checkbox" name="dropdown-group-material" class="check check-all checkbox-custom" id="material_check1" />
+              <label for="material_check1" class="checkbox-custom-label">Todos</label>
+            </div>
+            <?php
+              foreach ($materiales as $materialSlug => $materialTerm) : ?>
+              <div class="checkbox">
+                <input data-filter=".<?php echo $materialSlug ?>" type="checkbox" name="dropdown-group-tipo-<?php echo $materialSlug ?>" class="check check-all checkbox-custom" id="filter_term_<?php echo $materialTerm->term_id ?>" />
+                <label for="filter_term_<?php echo $materialTerm->term_id ?>" class="checkbox-custom-label"><?php echo $materialTerm->name ?></label>
+              </div>
+            <?php endforeach; ?>
+
+
+          </div>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+  <input type="hidden" id="current_category" value="<?php echo $currentCategory->slug; ?>">
+
+  <div class="grid-item-category">
+    <?php
+      foreach ($reposts as $post) {
+        $wpPost = $post["post"];
+        $filterString = "";
+        foreach ($post["material"] as $mat) {
+          $filterString .= " {$mat->slug}";
+        }
+        foreach ($post["categoria"] as $cat) {
+          $filterString .= " {$cat->slug}";
+        }
+        mazal_single_product($wpPost, $filterString);
+      }
+      ?>
+  </div>
+
+
+  <!-- <div class="d-flex more-items">
+
+    <button class=" m-auto button fill-button">
+      <span data-title="cargar mas">
+        Cargar mas +
+      </span>
+    </button>
+
+  </div> -->
+<?php
+}
+
+/**
+ * Obtener el término superior dependiendo una taxonomía en específico.
+ *
+ * @param mixed $term ID o objeto del término
+ * @return void
+ */
+function mazal_get_term_top_most_parent($term, $taxonomy)
+{
+  // Start from the current term
+  $parent  = get_term($term, $taxonomy);
+  // Climb up the hierarchy until we reach a term with parent = '0'
+  while ($parent->parent != '0') {
+    $term_id = $parent->parent;
+    $parent  = get_term($term_id, $taxonomy);
+  }
+  return $parent;
+}
+
 
 /**
  * Verificar si es la página de portafolio

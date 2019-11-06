@@ -142,10 +142,10 @@ section h3 {
   }
 
   &.button_dark span {
-    color: white;
+    color: #1b1b1b;
     /*background: black;
     border: none !important;*/
-    border: 1px solid #fff;
+    border: 2px solid #1b1b1b;
 
     &:after {
       transform: translate3d(0px, 100%, 0px) rotateX(-90deg);
@@ -155,6 +155,34 @@ section h3 {
   @media #{$mobile_query} {
     display: block;
     width: 100%;
+  }
+}
+
+.tabs {
+  text-align: center;
+  margin-bottom: 25px;
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    li {
+      &.active {
+        border-color: #201818;
+      }
+      cursor: pointer;
+      margin: 0 5px;
+      padding: 14px 19px;
+      font-size: 18px;
+      border-bottom: 2px solid transparent;
+      font-weight: bold;
+    }
+  }
+}
+
+.content-tab {
+  display: none;
+  &.show {
+    display: block;
   }
 }
 

@@ -11,10 +11,85 @@ get_header();
 
 
 </section>
+<?php
+$parentCats = get_terms(array(
+  "taxonomy" => "categoria",
+  "parent" => 0,
+));
+?>
+<section class="category-filter-grid container">
+  <div class="tabs">
+    <ul>
+      <?php
+      $isFirst = true;
+      $childs1 = array();
+      foreach ($parentCats  as $pcat) : ?>
+        <?php
+          $classLI = "";
+          if ($isFirst) {
+            $classLI = "class='active'";
+            $isFirst = false;
+          }
+          $childs1[$pcat->slug] = get_terms(array(
+            "taxonomy" => $pcat->taxonomy,
+            "parent" => $pcat->term_id
+          ));
+          ?>
 
-<section class="category-filter-grid container p-0">
+        <li <?php echo $classLI ?> data-content="<?= $pcat->slug ?>"><?= $pcat->name ?></li>
+      <?php endforeach; ?>
+    </ul>
+  </div>
 
-  <div class="filtrado">
+
+  <?php
+  $isFirst2 = true;
+  foreach ($childs1 as $childKey => $childVal) :
+    $clasName = "content-tab content_tab_portfolio";
+    if ($isFirst2) {
+      $clasName .= " show";
+      $isFirst2 = false;
+    }
+    ?>
+    <div id="content_tab_<?php echo $childKey ?>" class="<?php echo $clasName ?>">
+      <ul>
+        <li>
+          <div class="dropdown general_dropdown">
+            <label class="dropdown-label" data-emplabel="<?php echo $childVal[0]->slug ?>"><?php echo $childVal[0]->name ?></label>
+            <div class="dropdown-list">
+
+              <?php foreach ($childVal as $chvl) : ?>
+                <div class="checkbox">
+                  <input type="checkbox" data-encapsuled="port_enc_<?php echo $childKey ?>" data-subcat_content="<?php echo $chvl->slug ?>" class="check_portfolio check-unique checkbox-custom" id="portflio_<?php echo $childKey . $chvl->term_id ?>">
+                  <label for="portflio_<?php echo $childKey . $chvl->term_id ?>" class="checkbox-custom-label"><?php echo $chvl->name ?></label>
+                </div>
+              <?php endforeach; ?>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <?php
+        foreach ($childVal as $chk => $chvl) :
+          $className = "subcat_content_portfolio";
+          if ($chk == 0) {
+            $className .= " show";
+          }
+          ?>
+        <div id="subcat_content_<?php echo $chvl->slug ?>" class="<?php echo $className . " port_enc_" . $childKey ?>">
+          <?php
+              // printcode($childVal);
+              // Se agrega false como 3 parámetro ya que siempre se obtiene las categorías #2, y esta condicional verficia si es categoría #3
+              mazal_get_taxonomy_data($chvl, $chvl, false); ?>
+        </div>
+      <?php
+        endforeach;
+        ?>
+    </div>
+  <?php endforeach; ?>
+
+
+
+  <!--<div class="filtrado">
     <ul>
       <li>
         <div class="dropdown first-filter">
@@ -108,7 +183,7 @@ get_header();
           </div>
         </div>
       </li>
-      <li>
+       <li>
         <div class="dropdown">
           <label class="dropdown-label" data-emplabel="MEDIDAS">MEDIDAS</label>
 
@@ -171,12 +246,12 @@ get_header();
             </div>
           </div>
         </div>
-      </li>
+      </li> 
     </ul>
   </div>
 
 
-  <div class="grid-item-category">
+   <div class="grid-item-category">
     <div class="col-item cocinas roble">
       <div class="item">
         <img src="http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/cocina.jpg" alt="">
@@ -284,7 +359,7 @@ get_header();
       </span>
     </button>
 
-  </div>
+  </div> -->
 
 
 </section>

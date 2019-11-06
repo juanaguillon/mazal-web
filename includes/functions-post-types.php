@@ -86,7 +86,7 @@ function __mazal_register_taxonomy($name, $is_male = true, $asTag = false, $prur
     'add_new_item'               => "Añadir {$theName}",
     'new_item_name'              => "Nuevo nombre de {$theName}",
     'add_or_remove_items'        => "Añadir o Eliminar {$theName}",
-    'not_found'                  => "No se ha encontrado ${$pluralName}",
+    'not_found'                  => "No se ha encontrado {$pluralName}",
     'menu_name'                  => $pluralName,
   );
 

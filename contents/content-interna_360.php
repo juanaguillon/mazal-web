@@ -19,7 +19,7 @@ function mazal_simple_content($term, $in_right = true)
 
   ?>
 
-  <section id="<?php echo $term->slug ?>" class="section_high tres60_section <?php if (!$in_right) echo "section_left" ?>" style="background-image: url(<?php echo $image["url"] ?>)">
+  <section id="section_<?php echo $term->slug ?>" class="section_high tres60_section <?php if (!$in_right) echo "section_left" ?>" style="background-image: url(<?php echo $image["url"] ?>)">
     <div class="container-fluid p-0 h-100">
       <div class="row no-gutters h-100">
         <div class="col-md-6 tres60_container wow fadeInDown <?php if ($in_right) echo "offset-md-6" ?>">
@@ -29,7 +29,7 @@ function mazal_simple_content($term, $in_right = true)
             </div>
             <p><?php echo $term->description ?></p>
             <div class="tres60_button_container">
-              <a href="<?php echo $button["link"] ?>" class="button general_button button_dark text-yellow mt-4">
+              <a href="<?php echo $button["link"] ?>" class="button general_button text-yellow mt-4">
                 <span data-title="<?php echo $button["text"] ?>"><?php echo $button["text"] ?></span>
               </a>
             </div>
@@ -49,10 +49,10 @@ function mazal_simple_content($term, $in_right = true)
  * @param $image Imagen que estará dentro de la carpeta images/interna
  * @return void
  */
-function mazal_single_subcat($title, $description, $image, $link)
+function mazal_single_subcat($title, $description, $image, $link, $colNumber)
 {
   ?>
-  <div class="col-md-3">
+  <div class="<?php echo $colNumber ?>">
     <a href="<?php echo $link ?>">
 
       <div class="single_linea_wrapper">
@@ -77,32 +77,45 @@ function mazal_single_subcat($title, $description, $image, $link)
 /**
  * Mostrar diseño de "subcategorías"
  *
- * @param string $title Título de la categoría
+ * @param string $taxonomy Taxonomy Term
  * @param boolean $labelToLeft La etiqueta de la categoría irá a la izquierda?
  * @return void
  */
-function mazal_subcat_content($title, $labelToLeft, $subcats)
+function mazal_subcat_content($taxonomy, $labelToLeft, $subcats)
 {
   ?>
-  <section id="section_lineas1" class="section_high">
+  <section id="section_<?php echo $taxonomy->slug ?>" class="section_high">
     <div class="container-fluid p-0">
       <div class="lineas_container">
-        <?php
-          if ($labelToLeft) : ?>
-          <div class="linea_label left"><span><?php echo $title ?></span></div>
+        <?php if ($labelToLeft) {
+            $classContainer = "row_linea_container_left";
+          } else {
+            $classContainer = "row_linea_container_right";
+          }
+          ?>
+
+        <?php if ($labelToLeft) : ?>
+          <div class="linea_label left"><span><?php echo $taxonomy->name ?></span></div>
         <?php endif; ?>
-        <div class="row no-gutters h-100 row_linea_container_left">
-          <?php foreach ($subcats as $subcat) :
+        <div class="row no-gutters h-100 <?= $classContainer ?>">
+          <?php
+            $colNumber = "col-3";
+            $countSub = count($subcats);
+            if ($countSub == 1 || $countSub == 2) {
+              $colNumber = "col-6";
+            } else if ($countSub == 3) {
+              $colNumber = "col-4";
+            }
+            foreach ($subcats as $subcat) :
               $minitext = get_field("minitexto", $subcat);
               $imagen = get_field("imagen", $subcat);
               $link = get_term_link($subcat);
-              ?>
-            <?php mazal_single_subcat($subcat->name, $minitext, $imagen["url"], $link); ?>
-          <?php endforeach; ?>
+              mazal_single_subcat($subcat->name, $minitext, $imagen["url"], $link, $colNumber);
+            endforeach;
+            ?>
         </div>
-        <?php
-          if ($labelToLeft) : ?>
-          <div class="linea_label left"><span><?php echo $title ?></span></div>
+        <?php if (!$labelToLeft) : ?>
+          <div class="linea_label right"><span><?php echo $taxonomy->name ?></span></div>
         <?php endif; ?>
 
       </div>
@@ -110,14 +123,8 @@ function mazal_subcat_content($title, $labelToLeft, $subcats)
 
   </section>
 
-
-
 <?php
 }
-?>
-
-
-<?php
 
 $terms = get_terms(array(
   "taxonomy" => "categoria",
@@ -168,9 +175,7 @@ $categoriesArr = get_terms(array(
 
 foreach ($categoriesArr as $catID => $catVal) {
   $toRight = $catID % 2 === 0;
-  // printcode(get_fields($catVal));
 
-  // echo get_field("diseno_", $catVal);
   if (get_field("diseno_", $catVal)  === "Diseño simple") {
     mazal_simple_content(
       $catVal,
@@ -180,9 +185,10 @@ foreach ($categoriesArr as $catID => $catVal) {
     $childCats = get_terms(array(
       "parent" => $catVal->term_id,
       "taxonomy" => $catVal->taxonomy,
-      "hide_empty" => false
+      "hide_empty" => false,
+      "number" => 4
     ));
-    mazal_subcat_content($catVal->name, $toRight, $childCats);
+    mazal_subcat_content($catVal, $toRight, $childCats);
   }
 }
 

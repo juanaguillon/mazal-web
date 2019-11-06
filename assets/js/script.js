@@ -93,7 +93,7 @@ function changeTheLanguageLabelInHeader() {
 function ScrolMapFromNavbar() {
   $(".header_top_list li a").click(function(e) {
     var attr = $(this).attr("href");
-    if (typeof attr === typeof undefined) {
+    if (typeof attr === typeof undefined || attr == "#") {
       e.preventDefault();
       $(".header_top").removeClass("black");
       $(".header_top_list").removeClass("active");
@@ -330,7 +330,7 @@ function changeCurrentImageInBeforeAfter() {
     var after = imgSelected.data("after");
     var befText = imgSelected.data("tb");
     var aftText = imgSelected.data("ta");
-    
+
     $(".imgcompare_left_side img").attr("src", before);
     $(".imgcompare_right_side img").attr("src", after);
     $("#bef_aft_before").text(befText);
@@ -417,7 +417,23 @@ function showWhatsappInSpecificHours() {
   }
 }
 
+/**
+ * Agregar funcionalidad de pestañas ( Tabs )
+ */
+function initTabs() {
+  $(".tabs ul li").click(function() {
+    $(".tabs ul li").removeClass("active");
+    $(this).addClass("active");
+    var idContent = $(this).data("content");
+    $(".content-tab").removeClass("show");
+    $("#content_tab_" + idContent).addClass("show");
 
+    var $grid = $(".grid-item-category").isotope({
+      itemSelector: ".col-item",
+      layoutMode: "fitRows"
+    });
+  });
+}
 
 $window.on("load", function() {
   plugnsInit();
@@ -430,6 +446,7 @@ $window.on("load", function() {
   activeTheLineInTheHeaderMenuInScrolling();
   makeScrollIfExistsTheQueryParam();
   showWhatsappInSpecificHours();
+  initTabs();
 });
 $window.on("load resize", function() {
   makeHoverMoveInBanner();

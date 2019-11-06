@@ -2,7 +2,6 @@
 /* Página Interna: Lineas */
 /* ====================  */
 
-
 .lineas_container {
   height: $vh100;
   position: relative;
@@ -63,7 +62,7 @@
   position: relative;
   img {
     transition: transform 0.8s;
-    transform: translateX(27px);
+    transform: translateX(27px) scale(1.2);
   }
 }
 
@@ -132,7 +131,7 @@
     font-weight: lighter;
     position: relative;
 
-    @media #{$tablet_query}{
+    @media #{$tablet_query} {
       font-size: 28px;
     }
   }
@@ -163,7 +162,7 @@
 
 .single_linea_wrapper:hover {
   .single_linea_image img {
-    transform: translateX(-27px) !important;
+    transform: translateX(-27px) scale(1.2) !important;
   }
   .single_linea_context {
     background: rgba(0, 0, 0, 0.253);
