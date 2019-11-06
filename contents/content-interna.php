@@ -1,23 +1,5 @@
 <section id="section_banner_intern" class="section_high">
   <div id="section_banner_carousel">
-    <!-- <div class="banner_item">
-      <div class="banner_image">
-
-        <img src="<?php bloginfo("template_url") ?>/images/interna/image15.jpg" alt="">
-        <video loop autoplay muted poster="<?php bloginfo("template_url") ?>/videos/mazal_video_cover.jpg">
-          <source src="<?php bloginfo("template_url") ?>/videos/mazal.mp4" type="video/mp4">
-          <source src="<?php bloginfo("template_url") ?>/videos/mazal.ogv" type="video/ogg">
-          <source src="<?php bloginfo("template_url") ?>/videos/mazal.webm" type="video/webm">
-        </video> 
-      </div>
-      <div class="banner_caption">
-        <h3 class="text-yellow font-2">Segundo Item</h3>
-        <p class="text-white font-2">Lorem ipsum dolor sit amet consectetur <br>adipisicing elit. Commodi, nam!</p>
-        <button class="button general_button mt-3 ml-0">
-          <span data-title="Ver más">Ver Más</span>
-        </button>
-      </div>
-    </div> -->
     <?php
     $banners = new WP_Query(array(
       "post_type" => "banner",
@@ -101,11 +83,11 @@
         </div>
         <p class="galeria_description font-1 text-light">
           <?php echo mazal_get_acf_field("quienes_texto_") ?>
-          <button class="mt-5 button general_button text-yellow">
+          <!-- <button class="mt-5 button general_button text-yellow">
             <span class="text-yellow" data-title="<?php echo mazal_get_acf_field("quienes_boton_") ?>">
               <?php echo mazal_get_acf_field("quienes_boton_") ?>
             </span>
-          </button>
+          </button> -->
         </p>
       </div>
     </div>
@@ -193,75 +175,49 @@
   $prpf2 = $projectsPfolio[1]["proyecto"];
   $prpf3 = $projectsPfolio[2]["proyecto"];
   $prpf4 = $projectsPfolio[3]["proyecto"];
+
+  function mazal_send_portfolio($post)
+  {
+    ob_start();
+    ?>
+    <a href="<?php echo esc_url(get_permalink($post)); ?>">
+      <div class="portafolio_single_image">
+        <img class="img_fill" src="<?php echo get_the_post_thumbnail_url($post, "large") ?>" alt="">
+        <div class="black_background"></div>
+        <div class="portafolio_mazal_logo">
+          <figure>
+            <img src="<?php bloginfo("template_url") ?>/images/icons/logo_min.svg" alt="">
+          </figure>
+        </div>
+        <div class="portafolio_single_image_context">
+          <h3 class="font-2"><?php echo $post->post_title ?></h3>
+          <p><?php echo get_the_terms($post, "categoria")[0]->name ?></p>
+        </div>
+      </div>
+    </a>
+
+  <?php
+    return ob_get_clean();
+  }
+
   ?>
   <div class="row no-gutters flex-lg-row flex-column-reverse">
     <div class="col-lg-9">
 
       <div class="row no-gutters">
         <div class="col-lg-8 col-md-6 wow fadeInLeft">
-          <div class="portafolio_single_image">
-            <img class="img_fill" src="<?php echo get_the_post_thumbnail_url($prpf1, "large") ?>" alt="">
-            <div class="black_background"></div>
-            <div class="portafolio_mazal_logo">
-              <figure>
-                <img src="<?php bloginfo("template_url") ?>/images/icons/logo_min.svg" alt="">
-              </figure>
-            </div>
-            <div class="portafolio_single_image_context">
-              <h3 class="font-2"><?php echo $prpf1->post_title ?></h3>
-              <p><?php echo get_the_terms($prpf1, "categoria")[0]->name ?></p>
-            </div>
-          </div>
+          <?php echo mazal_send_portfolio($prpf1) ?>
         </div>
         <div class="col-lg-4 col-md-6 wow fadeInDown">
-          <div class="portafolio_single_image">
-
-            <img class="img_fill" src="<?php echo get_the_post_thumbnail_url($prpf2, "large") ?>" alt="">
-            <div class="black_background"></div>
-            <div class="portafolio_mazal_logo">
-              <figure>
-                <img src="<?php bloginfo("template_url") ?>/images/icons/logo_min.svg" alt="">
-              </figure>
-            </div>
-            <div class="portafolio_single_image_context">
-              <h3 class="font-2"><?php echo $prpf1->post_title ?></h3>
-              <p><?php echo get_the_terms($prpf1, "categoria")[0]->name ?></p>
-            </div>
-          </div>
+          <?php echo mazal_send_portfolio($prpf2) ?>
         </div>
       </div>
       <div class="row no-gutters">
         <div class="col-lg-4 col-md-6 wow fadeInLeft">
-          <div class="portafolio_single_image">
-
-            <img class="img_fill" src="<?php echo get_the_post_thumbnail_url($prpf3, "large") ?>" alt="">
-            <div class="black_background"></div>
-            <div class="portafolio_mazal_logo">
-              <figure>
-                <img src="<?php bloginfo("template_url") ?>/images/icons/logo_min.svg" alt="">
-              </figure>
-            </div>
-            <div class="portafolio_single_image_context">
-              <h3 class="font-2"><?php echo $prpf1->post_title ?></h3>
-              <p><?php echo get_the_terms($prpf1, "categoria")[0]->name ?></p>
-            </div>
-          </div>
+          <?php echo mazal_send_portfolio($prpf3) ?>
         </div>
         <div class="col-lg-8 col-md-6 wow fadeInUp">
-          <div class="portafolio_single_image">
-
-            <img class="img_fill" src="<?php echo get_the_post_thumbnail_url($prpf4, "large") ?>" alt="">
-            <div class="black_background"></div>
-            <div class="portafolio_mazal_logo">
-              <figure>
-                <img src="<?php bloginfo("template_url") ?>/images/icons/logo_min.svg" alt="">
-              </figure>
-            </div>
-            <div class="portafolio_single_image_context">
-              <h3 class="font-2"><?php echo $prpf1->post_title ?></h3>
-              <p><?php echo get_the_terms($prpf1, "categoria")[0]->name ?></p>
-            </div>
-          </div>
+          <?php echo mazal_send_portfolio($prpf4) ?>
         </div>
       </div>
 

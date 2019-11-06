@@ -44,12 +44,26 @@
 						<div class="banner_context_menu left z2">
 
 							<ul class="ul_banner_menu">
-								<li>
-									<a class="uppercase text-white" href="<?php echo $linkArquitectura ?>?section=tres60">
-										Arquitectura
-									</a>
-								</li>
-								<li>
+								<?php
+								$termsArch = get_terms(array(
+									"taxonomy" => "categoria",
+									"parent" => $archTerm->term_id,
+									"hide_empty" => false
+								));
+								foreach ($termsArch as $chilK => $chilT) :
+									$className = "";
+									if ($chilK == count($termsArch) - 1) {
+										$className = "no-borders";
+									}
+									?>
+									<li class="<?php echo $className ?>">
+										<a class="uppercase text-white" href="<?php echo $linkArquitectura ?>?section=<?php echo $chilT->slug ?>">
+											<?php echo $chilT->name ?>
+										</a>
+									</li>
+								<?php endforeach; ?>
+
+								<!-- <li>
 									<a class="uppercase text-white" href="<?php echo $linkArquitectura ?>?section=arq_sos">
 										Arquitectura Sostenible
 									</a>
@@ -68,7 +82,7 @@
 									<a class="uppercase text-white" href="<?php echo $linkArquitectura ?>?section=before_after">
 										Remodelación
 									</a>
-								</li>
+								</li> -->
 
 							</ul>
 

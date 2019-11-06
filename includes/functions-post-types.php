@@ -157,8 +157,8 @@ function mazal_register_the_posts_types()
       // "tipo" => __mazal_register_taxonomy("tipo", false, true),
       "categoria" => __mazal_register_taxonomy("categoria", false),
       "material" => __mazal_register_taxonomy("material", false, false, "es"),
-      "medida" => __mazal_register_taxonomy("medida", false),
-      "coleccion" => __mazal_register_taxonomy("collecion", false, false, "es"),
+      // "medida" => __mazal_register_taxonomy("medida", false),
+      // "coleccion" => __mazal_register_taxonomy("collecion", false, false, "es"),
     )
   );
 

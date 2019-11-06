@@ -53,7 +53,7 @@ $producto = get_queried_object();
 
               </div>
             </div>
-            <div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)">
+            <!-- <div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)">
               <div class="swiper-zoom-container" data-swiper-zoom="5">
 
               </div>
@@ -71,7 +71,7 @@ $producto = get_queried_object();
             <div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)">
               <div class="swiper-zoom-container" data-swiper-zoom="5">
               </div>
-            </div>
+            </div> -->
 
           </div>
           <!-- Add Arrows -->
@@ -82,10 +82,10 @@ $producto = get_queried_object();
           <div class="swiper-button-next"></div>
           <div class="swiper-wrapper">
             <div class="swiper-slide" style="background-image:url(<?php echo get_the_post_thumbnail_url($producto, "large") ?>)"></div>
+            <!-- <div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)"></div>
             <div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)"></div>
             <div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)"></div>
-            <div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)"></div>
-            <div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)"></div> -->
           </div>
           <div class="swiper-button-prev"></div>
         </div>
@@ -236,7 +236,7 @@ $producto = get_queried_object();
       "post_type" => "producto",
       "posts_per_page" => 3,
       "orderby" => "rand",
-      "post__not_in" => array( $producto->ID),
+      "post__not_in" => array($producto->ID),
       "tax_query" => array(
         array(
           'taxonomy' => 'categoria',

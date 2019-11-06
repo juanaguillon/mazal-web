@@ -53,22 +53,38 @@ $parentCats = get_terms(array(
     }
     ?>
     <div id="content_tab_<?php echo $childKey ?>" class="<?php echo $clasName ?>">
-      <?php $productsWQ = new WP_Query(array(
-          "post_type" => "producto",
-          "tax_query" => array(
-            array(
-              "taxonomy" => "categoria",
-              "field" => "slug",
-              "terms" => $childKey
-            )
-          )
-        )); ?>
+      <ul>
+        <li>
+          <div class="dropdown general_dropdown">
+            <label class="dropdown-label" data-emplabel="<?php echo $childVal[0]->slug ?>"><?php echo $childVal[0]->name ?></label>
+            <div class="dropdown-list">
 
-      <div class="grid-item-category">
-        <?php foreach ($productsWQ->posts as $product) : ?>
-          <?php mazal_single_product($product); ?>
-        <?php endforeach; ?>
-      </div>
+              <?php foreach ($childVal as $chvl) : ?>
+                <div class="checkbox">
+                  <input type="checkbox" data-encapsuled="port_enc_<?php echo $childKey ?>" data-subcat_content="<?php echo $chvl->slug ?>" class="check_portfolio check-unique checkbox-custom" id="portflio_<?php echo $childKey . $chvl->term_id ?>">
+                  <label for="portflio_<?php echo $childKey . $chvl->term_id ?>" class="checkbox-custom-label"><?php echo $chvl->name ?></label>
+                </div>
+              <?php endforeach; ?>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <?php
+        foreach ($childVal as $chk => $chvl) :
+          $className = "subcat_content_portfolio";
+          if ($chk == 0) {
+            $className .= " show";
+          }
+          ?>
+        <div id="subcat_content_<?php echo $chvl->slug ?>" class="<?php echo $className . " port_enc_" . $childKey ?>">
+          <?php
+              // printcode($childVal);
+              // Se agrega false como 3 parámetro ya que siempre se obtiene las categorías #2, y esta condicional verficia si es categoría #3
+              mazal_get_taxonomy_data($chvl, $chvl, false); ?>
+        </div>
+      <?php
+        endforeach;
+        ?>
     </div>
   <?php endforeach; ?>
 

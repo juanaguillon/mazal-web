@@ -89,6 +89,8 @@
                     $maxParent->term_id =  pll_get_term(91);
                   } else if (mazal_is_corporativo_page()) {
                     $maxParent->term_id = pll_get_term(93);
+                  } else if (!is_page("producto")) {
+                    $maxParent->term_id = 0;
                   }
                   // printcode( $maxParent );
 
@@ -102,6 +104,18 @@
                 } else if (is_tax("categoria")) {
                   $chLink =  get_queried_object()->term_id;
                   $maxParent = mazal_get_term_top_most_parent($chLink, "categoria");
+
+                  // Verificar a que página enviar, si será arquitectura, hogar o corporativo.
+                  if ($maxParent->term_id == 91 || $maxParent->term_id == 97) {
+                    // Si es arquitectura
+                    $linkSend = pll_get_post(11);
+                  } else if ($maxParent->term_id == 99 || $maxParent->term_id == 89) {
+                    // Si es Hogar
+                    $linkSend = pll_get_post(25);
+                  } else if ($maxParent->term_id == 93 || $maxParent->term_id == 101) {
+                    // Si es Corporativo
+                    $linkSend = pll_get_post(9);
+                  }
 
                   if (mazal_is_language()) {
                     $linkID = pll_get_term($chLink, "en");
@@ -119,28 +133,62 @@
                   "parent" => $maxParent->term_id,
                   "hide_empty" => false
                 ));
+                $navDynamics = array();
+                ?>
 
-                if ($maxParent) :
-                  foreach ($directChilds as $childNav) : ?>
-                  <li class="<?php echo $childNav->slug ?>" data-dynamic="">
-                    <?php
-                          /**
-                           * Se crea este condicional para verificar si hacer scroll o ir a la pagina de categoría.
-                           */
-                          if (is_page()) {
-                            $href = "#";
-                          } else {
-                            $href = get_term_link($childNav, "categoria");
-                          }
-                          ?>
-                    <a rel="nofollow" href="<?php echo $href ?>" class="text-white" data-scroll="<?php echo $childNav->slug ?>"><?php echo $childNav->name ?></a>
-                  </li>
+              <?php foreach ($directChilds as $childNav) : ?>
 
                 <?php
-                    endforeach;
-                  endif;
+                    $dataDyn = "";
+                    $className = $childNav->slug;
+                    if (get_field("diseno_", $childNav) == "Diseño con Subcategorías") {
+                      $navDynamics[$childNav->slug] = get_terms(array(
+                        "taxonomy" => "categoria",
+                        "hide_empty" => false,
+                        "number" => 4,
+                        "parent" => $childNav->term_id
+                      ));
+                      $className .= " has_dynamic";
+                      $dataDyn = sprintf("data-dynamic='nav_dynamic_%s'", $childNav->slug);
+                    }
+                    ?>
 
-                  if (!is_wp_error($link)) : ?>
+                <li class="<?php echo $className ?>" <?php echo $dataDyn ?>>
+                  <?php
+                      /**
+                       * Se crea este condicional para verificar si hacer scroll o ir a la pagina de categoría.
+                       */
+                      if (is_page()) {
+                        $href = "#";
+                      } else {
+                        $href = get_term_link($childNav, "categoria");
+                      }
+                      ?>
+                  <a rel="nofollow" href="<?php echo $href ?>" class="text-white" data-scroll="<?php echo $childNav->slug ?>"><?php echo $childNav->name ?></a>
+                </li>
+              <?php endforeach;
+
+                /**
+                 * Secciones de las páginas.
+                 */
+                $ullist = array(
+                  // "galeria" => mazal_is_language() ? "Nosotros" : "About Us",
+                  // "before_after" => mazal_is_language() ? "Remodelación" : "Restyling",
+                  "portafolio" => strtoupper(mazal_get_acf_field("portafolio_titulo_")),
+                  // "clientes" => mazal_is_language() ? "Clientes" : "Customers",
+                  "contacto" => strtoupper(mazal_get_acf_field("contacto_titulo_")),
+                );
+                foreach ($ullist as $ulk => $ullnm) :
+
+                  if (is_tax("categoria")) {
+                    $link = "href='" . esc_url(get_permalink($linkSend) . "?section=" . $ulk)  . "'";
+                  }
+                  ?>
+                <li class="<?php echo $ulk ?>">
+                  <a <?php echo $link ?> class="text-white" data-scroll="<?php echo $ulk ?>"><?php echo $ullnm ?></a>
+                </li>
+              <?php endforeach;
+                if (!is_wp_error($link)) : ?>
                 <li class="languages_header">
                   <a rel="nofollow" href="<?php echo esc_attr($link); ?>">
                     <?php $isEs = mazal_is_language(); ?>
@@ -194,106 +242,66 @@
 
         <div class="dynamic_header_top">
           <!-- Se mostrará en caso que se agregue el attr data-dynamic="dynamic_data_1" y class="has_dynamic" en el li del header -->
-          <div class="dynamic_data dynamic_data_1">
-            <div class="row no-gutters">
+          <?php foreach ($navDynamics as $navKey => $navDyn) : ?>
+            <div class="dynamic_data nav_dynamic_<?php echo $navKey ?>">
+              <div class="row no-gutters">
 
-              <div class="col-md-3">
+                <div class="col-md-3">
 
-                <p class="dynamyc_description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil dolor quasi aspernatur
-                  unde, et molestiae.</p>
-              </div>
+                  <!-- <p class="dynamyc_description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil dolor quasi aspernatur
+                    unde, et molestiae.</p> -->
+                </div>
 
-              <div class="col-md-9">
-                <div class="dynamic_images">
-                  <div class="dynamic_image_single left_to_right_container">
-                    <div class="dynamic_image_container ">
-                      <img class="img_fill left" src="<?php bloginfo("template_url") ?>/images/interna/image11.jpg" alt="">
-                      <img class="img_fill right" src="<?php bloginfo("template_url") ?>/images/interna/image11.jpg" alt="">
+                <div class="col-md-9">
+                  <div class="dynamic_images">
+
+                    <?php foreach ($navDyn as $navDeep) : ?>
+                      <a href="<?php echo esc_url(get_term_link($navDeep, "categoria")); ?>">
+                        <div class="dynamic_image_single left_to_right_container">
+                          <div class="dynamic_image_container ">
+                            <img class="img_fill left" src="<?php echo get_field("imagen", $navDeep)["sizes"]["medium"] ?>" alt="">
+                            <img class="img_fill right" src="<?php echo get_field("imagen", $navDeep)["sizes"]["medium"] ?>" alt="">
+                          </div>
+                          <div class="dynamic_image_text">
+                            <?php echo $navDeep->name ?>
+                          </div>
+                        </div>
+                      </a>
+                    <?php endforeach; ?>
+                    <!-- <div class="dynamic_image_single left_to_right_container">
+                      <div class="dynamic_image_container ">
+                        <img class="img_fill left" src="<?php bloginfo("template_url") ?>/images/interna/image10.jpg" alt="">
+                        <img class="img_fill right" src="<?php bloginfo("template_url") ?>/images/interna/image10.jpg" alt="">
+                      </div>
+                      <div class="dynamic_image_text">
+                        Superfice
+                      </div>
                     </div>
-                    <div class="dynamic_image_text">
-                      Muebles
+                    <div class="dynamic_image_single left_to_right_container">
+                      <div class="dynamic_image_container ">
+                        <img class="img_fill left" src="<?php bloginfo("template_url") ?>/images/interna/image9.jpg" alt="">
+                        <img class="img_fill right" src="<?php bloginfo("template_url") ?>/images/interna/image9.jpg" alt="">
+                      </div>
+                      <div class="dynamic_image_text">
+                        Techos
+                      </div>
                     </div>
-                  </div>
-                  <div class="dynamic_image_single left_to_right_container">
-                    <div class="dynamic_image_container ">
-                      <img class="img_fill left" src="<?php bloginfo("template_url") ?>/images/interna/image10.jpg" alt="">
-                      <img class="img_fill right" src="<?php bloginfo("template_url") ?>/images/interna/image10.jpg" alt="">
-                    </div>
-                    <div class="dynamic_image_text">
-                      Superfice
-                    </div>
-                  </div>
-                  <div class="dynamic_image_single left_to_right_container">
-                    <div class="dynamic_image_container ">
-                      <img class="img_fill left" src="<?php bloginfo("template_url") ?>/images/interna/image9.jpg" alt="">
-                      <img class="img_fill right" src="<?php bloginfo("template_url") ?>/images/interna/image9.jpg" alt="">
-                    </div>
-                    <div class="dynamic_image_text">
-                      Techos
-                    </div>
-                  </div>
-                  <div class="dynamic_image_single left_to_right_container">
-                    <div class="dynamic_image_container ">
-                      <img class="img_fill left" src="<?php bloginfo("template_url") ?>/images/interna/image8.jpg" alt="">
-                      <img class="img_fill right" src="<?php bloginfo("template_url") ?>/images/interna/image8.jpg" alt="">
-                    </div>
-                    <div class="dynamic_image_text">
-                      Alineaciones
-                    </div>
+                    <div class="dynamic_image_single left_to_right_container">
+                      <div class="dynamic_image_container ">
+                        <img class="img_fill left" src="<?php bloginfo("template_url") ?>/images/interna/image8.jpg" alt="">
+                        <img class="img_fill right" src="<?php bloginfo("template_url") ?>/images/interna/image8.jpg" alt="">
+                      </div>
+                      <div class="dynamic_image_text">
+                        Alineaciones
+                      </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <!-- Se mostrará en caso que se agregue el attr data-dynamic="dynamic_data_2" y class="has_dynamic" en el li del header -->
-          <div class="dynamic_data dynamic_data_2">
-            <div class="row no-gutters">
+          <?php endforeach; ?>
 
-              <div class="col-md-3">
-                <p class="dynamyc_description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil dolor quasi aspernatur unde, et molestiae.</p>
-              </div>
-              <div class="col-md-9">
-                <div class="dynamic_images">
-                  <div class="dynamic_image_single left_to_right_container">
-                    <div class="dynamic_image_container ">
-                      <img class="img_fill left" src="<?php bloginfo("template_url") ?>/images/interna/image7.jpg" alt="">
-                      <img class="img_fill right" src="<?php bloginfo("template_url") ?>/images/interna/image7.jpg" alt="">
-                    </div>
-                    <div class="dynamic_image_text">
-                      Muebles
-                    </div>
-                  </div>
-                  <div class="dynamic_image_single left_to_right_container">
-                    <div class="dynamic_image_container ">
-                      <img class="img_fill left" src="<?php bloginfo("template_url") ?>/images/interna/image6.jpg" alt="">
-                      <img class="img_fill right" src="<?php bloginfo("template_url") ?>/images/interna/image6.jpg" alt="">
-                    </div>
-                    <div class="dynamic_image_text">
-                      Superfice
-                    </div>
-                  </div>
-                  <div class="dynamic_image_single left_to_right_container">
-                    <div class="dynamic_image_container ">
-                      <img class="img_fill left" src="<?php bloginfo("template_url") ?>/images/interna/image5.jpg" alt="">
-                      <img class="img_fill right" src="<?php bloginfo("template_url") ?>/images/interna/image5.jpg" alt="">
-                    </div>
-                    <div class="dynamic_image_text">
-                      Techos
-                    </div>
-                  </div>
-                  <div class="dynamic_image_single left_to_right_container">
-                    <div class="dynamic_image_container ">
-                      <img class="img_fill left" src="<?php bloginfo("template_url") ?>/images/interna/image4.jpg" alt="">
-                      <img class="img_fill right" src="<?php bloginfo("template_url") ?>/images/interna/image4.jpg" alt="">
-                    </div>
-                    <div class="dynamic_image_text">
-                      Alineaciones
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+
         </div>
 
       </header>

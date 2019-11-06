@@ -50,7 +50,10 @@ function toggleDynamicDataFromNav() {
     $(".dynamic_header_top").removeClass("active");
     $(this).removeClass("active");
   };
-  $("nav li.has_dynamic,.dynamic_header_top").hover(onHover, outHover);
+  $(".header_top_list li.has_dynamic,.dynamic_header_top").hover(
+    onHover,
+    outHover
+  );
 }
 /**
  * Activar el modal de busqueda cuando se de click en el botón de buscar en el Header
@@ -345,8 +348,10 @@ function activeTheLineInTheHeaderMenuInScrolling() {
     "lineas1",
     "tres60",
     "arq_sos",
+    "portafolio",
     "obra_nueva",
     "before_after",
+    "galeria",
     "constructoras",
     "oficinas",
     "hoteles",

@@ -89,19 +89,11 @@
       <script>
         function initMap() {
 
-
-
           var uluruFoot = {
-
-
 
             lat: 4.6856936,
 
-
-
             lng: -74.0569894
-
-
 
           };
 
@@ -372,9 +364,6 @@
             styles: color1,
 
             draggable: true
-
-
-
           });
 
 
@@ -389,17 +378,8 @@
 
         }
       </script>
-
-
-
-      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDL38SPiX3ET5uymp-IWbCS2eDio-O_a8A&callback=initMap"></script>
-
-
-
-
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZ3yCG6_GLgMsCtkrHklPn9EwUhkGHOJM&callback=initMap"></script>
 
     </div>
-
   </div>
-
 </section>
