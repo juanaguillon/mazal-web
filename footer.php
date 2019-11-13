@@ -20,24 +20,25 @@
               </h5>
             </div>
             <div class="col-md-3 footer_list_item wow fadeInDown" data-wow-delay="0.3s">
-              <h4 class="footer_title_list text-white"><?php the_field("contacto_telefono" . $suffix, "option") ?></h4>
-              <span class="text-white">(57)(1)602 6541</span>
+              <h4 class="footer_title_list text-white"><?php echo mazal_get_acf_field("contacto_telefono_") ?></h4>
+              <span class="text-white"><?php echo mazal_get_acf_field("telefono_valor_") ?></span>
             </div>
             <div class="col-md-3 footer_list_item wow fadeInDown" data-wow-delay="0.6s">
-              <h4 class="footer_title_list text-white">Email</h4>
-              <span class="text-white">sebastian.camacho@mazal.co</span>
+              <h4 class="footer_title_list text-white"><?php echo mazal_get_acf_field("contacto_email_") ?></h4>
+              <span class="text-white"><?php echo mazal_get_acf_field("email_valor_") ?></span>
             </div>
             <div data-wow-delay="0.9s" class="col-md-3 footer_list_item wow fadeInRight">
-              <h4 class="footer_title_list text-white"><?php the_field("contacto_direccion" . $suffix, "option") ?></h4>
-              <span class="text-white">Calle 109 # 18b - 52 Local 102</span>
+              <h4 class="footer_title_list text-white"><?php echo mazal_get_acf_field("contacto_direccion_") ?></h4>
+              <span class="text-white"><?php echo mazal_get_acf_field("direccion_valor_") ?></span>
             </div>
           </div>
         </div>
       </div>
       <div class="footer_foot text-center">
         <?php
-          $rigths1 = explode(" - ", get_field("copyright" . $suffix, "option"))[0];
-          $rigths2 = explode(" - ", get_field("copyright" . $suffix, "option"))[1];
+          $rightTotal = mazal_get_acf_field("copyright_");
+          $rigths1 = explode(" - ", $rightTotal)[0];
+          $rigths2 = explode(" - ", $rightTotal)[1];
           ?>
         <span class="text-3x text-white"><?php echo $rigths1 ?> - <strong><?php echo $rigths2 ?></strong></span>
       </div>
@@ -170,16 +171,13 @@
         $('#chkveg').multiselect({
           includeSelectAllOption: true
         });
-        // $('#btnget').click(function() {
-        //   alert($('#chkveg').val());
-        // });
       });
     </script>
 
   <?php
   }
   // se muestra pagina item-page.php ( /producto )
-  if (is_singular("producto")) {
+  if (is_singular("producto_lspc")) {
     ?>
     <script src="<?php bloginfo('template_url') ?>/assets/js/swiper.js"></script>
 
@@ -212,8 +210,59 @@
   <?php
   }
 
-
   ?>
+
+  <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {
+        return;
+      }
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId: 397559747817271,
+        autoLogAppEvents: true,
+        xfbml: true,
+        version: 'v3.3'
+      });
+      FB.AppEvents.logPageView();
+    };
+    (function($) {
+      $('.facebook_share').on('click', function(event) {
+
+        event.preventDefault();
+        event.stopImmediatePropagation();
+
+        var linkshare = window.location.href;
+        var titleshare = $(this).data("nombre");
+        var descripshare = $(this).data("descrip");
+        var imgshare = $(this).data("urlimg");
+        var FBDesc = descripshare;
+        var FBTitle = titleshare;
+        var FBLink = linkshare;
+        var FBPic = imgshare;
+        FB.ui({
+          method: 'share',
+          action_type: 'og.likes',
+          mobile_iframe: true,
+          action_properties: JSON.stringify({
+            object: {
+              'og:url': FBLink,
+              'og:title': FBTitle,
+              'og:description': FBDesc,
+              'og:image': FBPic
+            }
+          })
+        }, function(response) {})
+      })
+    })(jQuery);
+  </script>
 
   </body>
 

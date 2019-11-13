@@ -22,20 +22,22 @@ function __mazal_register_post_type($name, $icon, $isMale = true, $supports = ar
       'title', 'editor', 'thumbnail'
     );
   }
+  $prulalName = $theName . $prural;
+  $singleName = $name . $prural;
   $labels = array(
-    'name'                  => $theName . $prural,
+    'name'                  => $prulalName,
     'singular_name'         => $theName,
-    'menu_name'             => $theName . $prural,
+    'menu_name'             => $prulalName,
     'name_admin_bar'        => $theName,
     'add_new'               => 'Añadir nuev' . $genre,
     'add_new_item'          => "Añadir nuev" . $genre . ' ' . $name,
     'new_item'              => 'Nuev' . $genre . ' ' . $name,
     'edit_item'             => 'Editar ' . $name,
     'view_item'             => 'Ver ' . $name,
-    'all_items'             => 'Tod' . $genre . 's l' . $genre . 's ' . $name . 's', //Tod@s l@s *Nombre de Post*
+    'all_items'             => 'Tod' . $genre . 's l' . $genre . 's ' . $singleName, //Tod@s l@s *Nombre de Post*
     'search_items'          => "Buscar {$name}",
-    'not_found'             => "No se han encontrado {$name}s.",
-    'not_found_in_trash'    => "No se ha encontrado {$name}s en la papelera."
+    'not_found'             => "No se han encontrado {$singleName}",
+    'not_found_in_trash'    => "No se ha encontrado {$singleName} en la papelera."
   );
 
   $args = array(
@@ -141,12 +143,12 @@ function mazal_register_the_posts_types()
 {
   $postTypes = array(
     "banner"   => __mazal_register_post_type("banner", "dashicons-images-alt2", true, array(
-      "thumbnail",
       "title",
       "excerpt"
     )),
-    "producto" => __mazal_register_post_type("producto", "dashicons-products"),
-    "cliente" => __mazal_register_post_type("cliente", "dashicons-businesswoman", true, ["title", "thumbnail"] )
+    "producto" => __mazal_register_post_type("producto", "dashicons-products", true, ["title", "editor"]),
+    "cliente" => __mazal_register_post_type("cliente", "dashicons-businesswoman", true, ["title", "thumbnail"]),
+    "before_after" => __mazal_register_post_type("comparacion", "dashicons-image-flip-horizontal", true, ["title"], null, "es")
   );
   foreach ($postTypes as $ptkey => $ptvalue) {
     register_post_type($ptkey, $ptvalue);

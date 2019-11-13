@@ -7,17 +7,18 @@
     $bannerPosts = $banners->posts;
     foreach ($bannerPosts as $banner) :
 
-      $button = get_field("link", $banner);
+      $url = get_field("link_banner", $banner);
+      $textoLink = get_field("texto_link_banner", $banner);
       ?>
       <div class="banner_item">
         <div class="banner_image">
-          <img src="<?php echo get_the_post_thumbnail_url($banner, "full") ?>" alt="">
+          <img src="<?php echo get_field("imagen_banner", $banner) ?>" alt="">
         </div>
         <div class="banner_caption">
           <h3 class="text-yellow font-2"><?php echo $banner->post_title ?></h3>
           <p class="text-white font-2"><?php echo $banner->post_excerpt ?></p>
-          <a target="<?php echo $button["target"]; ?>" href="<?php echo $button["url"] ?>" class="button general_button mt-3 ml-0">
-            <span data-title="<?php echo $button["title"] ?>"><?php echo $button["title"] ?></span>
+          <a href="<?php echo $url ?>" class="button general_button mt-3 ml-0">
+            <span data-title="<?php echo $textoLink ?>"><?php echo $textoLink ?></span>
           </a>
         </div>
       </div>
@@ -112,25 +113,21 @@
 
     <div class="row no-gutters">
       <?php
-      $antesDesImg = get_field("antsesdes_imagenes", "option");
+      $antesDesQuery = new WP_Query(array(
+        "post_type" => "before_after",
+        "posts_per_page" => -1
+      ));
+      $antesDesImg = $antesDesQuery->posts;
       ?>
       <div class="col-lg-1 col-md-12 col-sm-12 ">
         <div class="bef_aft_images_container">
           <div class="arrow_up arrows"><i class="icon-arrow_up"></i></div>
           <div class="bef_aft_images_gallery">
-            <?php
-            foreach ($antesDesImg as $imgs) : ?>
+            <?php foreach ($antesDesImg as $imgs) : ?>
 
               <div class="bef_aft_image_photo">
-                <?php
-                  $suffix = "";
-                  if (mazal_is_language()) {
-                    $suffix = "_es";
-                  } else {
-                    $suffix = "_en";
-                  }
-                  ?>
-                <img data-tb="<?php echo $imgs["texto_antes" . $suffix] ?>" data-ta="<?php echo $imgs["texto_despues" . $suffix] ?>" data-before="<?php echo $imgs["imagen_antes"]["sizes"]["large"] ?>" data-after="<?php echo $imgs["imagen_despues"]["sizes"]["large"] ?>" class="img_fill" src="<?php echo $imgs["imagen_despues"]["sizes"]["thumbnail"] ?>" alt="">
+                <img data-before="<?php echo get_field("imagen_antigua", $imgs)["sizes"]["large"] ?>" data-after="<?php echo get_field("imagen_nueva", $imgs)["sizes"]["large"] ?>" class="img_fill" src="<?php echo get_field("imagen_nueva", $imgs)["sizes"]["medium"] ?>" alt="">
+
               </div>
             <?php endforeach; ?>
           </div>
@@ -139,27 +136,19 @@
       </div>
       <div class="col-lg-11 wow slideInRight">
         <?php
-        $first = $antesDesImg[0];
+        $oldImg = get_field("imagen_antigua", $antesDesImg[0]);
+        $newimg = get_field("imagen_nueva", $antesDesImg[0]);
         ?>
         <div class="bf_image_sized">
-          <img src="<?php echo $first["imagen_antes"]["sizes"]["large"] ?>" alt="">
-          <img src="<?php echo $first["imagen_despues"]["sizes"]["large"] ?>" alt="">
+          <img src="<?php echo $oldImg["sizes"]["large"] ?>" alt="">
+          <img src="<?php echo $newimg["sizes"]["large"] ?>" alt="">
         </div>
         <div class="bef_aft_sides">
           <div class="bef_aft_left_side wow slideInLeft">
             <div class="bef_aft_descriptions_container flex-center-xy text-gray">
-              <span class="bef_aft_number font-2">1</span>
-              <p id="bef_aft_before" class="font-1"><?php echo $first["texto_antes" . $suffix] ?></p>
+              <p id="bef_aft_before" class="font-1"><?php echo mazal_get_acf_field("antesdes_descripcion_") ?></p>
             </div>
           </div>
-          <div class="bef_aft_right_side wow slideInRight">
-
-            <div class="bef_aft_descriptions_container flex-center-xy text-gray">
-              <span class="bef_aft_number font-2">2</span>
-              <p id="bef_aft_after" class="font-1"><?php echo $first["texto_despues" . $suffix] ?></p>
-            </div>
-          </div>
-
         </div>
 
       </div>
@@ -182,7 +171,7 @@
     ?>
     <a href="<?php echo esc_url(get_permalink($post)); ?>">
       <div class="portafolio_single_image">
-        <img class="img_fill" src="<?php echo get_the_post_thumbnail_url($post, "large") ?>" alt="">
+        <img class="img_fill" src="<?php echo get_field("imagen_de_producto",$post)["sizes"]["large"] ?>" alt="">
         <div class="black_background"></div>
         <div class="portafolio_mazal_logo">
           <figure>

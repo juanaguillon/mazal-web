@@ -8,7 +8,30 @@
     background: rgba(0, 0, 0, 0.72);
   }
 }
+.contact_map_message {
+  display: none;
+  margin-bottom: 10px;
+  &.show {
+    display: block;
+  }
+}
 
+.contact_map_success {
+  color: #ccffb8;
+  font-size: 17px;
+  display: none;
+  &.show {
+    display: block;
+  }
+}
+.contact_map_error {
+  color: #ffb8b8;
+  font-size: 17px;
+  display: none;
+  &.show {
+    display: block;
+  }
+}
 .datos {
   line-height: 52px;
   i {

@@ -370,15 +370,6 @@ a.languages_toggle {
   align-items: center;
   padding: 0 15px;
 
-  button.button.button-cuadro {
-    position: absolute;
-    top: 11%;
-    color: white;
-    font-size: 30px;
-    right: 5%;
-    font-family: "Quicksand";
-  }
-
   &.active {
     display: flex;
   }

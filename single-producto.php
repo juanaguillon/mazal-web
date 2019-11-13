@@ -1,3 +1,7 @@
+<?php
+printcode( json_decode($_COOKIE["productsmz"])  )
+ ?>
+
 <?php get_header(); ?>
 
 
@@ -43,23 +47,30 @@ $producto = get_queried_object();
   </section>
 
   <section class="item-view container">
-
     <div class="row m-0">
       <div class="col-md-7">
         <div class="swiper-container gallery-top">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image:url(<?php echo get_the_post_thumbnail_url($producto, "large") ?>)">
+          <div class="swiper-wrapper" id="image_product_slick">
+            <div class="swiper-slide item-swipper-image" style="background-image:url(<?php echo get_field("imagen_de_producto", $producto)["sizes"]["large"] ?>)">
               <div class="swiper-zoom-container" data-swiper-zoom="5">
               </div>
             </div>
             <?php
-            foreach (get_field("galeria", $producto) as $imgGall) :
-              ?>
-              <div class="swiper-slide" style="background-image:url(<?php echo $imgGall["sizes"]["large"] ?>)">
-                <div class="swiper-zoom-container" data-swiper-zoom="5">
+            $galeria = get_field("galeria", $producto);
+            if ($galeria && count($galeria) > 0) :
+              foreach ($galeria as $imgGall) :
+                ?>
+
+                <div class="swiper-slide item-swipper-image" style="background-image:url(<?php echo $imgGall["sizes"]["large"] ?>)">
+                  <div class="swiper-zoom-container" data-swiper-zoom="5">
+                  </div>
                 </div>
-              </div>
-            <?php endforeach; ?>
+
+            <?php
+              endforeach;
+            endif;
+            ?>
+
             <!-- 
             <div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)">
               <div class="swiper-zoom-container" data-swiper-zoom="5">
@@ -82,21 +93,29 @@ $producto = get_queried_object();
         </div>
 
         <div class="swiper-container gallery-thumbs">
-          <div class="swiper-button-next"></div>
-          <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image:url(<?php echo get_the_post_thumbnail_url($producto, "large") ?>)"></div>
-
+          <div class="swiper-button-prev">
+            <i class="icon-arrow_left"></i>
+          </div>
+          <div class="swiper-wrapper" id="gallery_product_slick">
+            <div class="swiper-slide item-swipper-gallery" style="background-image:url(<?php echo get_field("imagen_de_producto", $producto)["sizes"]["large"] ?>)"></div>
             <?php
-            foreach (get_field("galeria", $producto) as $imgGall) :
-              ?>
-              <div class="swiper-slide" style="background-image:url(<?php echo $imgGall["sizes"]["large"] ?>)"></div>
-            <?php endforeach; ?>
+            if ($galeria && count($galeria) > 0) :
+              foreach ($galeria as $imgGall) :
+                ?>
+                <div class="swiper-slide item-swipper-gallery" style="background-image:url(<?php echo $imgGall["sizes"]["large"] ?>)"></div>
+            <?php
+              endforeach;
+            endif;
+            ?>
             <!-- 
             <div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)"></div>
             <div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)"></div>
             <div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)"></div> -->
           </div>
-          <div class="swiper-button-prev"></div>
+
+          <div class="swiper-button-next">
+            <i class="icon-arrow_right"></i>
+          </div>
         </div>
 
 
@@ -138,27 +157,33 @@ $producto = get_queried_object();
             </div>
             <!-- <div class="feature">
               <span>Material: </span><?php echo get_the_term_list($producto, "material", "", ", ") ?>
-            </div> -->
+            </div> 
             <div class="feature">
               <span>Color: </span><span id="color_changer">Natural</span>
-            </div>
+            </div> -->
           </div>
+          <?php
+          $colors =  get_field("colores", $producto);
+          if ($colors && count($colors) > 0) : ?>
+            <div class="color-item-feature">
+              <div class="color-scheme-item">
+                <ul>
+                  <?php
+                    if ($colors && count($colors) > 0) :
+                      foreach ($colors as $color) : ?>
+                      <li><span data-color="<?php echo $color["nombre"] ?>" style="background:<?php echo $color["color"] ?>"></span></li>
+                  <?php endforeach;
+                    endif;
+                    ?>
+                </ul>
+              </div>
+            </div>
+          <?php endif; ?>
 
-          <div class="color-item-feature">
-            <div class="color-scheme-item">
-              <ul>
-                <li><span class="brown-1"></span></li>
-                <li><span class="brown-2"></span></li>
-                <li><span class="brown-3"></span></li>
-                <li><span class="brown-4"></span></li>
-                <li><span class="brown-5"></span></li>
-              </ul>
-            </div>
-          </div>
 
           <div class="action-for-item">
 
-            <button class=" button fill-button add">
+            <button id="open_modal_cotizar" class="button fill-button add">
               <span>
                 <?php
                 if (mazal_is_language()) : ?>
@@ -168,14 +193,12 @@ $producto = get_queried_object();
                 <?php endif; ?>
               </span>
             </button>
-            <a target="_blank" href="https://wa.me/573108613043?text=Hola, estoy interesado en el siguiente producto: <?php echo esc_url(get_permalink($producto)) ?>... Me gustaría recibir más información." id="share_whatsapp_product" class="share-whatsapp"><img src="http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/whastapp-social-media.svg" alt=""></a>
-            <a href="#" class="add-love"><img src="http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/favorite.svg" alt=""></a>
-
+            <a href="#" class="add-love" data-fav="<?php echo $producto->ID ?>"><img src="http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/favorite.svg" alt=""></a>
           </div>
 
           <div class="compartir-area">
-            <span>
 
+            <span>
               <?php
               if (mazal_is_language()) : ?>
                 Compartir producto
@@ -186,20 +209,14 @@ $producto = get_queried_object();
             <div class="redes-compartir">
               <ul class="d-flex">
                 <li>
-                  <a href="">
-                    <i class="icon-instagram"></i>
-                  </a>
+                  <a target="_blank" href="https://wa.me/573108613043?text=Hola, estoy interesado en el siguiente producto: <?php echo esc_url(get_permalink($producto)) ?>... Me gustaría recibir más información." id="share_whatsapp_product" class="share-whatsapp"><img src="http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/whastapp-social-media.svg" alt=""></a>
                 </li>
                 <li>
-                  <a href="">
+                  <a class="facebook_share" data-nombre="<?php echo $producto->post_title ?>" data-descrip="<?php echo $producto->post_content ?>" data-urlimg="<?php echo get_field("imagen_de_producto", $producto)["sizes"]["medium"] ?>">
                     <i class="icon-facebook"></i>
                   </a>
                 </li>
-                <li>
-                  <a href="">
-                    <i class="icon-houzz"></i>
-                  </a>
-                </li>
+
               </ul>
             </div>
           </div>
@@ -267,17 +284,17 @@ $producto = get_queried_object();
       <?php
       foreach ($queryRel->posts as $relProducto) : ?>
         <div class="col-md-4">
-          <a href="<?php echo get_permalink($relProdCat) ?>">
+          <a href="<?php echo get_permalink($relProducto) ?>">
             <div class="related-item">
               <div class="image-related-item item">
-                <img src="<?php echo get_the_post_thumbnail_url($relProducto, "medium") ?>" alt="">
+                <img src="<?php echo get_field("imagen_de_producto", $relProducto)["sizes"]["medium"] ?>" alt="">
                 <div class="item-content">
                   <span class="item-nombre-proyecto"><?php echo $relProducto->post_title ?></span>
                 </div>
               </div>
               <h4><?php echo $relProducto->post_title ?></h4>
               <?php $relProdCat = get_the_terms($relProducto, "categoria")[0]; ?>
-              <span><?php echo $relProdCat->name ?></span>
+              <span class="related_category"><?php echo $relProdCat->name ?></span>
             </div>
           </a>
         </div>
@@ -285,6 +302,108 @@ $producto = get_queried_object();
     </div>
   </section>
 
+</div>
+<div class="modal_mazal" id="modal_product_cotize">
+  <div class="modal_container">
+    <div class="modal_title">
+      <div class="modal_title_left">
+        <i class="text-white icon-logo"></i>
+
+        <h4><?= $producto->post_title ?></h4>
+        <?php
+        if (get_field("mostar_referencia", $producto)) {
+          ?>
+          <span class="item-ref">Ref: <?php echo get_field("referencia", $producto) ?></span>
+        <?php
+        }
+        ?>
+      </div>
+      <div class="modal_title_right">
+        <button class="button button-cuadro button_close_modal">x</button>
+      </div>
+    </div>
+    <div class="modal_bcontent">
+      <div class="loading_container" id="loading_cotizar">
+        <div class="loading_spinner"></div>
+      </div>
+      <form id="send_cotizaction">
+        <input type="hidden" id="image_cotizar" value="<?php echo get_field("imagen_de_producto", $producto)["sizes"]["medium"] ?>">
+        <input type="hidden" id="url_cotizar" value=<?php echo get_permalink($producto) ?>>
+        <input type="hidden" id="name_cotizar" value="<?php echo $producto->post_title ?>">
+        <?php
+        if (mazal_is_language()) {
+          $namePh = "Nombres y apellidos";
+          $emailph = "Email";
+          $phonePh = "Teléfono";
+          $cityph = "Ciudad";
+          $messagePh = "Mensaje";
+          $buttonReq = "Cotizar";
+        } else {
+          $namePh = "Names and Lastname";
+          $emailph = "Email";
+          $phonePh = "Phone";
+          $cityph = "City";
+          $messagePh = "Message";
+          $buttonReq = "Request";
+        }
+        ?>
+        <div class="row">
+          <div class="col-12">
+            <div class="field">
+              <img style="width: 210px;" src="<?php echo get_field("imagen_de_producto", $producto)["sizes"]["medium"] ?>" alt="">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="field">
+              <input id="cotization_name" class="text light" placeholder="<?php echo $namePh ?>" type="text">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="field">
+              <input id="cotization_email" class="text light" placeholder="<?php echo $emailph ?>" type="text">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="field">
+              <input id="cotization_phone" class="text light" placeholder="<?php echo $phonePh ?>" type="number">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="field">
+              <input id="cotization_city" class="text light" placeholder="<?php echo $cityph ?>" type="text">
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="field">
+              <textarea id="cotization_message" rows="4" class="text light" placeholder="<?php echo $messagePh ?>" type="text"></textarea>
+            </div>
+            <div class="field">
+              <div id="cotizar_message" class="cotizar_message">
+                <?php
+                $mensajeError = "";
+                $mensajeSuccess = "";
+                if (mazal_is_language()) {
+                  $mensajeSuccess = "Mensaje enviado correctamente. Nos pondremos en contacto lo más pronto posible.";
+                  $mensajeError = "Debe completar todos los campos correctamente.";
+                } else {
+                  $mensajeError = "You must complete all fields correctly.";
+                  $mensajeSuccess = "Message send successfully. We will get in touch as soon as possible.";
+                }
+                ?>
+                <span class="cotizar_error"><?php echo $mensajeError ?></span>
+                <span class="cotizar_success"><?php echo $mensajeSuccess ?></span>
+              </div>
+
+              <button type="submit" id="button_cotizar_producto" href="https://mazal.co/en" class="button general_button">
+                <span data-title="<?php echo $buttonReq ?>"><?php echo $buttonReq ?></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
 </div>
 
 <?php get_footer(); ?>

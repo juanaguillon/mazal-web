@@ -27,6 +27,14 @@ $currentCategory = $currentObject;
 $ancest = get_ancestors($currentObject->term_id, "categoria", "taxonomy");
 $image = get_field("imagen", $currentObject);
 
+if (mazal_is_language("en")) {
+  $termES = pll_get_term($currentObject->term_id, "es");
+  $image = get_field("imagen", "categoria_" . $termES);
+} else {
+  $image = get_field("imagen", $currentObject);
+}
+
+
 /**
  * Verificar si es categoría #3
  */
