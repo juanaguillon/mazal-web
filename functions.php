@@ -12,40 +12,58 @@ function printcode($code)
 <?php
 }
 
-// /**
-//  * En el post type de producto, se añade un meta box personalizado, mostrando el arbon jerárquico de las categorías.
-//  */
-// function mazal_add_custom_metabox_in_product_tax()
-// {
-
-//   function mazal_product_tree_html($post)
-//   {
-//     $args = array(
-//       'taxonomy'     => 'categoria',
-//       'hierarchical' => true,
-//       'title_li'     => '',
-//       "echo" => false,
-//       'hide_empty'   => false
-//     );
-//     // list_cate
-//     printcode(wp_list_categories($args));
-//   }
-
-//   add_meta_box("mazal-product-tree", "Arbon de Categorías", "mazal_product_tree_html", "producto");
-// }
-
-// add_action('add_meta_boxes', 'mazal_add_custom_metabox_in_product_tax');
-
-
-function mazal_initi_config()
+/**
+ * Cuando se agregue un producto a favorite, se necesita actualizar la lista de los productos en el header.
+ * Esta función envia el html correspondiente.
+ */
+function mazal_ajax_get_favorite_products()
 {
-  register_nav_menus(array(
-    "hogar-menu" => "Menú Hogar",
-    "hogar-arquitectura" => "Menú Arquitectura",
-    "hogar-corporativo" => "Menú Corporativo",
-  ));
+  $productosFav = mazal_get_favorite_products()["posts"];
+  ?>
+  <?php foreach ($productosFav as $pr) : ?>
+    <li>
+      <a rel="nofollow" href="<?php echo get_permalink($pr) ?>">
+        <div class="single_favorite">
+          <div class="single_favorite_img">
+            <img src="<?php echo get_field("imagen_de_producto", $pr)["sizes"]["thumbnail"] ?>" alt="">
+          </div>
+          <div class="single_favorite_title">
+            <span><?php echo $pr->post_title ?></span>
+          </div>
+        </div>
+      </a>
+    </li>
+
+  <?php endforeach; ?>
+
+
+<?php
+  wp_die();
 }
-add_action("init", "mazal_initi_config");
+
+add_action("wp_ajax_get_favs", "mazal_ajax_get_favorite_products");
+add_action("wp_ajax_nopriv_get_favs", "mazal_ajax_get_favorite_products");
+
+
+function mazal_get_favorite_products()
+{
+  if (!isset($_COOKIE["productsmz"])) return array();
+
+  $str =  str_replace('\\', "", $_COOKIE["productsmz"]);
+  $str = str_replace("\"", "", $str);
+  $prds = explode(" ", $str);
+
+  $produyctos = new WP_Query(array(
+    "post_type" => "producto",
+    "post__in" => $prds
+  ));
+  $postProducts = $produyctos->posts;
+
+  return array(
+    "ids" => $prds,
+    "posts" => $postProducts
+  );
+}
 
 function mazal_theme_supports()
 {

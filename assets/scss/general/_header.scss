@@ -383,3 +383,43 @@ a.languages_toggle {
   font-size: 15px;
   padding-right: 0;
 }
+#icon_favorites {
+  position: relative;
+  &:hover #favorites_header{
+    display: block;
+  }
+}
+#favorites_header {
+  background: white;
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 270px;
+  box-shadow: 0 0 3px #00000038;
+  .single_favorite + .single_favorite {
+    border-top: 1px solid #eaeaea;
+  }
+  .single_favorite {
+    display: flex;
+    align-items: center;
+    padding: 6px;
+
+    &:hover {
+      background: #fbf7f2;
+    }
+  }
+
+  .single_favorite_img {
+    width: 35%;
+    img {
+      width: 80px;
+      height: 80px;
+    }
+  }
+  .single_favorite_title {
+    padding: 7px;
+    font-size: 15px;
+    width: 65%;
+  }
+}

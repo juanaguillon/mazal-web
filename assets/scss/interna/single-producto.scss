@@ -66,8 +66,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    img {
-      width: 28px;
+    i.icon-heart-o {
+      color: $chocolate;
+    }
+    i.icon-heart {
+      color: #8a0000;
+      display: none;
+    }
+    &.active {
+      i.icon-heart-o {
+        display: none;
+      }
+      i.icon-heart {
+        display: block;
+      }
+    }
+    i {
+      font-size: 28px;
     }
   }
   .share-whatsapp {
@@ -220,7 +235,7 @@
 .gallery-thumbs .swiper-slide-thumb-active {
   opacity: 1;
 }
-.item-swipper-gallery{
+.item-swipper-gallery {
   cursor: pointer;
 }
 #gallery_product_slick .slick-current .swiper-slide {
@@ -232,7 +247,7 @@
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  i{
+  i {
     font-size: 50px;
   }
 }
@@ -243,7 +258,7 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  i{
+  i {
     font-size: 50px;
   }
 }
