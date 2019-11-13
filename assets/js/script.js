@@ -3,7 +3,8 @@ var $document = $(document),
   desktopWidth = 996,
   tabletWidth = 768,
   mobileWidth = 548,
-  headerHeight = 70;
+  headerHeight = 70,
+  regexEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 /* Cambiar la clase para mostrar el menú en responsive
 /*/
 function toggleClassToMenuInResponse() {
@@ -55,28 +56,59 @@ function toggleDynamicDataFromNav() {
     outHover
   );
 }
+
 /**
  * Activar el modal de busqueda cuando se de click en el botón de buscar en el Header
  */
 function toggleTheModalToSearchInWebsite() {
-  var closeModal = function() {
-    $(".search_modal_form").removeClass("active");
+  var modals = {
+    productCotizar: {
+      containerSelector: "#modal_product_cotize",
+      buttonClose: "#modal_product_cotize .button_close_modal",
+      buttonOpen: "#open_modal_cotizar"
+    },
+    search: {
+      containerSelector: ".search_modal_form",
+      buttonOpen: "#icon_search",
+      buttonClose: ".search_modal_form .button.button.button-cuadro"
+    }
   };
-  $("#icon_search").click(function(e) {
-    $(".search_modal_form").addClass("active");
-    $(".search_modal_form .button.button.button-cuadro")
-      .off("click")
-      .click(closeModal);
-    $("body")
-      .off("keydown")
-      .keydown(function(event) {
-        if (event.type === "keydown") {
-          if (event.keyCode === 27) {
-            closeModal(event);
-          }
-        }
-      });
+  var search = modals.search;
+  $(search.buttonOpen).click(function(e) {
+    $(search.containerSelector).addClass("active");
   });
+  $(search.buttonClose)
+    .off("click")
+    .click(function() {
+      $(search.containerSelector).removeClass("active");
+    });
+
+  var product = modals.productCotizar;
+  $(product.buttonOpen).click(function(e) {
+    $(product.containerSelector).addClass("active");
+  });
+  $(product.buttonClose)
+    .off("click")
+    .click(function() {
+      $(product.containerSelector).removeClass("active");
+    });
+  $("body")
+    .off("keydown")
+    .keydown(function(event) {
+      if (event.type === "keydown") {
+        if (event.keyCode === 27) {
+          $("#modal_product_cotize, .search_modal_form").removeClass("active");
+        }
+      }
+    });
+
+  // for (var modal in modals) {
+  //   if (modals.hasOwnProperty(modal)) {
+  //     var modalObj = modals[modal];
+  //     // console.log(modalObj);
+  //     // $(modalObj.buttonOpen).unbind()
+  //   }
+  // }
 }
 /**
  * Cambiar el lenguaje la bandera de el actual idioma en el header.
@@ -86,6 +118,150 @@ function changeTheLanguageLabelInHeader() {
     $(this).toggleClass("spanish");
   });
 }
+
+/**
+ * Enviar el mail de contacto
+ */
+function sendContactMail() {
+  $("#contacto_form").submit(function(e) {
+    e.preventDefault();
+
+    var nombre = $("#contact_name").val();
+    var email = String($("#contact_email").val()).toLowerCase();
+    var phone = $("#contact_phone").val();
+    var city = $("#contact_city").val();
+    var message = $("#contact_message").val();
+    var canSend = true;
+    if (
+      city == "" ||
+      nombre == "" ||
+      email == "" ||
+      phone == "" ||
+      message == ""
+    ) {
+      canSend = false;
+    }
+    if (!regexEmail.test(email)) {
+      canSend = false;
+    }
+
+    if (!canSend) {
+      $("#contact_map_message").addClass("show");
+      $("#contact_map_message .contact_map_error").addClass("show");
+      $("#contact_map_message .contact_map_success").removeClass("show");
+    } else {
+      $("#loading_contact_map").addClass("show");
+
+      $.ajax({
+        // Puede ver mainURL en el archivo header.php
+        url: mailUrl,
+        method: "POST",
+        data: {
+          nombre: nombre,
+          email: email,
+          ciudad: city,
+          cell: phone,
+          mensaje: message,
+          // Verificar si está haciendo peticion de cotización.
+          // Esta se hará en la ficha de producto.
+          isRequest: false
+        },
+        success: function(resp) {
+          $("#contact_map_message").addClass("show");
+          $("#loading_contact_map").removeClass("show");
+          // console.log(resp);
+          if (resp == 1) {
+            $("#contact_map_message .contact_map_error").removeClass("show");
+            $("#contact_map_message .contact_map_success").addClass("show");
+          } else {
+            $("#contact_map_message .contact_map_error").text(
+              "Error al enviar mensaje, intente nuevamente."
+            );
+            $("#contact_map_message .contact_map_error").addClass("show");
+            $("#contact_map_message .contact_map_success").removeClass("show");
+          }
+
+          // alert("LISTO")
+          // console.log(resp);
+        }
+      });
+    }
+  });
+}
+
+function sendCotizarMail() {
+  $("#send_cotizaction").submit(function(e) {
+    e.preventDefault();
+
+    var nombre = $("#cotization_name").val();
+    var email = String($("#cotization_email").val()).toLowerCase();
+    var phone = $("#cotization_phone").val();
+    var city = $("#cotization_city").val();
+    var message = $("#cotization_message").val();
+    var urlCotizando = $("#url_cotizar").val();
+    var imgCotizando = $("#image_cotizar").val();
+    var nameCotizando = $("#name_cotizar").val();
+    var canSend = true;
+    if (
+      city == "" ||
+      nombre == "" ||
+      email == "" ||
+      phone == "" ||
+      message == ""
+    ) {
+      canSend = false;
+    }
+    if (!regexEmail.test(email)) {
+      canSend = false;
+    }
+
+    if (!canSend) {
+      $("#cotizar_message").addClass("show");
+      $("#cotizar_message .cotizar_error").addClass("show");
+      $("#cotizar_message .cotizar_success").removeClass("show");
+    } else {
+      $("#loading_cotizar").addClass("show");
+
+      $.ajax({
+        // Puede ver mainURL en el archivo header.php
+        url: mailUrl,
+        method: "POST",
+        data: {
+          nombre: nombre,
+          email: email,
+          ciudad: city,
+          cell: phone,
+          mensaje: message,
+          urlCotiza: urlCotizando,
+          nameCotiza: nameCotizando,
+          imgCotiza: imgCotizando,
+          // Verificar si está haciendo peticion de cotización.
+          // Esta se hará en la ficha de producto.
+          isRequest: true
+        },
+        success: function(resp) {
+          $("#cotizar_message").addClass("show");
+          $("#loading_cotizar").removeClass("show");
+          console.log(resp);
+          if (resp == 1) {
+            $("#cotizar_message .cotizar_error").removeClass("show");
+            $("#cotizar_message .cotizar_success").addClass("show");
+          } else {
+            $("#cotizar_message .cotizar_error").text(
+              "Error al enviar mensaje, intente nuevamente."
+            );
+            $("#cotizar_message .cotizar_error").addClass("show");
+            $("#cotizar_message .cotizar_success").removeClass("show");
+          }
+
+          // alert("LISTO")
+          // console.log(resp);
+        }
+      });
+    }
+  });
+}
+
 /* ========================= */
 /* FINAL GENERALES */
 /* ========================= */
@@ -257,26 +433,8 @@ function plugnsInit() {
     prevArrow: $("#banner_nav_prev"),
     nextArrow: $("#banner_nav_next")
   };
-  $(".galeria_photo_wrap, .galeria_principal_image > a").imagefill();
-  $(".bef_aft_image_photo").imagefill();
-  $(".dynamic_image_container").imagefill();
-  $(".portafolio_single_image").imagefill();
-  $(".single_linea_image").imagefill();
-  $(".bf_image_sized").imageCompare();
-  $(".clietes_list").slick(slickClientsOptions);
-  /*$(".bef_aft_images_gallery").slick(slickCompareOptions);*/
-  $("#section_banner_carousel").slick(slickBannerOptions);
-  $(".galeria_container").lightGallery({
-    selector: $("a.gallery_light"),
-    mode: "lg-fade",
-    download: false
-  });
-  new WOW({
-    mobile: false
-  }).init();
-}
-$(document).ready(function() {
-  $(".bef_aft_images_gallery").slick({
+
+  var slickBeforeAfer = {
     nextArrow: ".arrow_down",
     prevArrow: ".arrow_up",
     dots: false,
@@ -318,12 +476,57 @@ $(document).ready(function() {
           slidesToScroll: 1
         }
       }
-      // You can unslick at a given breakpoint now by adding:
-      // settings: "unslick"
-      // instead of a settings object
     ]
+  };
+
+  var slickProductSliderGallery = {
+    infinite: true,
+    arrows: false,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: false,
+    speed: 300,
+    asNavFor: "#gallery_product_slick"
+    // touchMove: false
+  };
+  var slickProductSliderThumb = {
+    infinite: true,
+    arrows: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: false,
+    speed: 300,
+    asNavFor: "#image_product_slick",
+    prevArrow: $(".swiper-button-prev"),
+    nextArrow: $(".swiper-button-next"),
+    centerMode: true,
+    focusOnSelect: true
+  };
+
+  $(".galeria_photo_wrap, .galeria_principal_image > a").imagefill();
+  $(".bef_aft_image_photo").imagefill();
+  $(".dynamic_image_container").imagefill();
+  $(".portafolio_single_image").imagefill();
+  $(".single_linea_image").imagefill();
+
+  $(".bf_image_sized").imageCompare();
+
+  $(".clietes_list").slick(slickClientsOptions);
+  $("#section_banner_carousel").slick(slickBannerOptions);
+  $(".bef_aft_images_gallery").slick(slickBeforeAfer);
+  $("#image_product_slick").slick(slickProductSliderGallery);
+  $("#gallery_product_slick").slick(slickProductSliderThumb);
+
+  $(".galeria_container").lightGallery({
+    selector: $("a.gallery_light"),
+    mode: "lg-fade",
+    download: false
   });
-});
+  new WOW({
+    mobile: false
+  }).init();
+}
+
 /* Final Inicializar Plugins */
 /** Cambiar imagen en antes y despues */
 function changeCurrentImageInBeforeAfter() {
@@ -423,6 +626,51 @@ function showWhatsappInSpecificHours() {
 }
 
 /**
+ * En la ficha de producto es posible agregar los productos a los favoritos.
+ */
+function addToFavorite() {
+  var setCookie = function(name, value) {
+    var cookie = [
+      name,
+      "=",
+      JSON.stringify(value),
+      "; domain=.",
+      window.location.host.toString(),
+      "; path=/;"
+    ].join("");
+    document.cookie = cookie;
+  };
+
+  var getCookie = function(name) {
+    var result = document.cookie.match(new RegExp(name + "=([^;]+)"));
+    result && (result = JSON.parse(result[1]));
+    console.log(result);
+    return result;
+  };
+  getCookie("xspp");
+
+  $(".add-love").click(function(e) {
+    e.preventDefault();
+    var idProd = $(this).data("fav");
+    var prodSaved = getCookie("productsmz");
+    var newProdsCookies = [];
+    if (prodSaved === null) {
+      newProdsCookies = [
+        {
+          prodid: idProd
+        }
+      ];
+    } else {
+      prodSaved.push({
+        prodid: idProd
+      });
+      newProdsCookies = prodSaved;
+    }
+    setCookie("productsmz", newProdsCookies);
+  });
+}
+
+/**
  * Agregar funcionalidad de pestañas ( Tabs )
  */
 function initTabs() {
@@ -451,7 +699,10 @@ $window.on("load", function() {
   activeTheLineInTheHeaderMenuInScrolling();
   makeScrollIfExistsTheQueryParam();
   showWhatsappInSpecificHours();
+  sendContactMail();
+  sendCotizarMail();
   initTabs();
+  addToFavorite();
 });
 $window.on("load resize", function() {
   makeHoverMoveInBanner();

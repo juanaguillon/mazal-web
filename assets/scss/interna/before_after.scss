@@ -17,7 +17,6 @@
 //   justify-content: center;
 // }
 
-
 .bef_aft_background {
   position: absolute;
   left: 0;
@@ -48,7 +47,7 @@
 
 .bef_aft_left_side,
 .bef_aft_right_side {
-  width: 50%;
+  width: 100%;
 }
 
 .bef_aft_descriptions_container > p {
@@ -57,15 +56,15 @@
   width: 85%;
 }
 
-.bef_aft_number {
-  font-size: 5rem;
-  width: 15%;
-  text-align: center;
-}
+// .bef_aft_number {
+//   font-size: 5rem;
+//   width: 15%;
+//   text-align: center;
+// }
 
 .bf_image_sized {
-  width: 85%;
-  height: 570px;
+  width: 88.5%;
+  height: 600px;
   margin: auto;
   position: relative;
 }
@@ -87,8 +86,8 @@
   //   width: 25%;
   // }
 
-  .bef_aft_image_photo{
-        margin: 0px 6px;
+  .bef_aft_image_photo {
+    margin: 0px 6px;
   }
 
   .bf_image_sized {
@@ -108,7 +107,6 @@
   //   height: 85px;
   //   width: 25%;
   // }
-
 }
 
 /* ====================  */

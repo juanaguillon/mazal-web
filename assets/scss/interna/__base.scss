@@ -57,3 +57,39 @@
 #banner_nav_next {
   right: 0;
 }
+
+@keyframes spinnerLoagin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.loading_container {
+  &.show {
+    display: flex;
+  }
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000cf;
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  .loading_spinner {
+    width: 60px;
+    animation-name: spinnerLoagin;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-duration: 2s;
+    border: 5px solid white;
+    height: 60px;
+    border-radius: 50%;
+    border-right-color: transparent;
+  }
+}

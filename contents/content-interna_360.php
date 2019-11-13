@@ -11,7 +11,12 @@
  */
 function mazal_simple_content($term, $in_right = true)
 {
-  $image =  get_field("imagen", $term);
+  if (mazal_is_language("en")) {
+    $termES = pll_get_term($term->term_id, "es");
+    $imageES = get_field("imagen", "categoria_" . $termES);
+  } else {
+    $imageES =  get_field("imagen", $term);
+  }
   $button = array(
     "link" => get_term_link($term),
     "text" => mazal_is_language() ? "Ver Más" : "See more"
@@ -19,7 +24,7 @@ function mazal_simple_content($term, $in_right = true)
 
   ?>
 
-  <section id="section_<?php echo $term->slug ?>" class="section_high tres60_section <?php if (!$in_right) echo "section_left" ?>" style="background-image: url(<?php echo $image["sizes"]["large"] ?>)">
+  <section id="section_<?php echo $term->slug ?>" class="section_high tres60_section <?php if (!$in_right) echo "section_left" ?>" style="background-image: url(<?php echo $imageES["sizes"]["large"] ?>)">
     <div class="container-fluid p-0 h-100">
       <div class="row no-gutters h-100">
         <div class="col-md-6 tres60_container wow fadeInDown <?php if ($in_right) echo "offset-md-6" ?>">
@@ -107,8 +112,17 @@ function mazal_subcat_content($taxonomy, $labelToLeft, $subcats)
               $colNumber = "col-4";
             }
             foreach ($subcats as $subcat) :
-              $minitext = get_field("minitexto", $subcat);
-              $imagen = get_field("imagen", $subcat);
+
+              // Mostrar el minitexto e images en español.
+              if (mazal_is_language("en")) {
+                $termES = pll_get_term($subcat->term_id, "es");
+                $imagen = get_field("imagen", "categoria_" . $termES);
+                $minitext = mazal_get_acf_field("minitexto_", "categoria_" . $termES);
+              } else {
+                $imagen = get_field("imagen", $subcat);
+                $minitext = mazal_get_acf_field("minitexto_", $subcat);
+              }
+
               $link = get_term_link($subcat);
               mazal_single_subcat($subcat->name, $minitext, $imagen["url"], $link, $colNumber);
             endforeach;
@@ -176,12 +190,14 @@ $categoriesArr = get_terms(array(
 foreach ($categoriesArr as $catID => $catVal) {
   $toRight = $catID % 2 === 0;
 
-  if (get_field("diseno_", $catVal)  === "Diseño simple") {
-    mazal_simple_content(
-      $catVal,
-      $toRight
-    );
-  } else {
+  $catDesign = $catVal;
+
+  // Se dificulta traducir el campo tipo de diseño de la taxonomia
+  // Se forza a obtener el termino y valores en español.
+  if (mazal_is_language("en")) {
+    $catDesign = get_term(pll_get_term($catVal->term_id, "es"));
+  }
+  if (get_field("diseno_", $catDesign)  === "Diseño con Subcategorías") {
     $childCats = get_terms(array(
       "parent" => $catVal->term_id,
       "taxonomy" => $catVal->taxonomy,
@@ -189,6 +205,11 @@ foreach ($categoriesArr as $catID => $catVal) {
       "number" => 4
     ));
     mazal_subcat_content($catVal, $toRight, $childCats);
+  } else {
+    mazal_simple_content(
+      $catVal,
+      $toRight
+    );
   }
 }
 

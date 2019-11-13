@@ -1,16 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo pll_current_language() ?>">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Mazal</title>
+  <title><?php wp_title("") ?> | Mazal</title>
   <link rel="icon" type="image/png" sizes="32x32" href="<?php bloginfo('template_url') ?>/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,600,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="<?php bloginfo('template_url') ?>/custom.min.css">
-
-
+  <?php
+  if (is_singular("producto")) :
+    $producto = get_queried_object(); ?>
+    <meta property="og:title" content="Mazal | <?php echo $producto->post_title ?>" />
+    <meta property="og:description" content="<?php echo $producto->post_content ?>" />
+    <meta property="og:url" content="<?php echo get_permalink($producto) ?>" />
+    <meta property="og:site_name" content="Mazal" />
+    <meta property="og:image" content="<?php echo get_field("imagen_de_producto",$producto)["sizes"]["medium"] ?>" />
+  <?php endif; ?>
+  <meta property="og:type" content="article" />
+  <meta property="fb:app_id" content="397559747817271">
+  <script>var mailUrl = "<?php echo get_template_directory_uri() . "/includes/envioform.php" ?>"</script>
 </head>
 
 <body class="<?php if (is_front_page()) echo "index_body_class" ?>">
@@ -65,17 +75,6 @@
               <?php
 
 
-                /** Theme location o slug-menu de el menú actual, dependerá de la página en donde se esté navegando */
-
-
-
-                // wp_nav_menu(array(
-                //   "theme_location" => $menu,
-                //   "walker" => new Mazal_Walker_Menu,
-                //   'items_wrap' => '%3$s',
-                //   "container" => ""
-                // ));
-
                 $maxParent = null;
                 $link = null;
 
@@ -126,6 +125,10 @@
                 } else {
                   $maxParent = new stdClass();
                   $maxParent->term_id = 0;
+
+                  // Obtener el home url en el lenguaje inverso
+                  $formULR = mazal_is_language() ? "en" : "es";
+                  $link = pll_home_url($formULR);
                 }
 
                 $directChilds = get_terms(array(
@@ -179,16 +182,21 @@
                   "contacto" => strtoupper(mazal_get_acf_field("contacto_titulo_")),
                 );
                 foreach ($ullist as $ulk => $ullnm) :
-
+                  $linkLI = $link;
                   if (is_tax("categoria")) {
-                    $link = "href='" . esc_url(get_permalink($linkSend) . "?section=" . $ulk)  . "'";
+                    $linkLI = "href='" . esc_url(get_permalink($linkSend) . "?section=" . $ulk)  . "'";
                   }
                   ?>
                 <li class="<?php echo $ulk ?>">
-                  <a <?php echo $link ?> class="text-white" data-scroll="<?php echo $ulk ?>"><?php echo $ullnm ?></a>
+                  <a <?php echo $linkLI ?> class="text-white" data-scroll="<?php echo $ulk ?>"><?php echo $ullnm ?></a>
                 </li>
               <?php endforeach;
-                if (!is_wp_error($link)) : ?>
+                if (!is_wp_error($link)) :
+                  // Debe tomar el get en caso que esté buscando en la web
+                  if (is_search()) {
+                    $link .= "?s=" . $_GET["s"];
+                  }
+                  ?>
                 <li class="languages_header">
                   <a rel="nofollow" href="<?php echo esc_attr($link); ?>">
                     <?php $isEs = mazal_is_language(); ?>
@@ -217,7 +225,7 @@
         </nav>
 
         <div class="search_modal_form">
-          <button class="button button-cuadro">x</button>
+          <button class="button button-cuadro button_abs">x</button>
           <div class="search_modal_form_wrap">
             <?php
               if ($isEs) {
@@ -227,6 +235,8 @@
               }
               $placeholder = get_field("campo_buscar_-_" . $suffix, "option");
               $search = get_field("boton_enviar_-_" . $suffix, "option");
+
+
               ?>
             <form action="<?php echo home_url() ?>">
               <div class="field">

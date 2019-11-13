@@ -75,14 +75,14 @@ function mazal_is_language($lang = "es")
 /**
  * Obtener los custom fields de ACF, dependiendo de el lengaje actual.
  */
-function mazal_get_acf_field($key)
+function mazal_get_acf_field($key, $post = "option")
 {
   if (mazal_is_language()) {
     $suffix = "-_es";
   } else {
     $suffix = "-_en";
   }
-  return get_field($key . $suffix, "option");
+  return get_field($key . $suffix, $post);
 }
 
 
@@ -97,7 +97,7 @@ function mazal_single_product($post, $filterClass = "")
   <div class="col-item <?php echo $filterClass ?>">
     <a href="<?php echo get_permalink($post); ?>">
       <div class="item">
-        <img src="<?php echo get_the_post_thumbnail_url($post, "medium") ?>" alt="">
+        <img src="<?php echo get_field("imagen_de_producto", $post)["sizes"]["medium"] ?>" alt="">
         <div class="item-content">
           <span class="item-nombre-proyecto"><?php echo wp_kses_post($post->post_title) ?></span>
         </div>

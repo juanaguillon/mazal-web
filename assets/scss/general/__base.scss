@@ -88,6 +88,16 @@ section h3 {
 .button.cuadro {
   padding: 10px 15px;
 }
+.button.button-cuadro {
+  color: white;
+  font-size: 30px;
+  font-family: "Quicksand";
+}
+.button.button_abs {
+  position: absolute;
+  top: 11%;
+  right: 5%;
+}
 
 .button.general_button {
   position: relative;
@@ -212,6 +222,76 @@ section h3 {
   background: #dab27c;
 } */
 
+.modal_mazal {
+  position: fixed;
+  z-index: 700;
+  top: 0;
+  width: 100%;
+  left: 0;
+  background: #000000f0;
+  backdrop-filter: blur(7px);
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  &.active {
+    display: flex;
+  }
+  .modal_bcontent {
+    padding: 9px 25px;
+    position: relative;
+  }
+  .modal_title {
+    background: $dorado;
+    padding: 15px 25px;
+    justify-content: space-between;
+    display: flex;
+    h4 {
+      margin: 0;
+      color: white;
+    }
+    span {
+      color: wheat !important;
+      font-size: 15px !important;
+      font-weight: bold;
+    }
+  }
+  .modal_container {
+    width: 100%;
+    max-width: 550px;
+    background: #f7f7f7;
+  }
+
+  #button_cotizar_producto span {
+    background-color: $dorado;
+    &:hover:after {
+      background-color: $chocolate;
+    }
+  }
+}
+
+#modal_product_cotize {
+  .icon-logo {
+    position: absolute;
+    left: 0;
+    font-size: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .field {
+    margin: 8px 0 !important;
+  }
+  .modal_title_left {
+    width: 92%;
+    text-align: right;
+    position: relative;
+  }
+  .button_close_modal {
+    padding: 0 !important;
+    font-weight: bold;
+  }
+}
+
 form {
   .field {
     margin: 0.8em 0;
@@ -228,6 +308,17 @@ form {
       border: 2px solid #ffffff99;
       outline: none;
       font-family: "QuickSand";
+      &.light {
+        border: 2px solid #8e7b66;
+        color: #000;
+        &::placeholder,
+        &::-ms-input-placeholder,
+        &::-ms-input-placeholder {
+          color: rgb(63, 63, 63);
+          opacity: 0.7; /* Firefox */
+          font-family: "QuickSand";
+        }
+      }
 
       &::placeholder,
       &::-ms-input-placeholder,
