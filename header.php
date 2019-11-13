@@ -16,11 +16,14 @@
     <meta property="og:description" content="<?php echo $producto->post_content ?>" />
     <meta property="og:url" content="<?php echo get_permalink($producto) ?>" />
     <meta property="og:site_name" content="Mazal" />
-    <meta property="og:image" content="<?php echo get_field("imagen_de_producto",$producto)["sizes"]["medium"] ?>" />
+    <meta property="og:image" content="<?php echo get_field("imagen_de_producto", $producto)["sizes"]["medium"] ?>" />
   <?php endif; ?>
   <meta property="og:type" content="article" />
   <meta property="fb:app_id" content="397559747817271">
-  <script>var mailUrl = "<?php echo get_template_directory_uri() . "/includes/envioform.php" ?>"</script>
+  <script>
+    var mailUrl = "<?php echo get_template_directory_uri() . "/includes/envioform.php" ?>"
+    var ajaxUrl = "<?php echo admin_url("admin-ajax.php") ?>"
+  </script>
 </head>
 
 <body class="<?php if (is_front_page()) echo "index_body_class" ?>">
@@ -215,6 +218,34 @@
             </ul>
             <button id="icon_search" class="button">
               <i class="icon-search text-white hover-white"></i>
+            </button>
+            <button id="icon_favorites" class="button">
+              <i class="icon-heart text-white hover-white"></i>
+              <?php $productsFav = mazal_get_favorite_products();
+                if ($productsFav && count($productsFav["posts"]) > 0) :
+                  ?>
+                <div id="favorites_header">
+                  <ul id="favorites_ul_header">
+                    <?php foreach ($productsFav["posts"] as $pr) : ?>
+                      <li>
+                        <a rel="nofollow" href="<?php echo get_permalink($pr) ?>">
+                          <div class="single_favorite">
+                            <div class="single_favorite_img">
+                              <img src="<?php echo get_field("imagen_de_producto", $pr)["sizes"]["thumbnail"] ?>" alt="">
+                            </div>
+                            <div class="single_favorite_title">
+                              <span><?php echo $pr->post_title ?></span>
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+                    <?php endforeach; ?>
+                  </ul>
+                </div>
+              <?php
+                endif;
+                ?>
+
             </button>
             <button id="icon_bars" class="button">
               <i class="text-white icon-bars hover-white"></i>

@@ -644,29 +644,44 @@ function addToFavorite() {
   var getCookie = function(name) {
     var result = document.cookie.match(new RegExp(name + "=([^;]+)"));
     result && (result = JSON.parse(result[1]));
-    console.log(result);
     return result;
   };
-  getCookie("xspp");
 
   $(".add-love").click(function(e) {
     e.preventDefault();
     var idProd = $(this).data("fav");
     var prodSaved = getCookie("productsmz");
-    var newProdsCookies = [];
-    if (prodSaved === null) {
-      newProdsCookies = [
-        {
-          prodid: idProd
-        }
-      ];
+    var newProdsCookies = null;
+    /**
+     * Será activo en caso que se de click en el producto que está añadido a favoritos.
+     */
+    if ($(this).hasClass("active")) {
+      newProdsCookies = prodSaved
+        .toString() // Pasar a string en caso que sea un número
+        .replace(idProd, "") // Buscar el id de producto actual
+        .trim(); // Eliminar espacios inncesarios.
     } else {
-      prodSaved.push({
-        prodid: idProd
-      });
-      newProdsCookies = prodSaved;
+      if (prodSaved === null || prodSaved === "") {
+        newProdsCookies = idProd.toString();
+      } else {
+        prodSaved += " " + idProd;
+        newProdsCookies = prodSaved;
+      }
     }
+
     setCookie("productsmz", newProdsCookies);
+
+    $.ajax({
+      url: ajaxUrl,
+      data: {
+        action: "get_favs"
+      },
+      success: function(res) {
+        $("#favorites_ul_header").html(res);
+      }
+    });
+
+    $(this).toggleClass("active");
   });
 }
 

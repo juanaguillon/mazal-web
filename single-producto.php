@@ -1,7 +1,4 @@
-<?php
-printcode( json_decode($_COOKIE["productsmz"])  )
- ?>
-
+<?php $producst = mazal_get_favorite_products();  ?>
 <?php get_header(); ?>
 
 
@@ -193,7 +190,16 @@ $producto = get_queried_object();
                 <?php endif; ?>
               </span>
             </button>
-            <a href="#" class="add-love" data-fav="<?php echo $producto->ID ?>"><img src="http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/favorite.svg" alt=""></a>
+            <?php
+            $classNameLove = "";
+            if (in_array($producto->ID, $producst["ids"])) {
+              $classNameLove = " active";
+            }
+            ?>
+            <a href="#" class="add-love <?php echo $classNameLove ?>" data-fav="<?php echo $producto->ID ?>">
+              <i class="icon-heart-o"></i>
+              <i class="icon-heart"></i>
+            </a>
           </div>
 
           <div class="compartir-area">
