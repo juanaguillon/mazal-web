@@ -22,6 +22,7 @@
   <meta property="fb:app_id" content="397559747817271">
   <script>
     var mailUrl = "<?php echo get_template_directory_uri() . "/includes/envioform.php" ?>"
+    var chimpUrl = "<?php echo get_template_directory_uri() . "/includes/addmailchimpmail.php" ?>"
     var ajaxUrl = "<?php echo admin_url("admin-ajax.php") ?>"
   </script>
 </head>

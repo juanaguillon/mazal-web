@@ -245,9 +245,29 @@ $producto = get_queried_object();
           <?php endif; ?>
 
         </div>
-        <div class=" col-md-5 form-suscription">
-          <input type="text" placeholder="someexampleemail@gmail.com">
-          <input type="submit" placeholder="Enviar">
+        <div class=" col-md-5 ">
+          <div class="form-suscription">
+            <input id="text_mailchimp_sub" type="text" placeholder="someexampleemail@gmail.com">
+            <?php if (mazal_is_language()) : ?>
+
+              <input id="send_mailchimp_sub" type="submit" value="Enviar">
+            <?php else : ?>
+
+              <input id="send_mailchimp_sub" type="submit" value="Send">
+            <?php endif; ?>
+
+          </div>
+          <div class="mailchimp_message">
+            <?php if (mazal_is_language()) : ?>
+              <p class="message-danger">Error, intente nuevamente.</p>
+              <p class="message-success">Gracias por subscribirse.</p>
+            <?php else : ?>
+              <p class="message-danger">Error, try again.</p>
+              <p class="message-success">Thanks for subscribe</p>
+
+            <?php endif; ?>
+          </div>
+
         </div>
       </div>
     </div>
