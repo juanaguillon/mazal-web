@@ -686,6 +686,38 @@ function addToFavorite() {
 }
 
 /**
+ * En la ficha de producto, se puede enviar el formulario de subsripción a MailChimp
+ */
+function sendSubscribeForm() {
+  var text = $("#text_mailchimp_sub");
+  var button = $("#send_mailchimp_sub");
+
+  button.click(function(e) {
+    $(this).attr("disabled", "disabled")
+    $.ajax({
+      url: chimpUrl,
+      method: "POST",
+      data: {
+        mail_subscribed: true,
+        mailchimp_text: text.val()
+      },
+      success: function(data) {
+        console.log(data)
+        if (data == "200") {
+
+          $(".mailchimp_message .message-danger").removeClass("show");
+          $(".mailchimp_message .message-success").addClass("show");
+        } else {
+          $(".mailchimp_message .message-danger").addClass("show");
+          $(".mailchimp_message .message-success").removeClass("show");
+        }
+        $(this).removeAttr("disabled");
+      }
+    });
+  });
+}
+
+/**
  * Agregar funcionalidad de pestañas ( Tabs )
  */
 function initTabs() {
@@ -718,6 +750,7 @@ $window.on("load", function() {
   sendCotizarMail();
   initTabs();
   addToFavorite();
+  sendSubscribeForm();
 });
 $window.on("load resize", function() {
   makeHoverMoveInBanner();
