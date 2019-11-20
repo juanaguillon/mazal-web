@@ -46,11 +46,28 @@
   }
 }
 
+.mailchimp_message {
+  p {
+    font-weight: bold;
+    font-size: 18px;
+    display: none;
+    &.show{
+      display: block;
+    }
+  }
+  .message-danger {
+    color: #ffc4c4;
+  }
+  .message-success {
+    color: #c9ffc4;
+  }
+}
+
 .item-view {
   margin-top: 50px;
 }
 
-.item-information {
+.item-information { 
   max-width: 530px;
 }
 
