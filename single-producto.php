@@ -57,12 +57,10 @@ $producto = get_queried_object();
             if ($galeria && count($galeria) > 0) :
               foreach ($galeria as $imgGall) :
                 ?>
-
                 <div class="swiper-slide item-swipper-image" style="background-image:url(<?php echo $imgGall["sizes"]["large"] ?>)">
                   <div class="swiper-zoom-container" data-swiper-zoom="5">
                   </div>
                 </div>
-
             <?php
               endforeach;
             endif;
@@ -192,7 +190,7 @@ $producto = get_queried_object();
             </button>
             <?php
             $classNameLove = "";
-            if (in_array($producto->ID, $producst["ids"])) {
+            if (isset($producst["ids"]) && in_array($producto->ID, $producst["ids"])) {
               $classNameLove = " active";
             }
             ?>
