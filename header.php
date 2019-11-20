@@ -219,12 +219,15 @@
             <button id="icon_search" class="button">
               <i class="icon-search text-white hover-white"></i>
             </button>
+
             <button id="icon_favorites" class="button">
-              <i class="icon-heart text-white hover-white"></i>
-              <?php $productsFav = mazal_get_favorite_products();
-                if ($productsFav && count($productsFav["posts"]) > 0) :
-                  ?>
-                <div id="favorites_header">
+              <?php
+                $productsFav = mazal_get_favorite_products();
+                $hasFavs = $productsFav && count($productsFav["posts"]) > 0;
+                ?>
+              <i class="icon-heart<?php echo !$hasFavs ? "-o" : "" ?> text-white hover-white"></i>
+              <div id="favorites_header">
+                <?php if ($hasFavs) : ?>
                   <ul id="favorites_ul_header">
                     <?php foreach ($productsFav["posts"] as $pr) : ?>
                       <li>
@@ -241,11 +244,10 @@
                       </li>
                     <?php endforeach; ?>
                   </ul>
-                </div>
-              <?php
-                endif;
-                ?>
-
+                <?php
+                  endif;
+                  ?>
+              </div>
             </button>
             <button id="icon_bars" class="button">
               <i class="text-white icon-bars hover-white"></i>

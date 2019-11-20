@@ -630,13 +630,20 @@ function showWhatsappInSpecificHours() {
  */
 function addToFavorite() {
   var setCookie = function(name, value) {
+    var d = new Date();
+    var year = d.getFullYear();
+    var month = d.getMonth();
+    var day = d.getDate();
+    var c = new Date(year + 1, month, day);
+
     var cookie = [
       name,
       "=",
       JSON.stringify(value),
       "; domain=.",
       window.location.host.toString(),
-      "; path=/;"
+      "; path=/; expires=",
+      c
     ].join("");
     document.cookie = cookie;
   };
@@ -677,7 +684,7 @@ function addToFavorite() {
         action: "get_favs"
       },
       success: function(res) {
-        $("#favorites_ul_header").html(res);
+        $("#icon_favorites").html(res);
       }
     });
 

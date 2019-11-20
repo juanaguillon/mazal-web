@@ -18,25 +18,32 @@ function printcode($code)
  */
 function mazal_ajax_get_favorite_products()
 {
-  $productosFav = mazal_get_favorite_products()["posts"];
+  $productsFav = mazal_get_favorite_products();
+  $hasFavs = $productsFav && count($productsFav["posts"]) > 0;
   ?>
-  <?php foreach ($productosFav as $pr) : ?>
-    <li>
-      <a rel="nofollow" href="<?php echo get_permalink($pr) ?>">
-        <div class="single_favorite">
-          <div class="single_favorite_img">
-            <img src="<?php echo get_field("imagen_de_producto", $pr)["sizes"]["thumbnail"] ?>" alt="">
-          </div>
-          <div class="single_favorite_title">
-            <span><?php echo $pr->post_title ?></span>
-          </div>
-        </div>
-      </a>
-    </li>
-
-  <?php endforeach; ?>
-
-
+  <i class="icon-heart<?php echo !$hasFavs ? "-o" : "" ?> text-white hover-white"></i>
+  <div id="favorites_header">
+    <?php if ($hasFavs) : ?>
+      <ul id="favorites_ul_header">
+        <?php foreach ($productsFav["posts"] as $pr) : ?>
+          <li>
+            <a rel="nofollow" href="<?php echo get_permalink($pr) ?>">
+              <div class="single_favorite">
+                <div class="single_favorite_img">
+                  <img src="<?php echo get_field("imagen_de_producto", $pr)["sizes"]["thumbnail"] ?>" alt="">
+                </div>
+                <div class="single_favorite_title">
+                  <span><?php echo $pr->post_title ?></span>
+                </div>
+              </div>
+            </a>
+          </li>
+        <?php endforeach; ?>
+      </ul>
+    <?php
+      endif;
+      ?>
+  </div>
 <?php
   wp_die();
 }
@@ -190,8 +197,10 @@ function mazal_single_product($post, $filterClass = "")
         "material" => $materialTerms,
         "categoria" => $categoriaTerms
       );
-      foreach ($materialTerms as $mterm) {
-        $materiales[$mterm->slug] = $mterm;
+      if ($materialTerms &&  count($materialTerms) > 0) {
+        foreach ($materialTerms as $mterm) {
+          $materiales[$mterm->slug] = $mterm;
+        }
       }
     }
     ?>
@@ -277,9 +286,12 @@ function mazal_single_product($post, $filterClass = "")
       foreach ($reposts as $post) {
         $wpPost = $post["post"];
         $filterString = "";
-        foreach ($post["material"] as $mat) {
-          $filterString .= " {$mat->slug}";
+        if ($post["material"] &&  count($post["material"]) > 0) {
+          foreach ($post["material"] as $mat) {
+            $filterString .= " {$mat->slug}";
+          }
         }
+
         foreach ($post["categoria"] as $cat) {
           $filterString .= " {$cat->slug}";
         }
