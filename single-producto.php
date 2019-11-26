@@ -13,7 +13,7 @@ $producto = get_queried_object();
 
     <div class="direccion-pagina">
       <div class="direccion-back">
-        <a href="" class="button fill-button add">
+        <a href="<?= $_SERVER['HTTP_REFERER']; ?>" class="button fill-button add">
           <i class="icon-arrow_left"></i>
         </a>
       </div>
@@ -255,6 +255,10 @@ $producto = get_queried_object();
 
               <input id="send_mailchimp_sub" type="submit" value="Send">
             <?php endif; ?>
+
+            <div class="loading_container" id="loading_contact_subscribe">
+              <div class="loading_spinner"></div>
+            </div>
 
           </div>
           <div class="mailchimp_message">

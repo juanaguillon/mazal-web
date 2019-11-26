@@ -66,13 +66,13 @@ try {
     $mail->Timeout = 30;
     $visitante->Timeout = 30;
 
-    $mail->AddAddress("juanaguilloncar@gmail.com");
+    // $mail->AddCC("sebastian.camacho@mazal.co");
+    // $mail->AddCC("silvana.camacho@mazal.co");
+    $mail->AddCC("juanaguilloncar@gmail.com");
     $visitante->AddAddress($email);
 
     $mail->IsHTML(true);
     $visitante->IsHTML(true);
-
-
 
     if ($isReq) {
       $mail->Subject = "Nueva cotizacion Mazal";
