@@ -30,6 +30,7 @@
 .bef_aft_image_photo {
   // overflow: hidden;
   height: 75px;
+  position: relative;
   // margin: 0.5rem;
   cursor: pointer;
   &:hover {
@@ -103,10 +104,10 @@
   }
 }
 @media #{$mobile_query} {
-  // .bef_aft_image_photo {
-  //   height: 85px;
-  //   width: 25%;
-  // }
+  .bf_image_sized {
+    width: 100%;
+    height: 220px;
+  }
 }
 
 /* ====================  */
