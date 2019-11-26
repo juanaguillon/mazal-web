@@ -167,6 +167,7 @@ function sendContactMail() {
           isRequest: false
         },
         success: function(resp) {
+          console.log(resp);
           $("#contact_map_message").addClass("show");
           $("#loading_contact_map").removeClass("show");
           // console.log(resp);
