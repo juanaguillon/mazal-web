@@ -91,7 +91,7 @@ function mazal_subcat_content($taxonomy, $labelToLeft, $subcats)
   ?>
   <section id="section_<?php echo $taxonomy->slug ?>" class="section_high">
     <div class="container-fluid p-0">
-      <div class="lineas_container">
+      <div class="lineas_container <?= ! $labelToLeft ? "lefting" : "" ?>">
         <?php if ($labelToLeft) {
             $classContainer = "row_linea_container_left";
           } else {
@@ -104,12 +104,12 @@ function mazal_subcat_content($taxonomy, $labelToLeft, $subcats)
         <?php endif; ?>
         <div class="row no-gutters h-100 <?= $classContainer ?>">
           <?php
-            $colNumber = "col-3";
+            $colNumber = "col-md-3";
             $countSub = count($subcats);
             if ($countSub == 1 || $countSub == 2) {
-              $colNumber = "col-6";
+              $colNumber = "col-md-6";
             } else if ($countSub == 3) {
-              $colNumber = "col-4";
+              $colNumber = "col-md-4";
             }
             foreach ($subcats as $subcat) :
 

@@ -66,7 +66,7 @@
     font-size: 28px;
     padding-right: 40px;
   }
-  
+
   .portafolio_show_more_wrap {
     height: 315px;
   }
@@ -94,7 +94,7 @@
   .portafolio_single_image_context {
     transform: translateY(0%);
   }
-  
+
   #contacto_form {
     padding-left: 5em;
   }
@@ -145,6 +145,11 @@
   }
   .lineas_container {
     height: auto;
+    display: flex;
+    flex-direction: column;
+    &.lefting{
+      flex-direction: column-reverse;
+    }
   }
   .single_linea_wrapper {
     height: calc(50vh - 25px);
@@ -177,7 +182,7 @@
     width: 75%;
     margin: auto;
   }
-  
+
   #mapFoot {
     height: 70vh;
   }
@@ -206,7 +211,7 @@
   .bef_aft_right_side {
     width: 100%;
   }
-  
+
   .portafolio_button {
     left: 1.6em;
   }
