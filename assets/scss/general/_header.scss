@@ -384,10 +384,15 @@ a.languages_toggle {
   padding-right: 0;
 }
 #icon_favorites {
+  
   position: relative;
-  &:hover #favorites_header{
+  &:hover #favorites_header {
     display: block;
   }
+}
+#favorites_ul_header {
+  max-height: 200px;
+  overflow: auto;
 }
 #favorites_header {
   background: white;

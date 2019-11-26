@@ -1,9 +1,77 @@
 <?php
 
 
+
+function senMailChimpMail($emaoil)
+{
+  $imagen_respuesta = "http://mazal.co/wp-content/themes/mazal/images/icons/logo-mazal-respuesta.png";
+  $imgWidth = 280;
+  $imgHeigt = 79;
+  $nombre_sitio = "Mazal";
+
+
+  require "./includes/class.phpmailer.php";
+  $mail = new phpmailer();
+  $mail->PluginDir = "includes/";
+  $mail->IsSMTP();
+  $mail->SMTPAuth = true;
+
+  $mail->Host = "mail.mazal.co";
+  $mail->Username = "info@mazal.co";
+  $mail->Password = "Intuition1234%";
+  $mail->Port = 587;
+
+  $mail->From = "info@mazal.co";
+  $mail->FromName = $nombre_sitio;
+
+  $mail->AddCC($emaoil);
+
+  $mail->IsHTML(true);
+  $mail->CharSet = 'UTF-8';
+  $mail->Subject = "Mazal Suscrito correctamente";
+  ob_start();
+  ?>
+  <table width="500" align="center" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="500" height="56" valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="268" valign="top">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="<?php echo $imgWidth ?>" height=" <?php echo $imgHeigt ?>" valign="top" align="center"><img src="<?php echo $imagen_respuesta;  ?>" width=" <?php echo $imgWidth ?>" height="<?php echo $imgHeigt ?>" />
+              <br><br>
+              <p>Gracias por suscribirse a Mazal Diseño Interior & Arquitectura</p>
+
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+<?php
+  $mensajes = ob_get_contents();
+  ob_clean();
+
+  $mail->Body = $mensajes;
+  $exito = $mail->Send();
+  $intentos = 1;
+  while ((!$exito) && ($intentos < 5)) {
+    $exito = $mail->Send();
+    $intentos = $intentos + 1;
+  }
+  if (!$exito) {
+    echo "0";
+  } else {
+    echo "1";
+  }
+}
+
+
 function syncMailchimp($data)
 {
-  $apiKey = 'f717e3741b5912e763cc48828c621ec4-us4';
+  include_once "./config.php";
+  $apiKey = $config["mailchimpkey"];
   $listId = 'c4378c16ba';
 
   $memberId = md5(strtolower($data['email']));
@@ -13,10 +81,6 @@ function syncMailchimp($data)
   $json = json_encode([
     'email_address' => $data['email'],
     'status'        => $data['status'], // "subscribed","unsubscribed","cleaned","pending"
-    // 'merge_fields'  => [
-    //   // 'FNAME'     => $data['firstname'],
-    //   // 'LNAME'     => $data['lastname']
-    // ]
   ]);
 
   $ch = curl_init($url);
@@ -43,5 +107,11 @@ if (isset($_POST["mail_subscribed"])) {
     'status'    => 'subscribed',
   ];
 
-  print_r(syncMailchimp($data));
+  $returned = syncMailchimp($data);
+
+  if ($returned == "200") {
+    senMailChimpMail($data["email"]);
+  } else {
+    echo $returned;
+  }
 }

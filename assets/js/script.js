@@ -499,7 +499,7 @@ function plugnsInit() {
     asNavFor: "#image_product_slick",
     prevArrow: $(".swiper-button-prev"),
     nextArrow: $(".swiper-button-next"),
-    centerMode: true,
+    // centerMode: true,
     focusOnSelect: true
   };
 
@@ -508,6 +508,7 @@ function plugnsInit() {
   $(".dynamic_image_container").imagefill();
   $(".portafolio_single_image").imagefill();
   $(".single_linea_image").imagefill();
+  $(".col-item .item").imagefill();
 
   $(".bf_image_sized").imageCompare();
 
@@ -698,8 +699,8 @@ function addToFavorite() {
 function sendSubscribeForm() {
   var text = $("#text_mailchimp_sub");
   var button = $("#send_mailchimp_sub");
-
   button.click(function(e) {
+    $("#loading_contact_subscribe").addClass("show")
     $(this).attr("disabled", "disabled")
     $.ajax({
       url: chimpUrl,
@@ -710,7 +711,7 @@ function sendSubscribeForm() {
       },
       success: function(data) {
         console.log(data)
-        if (data == "200") {
+        if (data == "1") {
 
           $(".mailchimp_message .message-danger").removeClass("show");
           $(".mailchimp_message .message-success").addClass("show");
@@ -718,6 +719,7 @@ function sendSubscribeForm() {
           $(".mailchimp_message .message-danger").addClass("show");
           $(".mailchimp_message .message-success").removeClass("show");
         }
+        $("#loading_contact_subscribe").removeClass("show");
         $(this).removeAttr("disabled");
       }
     });
