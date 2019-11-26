@@ -468,14 +468,14 @@ function plugnsInit() {
           slidesToScroll: 1
         }
       },
-      {
-        breakpoint: 480,
-        settings: {
-          vertical: false,
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
+      // {
+      //   breakpoint: 480,
+      //   settings: {
+      //     vertical: false,
+      //     slidesToShow: 1,
+      //     slidesToScroll: 1
+      //   }
+      // }
     ]
   };
 

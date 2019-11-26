@@ -57,7 +57,7 @@ $producto = get_queried_object();
             if ($galeria && count($galeria) > 0) :
               foreach ($galeria as $imgGall) :
                 ?>
-                <div class="swiper-slide item-swipper-image" style="background-image:url(<?php echo $imgGall["sizes"]["large"] ?>)">
+                <div class="swiper-slide item-swipper-image" style="background-image:url(<?php echo $imgGall["sizes"]["medium_large"] ?>)">
                   <div class="swiper-zoom-container" data-swiper-zoom="5">
                   </div>
                 </div>
@@ -97,7 +97,7 @@ $producto = get_queried_object();
             if ($galeria && count($galeria) > 0) :
               foreach ($galeria as $imgGall) :
                 ?>
-                <div class="swiper-slide item-swipper-gallery" style="background-image:url(<?php echo $imgGall["sizes"]["large"] ?>)"></div>
+                <div class="swiper-slide item-swipper-gallery" style="background-image:url(<?php echo $imgGall["sizes"]["medium_large"] ?>)"></div>
             <?php
               endforeach;
             endif;
