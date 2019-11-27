@@ -3,8 +3,7 @@
 
 /* Mobiliario */
 
-#mobiliario:not(.filtrado)
-{
+#mobiliario:not(.filtrado) {
   height: 100%;
   left: 0;
   position: fixed;
@@ -477,6 +476,10 @@
 
 .menu_banner_right > li {
   padding: 3vh 10px;
+  img {
+    max-width: 18px;
+    max-height: 18px;
+  }
 }
 .mini_logo {
   height: 80px;
@@ -555,14 +558,14 @@
 }
 
 #mobiliario_popup .popup_left {
-  &:hover img{
+  &:hover img {
     opacity: 0.9;
     transition: all ease 0.5s;
     transform: scale(1.1);
   }
-  &:hover h3{
-     background: rgba(0,0,0,0.25);
-     transition: all ease 0.5s;
+  &:hover h3 {
+    background: rgba(0, 0, 0, 0.25);
+    transition: all ease 0.5s;
   }
   align-content: center;
   justify-content: center;
@@ -583,13 +586,13 @@
     transition: all ease 0.5s;
     transform: scale(1);
   }
-  h3{
+  h3 {
     align-self: center;
     transition: all ease 0.5s;
   }
 }
-#mobiliario_popup h3{
-  background: rgba(0,0,0,0.15);
+#mobiliario_popup h3 {
+  background: rgba(0, 0, 0, 0.15);
   border: 1.5px solid #fff;
   font-family: $font3;
   margin: auto;
@@ -604,17 +607,16 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
 }
 #mobiliario_popup .popup_right {
-  &:hover img{
+  &:hover img {
     opacity: 0.9;
     transition: all ease 0.5s;
     transform: scale(1.1);
   }
-  &:hover h3{
-     background: rgba(0,0,0,0.25);
-     transition: all ease 0.5s;
+  &:hover h3 {
+    background: rgba(0, 0, 0, 0.25);
+    transition: all ease 0.5s;
   }
   justify-content: center;
   width: 50%;
@@ -624,7 +626,7 @@
   align-items: flex-end;
   overflow: hidden;
   position: relative;
-   transition: all ease 0.5s;
+  transition: all ease 0.5s;
   img {
     height: 100%;
     opacity: 0.75;
@@ -636,7 +638,7 @@
     transition: all ease 0.4s;
     transform: scale(1);
   }
-  h3{
+  h3 {
     align-self: center;
     transition: all ease 0.5s;
   }
@@ -710,11 +712,11 @@
     transform: scale(1, 1);
   }
 }
-.screen_black{
-  background: rgba(0,0,0,0.25);
-  height:100%;
+.screen_black {
+  background: rgba(0, 0, 0, 0.25);
+  height: 100%;
   left: 0;
-  position:absolute;
+  position: absolute;
   top: 0;
   width: 100%;
   z-index: 2;

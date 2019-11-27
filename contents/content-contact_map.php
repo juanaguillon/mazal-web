@@ -52,10 +52,12 @@
             </div>
           </form>
           <ul class="contact_social">
-            <li><a target="_blank" href="https://www.facebook.com/MAZAL-Arquitectura-Dise%C3%B1o-Interior-2072804912955149/"> <i class="text-white icon-facebook hover-white"></i></a></li>
-            <li><a target="_blank" href="https://www.instagram.com/mazal_mobiliario_disenoint/?hl=es-la"> <i class="text-white icon-instagram hover-white"></i></a></li>
-            <li><a target="_blank" href="https://www.houzz.com/pro/sebastian-camacho/mazal-diseno-interior-and-arquitectura"> <i class="text-white icon-houzz hover-white"></i></a></li>
-            <li id="whatsapp_contact"><a id="whatsapp_contact"><a href="https://wa.me/573108613043?text=Hola, estoy interesad@ en los productos de mazal." target="_blank"> <i class="text-white icon-whatsapp hover-white"></i></a></li>
+
+            <?php
+            foreach (get_field("redes_sociales", "option") as $social) : ?>
+              <li><a target="_blank" href="<?= $social["url"] ?>"><img src="<?= $social["icono"]["url"] ?>" alt=""></a></li>
+            <?php endforeach; ?>
+
           </ul>
         </div>
 
@@ -212,7 +214,7 @@
           });
         }
       </script>
-      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZ3yCG6_GLgMsCtkrHklPn9EwUhkGHOJM&callback=initMap"></script>
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvsMTc7o7m8nBMjvMvl_Y_A5y0B3pawmc&callback=initMap"></script>
     </div>
   </div>
 </section>

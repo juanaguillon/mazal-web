@@ -20,7 +20,6 @@
   align-items: end;
   justify-content: center;
   z-index: 10;
-  background: rgba(0, 0, 0, 0.342);
 
   h3 {
     font-size: 55px;
@@ -30,6 +29,11 @@
     margin: 20px 0px;
     max-width: 540px;
   }
+}
+
+.banner_caption_inner {
+  padding: 25px;
+  background: #00000094;
 }
 
 .banner_image img {

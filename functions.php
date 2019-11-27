@@ -372,3 +372,15 @@ function mazal_is_corporativo_page()
 {
   return is_page(25) || is_page(31);
 }
+
+//add SVG to allowed file uploads
+function add_file_types_to_uploads($file_types)
+{
+
+  $new_filetypes = array();
+  $new_filetypes['svg'] = 'image/svg+xml';
+  $file_types = array_merge($file_types, $new_filetypes);
+
+  return $file_types;
+}
+add_action('upload_mimes', 'add_file_types_to_uploads');

@@ -48,7 +48,7 @@ $producto = get_queried_object();
       <div class="col-md-7">
         <div class="swiper-container gallery-top">
           <div class="swiper-wrapper" id="image_product_slick">
-            <div class="swiper-slide item-swipper-image" style="background-image:url(<?php echo get_field("imagen_de_producto", $producto)["sizes"]["large"] ?>)">
+            <div data-src="<?= get_field("imagen_de_producto", $producto)["original_image"]["url"] ?>" class="item_image_product swiper-slide item-swipper-image" style="background-image:url(<?php echo get_field("imagen_de_producto", $producto)["sizes"]["large"] ?>)">
               <div class="swiper-zoom-container" data-swiper-zoom="5">
               </div>
             </div>
@@ -57,7 +57,7 @@ $producto = get_queried_object();
             if ($galeria && count($galeria) > 0) :
               foreach ($galeria as $imgGall) :
                 ?>
-                <div class="swiper-slide item-swipper-image" style="background-image:url(<?php echo $imgGall["sizes"]["large"] ?>)">
+                <div data-src="<?= $imgGall["url"] ?>" class="swiper-slide item_image_product item-swipper-image" style="background-image:url(<?php echo $imgGall["sizes"]["large"] ?>)">
                   <div class="swiper-zoom-container" data-swiper-zoom="5">
                   </div>
                 </div>

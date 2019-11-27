@@ -339,7 +339,7 @@
 
   .col-item {
     width: 33.33%;
-    padding: 15px;
+    padding: 5px;
     overflow: hidden;
     cursor: pointer;
     .item {
@@ -349,10 +349,10 @@
       overflow: hidden;
       img {
         position: absolute;
-        left: -999999px;
-        top: -999999px;
-        right: -999999px;
-        bottom: -999999px;
+        left: -999999px !important;
+        top: -999999px !important;
+        right: -999999px !important;
+        bottom: -999999px !important;
         margin: auto;
         max-width: initial;
         height: 100%;
