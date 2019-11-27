@@ -167,6 +167,7 @@ function sendContactMail() {
           isRequest: false
         },
         success: function(resp) {
+          console.log(resp);
           $("#contact_map_message").addClass("show");
           $("#loading_contact_map").removeClass("show");
           // console.log(resp);
@@ -468,14 +469,14 @@ function plugnsInit() {
           slidesToScroll: 1
         }
       },
-      {
-        breakpoint: 480,
-        settings: {
-          vertical: false,
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
+      // {
+      //   breakpoint: 480,
+      //   settings: {
+      //     vertical: false,
+      //     slidesToShow: 1,
+      //     slidesToScroll: 1
+      //   }
+      // }
     ]
   };
 
