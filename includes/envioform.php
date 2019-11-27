@@ -57,18 +57,14 @@ try {
     $visitante->Port = 587;
 
 
-
     $mail->From = "info@mazal.co";
     $mail->FromName = $nombre_sitio;
     $visitante->From = "info@mazal.co";
     $visitante->FromName = $nombre_sitio;
 
-    $mail->Timeout = 30;
-    $visitante->Timeout = 30;
-
-    // $mail->AddCC("sebastian.camacho@mazal.co");
-    // $mail->AddCC("silvana.camacho@mazal.co");
-    $mail->AddCC("juanaguilloncar@gmail.com");
+    $mail->AddCC("sebastian.camacho@mazal.co");
+    $mail->AddCC("silvana.camacho@mazal.co");
+    // $mail->AddCC("juanaguilloncar@gmail.com");
     $visitante->AddAddress($email);
 
     $mail->IsHTML(true);

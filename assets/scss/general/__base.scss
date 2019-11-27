@@ -226,6 +226,8 @@ section h3 {
   position: fixed;
   z-index: 700;
   top: 0;
+  overflow: auto;
+  padding: 10px;
   width: 100%;
   left: 0;
   background: #000000f0;
@@ -260,6 +262,7 @@ section h3 {
     width: 100%;
     max-width: 550px;
     background: #f7f7f7;
+    margin-top: 30px;
   }
 
   #button_cotizar_producto span {
