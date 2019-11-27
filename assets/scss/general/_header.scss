@@ -34,27 +34,26 @@ header {
   }
 
   .black_background {
-    background: rgba(0, 0, 0, 0.47);
-    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+95&0.75+0,0+93 */
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+95&0.91+0,0+93 */
     background: -moz-linear-gradient(
       top,
-      rgba(0, 0, 0, 0.65) 0%,
+      rgba(0, 0, 0, 0.91) 0%,
       rgba(0, 0, 0, 0) 93%,
       rgba(0, 0, 0, 0) 95%
     ); /* FF3.6-15 */
     background: -webkit-linear-gradient(
       top,
-      rgba(0, 0, 0, 0.65) 0%,
+      rgba(0, 0, 0, 0.91) 0%,
       rgba(0, 0, 0, 0) 93%,
       rgba(0, 0, 0, 0) 95%
     ); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0.65) 0%,
+      rgba(0, 0, 0, 0.91) 0%,
       rgba(0, 0, 0, 0) 93%,
       rgba(0, 0, 0, 0) 95%
     ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e8000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
   }
 
   i.icon_logo {
@@ -279,7 +278,7 @@ a.languages_toggle {
 }
 
 .header_top_right {
-  width: 85%;
+  width: 90%;
   height: 100%;
   justify-content: flex-end !important;
 }
@@ -384,7 +383,6 @@ a.languages_toggle {
   padding-right: 0;
 }
 #icon_favorites {
-  
   position: relative;
   &:hover #favorites_header {
     display: block;

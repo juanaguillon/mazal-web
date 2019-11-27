@@ -523,6 +523,11 @@ function plugnsInit() {
     mode: "lg-fade",
     download: false
   });
+  $("#image_product_slick").lightGallery({
+    selector: $(".item_image_product"),
+    mode: "lg-fade",
+    download: false
+  });
   new WOW({
     mobile: false
   }).init();
@@ -700,8 +705,8 @@ function sendSubscribeForm() {
   var text = $("#text_mailchimp_sub");
   var button = $("#send_mailchimp_sub");
   button.click(function(e) {
-    $("#loading_contact_subscribe").addClass("show")
-    $(this).attr("disabled", "disabled")
+    $("#loading_contact_subscribe").addClass("show");
+    $(this).attr("disabled", "disabled");
     $.ajax({
       url: chimpUrl,
       method: "POST",
@@ -710,9 +715,8 @@ function sendSubscribeForm() {
         mailchimp_text: text.val()
       },
       success: function(data) {
-        console.log(data)
+        console.log(data);
         if (data == "1") {
-
           $(".mailchimp_message .message-danger").removeClass("show");
           $(".mailchimp_message .message-success").addClass("show");
         } else {

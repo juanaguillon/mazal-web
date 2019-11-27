@@ -15,11 +15,13 @@
           <img src="<?php echo get_field("imagen_banner", $banner) ?>" alt="">
         </div>
         <div class="banner_caption">
-          <h3 class="text-yellow font-2"><?php echo $banner->post_title ?></h3>
-          <p class="text-white font-2"><?php echo $banner->post_excerpt ?></p>
-          <a href="<?php echo $url ?>" class="button general_button mt-3 ml-0">
-            <span data-title="<?php echo $textoLink ?>"><?php echo $textoLink ?></span>
-          </a>
+          <div class="banner_caption_inner">
+            <h3 class="text-yellow font-2"><?php echo $banner->post_title ?></h3>
+            <p class="text-white font-2"><?php echo $banner->post_excerpt ?></p>
+            <a href="<?php echo $url ?>" class="button general_button mt-3 ml-0">
+              <span data-title="<?php echo $textoLink ?>"><?php echo $textoLink ?></span>
+            </a>
+          </div>
         </div>
       </div>
     <?php endforeach; ?>
@@ -171,7 +173,7 @@
     ?>
     <a href="<?php echo esc_url(get_permalink($post)); ?>">
       <div class="portafolio_single_image">
-        <img class="img_fill" src="<?php echo get_field("imagen_de_producto",$post)["sizes"]["large"] ?>" alt="">
+        <img class="img_fill" src="<?php echo get_field("imagen_de_producto", $post)["sizes"]["large"] ?>" alt="">
         <div class="black_background"></div>
         <div class="portafolio_mazal_logo">
           <figure>
