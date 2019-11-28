@@ -217,11 +217,11 @@
               <?php endif; ?>
 
             </ul>
-            <button id="icon_search" class="button">
+            <button id="icon_search" class="button button_small direct_header_button">
               <i class="icon-search text-white hover-white"></i>
             </button>
 
-            <button id="icon_favorites" class="button">
+            <button id="icon_favorites" class="button button_small direct_header_button">
               <?php
                 $productsFav = mazal_get_favorite_products();
                 $hasFavs = $productsFav && count($productsFav["posts"]) > 0;
@@ -250,7 +250,17 @@
                   ?>
               </div>
             </button>
-            <button id="icon_bars" class="button">
+            <button class="button hover-white button_small direct_header_button" id="open_shares">
+              <i class="icon-share"></i>
+              <ul>
+                <?php
+                  foreach (get_field("redes_sociales", "option") as $social) : ?>
+                  <li><a target="_blank" href="<?= $social["url"] ?>"><img src="<?= $social["icono"]["url"] ?>" alt=""></a></li>
+                <?php endforeach; ?>
+              </ul>
+            </button>
+
+            <button id="icon_bars" class="button button_small">
               <i class="text-white icon-bars hover-white"></i>
             </button>
 

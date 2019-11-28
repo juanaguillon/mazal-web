@@ -278,9 +278,13 @@ a.languages_toggle {
 }
 
 .header_top_right {
-  width: 90%;
+  width: 100%;
   height: 100%;
   justify-content: flex-end !important;
+  .direct_header_button{
+    height: 100%;
+  }
+
 }
 .dynamic_header_top {
   border-top: 1px solid rgba(255, 255, 255, 0.623);
@@ -380,12 +384,33 @@ a.languages_toggle {
 
 #icon_search {
   font-size: 15px;
-  padding-right: 0;
 }
 #icon_favorites {
   position: relative;
   &:hover #favorites_header {
     display: block;
+  }
+}
+#open_shares {
+  &:hover ul {
+    transform: translateX(0%);
+  }
+  i {
+    color: white;
+  }
+  ul {
+    transition: transform 0.1s;
+    transform: translateX(120%);
+    position: absolute;
+    background: #000000bf;
+    padding: 10px 15px;
+    right: 0;
+    display: flex;
+    width: 180px;
+    top: 100%;
+    li {
+      margin: 0 10px;
+    }
   }
 }
 #favorites_ul_header {

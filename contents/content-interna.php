@@ -128,8 +128,7 @@
             <?php foreach ($antesDesImg as $imgs) : ?>
 
               <div class="bef_aft_image_photo">
-                <img data-before="<?php echo get_field("imagen_antigua", $imgs)["sizes"]["large"] ?>" data-after="<?php echo get_field("imagen_nueva", $imgs)["sizes"]["large"] ?>" class="img_fill" src="<?php echo get_field("imagen_nueva", $imgs)["sizes"]["medium"] ?>" alt="">
-
+                <img data-tb="<?= get_field("bef_aft_descripcion", $imgs) ?>" data-before="<?php echo get_field("imagen_antigua", $imgs)["sizes"]["large"] ?>" data-after="<?php echo get_field("imagen_nueva", $imgs)["sizes"]["large"] ?>" class="img_fill" src="<?php echo get_field("imagen_nueva", $imgs)["sizes"]["medium"] ?>" alt="">
               </div>
             <?php endforeach; ?>
           </div>
@@ -140,6 +139,7 @@
         <?php
         $oldImg = get_field("imagen_antigua", $antesDesImg[0]);
         $newimg = get_field("imagen_nueva", $antesDesImg[0]);
+        $descImg = get_field("bef_aft_descripcion", $antesDesImg[0]);
         ?>
         <div class="bf_image_sized">
           <img src="<?php echo $oldImg["sizes"]["large"] ?>" alt="">
@@ -148,7 +148,7 @@
         <div class="bef_aft_sides">
           <div class="bef_aft_left_side wow slideInLeft">
             <div class="bef_aft_descriptions_container flex-center-xy text-gray">
-              <p id="bef_aft_before" class="font-1"><?php echo mazal_get_acf_field("antesdes_descripcion_") ?></p>
+              <p id="bef_aft_before" class="font-1"><?php echo $descImg ?></p>
             </div>
           </div>
         </div>
