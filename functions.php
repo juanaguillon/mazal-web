@@ -156,7 +156,7 @@ function mazal_single_product($post, $filterClass = "")
 
     $queryPosts = new WP_Query(array(
       "post_type" => "producto",
-      "posts_per_page" => -1,
+      "posts_per_page" => 15,
       "tax_query" => array(
         array(
           "taxonomy" => $currentObject->taxonomy,
@@ -209,16 +209,32 @@ function mazal_single_product($post, $filterClass = "")
       <?php if (count($childsCurrentObject) > 0) :  ?>
         <li>
           <div class="dropdown first-filter">
-            <label class="dropdown-label" data-emplabel="Categoría"><?php echo $isSubChildren ? $currentCategory->name : "Categoría" ?></label>
+            <?php
+                if (mazal_is_language()) {
+                  $catName = "Categoría";
+                } else {
+                  $catName = "Category";
+                }
+                ?>
+            <label class="dropdown-label" data-emplabel="<?= $catName  ?>"><?php echo $isSubChildren ? $currentCategory->name : $catName ?></label>
 
             <div class="dropdown-list">
               <div class="checkbox">
                 <input data-filter=".<?php echo $currentObject->slug ?>" type="checkbox" class="check-unique check-all checkbox-custom" id="child_cat_filter_<?php echo $currentObject->term_id ?>" />
-                <label for="child_cat_filter_<?php echo $currentObject->term_id ?>" class="checkbox-custom-label">Todos</label>
+                <?php if (mazal_is_language()) {
+                      $labelBoy = "Todos";
+                      $labelGirl = "Todas";
+                      $typeOf = "Tipo de ";
+                    } else {
+                      $labelBoy = "All";
+                      $typeOf = "Type of ";
+                      $labelGirl = "All";
+                    } ?>
+                <label for="child_cat_filter_<?php echo $currentObject->term_id ?>" class="checkbox-custom-label"><?= $labelBoy ?></label>
               </div>
               <?php foreach ($childsCurrentObject as $childsCat) : ?>
                 <div class="checkbox">
-                  <input data-subcat="<?php echo $childsCat->term_id ?>" data-filter=".<?php echo $childsCat->slug ?>" type="checkbox" name="dropdown-group-tipo-<?php echo $childsCat->slug ?>" class="check-unique check-all checkbox-custom" id="child_cat_filter_<?php echo $childsCat->term_id ?>" />
+                  <input data-countcat="<?= $childsCat->count ?>" data-subcat="<?php echo $childsCat->term_id ?>" data-filter=".<?php echo $childsCat->slug ?>" type="checkbox" name="dropdown-group-tipo-<?php echo $childsCat->slug ?>" class="check-unique check-all checkbox-custom" id="child_cat_filter_<?php echo $childsCat->term_id ?>" />
                   <label for="child_cat_filter_<?php echo $childsCat->term_id ?>" class="checkbox-custom-label"><?php echo $childsCat->name ?></label>
                 </div>
               <?php endforeach; ?>
@@ -232,11 +248,11 @@ function mazal_single_product($post, $filterClass = "")
 
           <li class="sublist_children <?php echo $additionClass ?>" id="sublist_children_<?php echo $childsCat->term_id ?>">
             <div class="dropdown">
-              <label class="dropdown-label" data-emplabel="Tipo de <?php echo $childsCat->name ?>">Tipo de <?php echo $childsCat->name ?></label>
+              <label class="dropdown-label" data-emplabel="<?php echo $typeOf . $childsCat->name ?>"><?php echo $typeOf . $childsCat->name ?></label>
               <div class="dropdown-list">
                 <div class="checkbox">
-                  <input data-filter="*" type="checkbox" name="dropdown-group-tipo-<?php echo $childsCat->slug ?>" class="check-all checkbox-custom" id="filter_term_<?php echo $childsCat->term_id ?>" />
-                  <label for="filter_term_<?php echo $childsCat->term_id ?>" class="checkbox-custom-label">Todas</label>
+                  <input data-countcat="<?= $childsCat->count ?>" data-filter="*" type="checkbox" name="dropdown-group-tipo-<?php echo $childsCat->slug ?>" class="check-all checkbox-custom" id="filter_term_<?php echo $childsCat->term_id ?>" />
+                  <label for="filter_term_<?php echo $childsCat->term_id ?>" class="checkbox-custom-label"><?= $labelGirl ?></label>
                 </div>
                 <?php
                       $argsTerms = array(
@@ -245,7 +261,7 @@ function mazal_single_product($post, $filterClass = "")
                       );
                       foreach (get_terms($argsTerms) as $subchild) : ?>
                   <div class="checkbox">
-                    <input data-filter=".<?php echo $subchild->slug ?>" type="checkbox" name="dropdown-group-tipo-<?php echo $childsCat->slug ?>" class="check-all check checkbox-custom" id="filter_term_<?php echo $subchild->term_id ?>" />
+                    <input data-countcat="<?= $subchild->count ?>" data-filter=".<?php echo $subchild->slug ?>" type="checkbox" name="dropdown-group-tipo-<?php echo $childsCat->slug ?>" class="check-all check checkbox-custom" id="filter_term_<?php echo $subchild->term_id ?>" />
                     <label for="filter_term_<?php echo $subchild->term_id ?>" class="checkbox-custom-label"><?php echo $subchild->name ?></label>
                   </div>
                 <?php endforeach; ?>
@@ -262,7 +278,7 @@ function mazal_single_product($post, $filterClass = "")
           <div class="dropdown-list">
             <div class="checkbox">
               <input data-filter="*" type="checkbox" name="dropdown-group-material" class="check check-all checkbox-custom" id="material_check1" />
-              <label for="material_check1" class="checkbox-custom-label">Todos</label>
+              <label for="material_check1" class="checkbox-custom-label"><?= $labelBoy ?></label>
             </div>
             <?php
               foreach ($materiales as $materialSlug => $materialTerm) : ?>
@@ -301,15 +317,13 @@ function mazal_single_product($post, $filterClass = "")
   </div>
 
 
-  <!-- <div class="d-flex more-items">
-
+  <div class="d-flex more-items">
     <button class=" m-auto button fill-button">
       <span data-title="cargar mas">
         Cargar mas +
       </span>
     </button>
-
-  </div> -->
+  </div>
 <?php
 }
 

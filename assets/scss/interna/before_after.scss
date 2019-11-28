@@ -108,6 +108,31 @@
     width: 100%;
     height: 220px;
   }
+  .bef_aft_image_photo {
+    margin: 0px;
+  }
+  .bef_aft_images_container {
+    margin-bottom: 10px;
+    .arrows {
+      position: absolute;
+      transform: translateY(-50%) rotate(-90deg);
+      top: 48%;
+      z-index: 30;
+      &.arrow_up {
+        left: -20px;
+      }
+      &.arrow_down {
+        right: -20px;
+      }
+      i {
+        font-size: 25px;
+        font-weight: bold;
+      }
+    }
+  }
+  .bef_aft_image_photo {
+    height: 95px;
+  }
 }
 
 /* ====================  */

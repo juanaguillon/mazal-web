@@ -148,7 +148,7 @@ function mazal_register_the_posts_types()
     )),
     "producto" => __mazal_register_post_type("producto", "dashicons-products", true, ["title", "editor"]),
     "cliente" => __mazal_register_post_type("cliente", "dashicons-businesswoman", true, ["title", "thumbnail"]),
-    "before_after" => __mazal_register_post_type("comparacion", "dashicons-image-flip-horizontal", true, ["title"], null, "es")
+    "before_after" => __mazal_register_post_type("Antes y Despue", "dashicons-image-flip-horizontal", true, ["title"])
   );
   foreach ($postTypes as $ptkey => $ptvalue) {
     register_post_type($ptkey, $ptvalue);

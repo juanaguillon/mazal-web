@@ -468,7 +468,7 @@ function plugnsInit() {
           slidesToShow: 2,
           slidesToScroll: 1
         }
-      },
+      }
       // {
       //   breakpoint: 480,
       //   settings: {
@@ -509,7 +509,11 @@ function plugnsInit() {
   $(".dynamic_image_container").imagefill();
   $(".portafolio_single_image").imagefill();
   $(".single_linea_image").imagefill();
-  $(".col-item .item").imagefill();
+  $(".col-item").imagefill({
+    target: ".item img"
+  });
+  // $(".col-item .item").imagefill();
+  // console.log($(".col-item .item"))
 
   $(".bf_image_sized").imageCompare();
 
@@ -542,12 +546,11 @@ function changeCurrentImageInBeforeAfter() {
     var before = imgSelected.data("before");
     var after = imgSelected.data("after");
     var befText = imgSelected.data("tb");
-    var aftText = imgSelected.data("ta");
 
     $(".imgcompare_left_side img").attr("src", before);
     $(".imgcompare_right_side img").attr("src", after);
     $("#bef_aft_before").text(befText);
-    $("#bef_aft_after").text(aftText);
+    // $("#bef_aft_after").text(aftText);
   });
 }
 /**
@@ -749,6 +752,64 @@ function initTabs() {
   });
 }
 
+/**
+ * Conectar página con facebook para poder compartir productos.
+ */
+function connectToFb() {
+  (function(d, s, id) {
+    var js,
+      fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {
+      return;
+    }
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  })(document, "script", "facebook-jssdk");
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId: 397559747817271,
+      autoLogAppEvents: true,
+      xfbml: true,
+      version: "v3.3"
+    });
+    FB.AppEvents.logPageView();
+  };
+  (function($) {
+    $(".facebook_share").on("click", function(event) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+
+      var linkshare = window.location.href;
+      var titleshare = $(this).data("nombre");
+      var descripshare = $(this).data("descrip");
+      var imgshare = $(this).data("urlimg");
+      var FBDesc = descripshare;
+      var FBTitle = titleshare;
+      var FBLink = linkshare;
+      var FBPic = imgshare;
+      FB.ui(
+        {
+          method: "share",
+          action_type: "og.likes",
+          mobile_iframe: true,
+          action_properties: JSON.stringify({
+            object: {
+              "og:url": FBLink,
+              "og:title": FBTitle,
+              "og:description": FBDesc,
+              "og:image": FBPic
+            }
+          })
+        },
+        function(response) {}
+      );
+    });
+  })(jQuery);
+}
+
 $window.on("load", function() {
   plugnsInit();
   changeCurrentImageInBeforeAfter();
@@ -765,6 +826,7 @@ $window.on("load", function() {
   initTabs();
   addToFavorite();
   sendSubscribeForm();
+  connectToFb();
 });
 $window.on("load resize", function() {
   makeHoverMoveInBanner();

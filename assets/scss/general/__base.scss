@@ -77,6 +77,9 @@ section h3 {
   padding: 10px 25px;
   outline: none;
   cursor: pointer;
+  &.button_small {
+    padding: 7px 13px;
+  }
 }
 .button,
 .button:hover,
