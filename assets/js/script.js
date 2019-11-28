@@ -509,9 +509,28 @@ function plugnsInit() {
   $(".dynamic_image_container").imagefill();
   $(".portafolio_single_image").imagefill();
   $(".single_linea_image").imagefill();
-  $(".col-item").imagefill({
-    target: ".item img"
-  });
+
+  // $(".col-item .item img").each(function() {
+  //   var elmn = $(this);
+  //   var cWidth = elmn.outerWidth();
+  //   var cHeight = elmn.outerHeight();
+  //   var parentHeight = elmn.parent().outerHeight();
+  //   var parentWidth = elmn.parent().outerWidth();
+
+  //   if (cWidth > cHeight) {
+  //     elmn.css({
+  //       height: cHeight + (parentHeight - cHeight) + "px",
+  //       width: "auto"
+  //     });
+  //     elmn.addClass("imgfill_h");
+  //   } else {
+  //     elmn.css({
+  //       height: "auto",
+  //       width: cWidth +( parentWidth - cWidth) + "px"
+  //     });
+  //   }
+  // });
+
   // $(".col-item .item").imagefill();
   // console.log($(".col-item .item"))
 
@@ -811,13 +830,14 @@ function connectToFb() {
 }
 
 $window.on("load", function() {
-  plugnsInit();
   changeCurrentImageInBeforeAfter();
   ScrolMapFromNavbar();
   toggleDynamicDataFromNav();
   changeTheSubmenuInHeader();
   toggleTheModalToSearchInWebsite();
   // changeTheLanguageLabelInHeader();
+  plugnsInit();
+
   activeTheLineInTheHeaderMenuInScrolling();
   makeScrollIfExistsTheQueryParam();
   showWhatsappInSpecificHours();
