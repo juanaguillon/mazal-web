@@ -342,22 +342,30 @@
     padding: 5px;
     overflow: hidden;
     cursor: pointer;
+
     .item {
       position: relative;
       height: 230px;
       width: auto;
       overflow: hidden;
-      img {
-        position: absolute;
-        left: -999999px !important;
-        top: -999999px !important;
-        right: -999999px !important;
-        bottom: -999999px !important;
-        margin: auto;
-        max-width: initial;
-        height: 100%;
-        width: auto;
-      }
+      // img {
+      //   position: absolute;
+      //   left: -999999px !important;
+      //   top: -999999px !important;
+      //   right: -999999px !important;
+      //   bottom: -999999px !important;
+      //   margin: auto;
+      //   max-width: initial;
+
+      //   &.imgfill_h {
+      //     height: 100%;
+      //     width: auto;
+      //   }
+      //   &.imgfill_w {
+      //     height: auto;
+      //     width: 100%;
+      //   }
+      // }
       .item-content {
         position: absolute;
         color: white;

@@ -156,7 +156,7 @@ function mazal_single_product($post, $filterClass = "")
 
     $queryPosts = new WP_Query(array(
       "post_type" => "producto",
-      "posts_per_page" => 15,
+      "posts_per_page" => 120,
       "tax_query" => array(
         array(
           "taxonomy" => $currentObject->taxonomy,
@@ -203,7 +203,15 @@ function mazal_single_product($post, $filterClass = "")
         }
       }
     }
-    ?>
+    if (mazal_is_language()) {
+      $labelBoy = "Todos";
+      $labelGirl = "Todas";
+      $typeOf = "Tipo de ";
+    } else {
+      $labelBoy = "All";
+      $typeOf = "Type of ";
+      $labelGirl = "All";
+    } ?>
   <div id="<?php echo $currentObject->slug ?>" class="filtrado">
     <ul>
       <?php if (count($childsCurrentObject) > 0) :  ?>
@@ -221,15 +229,7 @@ function mazal_single_product($post, $filterClass = "")
             <div class="dropdown-list">
               <div class="checkbox">
                 <input data-filter=".<?php echo $currentObject->slug ?>" type="checkbox" class="check-unique check-all checkbox-custom" id="child_cat_filter_<?php echo $currentObject->term_id ?>" />
-                <?php if (mazal_is_language()) {
-                      $labelBoy = "Todos";
-                      $labelGirl = "Todas";
-                      $typeOf = "Tipo de ";
-                    } else {
-                      $labelBoy = "All";
-                      $typeOf = "Type of ";
-                      $labelGirl = "All";
-                    } ?>
+
                 <label for="child_cat_filter_<?php echo $currentObject->term_id ?>" class="checkbox-custom-label"><?= $labelBoy ?></label>
               </div>
               <?php foreach ($childsCurrentObject as $childsCat) : ?>
@@ -317,13 +317,13 @@ function mazal_single_product($post, $filterClass = "")
   </div>
 
 
-  <div class="d-flex more-items">
+  <!-- <div class="d-flex more-items">
     <button class=" m-auto button fill-button">
       <span data-title="cargar mas">
         Cargar mas +
       </span>
     </button>
-  </div>
+  </div> -->
 <?php
 }
 

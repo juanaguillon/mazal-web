@@ -14,6 +14,13 @@ var $grid = $(".grid-item-category").isotope({
   layoutMode: "fitRows"
 });
 
+var resiveGrid = function(grid) {
+  grid.off("arrangeComplete");
+  grid.on("arrangeComplete", function() {
+    $(".col-item:visible .item").imagefill();
+  });
+};
+
 /**
  * Crear filtro de checkbox en la página interna (interna-sub.php)
  */
@@ -23,6 +30,7 @@ if (isCategoria) {
   $grid.isotope({
     filter: "." + currentSlugClassName
   });
+  resiveGrid($grid);
 }
 
 function updateStatus(label, result) {
@@ -52,11 +60,11 @@ $el.each(function(i, element) {
     $(".sublist_children").removeClass("show");
     $("#sublist_children_" + subcat).addClass("show");
     $("#current_category").val(filter.replace(".", ""));
-    console.log($(this).data("countcat"));
     $label.text(text);
     $grid.isotope({
       filter: filter
     });
+    resiveGrid($grid);
   });
 
   // Estos inputs serán visiblen el portafolio, se representan con el color "Dorado (Marrón)"
@@ -109,6 +117,8 @@ $el.each(function(i, element) {
     $grid.isotope({
       filter: filtering
     });
+    resiveGrid($grid);
+
     // ================
   });
 
