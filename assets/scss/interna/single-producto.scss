@@ -51,7 +51,7 @@
     font-weight: bold;
     font-size: 18px;
     display: none;
-    &.show{
+    &.show {
       display: block;
     }
   }
@@ -67,7 +67,7 @@
   margin-top: 50px;
 }
 
-.item-information { 
+.item-information {
   max-width: 530px;
 }
 
@@ -173,6 +173,17 @@
     color: #dab27c;
     font-size: 35px;
     max-width: 460px;
+  }
+}
+
+#container_slick_product {
+  overflow: hidden;
+  #loading_slick_product {
+    background: #f1f1f1;
+    .loading_spinner {
+      border-color: #201818;
+      border-right-color: transparent;
+    }
   }
 }
 

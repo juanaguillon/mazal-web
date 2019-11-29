@@ -16,3 +16,9 @@ footer {
     margin: auto;
   }
 }
+
+@media #{$mobile_query} {
+  #rights_footer {
+    display: block;
+  }
+}

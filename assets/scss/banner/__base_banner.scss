@@ -725,9 +725,16 @@
   .index_body_class header {
     display: block;
   }
-  .left_image_conent {
+  .left_image_conent,
+  .right_image_conent {
     .banner_logo_altern {
       display: block;
+      height: 50px;
+      margin-bottom: 15px;
+      position: relative;
+      &:after {
+        bottom: -13px;
+      }
     }
     .banner_logo {
       display: none;
@@ -737,13 +744,7 @@
   .banner_context::before {
     background: none;
   }
-  .right_image_conent {
-    .banner_img_container,
-    .banner_context,
-    & > .black_background {
-      // display: none;
-    }
-  }
+
   .banner_bottom_context {
     height: 60px;
     border: none;
@@ -796,15 +797,17 @@
     overflow: hidden;
   }
   #section_banner_index {
-    height: 200vh;
+    height: calc(100vh - 50px);
+    margin-top: 50px;
   }
   .right_image_conent,
   .left_image_conent {
     min-width: 100%;
     max-width: 100%;
+    height: 50%;
   }
   .right_image_conent {
-    top: 100vh;
+    top: 50%;
   }
   .banner_context_menu {
     transform: translateX(0) !important;
@@ -827,9 +830,49 @@
   .banner_right_context {
     justify-content: flex-end;
   }
+  .banner_img_container {
+    height: 100%;
+  }
+
+  .banner_img_left,
+  .banner_img_right {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .popup_container {
+    z-index: 1900;
+  }
+  #mobiliario_popup {
+    .popup_wrapper {
+      flex-direction: column;
+      height: 95vh;
+      width: 95%;
+    }
+    .popup_left,
+    .popup_right {
+      width: 100%;
+      height: 50%;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
 }
 
 @media #{$tablet_query} {
+  .banner_margin_right,
+  .banner_margin_bottom {
+    display: none;
+  }
+  .banner_img_container,
+  .right_image_conent {
+    .black_background {
+      background: rgba(0, 0, 0, 0.15);
+    }
+  }
   .ul_banner_menu {
     justify-content: initial;
     padding: 10px 0;
@@ -852,19 +895,27 @@
     min-width: 50%;
   }
 
-  .banner_margin_right,
-  .banner_margin_bottom {
-    border: none;
-  }
+  // .banner_margin_right,
+  // .banner_margin_bottom {
+  //   border: none;
+  // }
 
-  .banner_bottom_context {
-    & > span {
-      width: 90%;
-      font-size: 12px;
-    }
-  }
+  // .banner_bottom_context {
+  //   & > span {
+  //     width: 90%;
+  //     font-size: 12px;
+  //   }
+  // }
 
   .mini_logo {
     display: none;
+  }
+}
+
+@media (max-width: 425px) {
+  .banner_img_left,
+  .banner_img_right {
+    width: auto !important;
+    height: 100% !important;
   }
 }

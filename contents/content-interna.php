@@ -160,12 +160,48 @@
 </section>
 
 <section id="section_portafolio" class="section_high">
+
   <?php
-  $projectsPfolio =  get_field("portafolio_-_mostrar_proyectos", "option");
-  $prpf1 = $projectsPfolio[0]["proyecto"];
-  $prpf2 = $projectsPfolio[1]["proyecto"];
-  $prpf3 = $projectsPfolio[2]["proyecto"];
-  $prpf4 = $projectsPfolio[3]["proyecto"];
+  $permalinkTerm = null;
+
+  if (mazal_is_hogar_page()) {
+    $permalinkTerm = 89;
+  } else if (mazal_is_arquitectura_page()) {
+    $permalinkTerm = 91;
+  } else if (mazal_is_corporativo_page()) {
+    $permalinkTerm = 93;
+  }
+  if (mazal_is_language("en")) {
+    $permalinkTerm = pll_get_term($permalinkTerm, "en");
+  }
+
+  $postsRelatives = new WP_Query(array(
+    "post_type" => "producto",
+    "posts_Per_page" => 4,
+    "orderby" => "rand",
+
+    "tax_query" => array(
+      array(
+        "taxonomy" => "categoria",
+        "terms" => $permalinkTerm
+      ),
+    )
+  ));
+
+  if (count($postsRelatives->posts) > 3) {
+    $prpf1 = $postsRelatives->posts[0];
+    $prpf2 = $postsRelatives->posts[1];
+    $prpf3 = $postsRelatives->posts[2];
+    $prpf4 = $postsRelatives->posts[3];
+  } else {
+    $projectsPfolio =  get_field("portafolio_-_mostrar_proyectos", "option");
+    $prpf1 = $projectsPfolio[0]["proyecto"];
+    $prpf2 = $projectsPfolio[1]["proyecto"];
+    $prpf3 = $projectsPfolio[2]["proyecto"];
+    $prpf4 = $projectsPfolio[3]["proyecto"];
+  }
+
+
 
   function mazal_send_portfolio($post)
   {
@@ -196,18 +232,18 @@
     <div class="col-lg-9">
 
       <div class="row no-gutters">
-        <div class="col-lg-8 col-md-6 wow fadeInLeft">
+        <div class="no_hide_in_resp col_portfolio col-lg-8 col-md-6 wow fadeInLeft">
           <?php echo mazal_send_portfolio($prpf1) ?>
         </div>
-        <div class="col-lg-4 col-md-6 wow fadeInDown">
+        <div class="col_portfolio col-lg-4 col-md-6 wow fadeInDown">
           <?php echo mazal_send_portfolio($prpf2) ?>
         </div>
       </div>
       <div class="row no-gutters">
-        <div class="col-lg-4 col-md-6 wow fadeInLeft">
+        <div class="col_portfolio col-lg-4 col-md-6 wow fadeInLeft">
           <?php echo mazal_send_portfolio($prpf3) ?>
         </div>
-        <div class="col-lg-8 col-md-6 wow fadeInUp">
+        <div class="col_portfolio col-lg-8 col-md-6 wow fadeInUp">
           <?php echo mazal_send_portfolio($prpf4) ?>
         </div>
       </div>
@@ -224,7 +260,9 @@
             </h3>
           </div>
           <div class="portafolio_button">
-            <a href="<?php echo esc_url(get_permalink(pll_get_post(238))) ?>" class="button general_button text-yellow">
+
+
+            <a href="<?php echo esc_url(get_term_link($permalinkTerm)) ?>" class="button general_button text-yellow">
               <span data-title="<?php echo mazal_get_acf_field("portafolio_boton_") ?>"><?php echo mazal_get_acf_field("portafolio_boton_") ?>
               </span>
             </a>

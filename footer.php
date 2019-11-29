@@ -40,7 +40,7 @@
           $rigths1 = explode(" - ", $rightTotal)[0];
           $rigths2 = explode(" - ", $rightTotal)[1];
           ?>
-        <span class="text-3x text-white"><?php echo $rigths1 ?> - <strong><?php echo $rigths2 ?></strong></span>
+        <span class="text-3x text-white"><?php echo $rigths1 ?> - <strong id="rights_footer"><?php echo $rigths2 ?></strong></span>
       </div>
     </footer>
 

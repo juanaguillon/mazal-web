@@ -45,7 +45,11 @@ $producto = get_queried_object();
 
   <section class="item-view container">
     <div class="row m-0">
-      <div class="col-md-7">
+      <div class="col-md-7" id="container_slick_product">
+        <div class="loading_container show" id="loading_slick_product">
+          <div class="loading_spinner"></div>
+        </div>
+
         <div class="swiper-container gallery-top">
           <div class="swiper-wrapper" id="image_product_slick">
             <div data-src="<?= get_field("imagen_de_producto", $producto)["original_image"]["url"] ?>" class="item_image_product swiper-slide item-swipper-image" style="background-image:url(<?php echo get_field("imagen_de_producto", $producto)["sizes"]["large"] ?>)">
