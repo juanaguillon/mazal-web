@@ -8,7 +8,7 @@
   background-size: 100% auto;
   background-position-y: 29%;
 }
-.tres60_section.section_left{
+.tres60_section.section_left {
   background-position: bottom right;
   // background-size: auto 100%;
 }
@@ -17,6 +17,7 @@
     width: 100%;
   }
 }
+
 .tres_60_white_wrap {
   display: flex;
   height: $vh100;
@@ -75,7 +76,7 @@
       font-size: 29px !important;
     }
     font-size: 49px;
-    text-align: center
+    text-align: center;
   }
 }
 
@@ -84,16 +85,24 @@
   padding-right: 40px;
 }
 
-#section_obra_nueva,#section_tres60 {
-	background-position-y: 80%;
-	background-size: auto 100%;
+#section_obra_nueva,
+#section_tres60 {
+  background-position-y: 80%;
+  background-size: auto 100%;
 }
 
 /* ====================  */
 /* Final Página Interna: 360 */
 /* ====================  */
-@media #{$desktop_query}{
-  #section_arq_sos{
-    background-size:auto 100%;
+@media #{$desktop_query} {
+  #section_arq_sos {
+    background-size: auto 100%;
+  }
+  .tres_60_white_wrap {
+    background: rgba(10, 1, 1, 0.45);
+    p,
+    h3 {
+      text-shadow: 0 0 5px black;
+    }
   }
 }

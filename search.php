@@ -27,7 +27,7 @@ $exists = count($allPosts) > 0;
     ?>
     <h4 class="text-center"><?php echo $results; ?></h4>
 
-    <div class="grid-item-category">
+    <div class="grid-item-category search_grid_category">
       <?php foreach ($allPosts as $post) {
           mazal_single_product($post);
         } ?>

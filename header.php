@@ -253,10 +253,7 @@
             <button class="button hover-white button_small direct_header_button" id="open_shares">
               <i class="icon-share"></i>
               <ul>
-                <?php
-                  foreach (get_field("redes_sociales", "option") as $social) : ?>
-                  <li><a target="_blank" href="<?= $social["url"] ?>"><img src="<?= $social["icono"]["url"] ?>" alt=""></a></li>
-                <?php endforeach; ?>
+                <?php mazal_get_socials() ?>
               </ul>
             </button>
 

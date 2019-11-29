@@ -23,6 +23,7 @@
 
   h3 {
     font-size: 55px;
+    font-weight: 200;
   }
 
   p {
@@ -95,5 +96,12 @@
     height: 60px;
     border-radius: 50%;
     border-right-color: transparent;
+  }
+}
+
+@media #{$tablet_query} {
+  .banner_caption_inner h3 {
+    font-size: 35px;
+    line-height: 1;
   }
 }

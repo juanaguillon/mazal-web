@@ -53,10 +53,7 @@
           </form>
           <ul class="contact_social">
 
-            <?php
-            foreach (get_field("redes_sociales", "option") as $social) : ?>
-              <li><a target="_blank" href="<?= $social["url"] ?>"><img src="<?= $social["icono"]["url"] ?>" alt=""></a></li>
-            <?php endforeach; ?>
+            <?php mazal_get_socials() ?>
 
           </ul>
         </div>
@@ -205,7 +202,7 @@
             scrollwheel: false,
             center: uluruFoot,
             styles: color1,
-            draggable: true
+            draggable: false
           });
 
           var markerFoot = new google.maps.Marker({

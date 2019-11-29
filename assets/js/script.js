@@ -510,37 +510,21 @@ function plugnsInit() {
   $(".portafolio_single_image").imagefill();
   $(".single_linea_image").imagefill();
 
-  // $(".col-item .item img").each(function() {
-  //   var elmn = $(this);
-  //   var cWidth = elmn.outerWidth();
-  //   var cHeight = elmn.outerHeight();
-  //   var parentHeight = elmn.parent().outerHeight();
-  //   var parentWidth = elmn.parent().outerWidth();
-
-  //   if (cWidth > cHeight) {
-  //     elmn.css({
-  //       height: cHeight + (parentHeight - cHeight) + "px",
-  //       width: "auto"
-  //     });
-  //     elmn.addClass("imgfill_h");
-  //   } else {
-  //     elmn.css({
-  //       height: "auto",
-  //       width: cWidth +( parentWidth - cWidth) + "px"
-  //     });
-  //   }
-  // });
-
   // $(".col-item .item").imagefill();
   // console.log($(".col-item .item"))
 
   $(".bf_image_sized").imageCompare();
 
+  $("#gallery_product_slick").on("init", function() {
+    $("#loading_slick_product").removeClass("show");
+  });
   $(".clietes_list").slick(slickClientsOptions);
   $("#section_banner_carousel").slick(slickBannerOptions);
   $(".bef_aft_images_gallery").slick(slickBeforeAfer);
   $("#image_product_slick").slick(slickProductSliderGallery);
   $("#gallery_product_slick").slick(slickProductSliderThumb);
+
+  
 
   $(".galeria_container").lightGallery({
     selector: $("a.gallery_light"),

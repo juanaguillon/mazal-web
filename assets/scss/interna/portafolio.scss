@@ -12,6 +12,7 @@
   }
 }
 
+
 .portafolio_show_more_content {
   @media #{$mobile_query} {
     display: flex;
@@ -27,7 +28,7 @@
   transform-origin: bottom;
   position: absolute;
   top: 10em;
-  left: -5.6em;
+  left: -2.6em;
 
   @media #{$desktop_query} {
     transform: rotate(0);
@@ -125,6 +126,15 @@
     img {
       height: 100% !important;
       position: static !important;
+    }
+  }
+}
+
+@media #{$tablet_query}{
+  .col_portfolio{
+    display: none;
+    &.no_hide_in_resp{
+      display: block;
     }
   }
 }

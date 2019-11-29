@@ -75,6 +75,7 @@ function mazal_get_favorite_products()
 function mazal_theme_supports()
 {
   add_theme_support("post-thumbnails");
+  add_image_size('product-thumb', 380, 230, true); // (cropped)
 }
 add_action("after_setup_theme", "mazal_theme_supports");
 
@@ -121,8 +122,16 @@ function mazal_single_product($post, $filterClass = "")
   ?>
   <div class="col-item <?php echo $filterClass ?>">
     <a href="<?php echo get_permalink($post); ?>">
+
       <div class="item">
-        <img src="<?php echo get_field("imagen_de_producto", $post)["sizes"]["medium"] ?>" alt="">
+        <?php
+          if (is_search()) : ?>
+
+          <img src="<?php echo get_field("imagen_de_producto", $post)["sizes"]["product-thumb"] ?>" alt="">
+        <?php else : ?>
+          <img data-src="<?php echo get_field("imagen_de_producto", $post)["sizes"]["product-thumb"] ?>" alt="">
+
+        <?php endif; ?>
         <div class="item-content">
           <span class="item-nombre-proyecto"><?php echo wp_kses_post($post->post_title) ?></span>
         </div>
@@ -131,6 +140,18 @@ function mazal_single_product($post, $filterClass = "")
   </div>
   <?php
 
+  }
+
+
+  function mazal_get_socials()
+  {
+    $field = "redes_sociales";
+    if (mazal_is_corporativo_page() || mazal_is_hogar_page()) {
+      $field = "redes_sociales_mobiliario";
+    }
+    foreach (get_field($field, "option") as $social) : ?>
+    <li><a target="_blank" href="<?= $social["url"] ?>"><img src="<?= $social["icono"]["url"] ?>" alt=""></a></li>
+  <?php endforeach;
   }
 
   /**
@@ -317,13 +338,14 @@ function mazal_single_product($post, $filterClass = "")
   </div>
 
 
-  <!-- <div class="d-flex more-items">
-    <button class=" m-auto button fill-button">
+  <div class="d-flex more-items">
+    <input type="hidden" id="count_actual_items_show">
+    <button data-filter="" id="load_more_filter_items" class=" m-auto button fill-button">
       <span data-title="cargar mas">
         Cargar mas +
       </span>
     </button>
-  </div> -->
+  </div>
 <?php
 }
 

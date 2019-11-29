@@ -130,10 +130,6 @@
     margin-bottom: 0px;
     font-weight: lighter;
     position: relative;
-
-    @media #{$tablet_query} {
-      font-size: 28px;
-    }
   }
   p {
     color: white;
@@ -170,6 +166,39 @@
   .single_linea_zoom {
     opacity: 1;
     transform: translateY(0%);
+  }
+}
+
+@media #{$tablet_query} {
+  .single_linea_context {
+    font-size: 28px;
+    background: none;
+    h3 {
+      font-size: 24px;
+      line-height: 1;
+    }
+    p {
+      font-size: 19px;
+    }
+    &:before {
+      /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+27,000000+100&0.81+27,0+100 */
+      background: -moz-linear-gradient(
+        top,
+        rgba(0, 0, 0, 0.81) 27%,
+        rgba(0, 0, 0, 0) 100%
+      ); /* FF3.6-15 */
+      background: -webkit-linear-gradient(
+        top,
+        rgba(0, 0, 0, 0.81) 27%,
+        rgba(0, 0, 0, 0) 100%
+      ); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.81) 27%,
+        rgba(0, 0, 0, 0) 100%
+      ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cf000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+    }
   }
 }
 
