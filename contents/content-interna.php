@@ -40,6 +40,74 @@
     <div class="row">
       <div class="col-md-6 wow slideInLeft" data-wow-offset="20">
         <div class="galeria_container">
+          <div class="loading_container show" id="loading_slick_gallery">
+            <div class="loading_spinner"></div>
+          </div>
+          <button class="arrow_galeria arrow_left"><i class="icon-arrow_left"></i></button>
+          <div class="galeria_photos no_rotate">
+            <div class="galeria_photo_wrap left_to_right_container">
+              <a class="gallery_light" href="<?php bloginfo("template_url") ?>/images/interna/image6.jpg">
+                <!-- <img class="img_fill left" src="<?php bloginfo("template_url") ?>/images/interna/image6.jpg" alt=""> -->
+                <img class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/image6.jpg" alt="">
+              </a>
+            </div>
+            <div class="galeria_photo_wrap left_to_right_container">
+              <a class="gallery_light" href="<?php bloginfo("template_url") ?>/images/interna/image3.jpg">
+                <!-- <img class="img_fill left" src="<?php bloginfo("template_url") ?>/images/interna/image3.jpg" alt=""> -->
+                <img class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/image3.jpg" alt="">
+              </a>
+            </div>
+            <div class="galeria_photo_wrap left_to_right_container">
+              <a class="gallery_light" href="<?php bloginfo("template_url") ?>/images/interna/image4.jpg">
+                <!-- <img class="img_fill left" src="<?php bloginfo("template_url") ?>/images/interna/image4.jpg" alt=""> -->
+                <img class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/image4.jpg" alt="">
+              </a>
+            </div>
+            <div class="galeria_photo_wrap left_to_right_container">
+              <a class="gallery_light" href="<?php bloginfo("template_url") ?>/images/interna/image5.jpg">
+                <!-- <img class="img_fill left" src="<?php bloginfo("template_url") ?>/images/interna/image5.jpg" alt=""> -->
+                <img class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/image5.jpg" alt="">
+              </a>
+            </div>
+            <div class="galeria_photo_wrap left_to_right_container">
+              <a class="gallery_light" href="<?php bloginfo("template_url") ?>/images/interna/image9.jpg">
+                <!-- <img class="img_fill left" src="<?php bloginfo("template_url") ?>/images/interna/image9.jpg" alt=""> -->
+                <img class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/image9.jpg" alt="">
+              </a>
+            </div>
+          </div>
+          <button class="arrow_galeria arrow_right"><i class="icon-arrow_right"></i></button>
+
+        </div>
+      </div>
+      <div class="col-md-6 wow slideInRight" data-wow-offset="20">
+        <?php
+
+        // Quienes | Somos
+        $titleQuienes = explode(" | ", mazal_get_acf_field("quienes_titulo_")); // [0 => "Quienes",1 => "Somos"]
+        ?>
+        <div class="galeria_title_container no_rotate">
+
+          <h3 class="font-2 text-yellow text-light uppercase"><span><?php echo $titleQuienes[0] ?></span><br><?php echo $titleQuienes[1] ?></h3>
+
+        </div>
+        <p class="galeria_description font-1 text-light no_rotate">
+          <?php echo mazal_get_acf_field("quienes_texto_") ?>
+          <!-- <button class="mt-5 button general_button text-yellow">
+            <span class="text-yellow" data-title="<?php echo mazal_get_acf_field("quienes_boton_") ?>">
+              <?php echo mazal_get_acf_field("quienes_boton_") ?>
+            </span>
+          </button> -->
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- <section id="section_galeria" class="section_high">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 wow slideInLeft" data-wow-offset="20">
+        <div class="galeria_container">
           <div class="galeria_principal_image">
             <a class="gallery_light" href="<?php bloginfo("template_url") ?>/images/interna/image6.jpg">
               <img class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/image6.jpg" alt="">
@@ -75,8 +143,6 @@
       </div>
       <div class="col-md-6 d-md-flex wow slideInRight" data-wow-offset="20">
         <?php
-
-        // Quienes | Somos
         $titleQuienes = explode(" | ", mazal_get_acf_field("quienes_titulo_")); // [0 => "Quienes",1 => "Somos"]
         ?>
         <div class="galeria_title_container">
@@ -86,16 +152,11 @@
         </div>
         <p class="galeria_description font-1 text-light">
           <?php echo mazal_get_acf_field("quienes_texto_") ?>
-          <!-- <button class="mt-5 button general_button text-yellow">
-            <span class="text-yellow" data-title="<?php echo mazal_get_acf_field("quienes_boton_") ?>">
-              <?php echo mazal_get_acf_field("quienes_boton_") ?>
-            </span>
-          </button> -->
         </p>
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 <?php get_template_part("contents/content", "interna_360"); ?>
 
