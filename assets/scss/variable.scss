@@ -17,7 +17,8 @@ $tablet_query: "screen and (max-width:#{$tablet_pixels})";
 $desktop_query: "screen and (max-width:#{$desktop_pixels})";
 $fluid_query: "screen and (max-width:#{$fluid_pixels})";
 
-$chocolate: rgba(10, 1, 1, 0.91);
+// $chocolate: rgba(10, 1, 1, 0.91);
+$chocolate: #201818;
 $dorado:  rgba(140, 125, 108);
 
 $blanco:  #fff;

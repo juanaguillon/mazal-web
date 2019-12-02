@@ -123,6 +123,7 @@ $producto = get_queried_object();
 
       <div class="col-md-5">
         <div class="item-information">
+          
           <h2 class="item-title"><?php echo $producto->post_title; ?></h2>
           <?php
           if (get_field("mostar_referencia", $producto)) {
