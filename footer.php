@@ -50,6 +50,15 @@
 
   <script src="<?php bloginfo('template_url') ?>/assets/js/core.min.js"></script>
   <script src="<?php bloginfo('template_url') ?>/assets/js/script.js"></script>
+  <?php
+
+  /** SI está en modo de personalizador WordPress */
+  global $wp_customize;
+  if (isset($wp_customize)) {
+    wp_footer();
+  }
+
+  ?>
 
   <?php
   if (is_tax("categoria") || mazal_is_portfolio_page() || is_search()) {

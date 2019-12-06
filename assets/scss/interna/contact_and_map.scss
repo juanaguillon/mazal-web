@@ -3,9 +3,10 @@
 /* ====================  */
 
 #section_contacto {
-  background: #201818;
+  background: $chocolate;
   .black_background {
-    background: rgba(0, 0, 0, 0.72);
+    background: $chocolate;
+    opacity: 0.87;
   }
 }
 .contact_map_message {

@@ -17,11 +17,11 @@ function senMailChimpMail($emaoil)
   $mail->SMTPAuth = true;
 
   $mail->Host = "mail.mazal.co";
-  $mail->Username = "info@mazal.co";
+  $mail->Username = "contact@mazal.co";
   $mail->Password = "Intuition1234%";
   $mail->Port = 587;
 
-  $mail->From = "info@mazal.co";
+  $mail->From = "contact@mazal.co";
   $mail->FromName = $nombre_sitio;
 
   $mail->AddCC($emaoil);
@@ -42,7 +42,6 @@ function senMailChimpMail($emaoil)
             <td width="<?php echo $imgWidth ?>" height=" <?php echo $imgHeigt ?>" valign="top" align="center"><img src="<?php echo $imagen_respuesta;  ?>" width=" <?php echo $imgWidth ?>" height="<?php echo $imgHeigt ?>" />
               <br><br>
               <p>Gracias por suscribirse a Mazal Diseño Interior & Arquitectura</p>
-
             </td>
           </tr>
         </table>

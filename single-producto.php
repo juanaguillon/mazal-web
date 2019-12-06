@@ -121,9 +121,9 @@ $producto = get_queried_object();
       </div>
 
 
-      <div class="col-md-5">
+      <div class="col-md-5 information_item">
         <div class="item-information">
-          
+
           <h2 class="item-title"><?php echo $producto->post_title; ?></h2>
           <?php
           if (get_field("mostar_referencia", $producto)) {
@@ -316,11 +316,11 @@ $producto = get_queried_object();
     <div class="row">
       <?php
       foreach ($queryRel->posts as $relProducto) : ?>
-        <div class="col-md-4">
+        <div class="col-md-4 related_product_cl">
           <a href="<?php echo get_permalink($relProducto) ?>">
             <div class="related-item">
               <div class="image-related-item item">
-                <img src="<?php echo get_field("imagen_de_producto", $relProducto)["sizes"]["medium"] ?>" alt="">
+                <img src="<?php echo get_field("imagen_de_producto", $relProducto)["sizes"]["product-thumb"] ?>" alt="">
                 <div class="item-content">
                   <span class="item-nombre-proyecto"><?php echo $relProducto->post_title ?></span>
                 </div>
@@ -363,6 +363,20 @@ $producto = get_queried_object();
         <input type="hidden" id="image_cotizar" value="<?php echo get_field("imagen_de_producto", $producto)["sizes"]["medium"] ?>">
         <input type="hidden" id="url_cotizar" value=<?php echo get_permalink($producto) ?>>
         <input type="hidden" id="name_cotizar" value="<?php echo $producto->post_title ?>">
+
+        <style>
+          .sprm_fld {
+            position: absolute;
+            opacity: 0;
+            z-index: -99999;
+            height: 0px;
+            width: 0px;
+            margin: 0px !important;
+            padding: 0px !important;
+          }
+        </style>
+
+
         <?php
         if (mazal_is_language()) {
           $namePh = "Nombres y apellidos";
@@ -383,7 +397,7 @@ $producto = get_queried_object();
         <div class="row">
           <div class="col-12">
             <div class="field">
-              <img style="width: 210px;" src="<?php echo get_field("imagen_de_producto", $producto)["sizes"]["medium"] ?>" alt="">
+              <img style="	max-width: 210px;max-height: 210px;" src="<?php echo get_field("imagen_de_producto", $producto)["sizes"]["medium"] ?>" alt="">
             </div>
           </div>
           <div class="col-md-6">
@@ -393,6 +407,8 @@ $producto = get_queried_object();
           </div>
           <div class="col-md-6">
             <div class="field">
+              <input tabindex="-1" type="text" id="sprm_fld" placeholder="Omit if you are human" class="sprm_fld">
+              <input tabindex="-1" type="text" id="sprm_fld2" placeholder="Omit if you are human" class="sprm_fld">
               <input id="cotization_email" class="text light" placeholder="<?php echo $emailph ?>" type="text">
             </div>
           </div>
