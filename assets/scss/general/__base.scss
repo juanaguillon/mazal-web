@@ -237,7 +237,7 @@ section h3 {
   backdrop-filter: blur(7px);
   height: 100%;
   display: none;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   &.active {
     display: flex;
@@ -265,7 +265,7 @@ section h3 {
     width: 100%;
     max-width: 550px;
     background: #f7f7f7;
-    margin-top: 30px;
+    // margin-top: 61px;
   }
 
   #button_cotizar_producto span {

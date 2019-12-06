@@ -1,6 +1,5 @@
 $speedtransition: 0.5s;
 $cubictransition: cubic-bezier(0.785, 0.135, 0.15, 0.86);
-$yellowcolor: #dab27c;
 $font1: "Quicksand";
 $font2: "Quicksand";
 $font3: "Bebas Neue Book";
@@ -17,8 +16,20 @@ $tablet_query: "screen and (max-width:#{$tablet_pixels})";
 $desktop_query: "screen and (max-width:#{$desktop_pixels})";
 $fluid_query: "screen and (max-width:#{$fluid_pixels})";
 
-// $chocolate: rgba(10, 1, 1, 0.91);
-$chocolate: #201818;
-$dorado:  rgba(140, 125, 108);
+// Estos colores pueden cambiar en el administrador de personalización en WordPress
+:root {
+  --chocolate: #201818;
+  --dorado: #8c7d6c;
+  --yellowcolor: #dab27c;
+  --blanco: #fff;
+}
 
-$blanco:  #fff;
+$chocolate: var(--chocolate);
+// $chocolate: #201818;
+// $chocolate: rgba(10, 1, 1, 0.91);
+$yellowcolor: var(--yellowcolor);
+// $yellowcolor: #dab27c;
+$dorado: var(--dorado);
+// $dorado:  rgba(140, 125, 108);
+$blanco: var(--blanco);
+// $blanco: #fff;

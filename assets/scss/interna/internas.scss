@@ -14,7 +14,7 @@
   h2 {
     margin: 0;
     font-size: 55px;
-    color: #dab27c;
+    color: $yellowcolor;
     margin-top: 40px;
     font-weight: 600;
   }
@@ -180,7 +180,7 @@
   content: "";
   width: 40%;
   height: calc(80vh - 70px);
-  background: #201818;
+  background: $chocolate;
   position: absolute;
   top: -4%;
   z-index: -1;
@@ -243,7 +243,7 @@
   max-width: 270px;
   margin-bottom: 15px;
   .dropdown-list {
-    background: #8c7d6c !important;
+    background: $dorado !important;
     z-index: 20 !important;
     label {
       color: white !important;
@@ -297,7 +297,7 @@
         color: white;
         font-weight: 600;
         .dropdown-label {
-          background: #201818 !important;
+          background: $chocolate !important;
           border: none;
           box-shadow: none;
           &:before {
@@ -320,7 +320,7 @@
         }
         &.open {
           .dropdown-list {
-            background: #282121;
+            background: $chocolate;
           }
         }
       }
@@ -381,7 +381,7 @@ select {
 }
 
 .fill-button {
-  background: #8c7d6c;
+  background: $dorado;
   color: white;
   font-size: 17px;
   padding: 15px 30px;
@@ -392,7 +392,7 @@ select {
 }
 
 .item-nombre-proyecto {
-  color: #dab27c;
+  color: $yellowcolor;
   text-transform: uppercase;
   font-family: quicksand;
   font-weight: 600;

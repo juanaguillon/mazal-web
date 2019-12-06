@@ -25,10 +25,24 @@
     var chimpUrl = "<?php echo get_template_directory_uri() . "/includes/addmailchimpmail.php" ?>"
     var ajaxUrl = "<?php echo admin_url("admin-ajax.php") ?>"
   </script>
+
+  <?php
+  
+  $chocolate = get_theme_mod("mazal_color_chocolate", "#201818");
+  $dorado = get_theme_mod("mazal_color_dorado", "#8c7d6c");
+  $yellow = get_theme_mod("mazal_color_yellow", "#dab27c");
+
+  ?>
+  <style id="style_rootsheet">
+    :root {
+      --chocolate: <?php echo $chocolate ?>;
+      --dorado: <?php echo $dorado ?>;
+      --yellowcolor: <?php echo $yellow ?>;
+    }
+  </style>
 </head>
 
 <body class="<?php if (is_front_page()) echo "index_body_class" ?>">
-
   <!-- <div class="loader">
     <div></div>
     <div></div>
@@ -96,6 +110,22 @@
                     $maxParent->term_id = 0;
                   }
                   // printcode( $maxParent );
+                  if (is_singular("producto")) {
+                    $termsProducto = get_the_terms(get_queried_object(), "categoria")[0];
+                    $mostParent = mazal_get_term_top_most_parent($termsProducto->term_id, "categoria");
+
+                    // Verificar a que página enviar, si será arquitectura, hogar o corporativo.
+                    if ($mostParent->term_id == 91 || $mostParent->term_id == 97) {
+                      // Si es arquitectura
+                      $linkSend = pll_get_post(11);
+                    } else if ($mostParent->term_id == 99 || $mostParent->term_id == 89) {
+                      // Si es Hogar
+                      $linkSend = pll_get_post(25);
+                    } else if ($mostParent->term_id == 93 || $mostParent->term_id == 101) {
+                      // Si es Corporativo
+                      $linkSend = pll_get_post(9);
+                    }
+                  }
 
                   $chLink =  get_queried_object()->ID;
                   if (mazal_is_language()) {
@@ -179,20 +209,20 @@
                  * Secciones de las páginas.
                  */
                 $ullist = array(
+                  "portafolio" => strtoupper(mazal_get_acf_field("portafolio_titulo_")),
+                  "contacto" => strtoupper(mazal_get_acf_field("contacto_titulo_")),
                   // "galeria" => mazal_is_language() ? "Nosotros" : "About Us",
                   // "before_after" => mazal_is_language() ? "Remodelación" : "Restyling",
-                  "portafolio" => strtoupper(mazal_get_acf_field("portafolio_titulo_")),
                   // "clientes" => mazal_is_language() ? "Clientes" : "Customers",
-                  "contacto" => strtoupper(mazal_get_acf_field("contacto_titulo_")),
                 );
-                foreach ($ullist as $ulk => $ullnm) :
+                foreach ($ullist as $ulkey => $ullnm) :
                   $linkLI = $link;
-                  if (is_tax("categoria")) {
-                    $linkLI = "href='" . esc_url(get_permalink($linkSend) . "?section=" . $ulk)  . "'";
+                  if (is_tax("categoria") || is_singular("producto")) {
+                    $linkLI = "href='" . esc_url(get_permalink($linkSend) . "?section=" . $ulkey)  . "'";
                   }
                   ?>
-                <li class="<?php echo $ulk ?>">
-                  <a <?php echo $linkLI ?> class="text-white" data-scroll="<?php echo $ulk ?>"><?php echo $ullnm ?></a>
+                <li class="<?php echo $ulkey ?>">
+                  <a <?php echo $linkLI ?> class="text-white" data-scroll="<?php echo $ulkey ?>"><?php echo $ullnm ?></a>
                 </li>
               <?php endforeach;
                 if (!is_wp_error($link)) :

@@ -75,21 +75,25 @@ function toggleTheModalToSearchInWebsite() {
   };
   var search = modals.search;
   $(search.buttonOpen).click(function(e) {
+    $("body").css("overflow-y","hidden")
     $(search.containerSelector).addClass("active");
   });
   $(search.buttonClose)
     .off("click")
     .click(function() {
+      $("body").css("overflow-y", "visible");
       $(search.containerSelector).removeClass("active");
     });
 
   var product = modals.productCotizar;
   $(product.buttonOpen).click(function(e) {
+    $("body").css("overflow-y","hidden")
     $(product.containerSelector).addClass("active");
   });
   $(product.buttonClose)
     .off("click")
     .click(function() {
+      $("body").css("overflow-y", "visible");
       $(product.containerSelector).removeClass("active");
     });
   $("body")
@@ -132,6 +136,10 @@ function sendContactMail() {
     var city = $("#contact_city").val();
     var message = $("#contact_message").val();
     var canSend = true;
+
+    var smp1 = $("#sprm_fld").val();
+    var smp2 = $("#sprm_fld2").val();
+
     if (
       city == "" ||
       nombre == "" ||
@@ -162,9 +170,11 @@ function sendContactMail() {
           ciudad: city,
           cell: phone,
           mensaje: message,
+          data_spmr: smp1,
+          data_spmr2: smp2
           // Verificar si está haciendo peticion de cotización.
           // Esta se hará en la ficha de producto.
-          isRequest: false
+          // isRequest: false
         },
         success: function(resp) {
           console.log(resp);
@@ -202,6 +212,9 @@ function sendCotizarMail() {
     var urlCotizando = $("#url_cotizar").val();
     var imgCotizando = $("#image_cotizar").val();
     var nameCotizando = $("#name_cotizar").val();
+
+    var smp1 = $("#sprm_fld").val();
+    var smp2 = $("#sprm_fld2").val();
     var canSend = true;
     if (
       city == "" ||
@@ -236,6 +249,8 @@ function sendCotizarMail() {
           urlCotiza: urlCotizando,
           nameCotiza: nameCotizando,
           imgCotiza: imgCotizando,
+          data_spmr: smp1,
+          data_spmr2: smp2,
           // Verificar si está haciendo peticion de cotización.
           // Esta se hará en la ficha de producto.
           isRequest: true

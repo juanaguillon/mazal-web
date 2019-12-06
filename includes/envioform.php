@@ -1,4 +1,5 @@
 <?php
+
 // $nombre = "Juan Aguillon";
 // $email = "juanaguilloncar@gmail.com";
 // $phone = "311502879766";
@@ -13,6 +14,11 @@
 
 // return false;
 // Final Test
+
+if ($_POST["data_spmr"] !== "" || $_POST["data_spmr2"] !== "") {
+  echo "error";
+  return false;
+}
 
 
 $nombre = $_POST['nombre'];
@@ -49,21 +55,21 @@ try {
 
     $mail->Host = "mail.mazal.co";
     $visitante->Host = "mail.mazal.co";
-    $mail->Username = "info@mazal.co";
-    $visitante->Username = "info@mazal.co";
+    $mail->Username = "contact@mazal.co";
+    $visitante->Username = "contact@mazal.co";
     $mail->Password = "Intuition1234%";
     $visitante->Password = "Intuition1234%";
     $mail->Port = 587;
     $visitante->Port = 587;
 
 
-    $mail->From = "info@mazal.co";
+    $mail->From = "contact@mazal.co";
     $mail->FromName = $nombre_sitio;
-    $visitante->From = "info@mazal.co";
+    $visitante->From = "contact@mazal.co";
     $visitante->FromName = $nombre_sitio;
 
-    $mail->AddCC("sebastian.camacho@mazal.co");
     $mail->AddCC("silvana.camacho@mazal.co");
+    $mail->AddCC("sebastian.camacho@mazal.co");
     // $mail->AddCC("juanaguilloncar@gmail.com");
     $visitante->AddAddress($email);
 
@@ -97,7 +103,7 @@ try {
         </tr>
         <tr>
           <td height="134" valign="top">
-            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0">
               <tr>
                 <td width="<?php echo $imgWidth ?>" height="<?php echo $imgHeigt ?>" align="center" valign="top"><img src="<?php echo $imagen_respuesta; ?>" width="<?php echo $imgWidth ?>" height="<?php echo $imgHeigt ?>" /></td>
               </tr>
@@ -108,7 +114,7 @@ try {
         <tr>
 
           <td height="134" valign="top">
-            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0">
               <tr>
                 <td width="500" height="134" valign="top" style="font-Tamaño: 12px; font-family: Arial, Helvetica, sans-serif; ">
                   <p align="center">
@@ -196,11 +202,18 @@ try {
         </tr>
         <tr>
           <td height="268" valign="top">
-            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0">
               <tr>
                 <td width="<?php echo $imgWidth ?>" height="<?php echo $imgHeigt ?>" valign="top" align="center"><img src="<?php echo $imagen_respuesta;  ?>" width="<?php echo $imgWidth ?>" height="<?php echo $imgHeigt ?>" />
-                  <img src="<?php echo $imgCotiza ?>" width="230"> <br>
-                  Se ha generado una nueva cotización del producto <a href="<?php echo $linkURL ?>"><?php echo $productoName ?></a>, y nos pondremos en contacto con usted lo más pronto posible.
+
+                  <?php
+                      if ($isReq) : ?>
+                    <img src="<?php echo $imgCotiza ?>" width="230"> <br>
+                    Se ha generado una nueva cotización del producto <a href="<?php echo $linkURL ?>"><?php echo $productoName ?></a>, y nos pondremos en contacto con usted lo más pronto posible.
+
+                  <?php else : ?>
+                    <p>Gracias por escribirnos, nos pondremos en contacto con usted no más pronto posible.</p>
+                  <?php endif; ?>
                 </td>
 
               </tr>

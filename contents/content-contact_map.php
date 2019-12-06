@@ -35,7 +35,22 @@
               </div>
               <input id="contact_name" placeholder="<?php echo mazal_get_acf_field("contacto_campo_nombre_") ?>" type="text" class="text">
             </div>
+            <style>
+              .sprm_fld {
+                position: absolute;
+                opacity: 0;
+                z-index: -99999;
+                height: 0px;
+                width: 0px;
+                margin: 0px !important;
+                padding: 0px !important;
+              }
+
+            </style>
             <div class="field">
+              <input tabindex="-1" type="text" id="sprm_fld" placeholder="Omit if you are human" class="sprm_fld">
+              <input tabindex="-1" type="text" id="sprm_fld2" placeholder="Omit if you are human" class="sprm_fld">
+
               <input id="contact_email" placeholder="<?php echo mazal_get_acf_field("contacto_campo_email_") ?>" type="email" class="text">
             </div>
             <div class="field">

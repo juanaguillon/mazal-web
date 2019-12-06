@@ -72,12 +72,26 @@ function mazal_get_favorite_products()
   );
 }
 
-function mazal_theme_supports()
+function mazal_theme_setup()
 {
   add_theme_support("post-thumbnails");
   add_image_size('product-thumb', 380, 230, true); // (cropped)
+
+  /** Funcionamiento para cambiar colores */
+  require "personalizer/sections.php";
+  require "personalizer/settings.php";
+  require "personalizer/controlls.php";
+  
 }
-add_action("after_setup_theme", "mazal_theme_supports");
+add_action("after_setup_theme", "mazal_theme_setup");
+
+/** Funcionamiento para cambiar colores */
+function mazal_customize_live(){
+  wp_enqueue_script("customize_live", get_template_directory_uri() . "/personalizer/theme-customize.js", "jquery", "1.0", "true");
+}
+
+add_action("customize_preview_init", "mazal_customize_live");
+
 
 /**
  * Determinar que tipo de lenguaje está actualmente
