@@ -456,4 +456,21 @@ a.languages_toggle {
   .header_top {
     padding: 0 15px;
   }
+  #favorites_header {
+    position: fixed;
+    right: 0;
+    top: 100%;
+    height: calc(100% - 50px);
+    z-index: 100;
+    top: 50px;
+    transition: transform 0.5s;
+    transform: translateX(100%);
+  }
+  #icon_favorites:hover #favorites_header {
+    transform: translateX(0%);
+  }
+  #favorites_ul_header {
+    max-height: 100%;
+    overflow: auto;
+  }
 }

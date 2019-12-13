@@ -103,8 +103,8 @@
     padding-left: 1.5em;
   }
   .contacto_title {
-    left: -3.3em;
-    top: 4.6em;
+    left: -4.2em;
+    top: 5.7em;
     transform: rotate(-90deg);
     transform-origin: bottom;
     padding-left: 4em;
@@ -147,7 +147,7 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    &.lefting{
+    &.lefting {
       flex-direction: column-reverse;
     }
   }

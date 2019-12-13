@@ -92,7 +92,7 @@
   }
 
   .bf_image_sized {
-    width: 100%;
+    width: 71%;
     height: 70vh;
   }
   .bef_aft_descriptions_container {
@@ -101,6 +101,12 @@
       margin-right: 0;
       padding: 0.7em;
     }
+  }
+}
+@media #{$tablet_query} {
+  .bf_image_sized {
+    width: 102%;
+    height: 70vh;
   }
 }
 @media #{$mobile_query} {

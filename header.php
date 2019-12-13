@@ -2,13 +2,38 @@
 <html lang="<?php echo pll_current_language() ?>">
 
 <head>
+  <!-- Google Tag Manager -->
+  <script>
+    (function(w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-TL9XL53');
+  </script>
+  <!-- End Google Tag Manager -->
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title><?php wp_title("") ?> | Mazal</title>
+  <?php if (is_front_page()) : ?>
+    <title>Mazal | Diseño interior y Arquitectura</title>
+  <?php else : ?>
+    <title><?php wp_title("") ?> | Mazal</title>
+  <?php endif; ?>
+
   <link rel="icon" type="image/png" sizes="32x32" href="<?php bloginfo('template_url') ?>/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,600,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="<?php bloginfo('template_url') ?>/custom.min.css">
+  <meta property="description" content="Somos una compañía basada en diseño interior, arquitectura y productos mobiliarios.">
   <?php
   if (is_singular("producto")) :
     $producto = get_queried_object(); ?>
@@ -27,7 +52,7 @@
   </script>
 
   <?php
-  
+
   $chocolate = get_theme_mod("mazal_color_chocolate", "#201818");
   $dorado = get_theme_mod("mazal_color_dorado", "#8c7d6c");
   $yellow = get_theme_mod("mazal_color_yellow", "#dab27c");

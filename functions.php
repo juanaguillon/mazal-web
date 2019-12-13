@@ -352,7 +352,7 @@ function mazal_single_product($post, $filterClass = "")
   </div>
 
 
-  <div class="d-flex more-items">
+  <div class="more-items">
     <input type="hidden" id="count_actual_items_show">
     <button data-filter="" id="load_more_filter_items" class=" m-auto button fill-button">
       <span data-title="cargar mas">
