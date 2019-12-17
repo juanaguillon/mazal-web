@@ -99,9 +99,20 @@
   }
 }
 
+@media #{$desktop_query} {
+  section h3 {
+    font-size: 55px;
+  }
+}
 @media #{$tablet_query} {
   .banner_caption_inner h3 {
     font-size: 35px;
     line-height: 1;
+  }
+  section.section_high {
+    background-size: 130%;
+  }
+  section.section {
+    padding: 70px 15px;
   }
 }

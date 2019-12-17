@@ -71,7 +71,7 @@
     padding: 0 15px;
     font-size: 1.5em;
     margin: 0 4%;
-    img{
+    img {
       max-width: 18px;
       max-height: 18px;
     }
@@ -86,11 +86,28 @@
   .contacto_title h3 {
     font-size: 50px;
   }
-}
-@media #{$tablet_query} {
   .contacto_and_map_wrap {
     height: auto;
   }
+  .contacto_title {
+    transform: rotate(0);
+    top: 0.5em;
+    border: none;
+    padding: 0;
+    width: 100%;
+    left: 0;
+  }
+  .contacto_form_container {
+    padding: 15px;
+    padding-left: 15px;
+    padding-top: 5em;
+  }
+  #contacto_form {
+    padding-left: 0;
+    border-bottom: 1px solid #ffffffad;
+  }
+}
+@media #{$tablet_query} {
 }
 
 /* ====================  */

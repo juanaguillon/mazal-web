@@ -31,7 +31,10 @@
   <?php endif; ?>
 
   <link rel="icon" type="image/png" sizes="32x32" href="<?php bloginfo('template_url') ?>/favicon.ico">
-  <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,600,700&display=swap" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,600,700&display=swap" rel="stylesheet"> -->
+
+<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800|Ubuntu:300,400,500,700&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="<?php bloginfo('template_url') ?>/custom.min.css">
   <meta property="description" content="Somos una compañía basada en diseño interior, arquitectura y productos mobiliarios.">
   <?php
@@ -136,6 +139,8 @@
                   }
                   // printcode( $maxParent );
                   if (is_singular("producto")) {
+
+                    // Obtener la primera categoria de el actual producto
                     $termsProducto = get_the_terms(get_queried_object(), "categoria")[0];
                     $mostParent = mazal_get_term_top_most_parent($termsProducto->term_id, "categoria");
 
@@ -196,25 +201,21 @@
                   "hide_empty" => false
                 ));
                 $navDynamics = array();
-                ?>
-
-              <?php foreach ($directChilds as $childNav) : ?>
-
-                <?php
-                    $dataDyn = "";
-                    $className = $childNav->slug;
-                    if (get_field("diseno_", $childNav) == "Diseño con Subcategorías") {
-                      $navDynamics[$childNav->slug] = get_terms(array(
-                        "taxonomy" => "categoria",
-                        "hide_empty" => false,
-                        "number" => 4,
-                        "parent" => $childNav->term_id
-                      ));
-                      $className .= " has_dynamic";
-                      $dataDyn = sprintf("data-dynamic='nav_dynamic_%s'", $childNav->slug);
-                    }
-                    ?>
-
+                foreach ($directChilds as $childNav) :
+                  $dataDyn = "";
+                  $className = $childNav->slug;
+                  $childNavTranslated = get_term(pll_get_term($childNav->term_id, "es"), "categoria");
+                  if (get_field("diseno_", $childNavTranslated) == "Diseño con Subcategorías") {
+                    $navDynamics[$childNav->slug] = get_terms(array(
+                      "taxonomy" => "categoria",
+                      "hide_empty" => false,
+                      "number" => 4,
+                      "parent" => $childNav->term_id
+                    ));
+                    $className .= " has_dynamic";
+                    $dataDyn = sprintf("data-dynamic='nav_dynamic_%s'", $childNav->slug);
+                  }
+                  ?>
                 <li class="<?php echo $className ?>" <?php echo $dataDyn ?>>
                   <?php
                       /**
@@ -227,6 +228,20 @@
                       }
                       ?>
                   <a rel="nofollow" href="<?php echo $href ?>" class="text-white" data-scroll="<?php echo $childNav->slug ?>"><?php echo $childNav->name ?></a>
+
+                  <?php
+
+                      if (isset($navDynamics[$childNav->slug])) {
+                        $subItemsOfCurrentTerm = $navDynamics[$childNav->slug];
+                        echo "<ul class='header_top_submenu'>";
+                        foreach ($subItemsOfCurrentTerm as $sioct) {
+                          echo "<li><a href='" . get_term_link($sioct, "categoria") . "'>" . $sioct->name . "</a></li>";
+                        }
+                        echo "</ul>";
+                      }
+
+                      ?>
+
                 </li>
               <?php endforeach;
 
@@ -361,12 +376,17 @@
                 <div class="col-md-9">
                   <div class="dynamic_images">
 
-                    <?php foreach ($navDyn as $navDeep) : ?>
+                    <?php foreach ($navDyn as $navDeep) :
+                          /**
+                           * Se debe obtener la imagen de la taxonomia en español
+                           */
+                          $imageTranslated = get_term(pll_get_term($navDeep->term_id, "es"), "categoria");
+                          ?>
                       <a href="<?php echo esc_url(get_term_link($navDeep, "categoria")); ?>">
                         <div class="dynamic_image_single left_to_right_container">
                           <div class="dynamic_image_container ">
-                            <img class="img_fill left" src="<?php echo get_field("imagen", $navDeep)["sizes"]["medium"] ?>" alt="">
-                            <img class="img_fill right" src="<?php echo get_field("imagen", $navDeep)["sizes"]["medium"] ?>" alt="">
+                            <img class="img_fill left" src="<?php echo get_field("imagen", $imageTranslated)["sizes"]["medium"] ?>" alt="">
+                            <img class="img_fill right" src="<?php echo get_field("imagen", $imageTranslated)["sizes"]["medium"] ?>" alt="">
                           </div>
                           <div class="dynamic_image_text">
                             <?php echo $navDeep->name ?>
@@ -374,33 +394,6 @@
                         </div>
                       </a>
                     <?php endforeach; ?>
-                    <!-- <div class="dynamic_image_single left_to_right_container">
-                      <div class="dynamic_image_container ">
-                        <img class="img_fill left" src="<?php bloginfo("template_url") ?>/images/interna/image10.jpg" alt="">
-                        <img class="img_fill right" src="<?php bloginfo("template_url") ?>/images/interna/image10.jpg" alt="">
-                      </div>
-                      <div class="dynamic_image_text">
-                        Superfice
-                      </div>
-                    </div>
-                    <div class="dynamic_image_single left_to_right_container">
-                      <div class="dynamic_image_container ">
-                        <img class="img_fill left" src="<?php bloginfo("template_url") ?>/images/interna/image9.jpg" alt="">
-                        <img class="img_fill right" src="<?php bloginfo("template_url") ?>/images/interna/image9.jpg" alt="">
-                      </div>
-                      <div class="dynamic_image_text">
-                        Techos
-                      </div>
-                    </div>
-                    <div class="dynamic_image_single left_to_right_container">
-                      <div class="dynamic_image_container ">
-                        <img class="img_fill left" src="<?php bloginfo("template_url") ?>/images/interna/image8.jpg" alt="">
-                        <img class="img_fill right" src="<?php bloginfo("template_url") ?>/images/interna/image8.jpg" alt="">
-                      </div>
-                      <div class="dynamic_image_text">
-                        Alineaciones
-                      </div>
-                    </div> -->
                   </div>
                 </div>
               </div>

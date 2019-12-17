@@ -1,6 +1,6 @@
 <section id="section_contacto" class="section_high">
   <div class="row no-gutters contacto_and_map_wrap">
-    <div class="col-md-7 wow slideInLeft" style="background-image: url(<?php bloginfo("template_url") ?>/images/interna/image2.jpg) ">
+    <div class="col-md-6 col-lg-7 wow slideInLeft" style="background-image: url(<?php bloginfo("template_url") ?>/images/interna/image2.jpg) ">
       <div class="black_background"></div>
       <div class="loading_container" id="loading_contact_map">
         <div class="loading_spinner"></div>
@@ -45,7 +45,6 @@
                 margin: 0px !important;
                 padding: 0px !important;
               }
-
             </style>
             <div class="field">
               <input tabindex="-1" type="text" id="sprm_fld" placeholder="Omit if you are human" class="sprm_fld">
@@ -75,7 +74,7 @@
 
       </div>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-6 col-lg-5">
       <div class="map h-100" id="mapFoot"></div>
 
       <script>
@@ -220,9 +219,17 @@
             draggable: false
           });
 
+          var icon = {
+            url: "https://mazal.co/wp-content/themes/mazal/images/icons/logo_min.svg", // url
+            scaledSize: new google.maps.Size(30, 30), // scaled size
+            origin: new google.maps.Point(0, 0), // origin
+            anchor: new google.maps.Point(0, 0) // anchor
+          };
+
           var markerFoot = new google.maps.Marker({
             position: uluruFoot,
             map: mapFoot,
+            icon: icon
           });
         }
       </script>

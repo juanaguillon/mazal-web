@@ -129,6 +129,8 @@ header {
     max-width: 350px;
     background: #000000eb;
     align-items: flex-end;
+    overflow-y: auto;
+    overflow-x: hidden;
     justify-content: flex-start;
     text-align: right;
     padding-top: 50px;
@@ -172,6 +174,7 @@ header {
       }
 
       padding: 20px 1vw;
+      color: white;
       padding: 0px 1vw;
       display: block;
       font-size: 0.86rem;
@@ -451,10 +454,27 @@ a.languages_toggle {
     width: 65%;
   }
 }
+.super_menu_comenext {
+  display: none !important;
+}
+.header_top_submenu {
+  display: none;
+}
+@media #{$desktop_query} {
+  .super_menu_comenext {
+    display: block !important;
+  }
+}
 
 @media #{$tablet_query} {
+  .header_top_list > li:after {
+    display: none;
+  }
   .header_top {
     padding: 0 15px;
+  }
+  .dynamic_header_top {
+    display: none;
   }
   #favorites_header {
     position: fixed;
