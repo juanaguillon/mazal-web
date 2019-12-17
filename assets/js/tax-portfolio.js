@@ -14,7 +14,7 @@ $(window).on("load", function() {
     itemSelector: selectorItem,
     layoutMode: "fitRows"
   });
-  var initial_items = 9;
+  var initial_items = 6;
   var next_items = 3;
   var quantityElm = $("#count_actual_items_show");
 
@@ -115,6 +115,7 @@ $(window).on("load", function() {
 
     $label.on("click", e => {
       e.stopPropagation();
+      $(".dropdown").removeClass("open");
       $(this).toggleClass("open");
     });
     unique.on("change", function() {

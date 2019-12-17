@@ -95,11 +95,11 @@ if (count($ancest) > 1) {
     <?php if ($isSubChildren) : ?>
       <h5><?php echo $currentCategory->name ?></h5>
     <?php endif; ?>
-    <p><?php echo wp_kses_post($currentObject->description) ?></p>
+    <p class="taxonomy_banner_desc"><?php echo wp_kses_post($currentObject->description) ?></p>
   </div>
 
 </section>
-
+<p class="taxonomy_desc"><?php echo wp_kses_post($currentObject->description) ?></p>
 
 <section class="category-filter-grid container">
 

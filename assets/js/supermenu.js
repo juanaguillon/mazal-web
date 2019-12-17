@@ -28,6 +28,7 @@
         );
       }
     });
+
     $(".super_menu_comenext")
       .off("click")
       .on("click", function(e) {

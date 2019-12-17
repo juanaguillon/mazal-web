@@ -5,11 +5,29 @@ $wpQuery = new WP_Query(array(
   "posts_per_page" => -1,
   "s" => get_search_query()
 ));
+
 $allPosts = $wpQuery->posts;
+
 $exists = count($allPosts) > 0;
+
+if (!$exists) {
+  $wpTerms = new WP_Query(array(
+    "post_type" => "producto",
+    "posts_per_page",
+    "tax_query" => array(
+      array(
+        "field" => "name",
+        "taxonomy" => "categoria",
+        "terms" => get_search_query()
+      )
+    )
+  ));
+  $allPosts = $wpTerms->posts;
+  $exists = count($allPosts) > 0;
+}
 ?>
 
-<section class="category-filter-grid container search_container <?php echo ! $exists ? "search_empty" : "" ?>">
+<section class="category-filter-grid container search_container <?php echo !$exists ? "search_empty" : "" ?>">
   <?php
 
   if (mazal_is_language()) {

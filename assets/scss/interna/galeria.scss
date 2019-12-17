@@ -1,6 +1,7 @@
 #section_galeria {
   background: $chocolate;
   min-height: initial;
+  position: relative;
   // height: $vh100;
   // background: rgba(10, 1, 1, 0.91);
   padding: 45px 0px;
@@ -112,5 +113,12 @@
   &.no_rotate {
     padding-left: 0px !important;
     padding-top: 0px !important;
+    padding-bottom: 0;
+  }
+}
+
+@media #{$tablet_query} {
+  #section_galeria {
+    border-bottom: 1px dashed #8c7d6c;
   }
 }

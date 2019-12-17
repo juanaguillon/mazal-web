@@ -365,7 +365,7 @@ function showPopupMobiliario() {
     $(".popup_wrapper").addClass("move");
   }
 }
-// setTimeout(showPopup, 10000);
+setTimeout(showPopup, 10000);
 $(".mini_logo").click(function(e) {
   e.stopPropagation();
   showPopup();

@@ -102,6 +102,10 @@
       padding: 0.7em;
     }
   }
+  .bef_aft_images_container {
+    width: 75%;
+    margin: auto;
+  }
 }
 @media #{$tablet_query} {
   .bf_image_sized {

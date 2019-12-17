@@ -37,7 +37,7 @@
 
 <section id="section_galeria" class="section_high">
   <div class="container">
-    <div class="row">
+    <div class="row flex-md-row flex-column-reverse">
       <div class="col-md-6 wow slideInLeft" data-wow-offset="20">
         <div class="galeria_container">
           <div class="loading_container show" id="loading_slick_gallery">

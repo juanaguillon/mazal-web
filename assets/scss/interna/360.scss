@@ -61,7 +61,9 @@
       text-align: right;
     }
     .tres60_title_container h3 {
-      text-align: right;
+      font-size: 40px;
+      width: 100%;
+      padding: 0 15px;
     }
   }
 }
@@ -96,14 +98,29 @@
 /* Final Página Interna: 360 */
 /* ====================  */
 @media #{$desktop_query} {
-  #section_arq_sos {
-    background-size: auto 100%;
+}
+
+@media #{$tablet_query} {
+  .tres60_section {
+    background-size: 130%;
+    min-height: 140vh !important;
+    background-position: bottom;
   }
   .tres_60_white_wrap {
-    background: rgba(10, 1, 1, 0.45);
+    padding: 50px 0;
+    height: auto;
+    background: #201818;
+    opacity: 1;
     p,
     h3 {
-      text-shadow: 0 0 5px black;
+      margin: 8px 0;
+      text-shadow: 0 0 5px #000;
+    }
+    p {
+      text-align: left;
+    }
+    h3 {
+      text-align: center;
     }
   }
 }
