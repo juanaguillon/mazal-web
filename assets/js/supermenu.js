@@ -7,20 +7,22 @@
    */
   $.fn.superMenu = function(props) {
     var directLi = $(this).children(props.directLi),
-      submenuSelector = props.submenuSelector;
-    arrowLeftClass = props.arrowLeftClass;
-    arrowRightClass = props.arrowRightClass;
+      submenuSelector = props.submenuSelector,
+      arrowLeftClass = props.arrowLeftClass,
+      arrowRightClass = props.arrowRightClass;
 
     directLi.each(function() {
       if ($(this).children(submenuSelector).length > 0) {
         var submenu = $(this).children(submenuSelector);
         submenu.css("display", "none");
 
-        submenu.prepend(
-          '<li class="super_menu_comeback"><a><i class="' +
-            arrowLeftClass +
-            '"></i><span>Volver</span></a></li>'
-        );
+        submenu
+          .prev("a")
+          .before(
+            '<li class="super_menu_comeback"><a><i class="' +
+              arrowLeftClass +
+              '"></i></a></li>'
+          );
         $(this).append(
           '<a class="super_menu_comenext"><i class="' +
             arrowRightClass +
