@@ -257,12 +257,12 @@
 		<div class="popup_right">
 			<div class="poput-title-container flex-center-xy flex-column">
 				<div class="popup-icon-container"><i class="icon-house text6x"></i></div>
-				<h3 class="popup-title text-center font-2 text4x">
+				<h3 class="popup-title text-center font-1 text4x">
 					AGENDA A UN DECORADOR DE INTERIORES
 				</h3>
 			</div>
 
-			<p class="popup-text text-left font-1 m-0">Desde un pequeño consejo sobre colores hasta la renovación completa
+			<p class="popup-text text-left font-2 m-0">Desde un pequeño consejo sobre colores hasta la renovación completa
 				de tu decoración. <br><br> Nuestros decoradores de interiores
 				están listos para ayudarte, en tienda o en la comodidad de tu hogar.</p>
 			<div class="popup-button-container text-center">

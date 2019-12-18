@@ -1,14 +1,14 @@
 #section_galeria {
-  background: $chocolate;
-  min-height: initial;
+  background: white;
   position: relative;
-  // height: $vh100;
-  // background: rgba(10, 1, 1, 0.91);
   padding: 45px 0px;
+  display: flex;
+  align-items: center;
 }
 
 #loading_slick_gallery {
-  background: $chocolate;
+  background: white;
+  // background: $chocolate;
 }
 
 .galeria_container {
@@ -88,7 +88,7 @@
     font-size: 0.5em;
     text-align: left;
     position: absolute;
-    font-weight: bold;
+    font-weight: lighter;
     left: 0;
     bottom: 2.2em;
   }
@@ -100,6 +100,8 @@
     left: 0 !important;
     top: 0em !important;
     text-align: left;
+    line-height: 1.1;
+    	color: $chocolate;
     span {
       position: static;
     }
@@ -109,7 +111,8 @@
 .galeria_description {
   padding-left: 210px;
   padding-top: 90px;
-  color: white;
+  color: rgb(41, 41, 41);
+  line-height: 23px;
   &.no_rotate {
     padding-left: 0px !important;
     padding-top: 0px !important;
