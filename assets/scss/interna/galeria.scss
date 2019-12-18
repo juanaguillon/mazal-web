@@ -129,6 +129,7 @@
 
 .mansory-gallery{
   display: flex;
+  height: 70vh; 
   .columna-1{
     width:40%;
   }
@@ -147,26 +148,28 @@
       right:-999999px;
       bottom:-999999px;
       margin:auto;
-      height: 100%; 
-    width: 100%;
+      max-width: initial;  
     }
     
   }
   .uno{
-    
-    height: 275px;
+    height: calc(60% - 10px);
+    min-height: 275px;
   }
   .dos{
     
-    height: 180px;
+    height: calc(40% - 10px);
+    min-height: 180px;
     
   }
   .tres{
     
-    height: 180px;
+    height: calc(38% - 10px);
+    min-height: 180px;
   }
   .cuatro{
     
-    height: 270px;
+    height: calc(62% - 10px);
+    min-height: 270px;
   }
 }

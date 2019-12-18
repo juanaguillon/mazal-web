@@ -3,7 +3,7 @@
 /* ====================  */
 
 #section_contacto {
-  background: $chocolate;
+  background: $chocolate !important; 
   .black_background {
     background: $chocolate;
     opacity: 0.87;
@@ -91,6 +91,10 @@
   border-bottom: 1px solid #ffffffad;
   width: 90%;
   margin: auto;
+  .button.general_button{
+    max-width: initial;
+    width: max-content;
+  }
 }
 @media #{$desktop_query} {
   .contacto_title h3 {
