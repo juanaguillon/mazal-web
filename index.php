@@ -250,7 +250,7 @@
 
 <div class="popup_container z3 flex-center-xy" id="agendar">
 	<div class="popup_wrapper">
-		<div class="popup_close"><button class="button cuadro text2x">&#x58;</button></div>
+		<div class="popup_close"><button class="button cuadro text2x"><i class="icon-cross"></i></button></div>
 		<div class="popup_left">
 			<img src="<?php bloginfo("template_url") ?>/images/image_left.jpg" alt="">
 		</div>

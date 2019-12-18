@@ -22,20 +22,21 @@ $icon-facebook: "\ea90";
 $icon-instagram: "\ea92";
 $icon-whatsapp: "\ea93";
 $icon-new-tab: "\ea7e";
+$icon-cross: "\ea0f";
 $icon-share: "\ea82";
 $icon-heart-o: "\e910";
 $icon-heart: "\e911";
 
 @font-face {
   font-family: "#{$icomoon-font-family}";
-  src: url("#{$icomoon-font-path}/#{$icomoon-font-family}.eot?xmx258");
-  src: url("#{$icomoon-font-path}/#{$icomoon-font-family}.eot?xmx258#iefix")
+  src: url("#{$icomoon-font-path}/#{$icomoon-font-family}.eot?el3pbs");
+  src: url("#{$icomoon-font-path}/#{$icomoon-font-family}.eot?el3pbs#iefix")
       format("embedded-opentype"),
-    url("#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?xmx258")
+    url("#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?el3pbs")
       format("truetype"),
-    url("#{$icomoon-font-path}/#{$icomoon-font-family}.woff?xmx258")
+    url("#{$icomoon-font-path}/#{$icomoon-font-family}.woff?el3pbs")
       format("woff"),
-    url("#{$icomoon-font-path}/#{$icomoon-font-family}.svg?xmx258##{$icomoon-font-family}")
+    url("#{$icomoon-font-path}/#{$icomoon-font-family}.svg?el3pbs##{$icomoon-font-family}")
       format("svg");
   font-weight: normal;
   font-style: normal;
@@ -161,6 +162,11 @@ $icon-heart: "\e911";
 .icon-new-tab {
   &:before {
     content: $icon-new-tab;
+  }
+}
+.icon-cross {
+  &:before {
+    content: $icon-cross;
   }
 }
 .icon-share {

@@ -499,6 +499,7 @@
   top: 0;
   left: 0;
   height: 100%;
+  padding: 0 7px;
   width: 100%;
   display: none;
 }
@@ -535,8 +536,24 @@
 
 .popup_close {
   position: absolute;
-  right: 0;
+  right: 5px;
   z-index: 1;
+  font-size: 10px;
+  top: 5px;
+  button {
+    background: white;
+    border-radius: 50%;
+    padding: 8px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  i {
+    color: #000000;
+    line-height: 1;
+    font-size: 12px;
+  }
 }
 #agendar .popup_left {
   width: 45%;
@@ -864,6 +881,28 @@
 }
 
 @media #{$tablet_query} {
+  .popup_container {
+    padding: 0 7px;
+  }
+  #agendar .popup_wrapper {
+    flex-direction: column;
+    height: 94%;
+  }
+  #agendar .popup_right {
+    width: 100%;
+    padding: 15px;
+    height: 70%;
+  }
+  #agendar .popup_left {
+    width: 100%;
+    height: 30%;
+    img {
+      width: 100%;
+      height: auto;
+      position: static;
+    }
+  }
+
   .banner_margin_right,
   .banner_margin_bottom {
     display: none;
@@ -915,7 +954,6 @@
 
 .popup_close button {
   color: white;
-  text-shadow: 0 0 3px black;
   font-size: 21px !important;
 }
 
