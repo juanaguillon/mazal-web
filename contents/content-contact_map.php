@@ -7,11 +7,11 @@
       </div>
       <div class="contacto_container">
         <div class="contacto_title">
-          <h3 class="text-center text-white text-light font-2"><?php echo strtoupper(mazal_get_acf_field("contacto_titulo_")) ?></h3>
+          <h3 class="text-center text-white text-light font-1"><?php echo strtoupper(mazal_get_acf_field("contacto_titulo_")) ?></h3>
         </div>
         <div class="contacto_form_container">
           <form id="contacto_form">
-            <p class="text-white bold"><?php echo mazal_get_acf_field("contacto_descripcion_") ?></p>
+            <p class="text-white"><?php echo mazal_get_acf_field("contacto_descripcion_") ?></p>
             <ul class="datos">
               <li class="text-white"><i class="icon-phone text-white hover-white"></i><span><?php echo mazal_get_acf_field("contacto_telefono_") ?>:</span> <?php echo mazal_get_acf_field("telefono_valor_") ?></li>
               <li class="text-white"><i class="icon-envelope text-white hover-white"></i><span><?php echo mazal_get_acf_field("contacto_email_") ?></span>: <?php echo mazal_get_acf_field("email_valor_") ?></li>
