@@ -11,60 +11,74 @@
 				</div>
 
 			</div>
+			<?php
+			$pages = mazal_get_pages_ids();
+			$hogarLink = get_permalink($pages["hogar"]);
+			$corpLink = get_permalink($pages["corporativo"]);
+			$arqLink = get_permalink($pages["arquitectura"]);
+
+			$mostBiggerCats = mazal_get_most_biggests_categories();
+			$hogarChildrens = get_terms(array(
+				"taxonomy" => "categoria",
+				"hide_empty" => false,
+				"parent" => $mostBiggerCats["hogar"]->term_id
+			));
+			$archChildrens = get_terms(array(
+				"taxonomy" => "categoria",
+				"hide_empty" => false,
+				"parent" => $mostBiggerCats["arquitectura"]->term_id
+			));
+			$corpChildrens = get_terms(array(
+				"taxonomy" => "categoria",
+				"hide_empty" => false,
+				"parent" => $mostBiggerCats["corporativo"]->term_id
+			));
+
+			// printcode($hogarChildrens);
+			// printcode($archChildrens);
+			// printcode($corpChildrens);
+
+
+			// printcode( $mostBiggerCats);
+
+			?>
 			<div class="header_top_right flex-center-xy">
 				<ul class="header_top_list">
 					<li>
-						<a class="text-white">Arquitectura</a>
+						<a href="<?= $arqLink ?>" class="text-white">Arquitectura</a>
 						<ul class="header_top_submenu">
-							<li>
-								Arquitectura sostenible
-							</li>
-							<li>
-								Diseño interior
-							</li>
-							<li>
-								Obra nueva
-							</li>
-							<li>
-								Remodelacion
-							</li>
+							<?php foreach ($archChildrens as $arqChild) : ?>
+								<li>
+									<a href="<?= get_term_link($arqChild, "categoria") ?>">
+										<?= $arqChild->name ?>
+									</a>
+								</li>
+							<?php endforeach; ?>
+
 						</ul>
 					</li>
 					<li>
-						<a class="text-white">Corporativo</a>
+						<a href="<?= $corpLink ?>" class="text-white">Corporativo</a>
 						<ul class="header_top_submenu">
-							<li>
-								Mobiliario
-							</li>
-							<li>
-								Carpintería
-							</li>
-							<li>
-								Clásico
-							</li>
+							<?php foreach ($corpChildrens as $corChild) : ?>
+								<li>
+									<a href="<?= get_term_link($corChild, "categoria") ?>">
+										<?= $corChild->name ?>
+									</a>
+								</li>
+							<?php endforeach; ?>
 						</ul>
 					</li>
 					<li>
-						<a class="text-white">Hogar</a>
+						<a href="<?= $hogarLink ?>" class="text-white">Hogar</a>
 						<ul class="header_top_submenu">
-							<li>
-								Constructoras
-							</li>
-							<li>
-								Proyectos
-							</li>
-							<li>
-								Oficinas
-							</li>
-							<li>
-								Hoteles
-							</li>
-							<li>
-								Centros Comerciales
-							</li>
-							<li>
-								Restaurantes
-							</li>
+							<?php foreach ($hogarChildrens as $hogChild) : ?>
+								<li>
+									<a href="<?= get_term_link($hogChild, "categoria") ?>">
+										<?= $hogChild->name ?>
+									</a>
+								</li>
+							<?php endforeach; ?>
 						</ul>
 					</li>
 				</ul>
