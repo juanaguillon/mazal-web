@@ -11,8 +11,17 @@ function toggleClassToMenuInResponse() {
   $(".header_top_list").removeClass("active");
   if ($window.width() <= desktopWidth) {
     $("#icon_bars").unbind("click");
-    $("#icon_bars").click(function() {
+    $("#icon_bars").click(function(e) {
+      e.stopPropagation();
       $(".header_top_list").toggleClass("active");
+    });
+
+    $("body").click(function() {
+      $(".header_top_list").removeClass("active");
+    });
+
+    $(".header_top_list").click(function(e) {
+      e.stopPropagation();
     });
   }
 }
@@ -75,7 +84,7 @@ function toggleTheModalToSearchInWebsite() {
   };
   var search = modals.search;
   $(search.buttonOpen).click(function(e) {
-    $("body").css("overflow-y","hidden")
+    $("body").css("overflow-y", "hidden");
     $(search.containerSelector).addClass("active");
   });
   $(search.buttonClose)
@@ -87,7 +96,7 @@ function toggleTheModalToSearchInWebsite() {
 
   var product = modals.productCotizar;
   $(product.buttonOpen).click(function(e) {
-    $("body").css("overflow-y","hidden")
+    $("body").css("overflow-y", "hidden");
     $(product.containerSelector).addClass("active");
   });
   $(product.buttonClose)
@@ -365,7 +374,7 @@ function showPopupMobiliario() {
     $(".popup_wrapper").addClass("move");
   }
 }
-setTimeout(showPopup, 10000);
+setTimeout(showPopup, 5000);
 $(".mini_logo").click(function(e) {
   e.stopPropagation();
   showPopup();
@@ -565,7 +574,10 @@ function plugnsInit() {
 /* Final Inicializar Plugins */
 /** Cambiar imagen en antes y despues */
 function changeCurrentImageInBeforeAfter() {
-  $(".bef_aft_image_photo").click(function(e) {
+  $(".bef_aft_image_photo").on("click", function(e) {
+    e.stopPropagation()
+    
+    console.warn("HOLA A TODOS")
     var imgSelected = $(this).children("img");
     var before = imgSelected.data("before");
     var after = imgSelected.data("after");
@@ -581,22 +593,22 @@ function changeCurrentImageInBeforeAfter() {
  * Activar la linea inferior en los li de el menu principal, cuando se llegue a cierta sección en específica.
  */
 function activeTheLineInTheHeaderMenuInScrolling() {
-  var sectionsSelector = [
-    "lineas1",
+  if ( typeof _head__sectionsSelector === "undefined") return;
+  var sectionsSelector = _head__sectionsSelector;
+  var inheritSections = [
     "tres60",
-    "arq_sos",
     "portafolio",
-    "obra_nueva",
     "before_after",
     "galeria",
-    "constructoras",
-    "oficinas",
-    "hoteles",
-    "centry_commercial",
-    "restaurantes",
     "clientes",
     "contacto"
   ];
+
+  for (var i = 0; i < inheritSections.length; i++) {
+    sectionsSelector.push(inheritSections[i]);
+  }
+
+  // La variable "_head__sectionsSelector" La puede encontrar en el archivo Header.php, pues se cargan dinámicamente.
   var sectionsElements = [];
   for (var i = 0; i < sectionsSelector.length; i++) {
     var csection = $("#section_" + sectionsSelector[i]);

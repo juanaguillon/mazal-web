@@ -231,6 +231,23 @@
   }
 }
 
+#tags_product {
+  display: flex;
+  margin-top: 15px;
+  li{
+    margin-right: 3px;
+  }
+  a {
+    display: block;
+    padding: 9px 15px;
+    background: #efefef;
+    border-radius: 2px;
+    color: dimgrey;
+    &:hover{
+      background: #dfdfdf;
+    }
+  }
+}
 .swiper-container {
   width: 100%;
   height: 430px !important;
@@ -439,7 +456,6 @@
     height: 270px;
   }
   #container_slick_product {
-
     padding: 0;
   }
   .item-title {

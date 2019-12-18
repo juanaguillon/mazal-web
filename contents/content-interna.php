@@ -256,7 +256,15 @@
         </div>
         <div class="portafolio_single_image_context">
           <h3 class="font-1"><?php echo $post->post_title ?></h3>
-          <p><?php echo get_the_terms($post, "categoria")[0]->name ?></p>
+          <p><?php 
+          $catsOfPortfolio = get_the_terms($post, "categoria");
+          $counterTerms = count($catsOfPortfolio);
+          if ( $counterTerms > 1 ){
+            $counterTerms = $counterTerms - 1;
+          }
+          $randNumber = rand(0, $counterTerms); 
+          echo $catsOfPortfolio[$randNumber]->name;
+          ?></p>
         </div>
       </div>
     </a>
@@ -270,7 +278,7 @@
     <div class="col-lg-9">
 
       <div class="row no-gutters">
-        <div class="no_hide_in_resp col_portfolio col-lg-8 col-md-6 wow fadeInLeft">
+        <div class="col_portfolio col-lg-8 col-md-6 wow fadeInLeft">
           <?php echo mazal_send_portfolio($prpf1) ?>
         </div>
         <div class="col_portfolio col-lg-4 col-md-6 wow fadeInDown">

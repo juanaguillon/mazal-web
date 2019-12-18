@@ -67,6 +67,25 @@
       --yellowcolor: <?php echo $yellow ?>;
     }
   </style>
+
+  <script>
+  // var sectionsSelector = [
+  //   "lineas1",
+  //   "tres60",
+  //   "arq_sos",
+  //   "portafolio",
+  //   "obra_nueva",
+  //   "before_after",
+  //   "galeria",
+  //   "constructoras",
+  //   "oficinas",
+  //   "hoteles",
+  //   "centry_commercial",
+  //   "restaurantes",
+  //   "clientes",
+  //   "contacto"
+  // ];
+  </script>
 </head>
 
 <body class="<?php if (is_front_page()) echo "index_body_class" ?>">
@@ -117,6 +136,9 @@
           </div>
           <div class="header_top_right flex-center-xy">
             <ul class="header_top_list">
+            <li class="galeria">
+                  <a class="text-white" data-scroll="galeria"><?= mazal_is_language() ? "Nosotros" : "About Us" ?></a>
+                </li>
               <?php
 
 
@@ -215,6 +237,7 @@
                     $dataDyn = sprintf("data-dynamic='nav_dynamic_%s'", $childNav->slug);
                   }
                   ?>
+                
                 <li class="<?php echo $className ?>" <?php echo $dataDyn ?>>
                   <?php
                       /**
@@ -227,9 +250,7 @@
                       }
                       ?>
                   <a rel="nofollow" href="<?php echo $href ?>" class="text-white" data-scroll="<?php echo $childNav->slug ?>"><?php echo $childNav->name ?></a>
-
                   <?php
-
                       if (isset($navDynamics[$childNav->slug])) {
                         $subItemsOfCurrentTerm = $navDynamics[$childNav->slug];
                         echo "<ul class='header_top_submenu'>";
@@ -242,15 +263,25 @@
                       ?>
 
                 </li>
-              <?php endforeach;
+              <?php endforeach; ?>
+              <script> 
+                  var _head__sectionsSelector = [
+                  <?php
+                    foreach ($directChilds as $cld) {
+                      echo "'" . $cld->slug . "',";
+                    }
+                   ?>
+                  ]
+                </script>
+              <?php
 
                 /**
                  * Secciones de las páginas.
                  */
                 $ullist = array(
+                  // "galeria" => mazal_is_language() ? "Nosotros" : "About Us",
                   "portafolio" => strtoupper(mazal_get_acf_field("portafolio_titulo_")),
                   "contacto" => strtoupper(mazal_get_acf_field("contacto_titulo_")),
-                  // "galeria" => mazal_is_language() ? "Nosotros" : "About Us",
                   // "before_after" => mazal_is_language() ? "Remodelación" : "Restyling",
                   // "clientes" => mazal_is_language() ? "Clientes" : "Customers",
                 );
