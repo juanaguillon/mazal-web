@@ -40,20 +40,26 @@
     <div class="row flex-md-row flex-column-reverse">
       <div class="col-md-6 wow slideInLeft" data-wow-offset="20">
         <div class="mansory-gallery">
-          <div class="mansory-item uno">
-          <img src="https://mazal.co/wp-content/uploads/2019/11/13-2_900x600_acf_cropped.jpg?v=1576681969" alt="">
+          
+          <div class="columna-1">
+            <div class="mansory-item uno">
+            <img src="https://mazal.co/wp-content/uploads/2019/11/13-2_900x600_acf_cropped.jpg?v=1576681969" alt="">
+            </div>
+            <div class="mansory-item dos">
+            <img src="https://mazal.co/wp-content/uploads/2019/11/72045331_1684827818318490_5113012670143922176_n.jpg?v=1576682307" alt="">
+            </div>
           </div>
-          <div class="mansory-item dos">
-          <img src="https://mazal.co/wp-content/uploads/2019/11/13-2_900x600_acf_cropped.jpg?v=1576681969" alt="">
-          </div>
-          <div class="mansory-item tres">
-          <img src="https://mazal.co/wp-content/uploads/2019/11/13-2_900x600_acf_cropped.jpg?v=1576681969" alt="">
-          </div>
-          <div class="mansory-item cuatro">
-          <img src="https://mazal.co/wp-content/uploads/2019/11/13-2_900x600_acf_cropped.jpg?v=1576681969" alt="">
+          <div class="columna-2">
+            <div class="mansory-item tres">
+            <img src="https://mazal.co/wp-content/uploads/2019/11/aa.jpg?v=1576682176" alt="">
+            </div>
+            <div class="mansory-item cuatro">
+            <img src="https://namagazine.es/wp-content/uploads/2019/04/problemas-de-convivencia-taller-para-parejas-madrid.jpeg" alt="">
+            </div>
           </div>
            
         </div>
+        
       </div>
       <div class="col-md-6 wow slideInRight" data-wow-offset="20">
         <?php

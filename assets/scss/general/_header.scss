@@ -170,6 +170,7 @@ header {
     align-items: center;
 
     a {
+      font-family: raleway;
       @media #{$fluid_query} {
         font-size: 12px;
       }
