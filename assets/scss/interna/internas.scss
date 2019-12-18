@@ -12,17 +12,19 @@
   background-size: cover;
 
   h2 {
+    color: $yellowcolor;
+    	font-family: $font1;
     margin: 0;
     font-size: 55px;
-    color: $yellowcolor;
     margin-top: 40px;
-    font-weight: 600;
+    font-weight: 200; 
   }
   h5 {
     color: #ffffe3;
     font-size: 22px;
     margin: 0;
     line-height: 1;
+    font-weight: 500;
   }
 
   i {
@@ -387,16 +389,16 @@ select {
   font-size: 17px;
   padding: 15px 30px;
   span {
-    font-family: quicksand;
-    font-weight: 600;
+    font-family: "Work Sans";
+    font-weight: 500;
   }
 }
 
 .item-nombre-proyecto {
   color: $yellowcolor;
   text-transform: uppercase;
-  font-family: quicksand;
-  font-weight: 600;
+  font-family: raleway;
+  font-weight: 400;
   width: 70%;
 }
 

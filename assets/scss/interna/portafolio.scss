@@ -26,10 +26,10 @@
 
 .portafilio_title {
   transform: rotate(-90deg);
-  transform-origin: bottom;
-  position: absolute;
-  top: 10em;
-  left: -2.6em;
+	transform-origin: bottom;
+	position: absolute;
+	top: 25vh;
+	left: -2.6em;
 
   @media #{$desktop_query} {
     transform: rotate(0);

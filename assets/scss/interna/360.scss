@@ -10,7 +10,7 @@
 }
 .tres60_section.section_left {
   background-position: bottom right;
-  // background-size: auto 100%;
+  background-size: cover;
 }
 .tres60_button_container {
   @media #{$mobile_query} {
@@ -19,21 +19,23 @@
 }
 
 .tres_60_white_wrap {
+	height: $vh100;
+	background: $chocolate;
   display: flex;
-  height: $vh100;
-  top: 0;
-  flex-direction: column;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  background: $chocolate;
-  padding: 0 15px;
-  opacity: 0.86;
+	top: 0;
+	flex-direction: column;
+	position: relative;
+	align-items: center;
+	justify-content: center;
+	padding: 0 15px;
+	opacity: 0.93;
 
   p {
-    font-family: "Quicksand";
+    font-weight: 300;
+    font-family: $font2;
     width: 90%;
     max-width: 500px;
+    line-height: 23px;
     text-align: center;
     color: $blanco;
   }

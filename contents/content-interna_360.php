@@ -30,7 +30,7 @@ function mazal_simple_content($term, $in_right = true)
         <div class="col-md-6 tres60_container wow fadeInDown <?php if ($in_right) echo "offset-md-6" ?>">
           <div class="tres_60_white_wrap">
             <div class="tres60_title_container">
-              <h3 class="font-2 text-regular blanco"><?php echo mb_strtoupper($term->name, "UTF-8"); ?></h3>
+              <h3 class="font-1 text-light blanco"><?php echo mb_strtoupper($term->name, "UTF-8"); ?></h3>
             </div>
             <p><?php echo $term->description ?></p>
             <div class="tres60_button_container">

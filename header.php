@@ -32,8 +32,7 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="<?php bloginfo('template_url') ?>/favicon.ico">
   <!-- <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,600,700&display=swap" rel="stylesheet"> -->
-
-  <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700|Girassol|Muli:300,400,500,600,700|Roboto:300,400,500,700|Rubik:400,500,700|Taviraj:300,400,500,600,700|Work+Sans:300,400,500,600,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Raleway:200,400,700|Work+Sans:300,400&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="<?php bloginfo('template_url') ?>/custom.min.css">
   <meta property="description" content="Somos una compañía basada en diseño interior, arquitectura y productos mobiliarios.">
