@@ -38,7 +38,7 @@
 <section id="section_galeria" class="section_high">
   <div class="container">
     <div class="row flex-md-row flex-column-reverse">
-      <div class="col-md-6 wow slideInLeft" data-wow-offset="20">
+      <div class="col-md-7 wow slideInLeft" data-wow-offset="20">
         <div class="mansory-gallery">
           
           <div class="columna-1">
@@ -61,7 +61,7 @@
         </div>
         
       </div>
-      <div class="col-md-6 wow slideInRight" data-wow-offset="20">
+      <div class="col-md-5 wow slideInRight" data-wow-offset="20">
         <?php
 
         // Quienes | Somos

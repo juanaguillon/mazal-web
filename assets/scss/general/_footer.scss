@@ -1,5 +1,5 @@
 footer {
-  background: $chocolate;
+  background: $dorado;
 }
 .footer_header {
   padding: 3em 0px;
@@ -7,6 +7,7 @@ footer {
 .footer_foot {
   padding: 0.7em 0;
   background-color: $dorado;
+  border-top: 1px solid white;
 }
 
 @media #{$tablet_query} {
@@ -20,5 +21,14 @@ footer {
 @media #{$mobile_query} {
   #rights_footer {
     display: block;
+  }
+}
+
+.footer_list{
+  h4{
+    font-weight: 600;
+  }
+  span{
+    font-weight: 300;
   }
 }
