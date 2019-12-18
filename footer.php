@@ -49,6 +49,7 @@
   </main>
 
   <script src="<?php bloginfo('template_url') ?>/assets/js/core.min.js"></script>
+  <script src="<?php bloginfo('template_url') ?>/assets/js/supermenu.js"></script>
   <script src="<?php bloginfo('template_url') ?>/assets/js/script.js"></script>
   <?php
 

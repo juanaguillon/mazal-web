@@ -94,11 +94,16 @@ header {
   }
 }
 .super_menu_item_active > a.text-white {
-  font-weight: bold;
+  // font-weight: bold;
+  display: none;
 }
 .header_top_submenu li {
   color: white;
   padding: 10px 0;
+  a{
+    font-family: $font1;
+    font-weight: 300;
+  }
 }
 
 .header_top_left {
@@ -189,11 +194,22 @@ header {
     font-family: $font1;
     @media screen and (min-width: $desktop_pixels) {
       border-left: 1px solid white;
-      	
     }
   }
 }
-
+.super_menu_item_active .super_menu_comenext {
+  display: none !important;
+}
+.super_menu_comeback {
+  margin-bottom: 20px;
+  display: none;
+}
+.super_menu_item_active {
+  display: none;
+  .super_menu_comeback {
+    display: block;
+  }
+}
 .header_top_list > li:after {
   position: absolute;
   content: "";

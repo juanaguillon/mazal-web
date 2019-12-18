@@ -434,3 +434,44 @@ function add_file_types_to_uploads($file_types)
   return $file_types;
 }
 add_action('upload_mimes', 'add_file_types_to_uploads');
+
+
+/**
+ * Obtener todas las páginas por ID
+ */
+function mazal_get_pages_ids(){
+  if (mazal_is_language()) {
+    $arqPage = 11;
+    $corpPage = 25;
+    $hogarPage = 9;
+  } else {
+    $arqPage = 30;
+    $corpPage = 31;
+    $hogarPage = 47;
+  }
+   return array(
+    "arquitectura" => $arqPage,
+    "corporativo" => $corpPage ,
+    "hogar" => $hogarPage
+  );
+
+}
+
+
+function mazal_get_most_biggests_categories(){
+  if ( mazal_is_language()){
+    $hogar = 89;
+    $arquitectura = 91;
+    $coprorativo = 93;
+  }else{
+    $hogar = 99;
+    $arquitectura = 97;
+    $coprorativo = 101;
+  }
+
+  return array(
+    "hogar" => get_term($hogar, "categoria"),
+    "arquitectura" => get_term($arquitectura, "categoria"),
+    "corporativo" => get_term($coprorativo, "categoria"),
+  );
+}
