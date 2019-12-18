@@ -1,6 +1,6 @@
 <section id="section_contacto" class="section_high">
   <div class="row no-gutters contacto_and_map_wrap">
-    <div class="col-md-6 col-lg-7 wow slideInLeft" style="background-image: url(<?php bloginfo("template_url") ?>/images/interna/image2.jpg) ">
+    <div class="col-md-6 col-lg-6 wow slideInLeft" >
       <div class="black_background"></div>
       <div class="loading_container" id="loading_contact_map">
         <div class="loading_spinner"></div>
@@ -74,7 +74,7 @@
 
       </div>
     </div>
-    <div class="col-md-6 col-lg-5">
+    <div class="col-md-6 ">
       <div class="map h-100" id="mapFoot"></div>
 
       <script>

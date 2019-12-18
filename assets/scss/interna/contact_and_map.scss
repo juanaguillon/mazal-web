@@ -42,6 +42,14 @@
 .contacto_container {
   height: 100%;
   position: relative;
+  background-color:$chocolate;
+
+  ::placeholder {
+    color: #ffffff87;
+    font-family: 'Work sans';
+    font-weight: 300;
+}
+
 }
 
 .contacto_title {
@@ -81,6 +89,8 @@
   padding-left: 6em;
   padding-bottom: 1.3em;
   border-bottom: 1px solid #ffffffad;
+  width: 90%;
+  margin: auto;
 }
 @media #{$desktop_query} {
   .contacto_title h3 {
