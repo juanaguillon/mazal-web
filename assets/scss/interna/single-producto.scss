@@ -116,6 +116,7 @@
 .item-title {
   font-size: 35px;
   text-transform: uppercase;
+  font-family: raleway;
 }
 
 .item-ref {
@@ -130,13 +131,12 @@
   margin-bottom: 20px;
   .feature {
     span:first-child {
-      font-weight: 600;
+      font-weight: 500;
       color: #666666;
     }
     a,
     span:last-child {
       color: #000;
-      font-weight: 600;
     }
   }
 }
@@ -170,6 +170,7 @@
 
 .call-action-name {
   h3 {
+    font-family: $font1;
     color: $yellowcolor;
     font-size: 35px;
     max-width: 460px;
@@ -221,7 +222,7 @@
       background: $yellowcolor;
       border: none;
       height: 45px;
-      font-family: quicksand;
+      font-family: $font2;
       font-weight: 600;
       padding: 10px 30px;
       font-size: 18px;
@@ -333,6 +334,7 @@
 .related-items {
   margin-bottom: 60px;
   h3 {
+    font-family: $font1;
     font-size: 38px;
     font-weight: 400;
     text-transform: uppercase;
@@ -354,6 +356,7 @@
       }
     }
     h4 {
+      font-family: $font1;
       font-size: 20px;
       text-transform: uppercase;
       line-height: 1;
@@ -384,7 +387,7 @@
   }
   span {
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 500;
   }
   .redes-compartir {
     margin-top: 20px;

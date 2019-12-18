@@ -16,7 +16,7 @@
         </div>
         <div class="banner_caption">
           <div class="banner_caption_inner">
-            <h3 class="text-yellow font-2"><?php echo $banner->post_title ?></h3>
+            <h3 class="text-yellow font-1"><?php echo mb_strtoupper( $banner->post_title, "UTF-8") ?></h3>
             <p class="text-white font-2"><?php echo $banner->post_excerpt ?></p>
             <a href="<?php echo $url ?>" class="button general_button mt-3 ml-0">
               <span data-title="<?php echo $textoLink ?>"><?php echo $textoLink ?></span>
@@ -39,45 +39,20 @@
   <div class="container">
     <div class="row flex-md-row flex-column-reverse">
       <div class="col-md-6 wow slideInLeft" data-wow-offset="20">
-        <div class="galeria_container">
-          <div class="loading_container show" id="loading_slick_gallery">
-            <div class="loading_spinner"></div>
+        <div class="mansory-gallery">
+          <div class="mansory-item uno">
+          <img src="https://mazal.co/wp-content/uploads/2019/11/13-2_900x600_acf_cropped.jpg?v=1576681969" alt="">
           </div>
-          <button class="arrow_galeria arrow_left"><i class="icon-arrow_left"></i></button>
-          <div class="galeria_photos no_rotate">
-            <div class="galeria_photo_wrap left_to_right_container">
-              <a class="gallery_light" href="<?php bloginfo("template_url") ?>/images/interna/image6.jpg">
-                <!-- <img class="img_fill left" src="<?php bloginfo("template_url") ?>/images/interna/image6.jpg" alt=""> -->
-                <img class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/image6.jpg" alt="">
-              </a>
-            </div>
-            <div class="galeria_photo_wrap left_to_right_container">
-              <a class="gallery_light" href="<?php bloginfo("template_url") ?>/images/interna/image3.jpg">
-                <!-- <img class="img_fill left" src="<?php bloginfo("template_url") ?>/images/interna/image3.jpg" alt=""> -->
-                <img class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/image3.jpg" alt="">
-              </a>
-            </div>
-            <div class="galeria_photo_wrap left_to_right_container">
-              <a class="gallery_light" href="<?php bloginfo("template_url") ?>/images/interna/image4.jpg">
-                <!-- <img class="img_fill left" src="<?php bloginfo("template_url") ?>/images/interna/image4.jpg" alt=""> -->
-                <img class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/image4.jpg" alt="">
-              </a>
-            </div>
-            <div class="galeria_photo_wrap left_to_right_container">
-              <a class="gallery_light" href="<?php bloginfo("template_url") ?>/images/interna/image5.jpg">
-                <!-- <img class="img_fill left" src="<?php bloginfo("template_url") ?>/images/interna/image5.jpg" alt=""> -->
-                <img class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/image5.jpg" alt="">
-              </a>
-            </div>
-            <div class="galeria_photo_wrap left_to_right_container">
-              <a class="gallery_light" href="<?php bloginfo("template_url") ?>/images/interna/image9.jpg">
-                <!-- <img class="img_fill left" src="<?php bloginfo("template_url") ?>/images/interna/image9.jpg" alt=""> -->
-                <img class="img_fill" src="<?php bloginfo("template_url") ?>/images/interna/image9.jpg" alt="">
-              </a>
-            </div>
+          <div class="mansory-item dos">
+          <img src="https://mazal.co/wp-content/uploads/2019/11/13-2_900x600_acf_cropped.jpg?v=1576681969" alt="">
           </div>
-          <button class="arrow_galeria arrow_right"><i class="icon-arrow_right"></i></button>
-
+          <div class="mansory-item tres">
+          <img src="https://mazal.co/wp-content/uploads/2019/11/13-2_900x600_acf_cropped.jpg?v=1576681969" alt="">
+          </div>
+          <div class="mansory-item cuatro">
+          <img src="https://mazal.co/wp-content/uploads/2019/11/13-2_900x600_acf_cropped.jpg?v=1576681969" alt="">
+          </div>
+           
         </div>
       </div>
       <div class="col-md-6 wow slideInRight" data-wow-offset="20">
@@ -88,16 +63,12 @@
         ?>
         <div class="galeria_title_container no_rotate">
 
-          <h3 class="font-2 text-yellow text-light uppercase"><span><?php echo $titleQuienes[0] ?></span><br><?php echo $titleQuienes[1] ?></h3>
+          <h3 class="font-1 text-yellow text-light uppercase"><span><?php echo $titleQuienes[0] ?></span><br><?php echo $titleQuienes[1] ?></h3>
 
         </div>
-        <p class="galeria_description font-1 text-light no_rotate">
+        <p class="galeria_description font-2 text-regular no_rotate">
           <?php echo mazal_get_acf_field("quienes_texto_") ?>
-          <!-- <button class="mt-5 button general_button text-yellow">
-            <span class="text-yellow" data-title="<?php echo mazal_get_acf_field("quienes_boton_") ?>">
-              <?php echo mazal_get_acf_field("quienes_boton_") ?>
-            </span>
-          </button> -->
+         
         </p>
       </div>
     </div>
@@ -169,7 +140,7 @@
       </div>
     </div>
     <div class="bef_aft_title_container mb-5">
-      <h3 class="text-center wow slideInDown font-2 text-regular text-dark-gray">
+      <h3 class="text-center wow slideInDown font-1 text-light text-dark-gray">
         <?php echo mazal_get_acf_field("antesdes_titulo_") ?>
       </h3>
     </div>
@@ -209,7 +180,7 @@
         <div class="bef_aft_sides">
           <div class="bef_aft_left_side wow slideInLeft">
             <div class="bef_aft_descriptions_container flex-center-xy text-gray">
-              <p id="bef_aft_before" class="font-1"><?php echo $descImg ?></p>
+              <p id="bef_aft_before" class="font-2"><?php echo $descImg ?></p>
             </div>
           </div>
         </div>
@@ -278,7 +249,7 @@
           </figure>
         </div>
         <div class="portafolio_single_image_context">
-          <h3 class="font-2"><?php echo $post->post_title ?></h3>
+          <h3 class="font-1"><?php echo $post->post_title ?></h3>
           <p><?php echo get_the_terms($post, "categoria")[0]->name ?></p>
         </div>
       </div>
@@ -316,8 +287,8 @@
         <img class="portfolio_show_more_image h-100 w-init" src="<?php bloginfo("template_url") ?>/images/interna/image7.jpg" alt="">
         <div class="portafolio_show_more_content">
           <div class="portafilio_title">
-            <h3 class="text-yellow font-2 capitalize text-regular">
-              <?php echo strtoupper(mazal_get_acf_field("portafolio_titulo_")) ?>
+            <h3 class="text-yellow font-1 capitalize text-light">
+              <?php echo mb_strtoupper ( strtolower (mazal_get_acf_field("portafolio_titulo_")), "UTF-8") ?>
             </h3>
           </div>
           <div class="portafolio_button">
@@ -340,9 +311,9 @@
 <section id="section_clientes" class="section wow fadeIn" data-wow-offset="40" data-wow-delay="0.5s">
   <div class="container">
     <?php if (mazal_is_language()) : ?>
-      <h3 class="text-center mb-4 text-regular font-2 text-dark-gray">CLIENTES</h3>
+      <h3 class="text-center mb-4 font-1 text-light text-dark-gray">CLIENTES</h3>
     <?php else : ?>
-      <h3 class="text-center mb-4 text-regular font-2 text-dark-gray">CUSTOMERS</h3>
+      <h3 class="text-center mb-4 font-1 text-light text-dark-gray">CUSTOMERS</h3>
     <?php endif; ?>
     <ul class="clietes_list">
       <?php

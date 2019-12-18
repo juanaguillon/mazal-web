@@ -61,7 +61,7 @@ header {
 
   nav,
   nav button {
-    font-family: "Quicksand", sans-serif;
+    font-family: "$font1", sans-serif;
     font-size: 18px;
     letter-spacing: 1px;
   }
@@ -186,8 +186,10 @@ header {
   }
 
   li + li a {
+    font-family: $font1;
     @media screen and (min-width: $desktop_pixels) {
       border-left: 1px solid white;
+      	
     }
   }
 }
@@ -211,6 +213,7 @@ header {
   right: 100px;
 }
 a.languages_toggle {
+  font-family: $font1;
   display: flex;
   align-items: center;
   span {
@@ -319,7 +322,7 @@ a.languages_toggle {
 /* .dynamic_list{
   color: white;
   height: 100%;
-  font-family: "Quicksand";
+  font-family: "$font1";
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
@@ -358,7 +361,7 @@ a.languages_toggle {
 .dynamic_image_text {
   color: white;
   text-align: center;
-  font-family: Quicksand;
+  font-family: $font1;
   margin-top: 0.8em;
   font-size: 0.7em;
 }

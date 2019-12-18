@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: 16px;
-  font-family: "Quicksand";
+  font-family: $font2;
   overflow-x: hidden;
 }
 
@@ -94,7 +94,7 @@ section h3 {
 .button.button-cuadro {
   color: white;
   font-size: 30px;
-  font-family: "Quicksand";
+  font-family: $font2;
 }
 .button.button_abs {
   position: absolute;
@@ -103,18 +103,18 @@ section h3 {
 }
 
 .button.general_button {
+	font-family: $font2;
   position: relative;
-  width: 200px;
-  perspective: 400px;
-  background-color: transparent;
-  font-family: "Quicksand";
-  padding: 0;
-  font-size: 17px;
-  display: block;
-  width: 100%;
-  text-align: center;
-  max-width: 200px;
-  margin: 0 auto;
+	width: 200px;
+	perspective: 400px;
+	background-color: transparent;
+	padding: 0;
+	font-size: 16px;
+	display: block;
+	width: 100%;
+	text-align: center;
+	max-width: 200px;
+	margin: 0 auto;
   span {
     display: block;
     position: relative;
@@ -125,22 +125,22 @@ section h3 {
     color: white;
     width: 100%;
     border: 2px solid;
-    padding: 15px 30px;
+    padding: 12px 22px;
 
     &:after {
-      padding: 15px 0px;
+      padding: 12px 0px;
       display: block;
       content: attr(data-title);
       position: absolute;
-      left: 0;
+      left: -2px;
       top: 0;
       transition: 0.3s ease-in-out all;
       transform-origin: 50% 0;
       transform: translate3d(0px, 105%, 0px) rotateX(-90deg);
       background-color: $dorado;
       color: #fff;
-      font-weight: bold;
-      width: 100%;
+      font-weight: 600;
+      width:calc(100% + 4px);
       opacity: 0;
       text-align: center;
     }
@@ -214,7 +214,7 @@ section h3 {
   padding: 15px 30px;
   border: 2px solid;
   width: 190px;
-  font-family: "Quicksand";
+  font-family: $font2;
   font-weight: bold;
   transition-property: background, color;
   transition-duration: var(--speedtransition);
@@ -237,7 +237,7 @@ section h3 {
   backdrop-filter: blur(7px);
   height: 100%;
   display: none;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   &.active {
     display: flex;
@@ -313,7 +313,7 @@ form {
       display: block;
       border: 2px solid #ffffff99;
       outline: none;
-      font-family: "QuickSand";
+      font-family: $font2;
       &.light {
         border: 2px solid #8e7b66;
         color: #000;
@@ -322,7 +322,7 @@ form {
         &::-ms-input-placeholder {
           color: rgb(63, 63, 63);
           opacity: 0.7; /* Firefox */
-          font-family: "QuickSand";
+          font-family: $font2;
         }
       }
 
@@ -331,7 +331,7 @@ form {
       &::-ms-input-placeholder {
         color: white;
         opacity: 0.7; /* Firefox */
-        font-family: "QuickSand";
+        font-family: $font2;
       }
     }
   }
