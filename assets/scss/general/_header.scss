@@ -78,6 +78,10 @@ header {
       font-size: 22px;
     }
   }
+
+  button i{
+    font-size: 15px;
+  }
 }
 
 .header_top {
@@ -183,11 +187,11 @@ header {
       color: white;
       padding: 0px 1vw;
       display: block;
-      font-size: 0.86rem;
+      font-size: 12px;
       cursor: pointer;
       &:hover {
         text-shadow: 0 0 5px white, 0 0 5px white;
-      }
+      }  
     }
   }
 
@@ -279,7 +283,7 @@ a.languages_toggle {
     font-family: $font1;
     width: 20px;
     color: #fff;
-    font-size: 14px;
+    font-size: 13px;
     display: flex;
     text-align: center;
     flex-direction: column;
