@@ -256,7 +256,7 @@
 		</div>
 		<div class="popup_right">
 			<div class="poput-title-container flex-center-xy flex-column">
-				<div class="popup-icon-container"><i class="icon-house text6x"></i></div>
+				<!-- <div class="popup-icon-container"><i class="icon-house text6x"></i></div> -->
 				<h3 class="popup-title text-center font-1 text4x">
 					AGENDA A UN DECORADOR DE INTERIORES
 				</h3>

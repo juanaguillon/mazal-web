@@ -31,14 +31,12 @@ $producto = get_queried_object();
 
       ?>
       <ul>
-        <?php echo get_the_term_list($producto, "categoria"); ?>
-        <li><?php echo $producto->post_title; ?></li>
-        <!-- <li><a href="#">Home</a></li>
-        <li><a href="#">Mobiliario Hogar</a></li>
-        <li><a href="#">Carpinteria</a></li>
-        <li><a href="#">Cocinas</a></li>
-        <li><a href="#">Cocinas integrales</a></li> -->
+        <?php $terms = get_the_terms($producto, "categoria"); ?>
+        <li><a href="<?= esc_url(get_term_link($terms[0]), "categoria") ?>"><?= $terms[0]->name ?></a></li>
+        <li><a href="<?= esc_url(get_term_link($terms[1]), "categoria") ?>"><?= $terms[1]->name ?></a></li>
+        <li><span><?= $producto->post_title !== "" ? $producto->post_title : " - " ?></span></li>
       </ul>
+
     </div>
 
   </section>
@@ -60,7 +58,7 @@ $producto = get_queried_object();
             $galeria = get_field("galeria", $producto);
             if ($galeria && count($galeria) > 0) :
               foreach ($galeria as $imgGall) :
-                ?>
+            ?>
                 <div data-src="<?= $imgGall["url"] ?>" class="swiper-slide item_image_product item-swipper-image" style="background-image:url(<?php echo $imgGall["sizes"]["large"] ?>)">
                   <div class="swiper-zoom-container" data-swiper-zoom="5">
                   </div>
@@ -70,24 +68,7 @@ $producto = get_queried_object();
             endif;
             ?>
 
-            <!-- 
-            <div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)">
-              <div class="swiper-zoom-container" data-swiper-zoom="5">
-
-              </div>
-            </div>
-            <div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)">
-              <div class="swiper-zoom-container" data-swiper-zoom="5">
-
-              </div>
-            </div>
-            <div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)">
-              <div class="swiper-zoom-container" data-swiper-zoom="5">
-              </div>
-            </div> -->
-
           </div>
-          <!-- Add Arrows -->
 
         </div>
 
@@ -100,16 +81,12 @@ $producto = get_queried_object();
             <?php
             if ($galeria && count($galeria) > 0) :
               foreach ($galeria as $imgGall) :
-                ?>
+            ?>
                 <div class="swiper-slide item-swipper-gallery" style="background-image:url(<?php echo $imgGall["sizes"]["medium_large"] ?>)"></div>
             <?php
               endforeach;
             endif;
             ?>
-            <!-- 
-            <div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)"></div>
-            <div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)"></div>
-            <div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)"></div> -->
           </div>
 
           <div class="swiper-button-next">
@@ -127,7 +104,7 @@ $producto = get_queried_object();
           <h2 class="item-title"><?php echo $producto->post_title; ?></h2>
           <?php
           if (get_field("mostar_referencia", $producto)) {
-            ?>
+          ?>
             <span class="item-ref">Ref: <?php echo get_field("referencia", $producto) ?></span>
           <?php
           }
@@ -155,6 +132,22 @@ $producto = get_queried_object();
               ?>
               <span>Categoría: </span><?php echo get_the_term_list($producto, "categoria", "", ", ") ?>
             </div>
+
+
+            <ul id="tags_product">
+              <?php
+
+              $tagProds = get_the_terms($producto, "etiqueta");
+              if ($tagProds && count($tagProds) > 0) {
+                foreach ($tagProds as $tag) {
+              ?>
+                  <li class="tag_prod tag_<?= $tag->slug ?>"><a href="<?= get_term_link($tag, "etiqueta") ?>"><?= $tag->name ?></a></li>
+              <?php
+                }
+              }
+              ?>
+            </ul>
+
             <!-- <div class="feature">
               <span>Material: </span><?php echo get_the_term_list($producto, "material", "", ", ") ?>
             </div> 
@@ -169,12 +162,12 @@ $producto = get_queried_object();
               <div class="color-scheme-item">
                 <ul>
                   <?php
-                    if ($colors && count($colors) > 0) :
-                      foreach ($colors as $color) : ?>
+                  if ($colors && count($colors) > 0) :
+                    foreach ($colors as $color) : ?>
                       <li><span data-color="<?php echo $color["nombre"] ?>" style="background:<?php echo $color["color"] ?>"></span></li>
                   <?php endforeach;
-                    endif;
-                    ?>
+                  endif;
+                  ?>
                 </ul>
               </div>
             </div>
@@ -325,9 +318,9 @@ $producto = get_queried_object();
                   <span class="item-nombre-proyecto"><?php echo $relProducto->post_title ?></span>
                 </div>
               </div>
-              <h4><?php echo $relProducto->post_title ?></h4>
+              <!-- <h4><?php echo $relProducto->post_title ?></h4> -->
               <?php $relProdCat = get_the_terms($relProducto, "categoria")[0]; ?>
-              <span class="related_category"><?php echo $relProdCat->name ?></span>
+              <!-- <span class="related_category"><?php echo $relProdCat->name ?></span> -->
             </div>
           </a>
         </div>
@@ -345,7 +338,7 @@ $producto = get_queried_object();
         <h4><?= $producto->post_title ?></h4>
         <?php
         if (get_field("mostar_referencia", $producto)) {
-          ?>
+        ?>
           <span class="item-ref">Ref: <?php echo get_field("referencia", $producto) ?></span>
         <?php
         }

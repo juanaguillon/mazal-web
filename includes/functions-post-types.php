@@ -159,6 +159,7 @@ function mazal_register_the_posts_types()
       // "tipo" => __mazal_register_taxonomy("tipo", false, true),
       "categoria" => __mazal_register_taxonomy("categoria", false),
       "material" => __mazal_register_taxonomy("material", false, false, "es"),
+      "etiqueta" => __mazal_register_taxonomy("etiqueta", false, true)
       // "medida" => __mazal_register_taxonomy("medida", false),
       // "coleccion" => __mazal_register_taxonomy("collecion", false, false, "es"),
     )

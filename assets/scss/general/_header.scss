@@ -107,15 +107,15 @@ header {
 }
 
 .header_top_left {
-  width: 25%;
-  z-index: 20;
+  width: 10%;
+	z-index: 20;
 }
 .menu_logo_li {
   min-width: 120px;
   max-width: 225px;
 
   .icon-logo {
-    font-size: 58px;
+    font-size: 38px;
   }
   .menu_logo a {
     padding: 20px 0;
@@ -148,10 +148,10 @@ header {
   }
 
   display: flex;
-  height: 100%;
-  align-items: center;
-  width: 100%;
-  justify-content: flex-end;
+	height: 100%;
+	align-items: center;
+	width: 90%;
+	justify-content: flex-end;
 
   & > li {
     @media #{$desktop_query} {

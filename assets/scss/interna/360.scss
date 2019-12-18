@@ -99,14 +99,11 @@
 /* ====================  */
 /* Final Página Interna: 360 */
 /* ====================  */
-@media #{$desktop_query} {
-}
-
 @media #{$tablet_query} {
   .tres60_section {
     background-size: 130%;
-    min-height: 140vh !important;
-    background-position: bottom;
+	min-height: 860px !important;
+	background-position: bottom;
   }
   .tres_60_white_wrap {
     padding: 50px 0;

@@ -541,18 +541,17 @@
   font-size: 10px;
   top: 5px;
   button {
-    background: white;
-    border-radius: 50%;
-    padding: 8px;
-    line-height: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    	padding: 7px !important;
+	line-height: 1;
+	display: flex;
+	border: 1px solid white;
+	align-items: center;
+	justify-content: center;
   }
   i {
-    color: #000000;
-    line-height: 1;
-    font-size: 12px;
+    color: #fff;
+	line-height: 1;
+	font-size: 8px;
   }
 }
 #agendar .popup_left {
@@ -882,11 +881,12 @@
 
 @media #{$tablet_query} {
   .popup_container {
-    padding: 0 7px;
+    padding: 0 15px;
   }
   #agendar .popup_wrapper {
     flex-direction: column;
     height: 94%;
+    max-height: 515px;
   }
   #agendar .popup_right {
     width: 100%;
@@ -943,6 +943,7 @@
   // .banner_bottom_context {
   //   & > span {
   //     width: 90%;
+
   //     font-size: 12px;
   //   }
   // }
