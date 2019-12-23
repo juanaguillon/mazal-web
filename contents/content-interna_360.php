@@ -19,7 +19,7 @@ function mazal_simple_content($term, $in_right = true)
   }
   $button = array(
     "link" => get_term_link($term),
-    "text" => mazal_is_language() ? "Ver Más" : "See more"
+    "text" => mazal_is_language() ? "Ver más" : "See more"
   );
 
   ?>
@@ -27,18 +27,20 @@ function mazal_simple_content($term, $in_right = true)
   <section id="section_<?php echo $term->slug ?>" class="section_high tres60_section <?php if (!$in_right) echo "section_left" ?>" style="background-image: url(<?php echo $imageES["sizes"]["large"] ?>)">
     <div class="container-fluid p-0 h-100">
       <div class="row no-gutters h-100">
-        <div class="col-md-6 tres60_container wow fadeInDown <?php if ($in_right) echo "offset-md-6" ?>">
-          <div class="tres_60_white_wrap">
-            <div class="tres60_title_container">
-              <h3 class="font-1 text-light blanco"><?php echo mb_strtoupper($term->name, "UTF-8"); ?></h3>
-            </div>
-            <p><?php echo $term->description ?></p>
-            <div class="tres60_button_container">
-              <a href="<?php echo $button["link"] ?>" class="button general_button text-yellow mt-4">
-                <span data-title="<?php echo $button["text"] ?>"><?php echo $button["text"] ?></span>
-              </a>
-            </div>
-          </div>
+        <div class="col-md-8 col-lg-6 tres60_container wow fadeInDown <?php if ($in_right) echo "offset-md-4 offset-lg-6" ?>">
+              <div class="tres_60_white_wrap">
+                <div class="categoria-contenedor">
+                    <div class="tres60_title_container">
+                      <h3 class="font-1 text-light blanco"><?php echo mb_strtoupper($term->name, "UTF-8"); ?></h3>
+                    </div>
+                    <p><?php echo $term->description ?></p>
+                    <div class="tres60_button_container">
+                      <a href="<?php echo $button["link"] ?>" class="button general_button text-yellow mt-4">
+                        <span data-title="<?php echo $button["text"] ?>"><?php echo $button["text"] ?></span>
+                      </a>
+                    </div>
+                </div>
+              </div>
         </div>
       </div>
     </div>
@@ -104,7 +106,7 @@ function mazal_subcat_content($taxonomy, $labelToLeft, $subcats)
         <?php endif; ?>
         <div class="row no-gutters h-100 <?= $classContainer ?>">
           <?php
-            $colNumber = "col-md-3";
+            $colNumber = "col-md-6 col-lg-3";
             $countSub = count($subcats);
             if ($countSub == 1 || $countSub == 2) {
               $colNumber = "col-md-6";

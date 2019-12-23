@@ -258,17 +258,37 @@
 			<div class="poput-title-container flex-center-xy flex-column">
 				<!-- <div class="popup-icon-container"><i class="icon-house text6x"></i></div> -->
 				<h3 class="popup-title text-center font-1 text4x">
-					AGENDA A UN DECORADOR DE INTERIORES
+					<?php 
+					if ( mazal_is_language()){
+						echo "AGENDA A UN DECORADOR DE INTERIORES";
+					}else{
+						echo "SCHEDULE AN INTERIOR DECORATOR";
+					}
+					 ?>
+					
 				</h3>
 			</div>
 
-			<p class="popup-text text-left font-2 m-0">Desde un pequeño consejo sobre colores hasta la renovación completa
-				de tu decoración. <br><br> Nuestros decoradores de interiores
-				están listos para ayudarte, en tienda o en la comodidad de tu hogar.</p>
+			<p class="popup-text text-left font-2 m-0">
+				<?php 
+				$buttonAgendar = "";
+				if ( mazal_is_language()){
+					$buttonAgendar = "Agendar";
+					echo "Desde un pequeño consejo sobre colores hasta la renovación completa
+					de tu decoración. <br><br> Nuestros decoradores de interiores
+					están listos para ayudarte, en tienda o en la comodidad de tu hogar.";
+				}else{
+					$buttonAgendar = "Schedule";
+					echo "From a little advice about colors to the complete renovation of your decoration.<br><br>
+					Our interior decorators are ready to help you, in the store or in the comfort of your home.";
+				} ?>
+				
+			
+			</p>
 			<div class="popup-button-container text-center">
 				<button class="button button_dark general_button font-2 text2x capitalize">
 
-					<span class="text-black" data-title="AGENDAR">AGENDAR</span>
+					<span class="text-black" data-title="<?= $buttonAgendar ?>"><?= $buttonAgendar ?></span>
 				</button>
 
 			</div>
@@ -283,7 +303,7 @@
 <div class="popup_container z3 flex-center-xy" id="mobiliario_popup">
 	<div class="popup_wrapper">
 		<!--<div class="screen_black"></div>-->
-		<div class="popup_close"><button class="button cuadro text2x">&#x58;</button></div>
+		<div class="popup_close"><button class="button cuadro text2x"><i class="icon-cross"></i></button></div>
 		<a class="popup_left" href="<?php echo $linkHogar ?>">
 			<h3 class="text-white banner_context_subtitle text-bold">
 				<?php echo get_the_title($idHog) ?>

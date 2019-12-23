@@ -154,22 +154,28 @@
   }
   .uno{
     height: calc(60% - 10px);
-    min-height: 275px;
+    
   }
   .dos{
     
     height: calc(40% - 10px);
-    min-height: 180px;
+    
     
   }
   .tres{
     
     height: calc(38% - 10px);
-    min-height: 180px;
+    
   }
   .cuatro{
     
     height: calc(62% - 10px);
-    min-height: 270px;
+    
+  }
+}
+
+@media #{$mobile_query} {
+  .mansory-gallery{
+    height: 350px;
   }
 }
