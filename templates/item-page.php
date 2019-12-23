@@ -32,8 +32,8 @@
 
 	<section class="item-view container-fluid">
 
-		<div class="row m-0">
-			<div class="col-md-7">
+		<div class="row m-0"> 
+			<div class="col-md-12 col-lg-7">
 				<div class="swiper-container gallery-top">
 					<div class="swiper-wrapper">
 						<div class="swiper-slide" style="background-image:url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg)">
@@ -83,7 +83,7 @@
 			</div>
 
 
-			<div class="col-md-5">
+			<div class="col-md-12 col-lg-5"> 
 				<div class="item-information">
 					<h2 class="item-title">Some cool title</h2>
 					<span class="item-ref">Ref:3161516511</span>
@@ -162,11 +162,11 @@
 	<section class="container-fluid call-action">
 		<div class="container">
 			<div class="row">
-				<div class=" col-md-7 call-action-name">
+				<div class=" col-md-12 col-lg-7 call-action-name">
 					<h3>Suscribete para no perderte ninguna novedad</h3>
 				</div>
-				<div class=" col-md-5 form-suscription">
-					<input type="text" placeholder="someexampleemail@gmail.com">
+				<div class=" col-md-12 col-lg-5 form-suscription">
+					<input type="text" placeholder="somexamplemail@gmail.com">
 					<input type="submit" placeholder="Enviar">
 				</div>
 			</div>

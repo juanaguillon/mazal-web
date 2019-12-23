@@ -3,7 +3,7 @@
 /* ====================  */
 
 .portafolio_show_more_wrap {
-  height: calc(100vh);
+  height: calc(100vh - 70px);
   overflow: hidden;
   position: relative;
   .black_background {
@@ -45,7 +45,7 @@
 }
 
 .portafolio_single_image {
-  height: 50vh;
+  height:calc(50vh - 35px);
   cursor: pointer;
   overflow: hidden;
 }

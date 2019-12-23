@@ -334,9 +334,9 @@
 }
 
 .banner_context_menu_container {
-  font-family: "Quicksand", sans-serif;
+  font-family: montserrat;
   font-size: 0.89rem;
-  font-weight: 500;
+  font-weight: 300;
   position: absolute;
   bottom: 15vh;
   width: 100%;
@@ -536,10 +536,10 @@
 
 .popup_close {
   position: absolute;
-  right: 5px;
+  right: 8px;
   z-index: 1;
   font-size: 10px;
-  top: 5px;
+  top: 8px;
   button {
     	padding: 7px !important;
 	line-height: 1;
@@ -549,16 +549,16 @@
 	justify-content: center;
   }
   i {
-    color: #fff;
+    color: black;
 	line-height: 1;
-	font-size: 8px;
+	font-size: 10px;
   }
 }
 #agendar .popup_left {
   width: 45%;
   position: relative;
   height: 100%;
-  overflow: hidden;
+  overflow: hidden; 
 
   img {
     height: 100%;
@@ -607,6 +607,12 @@
     transition: all ease 0.5s;
   }
 }
+.poput-title-container{
+  margin-bottom: 12px;
+}
+.popup-button-container {
+  margin-top: 35px;
+}
 #mobiliario_popup h3 {
   background: rgba(0, 0, 0, 0.15);
   border: 1.5px solid #fff;
@@ -622,7 +628,7 @@
   padding: 2em;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
 }
 #mobiliario_popup .popup_right {
   &:hover img {
@@ -665,7 +671,7 @@
 }
 .popup-title {
   width: 100%;
-  text-align: center;
+  text-align: left;
 }
 
 .popup-text {
@@ -862,20 +868,27 @@
   #mobiliario_popup {
     .popup_wrapper {
       flex-direction: column;
-      height: 95vh;
+      height: 85vh;
       width: 95%;
     }
     .popup_left,
     .popup_right {
       width: 100%;
-      height: 49%;
-      margin: 2% 0;
+      height: 50%;
+      margin: 0% 0;
 
       img {
         width: 100%;
         height: auto;
       }
     }
+  } 
+}
+
+@media (max-width:400px){
+  #mobiliario_popup .popup_left img, #mobiliario_popup .popup_right img{
+    height: 100%;
+    width:auto;
   }
 }
 
@@ -883,15 +896,19 @@
   .popup_container {
     padding: 0 15px;
   }
+  .popup_close{
+    background-color: white;
+  }
   #agendar .popup_wrapper {
     flex-direction: column;
-    height: 94%;
+    height: auto;
     max-height: 515px;
+    width: 78%;
   }
   #agendar .popup_right {
     width: 100%;
-    padding: 15px;
-    height: 70%;
+    padding: 30px 20px;
+    min-width: 300px;
   }
   #agendar .popup_left {
     width: 100%;
@@ -935,6 +952,10 @@
     min-width: 50%;
   }
 
+  #agendar .popup_wrapper{
+    width:100%;
+  }
+
   // .banner_margin_right,
   // .banner_margin_bottom {
   //   border: none;
@@ -958,10 +979,10 @@
   font-size: 21px !important;
 }
 
-@media (max-width: 425px) {
-  .banner_img_left,
-  .banner_img_right {
-    width: auto !important;
-    height: 100% !important;
-  }
-}
+ @media (max-width: 430px) {
+   .banner_img_left,
+   .banner_img_right {
+     width: auto !important;
+     height: 100% !important;  
+   }
+ } 

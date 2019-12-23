@@ -450,7 +450,7 @@ a.languages_toggle {
   position: absolute;
   right: 0;
   top: 100%;
-  width: 270px;
+  width: 220px;
   box-shadow: 0 0 3px #00000038;
   .single_favorite + .single_favorite {
     border-top: 1px solid #eaeaea;
@@ -461,21 +461,29 @@ a.languages_toggle {
     padding: 6px;
 
     &:hover {
-      background: #fbf7f2;
+      background: #efefef;
+      // span{
+      //   color:white;
+      // }
     }
+    
   }
 
   .single_favorite_img {
-    width: 35%;
+    width: 50px;
     img {
-      width: 80px;
-      height: 80px;
+      width: 50px;
+      height: 50px;
     }
   }
   .single_favorite_title {
     padding: 7px;
     font-size: 15px;
     width: 65%;
+    span{
+      color:#000;
+    }
+    
   }
 }
 .super_menu_comenext {
@@ -504,7 +512,7 @@ a.languages_toggle {
     position: fixed;
     right: 0;
     top: 100%;
-    height: calc(100% - 50px);
+    // height: calc(100% - 50px);
     z-index: 100;
     top: 50px;
     transition: transform 0.5s;
