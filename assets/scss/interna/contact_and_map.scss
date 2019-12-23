@@ -3,10 +3,13 @@
 /* ====================  */
 
 #section_contacto {
-  background: $chocolate !important; 
+  background: $chocolate !important;
   .black_background {
     background: $chocolate;
     opacity: 0.87;
+  }
+  .row{
+    min-height: calc(100vh - 70px);
   }
 }
 .contact_map_message {
@@ -34,15 +37,20 @@
   }
 }
 .datos {
-  line-height: 52px;
+ line-height: 24px; 
   i {
     margin-right: 12px;
   }
 }
+
+
 .contacto_container {
-  height: 100%;
+  // height: 100%;
   position: relative;
   background-color:$chocolate;
+  width: 70%;
+    margin: auto;
+    padding: 40px 0px;
 
   ::placeholder {
     color: #ffffff87;
@@ -53,21 +61,21 @@
 }
 
 .contacto_title {
-  position: absolute;
-  left: -1.9em;
-  top: 5.6em;
-  padding-bottom: 0.2em;
-  padding-right: 1.7em;
-  padding-left: 1.7em;
-  border-bottom: 1px solid #b5b3b1;
+  // position: absolute;
+  // left: -1.9em;
+  // top: 5.6em;
+  // padding-bottom: 0.2em;
+  // padding-right: 1.7em;
+  // padding-left: 1.7em;
+  // border-bottom: 1px solid #b5b3b1;
   font-size: 2.5em;
-  transform: rotate(-90deg);
-  transform-origin: bottom;
+  // transform: rotate(-90deg);
+  // transform-origin: bottom;
 }
 
 .contacto_form_container {
-  padding: 3em;
-  padding-left: 8em;
+  // padding: 3em;
+  // padding-left: 8em;
 }
 .contact_social {
   padding-left: 70px;
@@ -86,14 +94,15 @@
   }
 }
 #contacto_form {
-  padding-left: 6em;
-  padding-bottom: 1.3em;
-  border-bottom: 1px solid #ffffffad;
+  // // padding-left: 6em;
+  // // padding-bottom: 1.3em;
+  // border-bottom: 1px solid #ffffffad;
   width: 90%;
   margin: auto;
   .button.general_button{
     max-width: initial;
     width: max-content;
+    margin: initial; 
   }
 }
 @media #{$desktop_query} {
@@ -112,16 +121,23 @@
     left: 0;
   }
   .contacto_form_container {
-    padding: 15px;
-    padding-left: 15px;
-    padding-top: 5em;
+    // padding: 15px;
+    // padding-left: 15px;
   }
   #contacto_form {
     padding-left: 0;
-    border-bottom: 1px solid #ffffffad;
+    width:100%;
+    // border-bottom: 1px solid #ffffffad;
   }
 }
 @media #{$tablet_query} {
+}
+
+
+@media #{$mobile_query} {
+  .contacto_container{
+    width:100%; 
+  }
 }
 
 /* ====================  */

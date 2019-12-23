@@ -1,6 +1,6 @@
 <section id="section_contacto" class="section_high">
   <div class="row no-gutters contacto_and_map_wrap">
-    <div class="col-md-6 col-lg-6 wow slideInLeft" >
+    <div class="col-md-7 col-lg-6 wow slideInLeft d-flex justify-content-center align-items-center" >
       <div class="black_background"></div>
       <div class="loading_container" id="loading_contact_map">
         <div class="loading_spinner"></div>
@@ -53,7 +53,7 @@
               <input id="contact_email" placeholder="<?php echo mazal_get_acf_field("contacto_campo_email_") ?>" type="email" class="text">
             </div>
             <div class="field">
-              <input id="contact_phone" placeholder="<?php echo mazal_get_acf_field("contacto_campo_telefono_") ?>" type="number" class="text">
+              <input id="contact_phone" placeholder="<?php echo mazal_get_acf_field("contacto_campo_telefono_") ?>" type="tel" class="text">
             </div>
             <div class="field">
               <input id="contact_city" placeholder="<?php echo mazal_get_acf_field("contacto_campo_ciudad_") ?>" type="text" class="text">
@@ -61,20 +61,20 @@
             <div class="field">
               <textarea id="contact_message" placeholder="<?php echo mazal_get_acf_field("contacto_campo_mensaje_") ?>" cols="30" rows="4" class="text"></textarea>
             </div>
-            <div class="field">
+            <div class="field d-flex justify-content-end">
               <button class="button general_button text-white"><span data-title="<?php echo mazal_get_acf_field("contacto_boton_") ?>"><?php echo mazal_get_acf_field("contacto_boton_") ?></span></button>
             </div>
           </form>
           <ul class="contact_social">
 
-            <?php mazal_get_socials() ?>
+            <!-- <?php mazal_get_socials() ?> -->
 
           </ul>
         </div>
 
       </div>
     </div>
-    <div class="col-md-6 ">
+    <div class="col-md-5 col-lg-6">
       <div class="map h-100" id="mapFoot"></div>
 
       <script>
@@ -87,9 +87,29 @@
           var color1 = [{
               "elementType": "geometry",
               "stylers": [{
-                "color": "#242f3e"
+                "color": "#291f1f" // color casas
               }]
             },
+            {
+              "featureType": "poi.business",
+              "stylers": [{"visibility": "off"}]
+              },
+              {
+              "featureType": "transit",
+              "stylers": [{"visibility": "off"}]
+              },
+              {
+              "featureType": "poi.place_of_worship",
+              "stylers": [{"visibility": "off"}]
+              },
+              {
+              "featureType": "poi.medical",
+              "stylers": [{"visibility": "off"}]
+              },
+              {
+              "featureType": "poi.government",
+              "stylers": [{"visibility": "off"}]
+              },
             {
               "elementType": "labels.text.fill",
               "stylers": [{
@@ -99,7 +119,7 @@
             {
               "elementType": "labels.text.stroke",
               "stylers": [{
-                "color": "#242f3e"
+                "color": "#fff" 
               }]
             },
             {
@@ -134,7 +154,7 @@
               "featureType": "road",
               "elementType": "geometry",
               "stylers": [{
-                "color": "#38414e"
+                "color": "#453a3a" // color calles
               }]
             },
             {
@@ -148,7 +168,7 @@
               "featureType": "road",
               "elementType": "labels.text.fill",
               "stylers": [{
-                "color": "#9ca5b3"
+                "color": "#9ca5b3" //color texto
               }]
             },
             {
@@ -220,8 +240,8 @@
           });
 
           var icon = {
-            url: "https://mazal.co/wp-content/themes/mazal/images/icons/logo_min.svg", // url
-            scaledSize: new google.maps.Size(30, 30), // scaled size
+            url: "https://mazal.co/wp-content/themes/mazal/images/icons/mazal-mark.svg", // url
+            scaledSize: new google.maps.Size(85, 85), // scaled size
             origin: new google.maps.Point(0, 0), // origin
             anchor: new google.maps.Point(0, 0) // anchor
           };
@@ -233,6 +253,7 @@
           });
         }
       </script>
+      
       <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvsMTc7o7m8nBMjvMvl_Y_A5y0B3pawmc&callback=initMap"></script>
     </div>
   </div>
