@@ -16,6 +16,14 @@
   @media #{$mobile_query} {
     width: 100%;
   }
+  .button.general_button{
+    margin:initial;
+    width: max-content; 
+  }
+}
+.categoria-contenedor{
+  width: 60%;
+  margin: auto;
 }
 
 .tres_60_white_wrap {
@@ -36,7 +44,7 @@
     width: 90%;
     max-width: 500px;
     line-height: 23px;
-    text-align: center;
+    text-align: left;
     color: $blanco;
   }
 }
@@ -68,6 +76,9 @@
       padding: 0 15px;
     }
   }
+}
+.tres60_title_container h3{
+  text-align: left !important;
 }
 
 .tres60_title_container {
@@ -106,7 +117,7 @@
 	background-position: bottom;
   }
   .tres_60_white_wrap {
-    padding: 50px 0;
+    padding: 40px 0;
     height: auto;
     background: #201818;
     opacity: 1;
@@ -117,9 +128,32 @@
     }
     p {
       text-align: left;
+      width:100%;
     }
     h3 {
-      text-align: center;
+      text-align: left;
     }
+  }
+  .categoria-contenedor{
+    width: 80%;
+    padding: 0 15px;
+  }
+  .contacto_container {
+    width: 100%;
+    padding: 35px 15px !important; 
+}
+}
+
+@media (max-width:1200px){
+  .categoria-contenedor{
+    width: 80%;
+    padding: 0 15px; 
+  }
+}
+
+@media #{$mobile_query} {
+  .categoria-contenedor{
+    width: 100%;
+    padding: 0 15px;
   }
 }

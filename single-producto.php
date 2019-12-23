@@ -43,7 +43,7 @@ $producto = get_queried_object();
 
   <section class="item-view container">
     <div class="row m-0">
-      <div class="col-md-7" id="container_slick_product">
+      <div class="col-md-12 col-lg-7" id="container_slick_product">
         <div class="loading_container show" id="loading_slick_product">
           <div class="loading_spinner"></div>
         </div>
@@ -98,7 +98,7 @@ $producto = get_queried_object();
       </div>
 
 
-      <div class="col-md-5 information_item">
+      <div class="col-md-12 col-lg-5 information_item">
         <div class="item-information">
 
           <h2 class="item-title"><?php echo $producto->post_title; ?></h2>
@@ -234,7 +234,7 @@ $producto = get_queried_object();
   <section class="container-fluid call-action">
     <div class="container">
       <div class="row">
-        <div class=" col-md-7 call-action-name">
+        <div class=" col-md-12 col-lg-7 call-action-name">
           <?php
           if (mazal_is_language()) : ?>
             <h3>Suscribete para no perderte ninguna novedad</h3>
@@ -243,7 +243,7 @@ $producto = get_queried_object();
           <?php endif; ?>
 
         </div>
-        <div class=" col-md-5 ">
+        <div class=" col-md-12 col-lg-5 d-flex">
           <div class="form-suscription">
             <input id="text_mailchimp_sub" type="text" placeholder="someexampleemail@gmail.com">
             <?php if (mazal_is_language()) : ?>

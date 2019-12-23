@@ -14,24 +14,52 @@
       <div class="footer_header">
         <div class="container">
           <div class="row footer_list">
-            <div class="col-md-3 footer_list_item wow fadeInLeft">
+            <div class="col-md-4 footer_list_item wow fadeInLeft d-flex align-items-center justify-content-center">
               <h5 class="mazal_logo_footer">
                 <img src="<?php bloginfo("template_url") ?>/images/icons/logo.svg" alt="">
               </h5>
             </div>
-            <div class="col-md-3 footer_list_item wow fadeInDown" data-wow-delay="0.3s">
-              <h4 class="footer_title_list text-white"><?php echo mazal_get_acf_field("contacto_telefono_") ?></h4>
-              <span class="text-white"><?php echo mazal_get_acf_field("telefono_valor_") ?></span>
+
+            <div class="col-md-8">
+              <div class="row">
+                  <div class="col-md-6 col-sm-6 col-12 footer_list_item wow fadeInDown" data-wow-delay="0.3s">
+                      <div class="footer-modulos">
+                          <div class="modulo">
+                          <h4 class="footer_title_list text-white"><?php echo mazal_get_acf_field("contacto_telefono_") ?></h4>
+                            <span class="text-white"><a class="text-white" href="tel:0316026541"><?php echo mazal_get_acf_field("telefono_valor_") ?></a></span>
+                          </div>
+                            <div class="modulo">
+                            <h4 class="footer_title_list text-white"><?php echo mazal_get_acf_field("contacto_email_") ?></h4>
+                            <span class="text-white"><?php echo mazal_get_acf_field("email_valor_") ?></span>
+                            </div>
+                      </div>
+                    </div>
+
+                <div class="col-md-6 col-sm-6 col-12 footer_list_item wow fadeInDown" data-wow-delay="0.6s">
+                     <div class="footer-modulos">
+                     <div class="modulo">
+                     <h4 class="footer_title_list text-white"><?php echo mazal_get_acf_field("contacto_direccion_") ?></h4>
+                      <span class="text-white"><?php echo mazal_get_acf_field("direccion_valor_") ?></span>
+                     </div>
+                      <ul class="footer-redes">
+                        <?php mazal_get_socials() ?>
+                      </ul>
+                     </div>
+                </div>
+
+                <!-- <div data-wow-delay="0.9s" class="col-md-4 footer_list_item wow fadeInRight">
+                  
+                </div>
+                <div class="col-md-12">
+                 
+                </div> -->
+              </div>
             </div>
-            <div class="col-md-3 footer_list_item wow fadeInDown" data-wow-delay="0.6s">
-              <h4 class="footer_title_list text-white"><?php echo mazal_get_acf_field("contacto_email_") ?></h4>
-              <span class="text-white"><?php echo mazal_get_acf_field("email_valor_") ?></span>
-            </div>
-            <div data-wow-delay="0.9s" class="col-md-3 footer_list_item wow fadeInRight">
-              <h4 class="footer_title_list text-white"><?php echo mazal_get_acf_field("contacto_direccion_") ?></h4>
-              <span class="text-white"><?php echo mazal_get_acf_field("direccion_valor_") ?></span>
-            </div>
+            
           </div>
+          <!-- <div class="row">
+            
+          </div> -->
         </div>
       </div>
       <div class="footer_foot text-center">

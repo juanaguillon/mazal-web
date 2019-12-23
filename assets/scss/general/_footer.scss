@@ -1,5 +1,5 @@
 footer {
-  background: $chocolate;
+  background: #7b6a57;
 }
 .footer_header {
   padding: 3em 0px;
@@ -7,6 +7,7 @@ footer {
 .footer_foot {
   padding: 0.7em 0;
   background-color: $dorado;
+  border-top: 1px solid white;
 }
 
 @media #{$tablet_query} {
@@ -15,10 +16,69 @@ footer {
     max-width: 230px;
     margin: auto;
   }
+  .mazal_logo_footer{
+    margin-bottom: 30px !important;
+  }
 }
 
 @media #{$mobile_query} {
   #rights_footer {
     display: block;
   }
+  .footer-modulos{
+    // width:85% !important;
+    .modulo:last-child{
+      margin-bottom: 0;
+    }
+  }
+  
+  .footer_header{
+    padding: 3em 0px 30px 0;
+  }
+  .footer-redes{
+    max-width: 100%;
+    width:100%;
+  }
+}
+
+.footer_list{
+  h4{
+    font-weight: 600;
+  }
+  span{
+    font-weight: 300;
+  }
+}
+
+
+.footer-modulos{
+  width: max-content;
+  margin: auto;
+  .modulo{
+    margin-bottom: 14px;
+    h4{
+      margin-bottom: 0;
+    }
+      span{
+        display: flex;
+      }
+  }
+}
+
+.footer-redes {
+  display: flex;
+  max-width: 230px;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 20px;
+
+  a{
+    display: flex;
+    height: 20px;
+  }
+}
+
+.mazal_logo_footer{
+  width: 75%;
+  margin: auto;
 }

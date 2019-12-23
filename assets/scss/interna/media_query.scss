@@ -68,7 +68,7 @@
   }
 
   .portafolio_show_more_wrap {
-    height: 315px;
+    height: 245px;
   }
   .portfolio_show_more_image {
     width: 100%;
@@ -170,13 +170,14 @@
   }
 
   #mapFoot {
-    height: 70vh;
+    // height: 70vh;
+    min-height: 400px;
   }
   .mazal_logo_footer img {
     max-width: 290px;
   }
   .footer_list_item {
-    margin: 1em 0;
+    // margin: 1em 0;
   }
 }
 

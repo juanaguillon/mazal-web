@@ -3,7 +3,7 @@
 }
 
 .migadepan {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .direccion-pagina {
@@ -12,10 +12,13 @@
   display: flex;
   align-items: center;
   .direccion-back {
-    margin-right: 10px;
+    margin-right: 18px;
     a {
-      padding: 5px 12px;
+      padding: 5px 5px;
       font-size: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center; 
     }
   }
   ul {
@@ -64,7 +67,7 @@
 }
 
 .item-view {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .item-information {
@@ -117,6 +120,8 @@
   font-size: 35px;
   text-transform: uppercase;
   font-family: raleway;
+ font-weight: 600;
+  letter-spacing: 4px; 
 }
 
 .item-ref {
@@ -174,6 +179,7 @@
     color: $yellowcolor;
     font-size: 35px;
     max-width: 460px;
+    font-weight: 300;
   }
 }
 
@@ -223,7 +229,6 @@
       border: none;
       height: 45px;
       font-family: $font2;
-      font-weight: 600;
       padding: 10px 30px;
       font-size: 18px;
       cursor: pointer;
@@ -352,7 +357,7 @@
   margin-bottom: 60px;
   h3 {
     font-family: $font1;
-    font-size: 38px;
+    font-size: 30px;
     font-weight: 400;
     text-transform: uppercase;
     margin-bottom: 30px;
@@ -435,6 +440,32 @@
   bottom: 20px;
 }
 
+
+@media (max-width:1200px){
+  .action-for-item{
+    button{
+      padding: 15px 15px !important;
+    }
+  }
+}
+
+
+@media (max-width:768px){
+  .item-information{
+    max-width: 100%;
+    .action-for-item{
+      justify-content: space-between;
+      .add{
+        width:70%;
+        margin-right: 0;
+      }
+      .add-love{
+        width:30%; 
+      }
+    }
+  }
+}
+
 @media #{$mobile_query} {
   .swiper-button-prev,
   .swiper-button-next {
@@ -471,7 +502,8 @@
     padding: 0;
   }
   .call-action-name h3 {
-    font-size: 21px;
+    font-size: 23px;
+    margin-bottom: 20px;
   }
   .related-items h3 {
     font-size: 23px;
@@ -482,5 +514,19 @@
   }
   .migadepan {
     margin-top: 20px;
+  }
+}
+
+@media (max-width:991px){
+  .pagina-producto{
+    padding-top: 50px;
+  }
+
+  
+}
+
+@media (max-width:550px){
+  .migadepan{
+    padding: 0 15px !important;
   }
 }
