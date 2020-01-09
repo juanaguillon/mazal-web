@@ -76,6 +76,18 @@
           <?php echo mazal_get_acf_field("quienes_texto_") ?>
          
         </p>
+        <?php
+        
+        if ( mazal_is_language()){
+$buttonNosot = "Ver más";
+        }else{
+          $buttonNosot = "See more";
+        }
+        
+        ?>
+        <a href="<?php echo esc_url( get_permalink( pll_get_post(808))); ?>" class="button button_dark general_button font-2 text2x" style="margin:initial; width:max-content;">
+        <span class="text-black" ><?php echo $buttonNosot ?></span>
+        </a>
       </div>
     </div>
   </div>

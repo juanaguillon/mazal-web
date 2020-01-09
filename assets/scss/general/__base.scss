@@ -315,10 +315,33 @@ section h3 {
 
   #button_cotizar_producto span {
     background-color: $dorado;
+    color: white;
+    margin: 20px 0 10px 0;
     &:hover:after {
       background-color: $chocolate;
     }
   }
+}
+
+.quoted-product{
+  height: 130px;
+  max-width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.quoted-product-info{
+  padding: 10px 0px 10px 15px;
+    max-width: 100%;
+    h4{
+      font-size: 24px;
+    text-transform: uppercase;
+    margin-top: 0;
+    font-family: raleway;
+    font-weight: 600;
+    }
+    span{
+      
+    }
 }
 
 #modal_product_cotize {
@@ -360,7 +383,7 @@ form {
       outline: none;
       font-family: $font2;
       &.light {
-        border: 2px solid #8e7b66;
+        border: 1px solid #8e7b66;
         color: #000;
         &::placeholder,
         &::-ms-input-placeholder,

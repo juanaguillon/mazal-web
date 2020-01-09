@@ -81,6 +81,24 @@
   text-align: left !important;
 }
 
+.contrast-seccion-white{
+  
+  .tres_60_white_wrap{
+    background: white;
+    opacity: 0.98;
+    h3{
+      color:$chocolate;
+      text-shadow: none !important;
+    }
+    p{
+      color:$chocolate;
+      font-weight: 400;
+      text-shadow: none !important;
+    }
+  }
+  
+}
+
 .tres60_title_container {
   @media #{$tablet_query} {
     font-size: 40px;

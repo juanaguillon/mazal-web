@@ -69,6 +69,7 @@
           $rigths2 = explode(" - ", $rightTotal)[1];
           ?>
         <span class="text-3x text-white"><?php echo $rigths1 ?> - <strong id="rights_footer"><?php echo $rigths2 ?></strong></span>
+        <a href="http://intuitionstudio.co/" target="_blank" class="d-flex"><span>Desarrolado por Intuition Studio </span><img src="<?php bloginfo("template_url") ?>/images/icons/logo-intuition.svg" alt=""></a>
       </div>
     </footer>
 

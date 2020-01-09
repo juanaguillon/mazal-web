@@ -111,7 +111,7 @@
 
       $classHeader = "";
       $showBlackBg = "";
-      if (is_singular("producto") || is_search()) {
+      if (is_singular("producto") || is_search()|| is_page(812) || is_page(808)) {
         $showBlackBg = "display:none;";
         $classHeader = "in_scroll";
       } else {
