@@ -9,7 +9,7 @@ var $document = $(document),
 /*/
 function toggleClassToMenuInResponse() {
   $(".header_top_list").removeClass("active");
-  if ($window.width() <= desktopWidth) {
+  if ($window.width() <= 1300) {
     $("#icon_bars").unbind("click");
     $("#icon_bars").click(function(e) {
       e.stopPropagation();
@@ -561,6 +561,19 @@ function plugnsInit() {
     mode: "lg-fade",
     download: false
   });
+
+  $("#quienes_somos_lg").lightGallery({
+    selector: $("a.quienes_somos_link"),
+    mode: "lg-fade",
+    download: false
+  });
+
+  $("#con_quien_trabajamos").lightGallery({
+    selector: $("a.trabajamos_con"),
+    mode: "lg-fade",
+    download: false
+  });
+
   $("#image_product_slick").lightGallery({
     selector: $(".item_image_product"),
     mode: "lg-fade",
@@ -574,10 +587,9 @@ function plugnsInit() {
 /* Final Inicializar Plugins */
 /** Cambiar imagen en antes y despues */
 function changeCurrentImageInBeforeAfter() {
-  $(".bef_aft_image_photo").on("click", function(e) {
+  $(".bef_aft_image_photo").on("click touchstart", function(e) {
     e.stopPropagation()
     
-    console.warn("HOLA A TODOS")
     var imgSelected = $(this).children("img");
     var before = imgSelected.data("before");
     var after = imgSelected.data("after");
@@ -847,13 +859,13 @@ function connectToFb() {
 }
 
 $window.on("load", function() {
-  changeCurrentImageInBeforeAfter();
   ScrolMapFromNavbar();
   toggleDynamicDataFromNav();
   changeTheSubmenuInHeader();
   toggleTheModalToSearchInWebsite();
   // changeTheLanguageLabelInHeader();
   plugnsInit();
+  changeCurrentImageInBeforeAfter();
 
   activeTheLineInTheHeaderMenuInScrolling();
   makeScrollIfExistsTheQueryParam();

@@ -335,17 +335,10 @@ $producto = get_queried_object();
       <div class="modal_title_left">
         <i class="text-white icon-logo"></i>
 
-        <h4><?= $producto->post_title ?></h4>
-        <?php
-        if (get_field("mostar_referencia", $producto)) {
-        ?>
-          <span class="item-ref">Ref: <?php echo get_field("referencia", $producto) ?></span>
-        <?php
-        }
-        ?>
+        
       </div>
       <div class="modal_title_right">
-        <button class="button button-cuadro button_close_modal">x</button>
+        <button class="button cuadro button_close_modal"><i class="icon-cross"></i></button>
       </div>
     </div>
     <div class="modal_bcontent">
@@ -389,8 +382,20 @@ $producto = get_queried_object();
         ?>
         <div class="row">
           <div class="col-12">
-            <div class="field">
-              <img style="	max-width: 210px;max-height: 210px;" src="<?php echo get_field("imagen_de_producto", $producto)["sizes"]["medium"] ?>" alt="">
+            <div class="field d-flex row">
+              <div class="quoted-product col-md-4">
+              <img class="img_fill w-100"  src="<?php echo get_field("imagen_de_producto", $producto)["sizes"]["medium"] ?>" alt="">
+              </div>
+              <div class="quoted-product-info col-md-8">
+              <h4><?= $producto->post_title ?></h4>
+        <?php
+        if (get_field("mostar_referencia", $producto)) {
+        ?>
+          <span class="item-ref">Ref: <?php echo get_field("referencia", $producto) ?></span>
+        <?php
+        }
+        ?>
+              </div>
             </div>
           </div>
           <div class="col-md-6">

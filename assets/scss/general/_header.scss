@@ -1,6 +1,6 @@
 header {
   @media #{$desktop_query} {
-    height: 50px;
+    height: 50px !important;
     background: rgb(0, 0, 0);
 
     .menu_logo i.icon-logo {
@@ -126,6 +126,48 @@ header {
   }
 }
 
+@media (max-width:1300px){
+  .header_top_list{
+    position: fixed;
+    top: 70px;
+    right: 0;
+    flex-direction: column;
+    padding: 1em;
+    height: calc(100vh - 50px) !important;
+    width: 80%;
+    max-width: 350px;
+    background: #000000eb;
+    align-items: flex-end;
+    overflow-y: auto;
+    overflow-x: hidden;
+    justify-content: flex-start; 
+    text-align: right;
+    padding-top: 25px;
+    transition: transform 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    transform: translateX(100%); 
+
+    &.active {
+      transform: translateX(0%);
+    }
+  }
+  #icon_bars{
+    display: block !important;
+  }
+
+  header{
+    height: 80px;
+    background: black;
+    .menu_logo i.icon-logo{
+      font-size: 32px; 
+    }    
+  }
+  .header_top_list li+li a{
+    border-left: 0 !important;
+  } 
+
+}
+
+
 .header_top_list {
   @media #{$desktop_query} {
     position: fixed;
@@ -133,7 +175,7 @@ header {
     right: 0;
     flex-direction: column;
     padding: 1em;
-    height: calc(100vh - 50px);
+    height: calc(100vh - 50px); 
     width: 80%;
     max-width: 350px;
     background: #000000eb;
@@ -195,11 +237,14 @@ header {
     }
   }
 
-  li + li a {
+  li a {
     font-family: $font1;
     @media screen and (min-width: $desktop_pixels) {
       border-left: 1px solid white;
     }
+  }
+  li:first-child a{
+    border-left: 0px solid white;
   }
 }
 .super_menu_item_active .super_menu_comenext {
@@ -493,9 +538,7 @@ a.languages_toggle {
   display: none;
 }
 @media #{$desktop_query} {
-  .super_menu_comenext {
-    display: block !important;
-  }
+  
 }
 
 @media #{$tablet_query} {

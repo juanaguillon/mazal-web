@@ -24,7 +24,7 @@ function mazal_simple_content($term, $in_right = true)
 
   ?>
 
-  <section id="section_<?php echo $term->slug ?>" class="section_high tres60_section <?php if (!$in_right) echo "section_left" ?>" style="background-image: url(<?php echo $imageES["sizes"]["large"] ?>)">
+  <section id="section_<?php echo $term->slug ?>" class="section_high tres60_section <?php if (!$in_right) echo "section_left contrast-seccion-white" ?>" style="background-image: url(<?php echo $imageES["sizes"]["large"] ?>)">
     <div class="container-fluid p-0 h-100">
       <div class="row no-gutters h-100">
         <div class="col-md-8 col-lg-6 tres60_container wow fadeInDown <?php if ($in_right) echo "offset-md-4 offset-lg-6" ?>">
@@ -35,7 +35,7 @@ function mazal_simple_content($term, $in_right = true)
                     </div>
                     <p><?php echo $term->description ?></p>
                     <div class="tres60_button_container">
-                      <a href="<?php echo $button["link"] ?>" class="button general_button text-yellow mt-4">
+                      <a href="<?php echo $button["link"] ?>" class="button general_button text-yellow mt-4 <?php if (!$in_right) echo "button_dark" ?>">
                         <span data-title="<?php echo $button["text"] ?>"><?php echo $button["text"] ?></span>
                       </a>
                     </div>

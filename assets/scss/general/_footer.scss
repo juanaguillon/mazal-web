@@ -5,9 +5,34 @@ footer {
   padding: 3em 0px;
 }
 .footer_foot {
-  padding: 0.7em 0;
+  padding: 15px 10px;
   background-color: $dorado;
   border-top: 1px solid white;
+  display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    a{
+      display: flex;
+      align-items: center;
+      width:max-content;
+      img{
+        margin-left: 10px;
+        height: 20px;
+      }
+    }
+  span{
+    font-size: 13px;
+    color:white;
+    width:max-content;
+  }
+}
+
+@media (max-width:760px){
+  .footer_foot{
+    a{
+      margin: 10px 0 0 0;
+    }
+  }
 }
 
 @media #{$tablet_query} {

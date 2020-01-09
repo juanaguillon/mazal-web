@@ -1,0 +1,99 @@
+.quienes-somos-page{
+    padding-top: 70px;
+}
+.section-nosotros{
+    height: calc(100vh - 70px);
+}
+.mid-height{
+    height: calc(50vh - 35px);
+    background: #201818;
+}
+.full-height{
+    height: calc(100vh - 70px);
+}
+
+
+.categoria-contenedor{
+    p{
+        font-weight: 300;
+    }
+}
+
+
+.desc-nosotros-img{
+    position: relative;
+    overflow: hidden;
+    height: calc(100vh - 70px);
+    background-image: url(https://mazal.co/wp-content/uploads/2019/11/72045331_1684827818318490_5113012670143922176_n.jpg?v=1576682307);
+    background-size: cover;
+    background-position: center;
+}
+
+.historia-title{
+    height: 25vh;
+    align-items: center;
+    justify-content: center;  
+    display: flex; 
+    max-height: 250px;
+    h3{
+        text-align: center !important;
+    }
+}
+.historia-quienes-somos{
+
+}
+
+@media (max-width:991px){
+    .quienes-somos-page{
+        padding-top:50px; 
+    }
+    .mid-height{
+        height: auto;
+    }
+    .full-height{
+        height: calc(100vh - 50px);
+    }
+
+    .desc-nosotros-img{
+        height: calc(100vh - 50px);
+    }
+    .historia-quienes-somos{
+        // flex-direction: column-reverse;
+        .portafolio_single_image{
+            height: 100%; 
+        }
+    }
+    .desc-nosotros{
+        padding-top: 40px;      
+        padding-bottom: 40px;  
+
+    }
+    #con_quien_trabajamos{
+        .portafolio_single_image{
+            height: calc(50vh - 25px); 
+        }
+    }
+}
+
+@media (max-width:767px){
+     .desc-nosotros-img{
+         max-height:300px; 
+     }
+
+     .portafolio_single_image{
+         height: 300px !important;
+     }
+     .full-height{
+         height: auto !important;
+     }
+    .seccion-trabajamoscon{
+        .img-work{
+            .mid-height{
+                height: 200px;
+            }
+        }
+    }
+    .historia-quienes-somos{
+        flex-direction: column-reverse; 
+    }
+}
