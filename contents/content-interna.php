@@ -7,7 +7,7 @@
     $bannerPosts = $banners->posts;
     foreach ($bannerPosts as $banner) :
 
-      $url = get_field("link_banner", $banner);
+      $url = get_term_link(get_field("link_banner", $banner), "categoria") ;
       $textoLink = get_field("texto_link_banner", $banner);
       ?>
       <div class="banner_item">
