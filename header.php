@@ -32,17 +32,19 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="<?php bloginfo('template_url') ?>/favicon.ico">
   <!-- <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,600,700&display=swap" rel="stylesheet"> -->
-<link href="https://fonts.googleapis.com/css?family=Raleway:200,400,700|Work+Sans:100,300,400,500&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css?family=Raleway:200,400,700|Work+Sans:100,300,400,500&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="<?php bloginfo('template_url') ?>/custom.min.css">
-  <meta property="description" content="Somos una compañía basada en diseño interior, arquitectura y productos mobiliarios.">
+  <meta name="description" content="Somos una compañía basada en diseño interior, arquitectura y productos mobiliarios.">
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:site_name" content="Mazal" />
+
   <?php
   if (is_singular("producto")) :
     $producto = get_queried_object(); ?>
     <meta property="og:title" content="Mazal | <?php echo $producto->post_title ?>" />
     <meta property="og:description" content="<?php echo $producto->post_content ?>" />
     <meta property="og:url" content="<?php echo get_permalink($producto) ?>" />
-    <meta property="og:site_name" content="Mazal" />
     <meta property="og:image" content="<?php echo get_field("imagen_de_producto", $producto)["sizes"]["medium"] ?>" />
   <?php endif; ?>
   <meta property="og:type" content="article" />
@@ -69,38 +71,26 @@
   </style>
 
   <script>
-  // var sectionsSelector = [
-  //   "lineas1",
-  //   "tres60",
-  //   "arq_sos",
-  //   "portafolio",
-  //   "obra_nueva",
-  //   "before_after",
-  //   "galeria",
-  //   "constructoras",
-  //   "oficinas",
-  //   "hoteles",
-  //   "centry_commercial",
-  //   "restaurantes",
-  //   "clientes",
-  //   "contacto"
-  // ];
+    // var sectionsSelector = [
+    //   "lineas1",
+    //   "tres60",
+    //   "arq_sos",
+    //   "portafolio",
+    //   "obra_nueva",
+    //   "before_after",
+    //   "galeria",
+    //   "constructoras",
+    //   "oficinas",
+    //   "hoteles",
+    //   "centry_commercial",
+    //   "restaurantes",
+    //   "clientes",
+    //   "contacto"
+    // ];
   </script>
 </head>
 
 <body class="<?php if (is_front_page()) echo "index_body_class" ?>">
-  <!-- <div class="loader">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-  </div> -->
-
 
   <main id="main_interna">
 
@@ -111,7 +101,7 @@
 
       $classHeader = "";
       $showBlackBg = "";
-      if (is_singular("producto") || is_search()|| is_page(812) || is_page(808)) {
+      if (is_singular("producto") || is_search() || is_page(812) || is_page(808)) {
         $showBlackBg = "display:none;";
         $classHeader = "in_scroll";
       } else {
@@ -119,7 +109,7 @@
         $classHeader = "enable_scroll";
       }
 
-      ?>
+    ?>
 
       <header class="<?php echo $classHeader ?>">
         <div class="black_background" style="<?php echo $showBlackBg ?>"></div>
@@ -136,145 +126,163 @@
           </div>
           <div class="header_top_right flex-center-xy">
             <ul class="header_top_list">
-            <li class="galeria">
-                  <a class="text-white" data-scroll="galeria"><?= mazal_is_language() ? "Nosotros" : "About Us" ?></a>
-                </li>
+              <li class="galeria <?= mazal_is_nosotros_page() ? "active" : "" ?>">
+                <a class="text-white" data-scroll="galeria"><?= mazal_is_language() ? "Nosotros" : "About Us" ?></a>
+              </li>
               <?php
 
 
-                $maxParent = null;
-                $link = null;
+              $maxParent = null;
+              $link = null;
 
-                /** Verificar si la página/taxonomía está traducida. */
-                // $inTransaled = false;
-                if (is_page() || is_singular("producto")) {
-                  $maxParent = new stdClass();
-                  if (mazal_is_hogar_page()) {
-                    $maxParent->term_id = pll_get_term(89);
-                  } else if (mazal_is_arquitectura_page()) {
-                    $maxParent->term_id =  pll_get_term(91);
-                  } else if (mazal_is_corporativo_page()) {
-                    $maxParent->term_id = pll_get_term(93);
-                  } else if (!is_page("producto")) {
-                    $maxParent->term_id = 0;
-                  }
-                  // printcode( $maxParent );
-                  if (is_singular("producto")) {
+              /** Verificar si la página/taxonomía está traducida. */
+              // $inTransaled = false;
+              if (is_page() || is_singular("producto")) {
+                $maxParent = new stdClass();
+                if (mazal_is_hogar_page()) {
+                  $maxParent->term_id = pll_get_term(89);
+                } else if (mazal_is_arquitectura_page()) {
+                  $maxParent->term_id =  pll_get_term(91);
+                } else if (mazal_is_corporativo_page()) {
+                  $maxParent->term_id = pll_get_term(93);
+                } else {
+                  $maxParent->term_id = 0;
+                }
 
-                    // Obtener la primera categoria de el actual producto
-                    $termsProducto = get_the_terms(get_queried_object(), "categoria")[0];
-                    $mostParent = mazal_get_term_top_most_parent($termsProducto->term_id, "categoria");
+                if (is_singular("producto")) {
 
-                    // Verificar a que página enviar, si será arquitectura, hogar o corporativo.
-                    if ($mostParent->term_id == 91 || $mostParent->term_id == 97) {
-                      // Si es arquitectura
-                      $linkSend = pll_get_post(11);
-                    } else if ($mostParent->term_id == 99 || $mostParent->term_id == 89) {
-                      // Si es Hogar
-                      $linkSend = pll_get_post(25);
-                    } else if ($mostParent->term_id == 93 || $mostParent->term_id == 101) {
-                      // Si es Corporativo
-                      $linkSend = pll_get_post(9);
-                    }
-                  }
-
-                  $chLink =  get_queried_object()->ID;
-                  if (mazal_is_language()) {
-                    $linkID = pll_get_post($chLink, "en");
-                  } else {
-                    $linkID = pll_get_post($chLink, "es");
-                  }
-                  $link = get_permalink($linkID);
-                } else if (is_tax("categoria")) {
-                  $chLink =  get_queried_object()->term_id;
-                  $maxParent = mazal_get_term_top_most_parent($chLink, "categoria");
+                  // Obtener la primera categoria de el actual producto
+                  $termsProducto = get_the_terms(get_queried_object(), "categoria")[0];
+                  $mostParent = mazal_get_term_top_most_parent($termsProducto->term_id, "categoria");
 
                   // Verificar a que página enviar, si será arquitectura, hogar o corporativo.
-                  if ($maxParent->term_id == 91 || $maxParent->term_id == 97) {
+                  if ($mostParent->term_id == 91 || $mostParent->term_id == 97) {
                     // Si es arquitectura
                     $linkSend = pll_get_post(11);
-                  } else if ($maxParent->term_id == 99 || $maxParent->term_id == 89) {
+                  } else if ($mostParent->term_id == 99 || $mostParent->term_id == 89) {
                     // Si es Hogar
                     $linkSend = pll_get_post(25);
-                  } else if ($maxParent->term_id == 93 || $maxParent->term_id == 101) {
+                  } else if ($mostParent->term_id == 93 || $mostParent->term_id == 101) {
                     // Si es Corporativo
                     $linkSend = pll_get_post(9);
                   }
-
-                  if (mazal_is_language()) {
-                    $linkID = pll_get_term($chLink, "en");
-                  } else {
-                    $linkID = pll_get_term($chLink, "es");
-                  }
-                  $link = get_term_link($linkID);
-                } else {
-                  $maxParent = new stdClass();
-                  $maxParent->term_id = 0;
-
-                  // Obtener el home url en el lenguaje inverso
-                  $formULR = mazal_is_language() ? "en" : "es";
-                  $link = pll_home_url($formULR);
                 }
 
-                $directChilds = get_terms(array(
-                  "taxonomy" => "categoria",
-                  "parent" => $maxParent->term_id,
-                  "hide_empty" => false
-                ));
-                $navDynamics = array();
-                foreach ($directChilds as $childNav) :
-                  $dataDyn = "";
-                  $className = $childNav->slug;
-                  $childNavTranslated = get_term(pll_get_term($childNav->term_id, "es"), "categoria");
-                  if (get_field("diseno_", $childNavTranslated) == "Diseño con Subcategorías") {
-                    $navDynamics[$childNav->slug] = get_terms(array(
-                      "taxonomy" => "categoria",
-                      "hide_empty" => false,
-                      "number" => 4,
-                      "parent" => $childNav->term_id
-                    ));
-                    $className .= " has_dynamic";
-                    $dataDyn = sprintf("data-dynamic='nav_dynamic_%s'", $childNav->slug);
-                  }
-                  ?>
-                
+                $chLink =  get_queried_object()->ID;
+                if (mazal_is_language()) {
+                  $linkID = pll_get_post($chLink, "en");
+                } else {
+                  $linkID = pll_get_post($chLink, "es");
+                }
+                $link = get_permalink($linkID);
+              } else if (is_tax("categoria")) {
+                $chLink =  get_queried_object()->term_id;
+                $maxParent = mazal_get_term_top_most_parent($chLink, "categoria");
+
+                // Verificar a que página enviar, si será arquitectura, hogar o corporativo.
+                if ($maxParent->term_id == 91 || $maxParent->term_id == 97) {
+                  // Si es arquitectura
+                  $linkSend = pll_get_post(11);
+                } else if ($maxParent->term_id == 99 || $maxParent->term_id == 89) {
+                  // Si es Hogar
+                  $linkSend = pll_get_post(25);
+                } else if ($maxParent->term_id == 93 || $maxParent->term_id == 101) {
+                  // Si es Corporativo
+                  $linkSend = pll_get_post(9);
+                }
+
+                if (mazal_is_language()) {
+                  $linkID = pll_get_term($chLink, "en");
+                } else {
+                  $linkID = pll_get_term($chLink, "es");
+                }
+                $link = get_term_link($linkID);
+              } else {
+                $maxParent = new stdClass();
+                $maxParent->term_id = 0;
+
+                // Obtener el home url en el lenguaje inverso
+                $formULR = mazal_is_language() ? "en" : "es";
+                $link = pll_home_url($formULR);
+              }
+
+
+
+              $directChilds = get_terms(array(
+                "taxonomy" => "categoria",
+                "parent" => $maxParent->term_id,
+                "hide_empty" => false
+              ));
+
+              $navDynamics = array();
+              foreach ($directChilds as $childNav) :
+                $dataDyn = "";
+                $className = $childNav->slug;
+
+                /**
+                 * Todas las páginas que tengan el "parent" con valor 0 ( Como la página interna quienes somos), signifca que es una página distinta a "Corporativo","Hogar","Arquitectura" por lo tanto, no debe hacer scroll de sus secciones ( Algo que las páginas corporativo y arquitectura si hacen )
+                 */
+                $isInnerPage = false;
+                if ($childNav->parent == 0) {
+                  $isInnerPage = true;
+                }
+
+                // Necesitamos hacer la traducción con la función pll_get_term Para obtener las imagenes de esta y las subcategorias
+                // Ya que ha no hemos logrado traducir las imagenes de las categorias ( Taxonomía categoría ).
+                $childNavTranslated = get_term(pll_get_term($childNav->term_id, "es"), "categoria");
+                if (get_field("diseno_", $childNavTranslated) == "Diseño con Subcategorías") {
+                  $navDynamics[$childNav->slug] = get_terms(array(
+                    "taxonomy" => "categoria",
+                    "hide_empty" => false,
+                    "number" => 4,
+                    "parent" => $childNav->term_id
+                  ));
+                  $className .= " has_dynamic";
+                  $dataDyn = sprintf("data-dynamic='nav_dynamic_%s'", $childNav->slug);
+                }
+              ?>
+
                 <li class="<?php echo $className ?>" <?php echo $dataDyn ?>>
                   <?php
-                      /**
-                       * Se crea este condicional para verificar si hacer scroll o ir a la pagina de categoría.
-                       */
-                      if (is_page()) {
-                        $href = "#";
-                      } else {
-                        $href = get_term_link($childNav, "categoria");
-                      }
-                      ?>
+                  /**
+                   * Se crea este condicional para verificar si hacer scroll o ir a la pagina de categoría.
+                   */
+                  if (is_page() && !$isInnerPage) {
+                    $href = "#";
+                  } else {
+                    $href = get_term_link($childNav, "categoria");
+                  }
+                  ?>
                   <a rel="nofollow" href="<?php echo $href ?>" class="text-white" data-scroll="<?php echo $childNav->slug ?>"><?php echo $childNav->name ?></a>
                   <?php
-                      if (isset($navDynamics[$childNav->slug])) {
-                        $subItemsOfCurrentTerm = $navDynamics[$childNav->slug];
-                        echo "<ul class='header_top_submenu'>";
-                        foreach ($subItemsOfCurrentTerm as $sioct) {
-                          echo "<li><a href='" . get_term_link($sioct, "categoria") . "'>" . $sioct->name . "</a></li>";
-                        }
-                        echo "</ul>";
-                      }
+                  if (isset($navDynamics[$childNav->slug])) {
+                    $subItemsOfCurrentTerm = $navDynamics[$childNav->slug];
+                    echo "<ul class='header_top_submenu'>";
+                    foreach ($subItemsOfCurrentTerm as $sioct) {
+                      echo "<li><a href='" . get_term_link($sioct, "categoria") . "'>" . $sioct->name . "</a></li>";
+                    }
+                    echo "</ul>";
+                  }
 
-                      ?>
+                  ?>
 
                 </li>
               <?php endforeach; ?>
-              <script> 
-                  var _head__sectionsSelector = [
+              <script>
+                var _head__sectionsSelector = [
                   <?php
-                    foreach ($directChilds as $cld) {
-                      echo "'" . $cld->slug . "',";
-                    }
-                   ?>
-                  ]
-                </script>
+                  foreach ($directChilds as $cld) {
+                    echo "'" . $cld->slug . "',";
+                  }
+                  ?>
+                ]
+              </script>
               <?php
 
+
+              if (mazal_is_nosotros_page()) {
+                $ullist  = array();
+              } else {
                 /**
                  * Secciones de las páginas.
                  */
@@ -285,22 +293,24 @@
                   // "before_after" => mazal_is_language() ? "Remodelación" : "Restyling",
                   // "clientes" => mazal_is_language() ? "Clientes" : "Customers",
                 );
-                foreach ($ullist as $ulkey => $ullnm) :
-                  $linkLI = $link;
-                  if (is_tax("categoria") || is_singular("producto")) {
-                    $linkLI = "href='" . esc_url(get_permalink($linkSend) . "?section=" . $ulkey)  . "'";
-                  }
-                  ?>
+              }
+
+              foreach ($ullist as $ulkey => $ullnm) :
+                $linkLI = $link;
+                if (is_tax("categoria") || is_singular("producto")) {
+                  $linkLI = "href='" . esc_url(get_permalink($linkSend) . "?section=" . $ulkey)  . "'";
+                }
+              ?>
                 <li class="<?php echo $ulkey ?>">
                   <a <?php echo $linkLI ?> class="text-white" data-scroll="<?php echo $ulkey ?>"><?php echo $ullnm ?></a>
                 </li>
               <?php endforeach;
-                if (!is_wp_error($link)) :
-                  // Debe tomar el get en caso que esté buscando en la web
-                  if (is_search()) {
-                    $link .= "?s=" . $_GET["s"];
-                  }
-                  ?>
+              if (!is_wp_error($link)) :
+                // Debe tomar el get en caso que esté buscando en la web
+                if (is_search()) {
+                  $link .= "?s=" . $_GET["s"];
+                }
+              ?>
                 <li class="languages_header">
                   <a rel="nofollow" href="<?php echo esc_attr($link); ?>">
                     <?php $isEs = mazal_is_language(); ?>
@@ -323,9 +333,9 @@
 
             <button id="icon_favorites" class="button button_small direct_header_button">
               <?php
-                $productsFav = mazal_get_favorite_products();
-                $hasFavs = $productsFav && count($productsFav["posts"]) > 0;
-                ?>
+              $productsFav = mazal_get_favorite_products();
+              $hasFavs = $productsFav && count($productsFav["posts"]) > 0;
+              ?>
               <i class="icon-heart<?php echo !$hasFavs ? "-o" : "" ?> text-white hover-white"></i>
               <div id="favorites_header">
                 <?php if ($hasFavs) : ?>
@@ -346,8 +356,8 @@
                     <?php endforeach; ?>
                   </ul>
                 <?php
-                  endif;
-                  ?>
+                endif;
+                ?>
               </div>
             </button>
             <button class="button hover-white button_small direct_header_button" id="open_shares">
@@ -369,16 +379,16 @@
           <button class="button button-cuadro button_abs">x</button>
           <div class="search_modal_form_wrap">
             <?php
-              if ($isEs) {
-                $suffix = "es";
-              } else {
-                $suffix = "en";
-              }
-              $placeholder = get_field("campo_buscar_-_" . $suffix, "option");
-              $search = get_field("boton_enviar_-_" . $suffix, "option");
+            if ($isEs) {
+              $suffix = "es";
+            } else {
+              $suffix = "en";
+            }
+            $placeholder = get_field("campo_buscar_-_" . $suffix, "option");
+            $search = get_field("boton_enviar_-_" . $suffix, "option");
 
 
-              ?>
+            ?>
             <form action="<?php echo home_url() ?>">
               <div class="field">
                 <input name="s" placeholder="<?php echo $placeholder; ?>" type="text" class="text">
@@ -407,11 +417,11 @@
                   <div class="dynamic_images">
 
                     <?php foreach ($navDyn as $navDeep) :
-                          /**
-                           * Se debe obtener la imagen de la taxonomia en español
-                           */
-                          $imageTranslated = get_term(pll_get_term($navDeep->term_id, "es"), "categoria");
-                          ?>
+                      /**
+                       * Se debe obtener la imagen de la taxonomia en español
+                       */
+                      $imageTranslated = get_term(pll_get_term($navDeep->term_id, "es"), "categoria");
+                    ?>
                       <a href="<?php echo esc_url(get_term_link($navDeep, "categoria")); ?>">
                         <div class="dynamic_image_single left_to_right_container">
                           <div class="dynamic_image_container ">
