@@ -41,7 +41,7 @@ $(window).on("load", function() {
   var hideItems = function(gridC) {
     var quantityCount = quantityElm.val();
     var itemsShow = gridC.isotope("getFilteredItemElements");
-    console.log(itemsShow);
+    // console.log(itemsShow);
     var counter = 0;
     var filterClass = document
       .getElementById("load_more_filter_items")
@@ -81,14 +81,6 @@ $(window).on("load", function() {
     hideItems($grid);
     $grid.isotope("layout");
 
-    // $(".col-item:visible .item").each(function() {
-
-    // $grid.off("arrangeComplete")
-    // $grid.on("arrangeComplete", function(even, filtered) {
-    //   // Agregar strech a las imágenes
-    //   console.log(filtered)
-
-    // });
   };
 
   /**
