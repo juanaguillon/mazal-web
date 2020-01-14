@@ -475,3 +475,5 @@ function mazal_get_most_biggests_categories(){
     "corporativo" => get_term($coprorativo, "categoria"),
   );
 }
+
+ 

@@ -286,7 +286,7 @@
 			
 			</p>
 			<div class="popup-button-container text-center">
-				<button class="button button_dark general_button font-2 text2x capitalize">
+				<button class="button button-gold button-fill button-m general_button font-2  capitalize">
 
 					<span class="text-black" data-title="<?= $buttonAgendar ?>"><?= $buttonAgendar ?></span>
 				</button>

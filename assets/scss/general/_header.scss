@@ -1,11 +1,9 @@
 header {
   @media #{$desktop_query} {
-    height: 50px !important;
+    // height: 50px !important;
     background: rgb(0, 0, 0);
 
-    .menu_logo i.icon-logo {
-      font-size: 25px;
-    }
+    
   }
 
   position: fixed;
@@ -22,12 +20,13 @@ header {
     background: $dorado;
 
     .menu_logo i.icon-logo {
-      font-size: 35px;
+      // font-size: 35px;
+      transition:all 0.3s;
     }
     @media #{$desktop_query} {
-      height: 50px;
+      // height: 50px;
       .menu_logo i.icon-logo {
-        font-size: 25px;
+        // font-size: 25px;
       }
     }
   }
@@ -84,6 +83,15 @@ header {
   }
 }
 
+@media (max-width:768px){
+  // header{
+  //   height: 50px !important;
+  // }
+  .menu_logo i.icon-logo {
+    font-size: 25px !important;
+  }
+}
+
 .header_top {
   display: flex;
   height: 100%;
@@ -97,7 +105,7 @@ header {
     background: rgba(0, 0, 0, 0.884);
   }
 }
-.super_menu_item_active > a.text-white {
+.super_menu_item_active > a.text-white { 
   // font-weight: bold;
   display: none;
 }
@@ -126,21 +134,21 @@ header {
   }
 }
 
-@media (max-width:1300px){
+@media (max-width:1250px){
   .header_top_list{
     position: fixed;
     top: 70px;
     right: 0;
     flex-direction: column;
     padding: 1em;
-    height: calc(100vh - 50px) !important;
+    height: calc(100vh - 70px) !important;
     width: 80%;
     max-width: 350px;
     background: #000000eb;
-    align-items: flex-end;
+    align-items: flex-end !important;
     overflow-y: auto;
     overflow-x: hidden;
-    justify-content: flex-start; 
+    justify-content: flex-start !important; 
     text-align: right;
     padding-top: 25px;
     transition: transform 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
@@ -149,29 +157,51 @@ header {
     &.active {
       transform: translateX(0%);
     }
+
+    li{
+      height: 50px !important;
+      a{
+        font-size: inherit !important;
+      }
+    }
   }
   #icon_bars{
     display: block !important;
   }
 
   header{
-    height: 80px;
+    height: 70px;
     background: black;
     .menu_logo i.icon-logo{
-      font-size: 32px; 
+      font-size: 32px;
+      transition: all .3s;
     }    
   }
   .header_top_list li+li a{
     border-left: 0 !important;
   } 
 
+  span.language{
+    font-size: 18px;
+  }
+
+}
+
+@media (max-width:768px){
+  .header_top_list{
+    top: 70px;
+    right: 0;
+    flex-direction: column;
+    padding: 1em;
+    height: calc(100vh - 70px) !important; 
+  } 
 }
 
 
 .header_top_list {
   @media #{$desktop_query} {
     position: fixed;
-    top: 50px;
+    // top: 50px;
     right: 0;
     flex-direction: column;
     padding: 1em;
@@ -218,7 +248,7 @@ header {
     a {
       font-family: raleway;
       @media #{$fluid_query} {
-        font-size: 12px;
+        font-size: 11px;
       }
 
       @media #{$desktop_query} {
@@ -229,7 +259,7 @@ header {
       color: white;
       padding: 0px 1vw;
       display: block;
-      font-size: 12px;
+      font-size: 11px;
       cursor: pointer;
       &:hover {
         text-shadow: 0 0 5px white, 0 0 5px white;
@@ -240,7 +270,7 @@ header {
   li a {
     font-family: $font1;
     @media screen and (min-width: $desktop_pixels) {
-      border-left: 1px solid white;
+      // border-left: 1px solid white;
     }
   }
   li:first-child a{
@@ -471,7 +501,7 @@ a.languages_toggle {
     color: white;
   }
   ul {
-    transition: transform 0.1s;
+    transition: transform 0.4s; 
     transform: translateX(120%);
     position: absolute;
     background: #000000bf;

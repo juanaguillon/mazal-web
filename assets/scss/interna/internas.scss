@@ -143,6 +143,8 @@
 
   p {
     font-size: 16px;
+    font-weight: 300;
+    line-height: 22px;
   }
 
   h2 {
@@ -282,12 +284,15 @@
       width: 100%;
       margin: 0 -7px;
       li {
-        width: 25%;
+        width: 20%;
         padding: 0 15px;
 
         &:last-child {
           margin-right: 0;
         }
+        // &:first-child{
+        //   padding-left: 0;
+        // }
       }
 
       select {
@@ -339,10 +344,10 @@
 }
 .grid-item-category {
   flex-wrap: wrap;
-  margin: 0 -15px;
+  // margin: 0 -15px;
 
   .col-item {
-    width: 33.33%;
+    width: calc(33.33% - 10px);
     padding: 5px;
     overflow: hidden;
     cursor: pointer;
@@ -391,7 +396,7 @@ select {
   padding: 15px 30px;
   span {
     font-family: "Work Sans";
-    font-weight: 500;
+    // font-weight: 500;
   }
 }
 
@@ -606,9 +611,11 @@ select {
     margin: 15px;
   }
   .banner-categoria {
-    height: 40vh;
+    height: 45vh;
+    margin-top: 70px; 
     h2 {
       font-size: 42px;
+      margin-top: 0;
     }
     h5,
     p {
@@ -619,7 +626,7 @@ select {
     flex-wrap: wrap;
     margin: 0;
     li {
-      width: 50%;
+      width: 33.33%; 
     }
     .dropdown-list {
       z-index: 30;
