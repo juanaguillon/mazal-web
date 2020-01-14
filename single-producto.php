@@ -211,7 +211,7 @@ $producto = get_queried_object();
             <div class="redes-compartir">
               <ul class="d-flex">
                 <li>
-                  <a target="_blank" href="https://wa.me/573108613043?text=Hola, estoy interesado en el siguiente producto: <?php echo esc_url(get_permalink($producto)) ?>... Me gustaría recibir más información." id="share_whatsapp_product" class="share-whatsapp"><img src="http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/whastapp-social-media.svg" alt=""></a>
+                  <a target="_blank" href="" data-link-mb="whatsapp://send?text=<?php echo esc_url(get_permalink($producto)) ?>" data-link-ds="https://wa.me/?text=<?php echo esc_url(get_permalink($producto)) ?>" id="share_whatsapp_product" class="share-whatsapp"><img src="http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/whastapp-social-media.svg" alt=""></a>
                 </li>
                 <li>
                   <a class="facebook_share" data-nombre="<?php echo $producto->post_title ?>" data-descrip="<?php echo $producto->post_content ?>" data-urlimg="<?php echo get_field("imagen_de_producto", $producto)["sizes"]["medium"] ?>">
@@ -233,8 +233,8 @@ $producto = get_queried_object();
 
   <section class="container-fluid call-action">
     <div class="container">
-      <div class="row">
-        <div class=" col-md-12 col-lg-7 call-action-name">
+      <div class="row m-0">
+        <div class=" col-sm-12 col-md-6 col-lg-7 call-action-name">
           <?php
           if (mazal_is_language()) : ?>
             <h3>Suscribete para no perderte ninguna novedad</h3>
@@ -243,15 +243,15 @@ $producto = get_queried_object();
           <?php endif; ?>
 
         </div>
-        <div class=" col-md-12 col-lg-5 d-flex">
+        <div class=" col-sm-12 col-md-6 col-lg-5 d-flex flex-wrap justify-content-end">
           <div class="form-suscription">
-            <input id="text_mailchimp_sub" type="text" placeholder="someexampleemail@gmail.com">
+            <input id="text_mailchimp_sub" type="text" placeholder="examplemail@gmail.com">
             <?php if (mazal_is_language()) : ?>
 
-              <input id="send_mailchimp_sub" type="submit" value="Enviar">
+              <input id="send_mailchimp_sub" type="submit" value="Suscribir">
             <?php else : ?>
 
-              <input id="send_mailchimp_sub" type="submit" value="Send">
+              <input id="send_mailchimp_sub" type="submit" value="Subscribe">
             <?php endif; ?>
 
             <div class="loading_container" id="loading_contact_subscribe">
@@ -276,11 +276,13 @@ $producto = get_queried_object();
   </section>
 
   <section class="container related-items">
+    
+    <div class="row m-0">
     <?php
     if (mazal_is_language()) : ?>
-      <h3>PRODUCTOS RELACIONADOS</h3>
+      <h3 class="col-md-12">PRODUCTOS RELACIONADOS</h3>
     <?php else : ?>
-      <h3>RELATED PRODUCTS</h3>
+      <h3 class="col-md-12">RELATED PRODUCTS</h3>
     <?php endif; ?>
 
 
@@ -306,7 +308,6 @@ $producto = get_queried_object();
     ));
 
     ?>
-    <div class="row">
       <?php
       foreach ($queryRel->posts as $relProducto) : ?>
         <div class="col-md-4 related_product_cl">
