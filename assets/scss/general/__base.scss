@@ -103,18 +103,34 @@ section h3 {
   right: 5%;
 }
 
+ .button-m{
+   min-width: 150px !important;
+ }
+
+.button-fill{
+    border:none !important;
+    
+    span{
+      border:none !important;
+      color: white !important; 
+    }
+}
+
+.button-fill::before{
+  left:100% !important;
+}
+
 .button.general_button {
 	font-family: $font2;
   position: relative;
-	width: 200px;
+	width:max-content;
 	perspective: 400px;
 	background-color: transparent;
 	padding: 0;
-	font-size: 16px;
+	font-size: 15px;
 	display: block;
-	width: 100%;
 	text-align: center;
-	max-width: 200px;
+	min-width: 120px;
   margin: 0 auto;
   overflow: hidden;
 
@@ -195,7 +211,40 @@ section h3 {
       color:white;
     }
     
-  } 
+  }
+
+  &.button-gold{
+    span {
+      color: #201818;
+      /*background: black;
+      border: none !important;*/
+      border: 1px solid #201818;
+  
+      
+  
+  
+    }
+    &::before{
+      margin-left: -100%;
+      background: $dorado;
+      position: absolute;
+      content: "";
+      height: 100%;
+      width: 100%;
+      top: 0;
+      opacity: 1;
+      left: 0;
+      transition: all 0.3s;   
+    }
+
+    // &:hover::before{
+    //   margin-left:0;
+    // }
+    &:hover span{
+      color:white;
+    }
+  }
+
 
   @media #{$mobile_query} {
     display: block;
@@ -278,8 +327,8 @@ section h3 {
   padding: 10px;
   width: 100%;
   left: 0;
-  background: #000000f0;
-  backdrop-filter: blur(7px);
+  background: #000000d1;
+  // backdrop-filter: blur(7px);
   height: 100%;
   display: none;
   align-items: center;
@@ -450,3 +499,9 @@ form {
     }
   }
 }
+
+// @media (max-width:991px){
+//   .tres_60_white_wrap, .section_high{
+//     height: calc(100vh - 50px) !important;
+//   }
+// }

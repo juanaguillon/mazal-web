@@ -174,8 +174,9 @@
 	</section>
 
 	<section class="container related-items">
-		<h3 class="">PRODUCTOS RELACIONADOS</h3>
-		<div class="row">
+		
+		<div class="row m-0">
+		<h3 class="col-md-12">PRODUCTOS RELACIONADOS</h3>
 			<div class="col-md-4">
 				<div class="related-item">
 					<div class="image-related-item item">

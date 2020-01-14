@@ -18,7 +18,7 @@
           <div class="banner_caption_inner">
             <h3 class="text-yellow font-1"><?php echo mb_strtoupper( $banner->post_title, "UTF-8") ?></h3>
             <p class="text-white font-2"><?php echo $banner->post_excerpt ?></p>
-            <a href="<?php echo $url ?>" class="button general_button mt-3 ml-0">
+            <a href="<?php echo $url ?>" class="button general_button button-m mt-3 ml-0">
               <span data-title="<?php echo $textoLink ?>"><?php echo $textoLink ?></span>
             </a>
           </div>
@@ -85,7 +85,7 @@ $buttonNosot = "Ver más";
         }
         
         ?>
-        <a href="<?php echo esc_url( get_permalink( pll_get_post(808))); ?>" class="button button_dark general_button font-2 text2x" style="margin:initial; width:max-content;">
+        <a href="<?php echo esc_url( get_permalink( pll_get_post(808))); ?>" class="button button_dark general_button font-2" style="margin:initial; width:max-content;">
         <span class="text-black" ><?php echo $buttonNosot ?></span>
         </a>
       </div>
