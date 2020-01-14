@@ -41,16 +41,15 @@ $(window).on("load", function() {
   var hideItems = function(gridC) {
     var quantityCount = quantityElm.val();
     var itemsShow = gridC.isotope("getFilteredItemElements");
-    // console.log(itemsShow);
     var counter = 0;
     var filterClass = document
       .getElementById("load_more_filter_items")
       .getAttribute("data-filter");
 
     $(itemsShow).each(function(i, elm) {
-      if (counter < quantityCount) {
+      if (counter < parseInt(quantityCount)) {
         filterClass = filterClass.replace(".", "");
-        if ($(this).hasClass(filterClass)) {
+        if ($(this).hasClass(filterClass) || counter <= itemsShow.length) {
           var img = $(this).find("img");
           img.on("load", function() {
             resizePhoto($(this));
@@ -58,6 +57,7 @@ $(window).on("load", function() {
           img[0].src = img.data("src");
           $(this).removeClass("hide_item");
           counter++;
+          console.log("HIDDING");
           $(".more-items").hide();
         }
       } else {
@@ -80,7 +80,6 @@ $(window).on("load", function() {
     $grid.isotope({ filter: filter });
     hideItems($grid);
     $grid.isotope("layout");
-
   };
 
   /**
@@ -93,11 +92,14 @@ $(window).on("load", function() {
     resiveGrid(filter);
   }
 
-  function updateStatus(label, result) {
+  function updateStatus(label, result ) {
     $(".dropdown").removeClass("open");
-    if (!result.length) {
+    if (result === "") {
       label.text(label.data("emplabel"));
     }
+    // if (!result.length) {
+    //   label.text(label.data("emplabel"));
+    // }
   }
 
   $el.each(function(i, element) {
@@ -140,40 +142,58 @@ $(window).on("load", function() {
     // });
 
     $inputs.on("change", function() {
-      var checkeds = [];
-      $inputs.each(function(e) {
-        if ($(this).prop("checked")) {
-          checkeds.push($(this));
-        }
-      });
+      // var checkeds = [];
 
-      if (checkeds.length > 0) {
-        var text = checkeds[0]
+      /**
+       * MOstrar los labels +1 o +2, etcera
+       * Ejemplo: Arquitectura, DIseño interior, Hogar, Mostrará "Arquitectura +2" en el label
+       */
+      var text = "";
+      // $inputs.each(function(e) {
+      // console.log("X");
+      if ($(this).prop("checked")) {
+        // checkeds.push($(this));
+        var classesToUncheck = $(this).data("classonselect");
+        $("." + classesToUncheck).prop("checked", false);
+        $(this).prop("checked", true);
+        text = $(this)
           .first()
           .next()
           .text();
-        if (checkeds.length > 1) {
-          text += " " + (checkeds.length - 1) + "+";
-        }
+        // return;
       }
+      // });
+
+      // console.log(text);
+      // if (checkeds.length > 0) {
+      //   // var text = checkeds[0]
+      //   //   .first()
+      //   //   .next()
+      //   //   .text();
+      //   // if (checkeds.length > 1) {
+      //   //   text += " " + (checkeds.length - 1) + "+";
+      //   // }
+      // }
       $label.text(text);
-      updateStatus($label, checkeds);
+      updateStatus($label, text);
 
       // ================
 
       var filtering = "." + $("#current_category").val();
+      if ($(this).data("filter") !== "*") {
+        filtering += $(this).data("filter");
+      }
       var isFirst = true;
-      $inputs.each(function(i) {
-        if ($(this).prop("checked")) {
-          if (isFirst) {
-            filtering += $(this).data("filter");
-            isFirst = false;
-          } else {
-            filtering += "," + $(this).data("filter");
-          }
-        }
-      });
-
+      // $inputs.each(function(i) {
+      //   if ($(this).prop("checked")) {
+      //     if (isFirst) {
+      //       filtering += $(this).data("filter");
+      //       isFirst = false;
+      //     } else {
+      //       filtering += "," + $(this).data("filter");
+      //     }
+      //   }
+      // });
       resiveGrid(filtering);
     });
     $(document).on("click touchstart", function(e) {
