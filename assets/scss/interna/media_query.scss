@@ -3,6 +3,13 @@
     height: 530px;
     min-height: auto;
   }
+   .lineas_container {
+     
+     &.lefting {
+       flex-direction: column-reverse;
+       display: flex;
+     }
+   }
   .banner_image {
     height: 100%;
     img {
@@ -78,22 +85,22 @@
     z-index: -1;
   }
   .portafolio_single_image {
-    .black_background {
-      opacity: 1;
-    }
-    .portafolio_mazal_logo {
-      opacity: 1;
-    }
+    // .black_background {
+    //   opacity: 1;
+    // }
+    // .portafolio_mazal_logo {
+    //   opacity: 1;
+    // }
     &:hover img {
       transform: scale(1);
     }
-    &:hover .portafolio_mazal_logo {
-      animation: none;
-    }
+    // &:hover .portafolio_mazal_logo {
+    //   animation: none;
+    // }
   }
-  .portafolio_single_image_context {
-    transform: translateY(0%);
-  }
+  // .portafolio_single_image_context {
+  //   transform: translateY(0%);
+  // }
 
   
 }
