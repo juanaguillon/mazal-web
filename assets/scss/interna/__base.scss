@@ -99,11 +99,7 @@
   }
 }
 
-@media #{$desktop_query} {
-  section h3 {
-    font-size: 55px;
-  }
-}
+
 @media #{$tablet_query} {
   .banner_caption_inner h3 {
     font-size: 35px;

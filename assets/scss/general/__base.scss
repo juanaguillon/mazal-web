@@ -59,18 +59,27 @@ section.section_high {
   background-size: cover !important;
 }
 
+
+
 section h3 {
   font-size: 70px;
-  @media #{$desktop_query} {
-    section h3 {
-      font-size: 50px;
-    }
-  }
-
-  @media #{$mobile_query} {
-    font-size: 42px;
+  // @media #{$desktop_query} {
+  //   section h3 {
+  //     font-size: 50px;
+  //   }
+  // }
+}
+@media #{$desktop_query} {
+  section h3 {
+    font-size: 55px;
   }
 }
+@media #{$mobile_query} {
+  section h3 {
+    font-size: 40px;
+  }
+}
+
 .button {
   background: none;
   border: none;
@@ -342,7 +351,7 @@ section h3 {
   }
   .modal_title {
     background: $dorado;
-    padding: 15px 25px;
+    padding: 22px 25px;
     justify-content: space-between;
     display: flex;
     h4 {
@@ -386,7 +395,7 @@ section h3 {
     text-transform: uppercase;
     margin-top: 0;
     font-family: raleway;
-    font-weight: 600;
+    font-weight: 400;
     }
     span{
       
