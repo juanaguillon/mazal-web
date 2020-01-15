@@ -161,7 +161,7 @@ header {
     li{
       height: 50px !important;
       a{
-        font-size: inherit !important;
+        font-size: 16px !important;
       }
     }
   }
@@ -378,6 +378,24 @@ a.languages_toggle {
   }
 }
 
+@media (max-width:1250px){
+  .header_top_list > li.languages_header{
+    span{
+      font-size: 16px;
+    }
+    span.language{
+      width:initial;
+      font-size: 16px;
+    }
+  }
+}
+
+@media (max-width:768px){
+  .menu_logo{
+    margin: 0; 
+  }
+}
+
 .header_top_right {
   width: 100%;
   height: 100%;
@@ -587,7 +605,7 @@ a.languages_toggle {
     top: 100%;
     // height: calc(100% - 50px);
     z-index: 100;
-    top: 50px;
+    top: 70px;
     transition: transform 0.5s;
     transform: translateX(100%);
   }
