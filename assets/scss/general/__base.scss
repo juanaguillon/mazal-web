@@ -59,8 +59,6 @@ section.section_high {
   background-size: cover !important;
 }
 
-
-
 section h3 {
   font-size: 70px;
   // @media #{$desktop_query} {
@@ -112,43 +110,43 @@ section h3 {
   right: 5%;
 }
 
- .button-m{
-   min-width: 150px !important;
- }
-
-.button-fill{
-    border:none !important;
-    
-    span{
-      border:none !important;
-      color: white !important; 
-    }
+.button-m {
+  min-width: 150px !important;
 }
 
-.button-fill::before{
-  left:100% !important;
+.button-fill {
+  border: none !important;
+
+  span {
+    border: none !important;
+    color: white !important;
+  }
+}
+
+.button-fill::before {
+  left: 100% !important;
 }
 
 .button.general_button {
-	font-family: $font2;
+  font-family: $font2;
   position: relative;
-	width:max-content;
-	perspective: 400px;
-	background-color: transparent;
-	padding: 0;
-	font-size: 15px;
-	display: block;
-	text-align: center;
-	min-width: 120px;
+  width: max-content;
+  perspective: 400px;
+  background-color: transparent;
+  padding: 0;
+  font-size: 15px;
+  display: block;
+  text-align: center;
+  min-width: 120px;
   margin: 0 auto;
   overflow: hidden;
 
-  &:hover::before{
+  &:hover::before {
     margin-left: 0%;
   }
 
-  &:hover span{
-    color:#201818;
+  &:hover span {
+    color: #201818;
   }
   span {
     display: block;
@@ -189,18 +187,14 @@ section h3 {
   //   }
   // }
 
-  &.button_dark{
+  &.button_dark {
     span {
       color: #201818;
       /*background: black;
       border: none !important;*/
       border: 1px solid #201818;
-  
-      
-  
-  
     }
-    &::before{
+    &::before {
       margin-left: -100%;
       background: #201818;
       position: absolute;
@@ -210,30 +204,25 @@ section h3 {
       top: 0;
       opacity: 1;
       left: 0;
-      transition: all 0.3s;   
+      transition: all 0.3s;
     }
 
-    &:hover::before{
-      margin-left:0;
+    &:hover::before {
+      margin-left: 0;
     }
-    &:hover span{
-      color:white;
+    &:hover span {
+      color: white;
     }
-    
   }
 
-  &.button-gold{
+  &.button-gold {
     span {
       color: #201818;
       /*background: black;
       border: none !important;*/
       border: 1px solid #201818;
-  
-      
-  
-  
     }
-    &::before{
+    &::before {
       margin-left: -100%;
       background: $dorado;
       position: absolute;
@@ -243,24 +232,23 @@ section h3 {
       top: 0;
       opacity: 1;
       left: 0;
-      transition: all 0.3s;   
+      transition: all 0.3s;
     }
 
     // &:hover::before{
     //   margin-left:0;
     // }
-    &:hover span{
-      color:white;
+    &:hover span {
+      color: white;
     }
   }
-
 
   @media #{$mobile_query} {
     display: block;
     width: 100%;
   }
 
-  &::before{
+  &::before {
     margin-left: -100%;
     background: white;
     position: absolute;
@@ -270,7 +258,7 @@ section h3 {
     top: 0;
     opacity: 1;
     left: 0;
-    transition: all 0.3s;   
+    transition: all 0.3s;
   }
 }
 
@@ -381,25 +369,32 @@ section h3 {
   }
 }
 
-.quoted-product{
-  height: 130px;
+.quoted-product {
+  height: 120px;
   max-width: 100%;
   position: relative;
   overflow: hidden;
+  img {
+    left: -9999px !important;
+    right: -9999px !important;
+    top: -9999px !important;
+    bottom: -9999px !important;
+    margin: auto;
+    max-width: inherit;
+  }
 }
-.quoted-product-info{
+.quoted-product-info {
   padding: 10px 0px 10px 15px;
-    max-width: 100%;
-    h4{
-      font-size: 24px;
+  max-width: 100%;
+  h4 {
+    font-size: 24px;
     text-transform: uppercase;
     margin-top: 0;
     font-family: raleway;
     font-weight: 400;
-    }
-    span{
-      
-    }
+  }
+  span {
+  }
 }
 
 #modal_product_cotize {
@@ -436,7 +431,7 @@ form {
       resize: none;
       font-size: 1rem;
       width: 100%;
-      display: block; 
+      display: block;
       border: 1px solid #ffffff99;
       outline: none;
       font-family: $font2;

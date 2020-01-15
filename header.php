@@ -162,13 +162,10 @@
                   $linkID = pll_get_post($chLink, "es");
                 }
                 $link = get_permalink($linkID);
-                
-                if ( $link === get_permalink($chLink) ){
-                   $linkSearch = false;
+
+                if ($link === get_permalink($chLink)) {
+                  $linkSearch = false;
                 }
-                
-                
-               
               } else if (is_tax("categoria")) {
                 $chLink =  get_queried_object()->term_id;
                 $maxParent = mazal_get_term_top_most_parent($chLink, "categoria");
@@ -198,7 +195,6 @@
                 // Obtener el home url en el lenguaje inverso
                 $formULR = mazal_is_language("es") ? "en" : "es";
                 $link = pll_home_url($formULR);
-                
               }
               ?>
               <li class="galeria <?= mazal_is_nosotros_page() ? "active" : "" ?>">
@@ -245,9 +241,9 @@
                   /**
                    * Se crea este condicional para verificar si hacer scroll o ir a la pagina de categoría.
                    */
-                if (is_page() && !$isInnerPage) {
+                  if (is_page() && !$isInnerPage) {
                     $href = "#";
-                } else {
+                  } else {
                     $href = get_term_link($childNav, "categoria");
                   }
 
@@ -401,9 +397,19 @@
 
 
             ?>
-            <form action="<?php echo home_url() ?>">
+            <form id="form_search_general" action="<?php echo home_url() ?>">
               <div class="field">
-                <input name="s" placeholder="<?php echo $placeholder; ?>" type="text" class="text">
+                <?php
+                if (mazal_is_language("es")) {
+                  $debeProporcionar = "Debe proporcionar un texto";
+                } else {
+                  $debeProporcionar = "You must provide a text";
+                }
+
+
+                ?>
+                <input data-message="<?= $debeProporcionar ?>" id="form_search_text" name="s" placeholder="<?php echo $placeholder; ?>" type="text" class="text">
+                <div class="danger_form d-none" id="danger_form_search" id=""><span></span></div>
               </div>
               <div class="field">
                 <button type="submit" class="button general_button text-white"><span data-title="<?php echo $search; ?>"><?php echo $search; ?></span></button>

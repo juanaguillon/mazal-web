@@ -19,8 +19,12 @@ get_header();
 
             if (mazal_is_language("es")) {
               $quienesSOmos = "QUIENES SOMOS";
-              $trabajamos = "CON QUIEN TRABAJAMOS";
+              $trabajamos = "CON QUIÉN TRABAJAMOS";
               $historia = "NUESTRA HISTORIA";
+            } else {
+              $quienesSOmos = "WHO WE ARE";
+              $trabajamos = "WHO WE WORK WITH";
+              $historia = "OUR HISTORY";
             }
             ?>
             <h3 class="font-1 text-light text-dark-gray">
