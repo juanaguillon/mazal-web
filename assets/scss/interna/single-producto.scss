@@ -375,15 +375,18 @@
       position: relative;
       overflow: hidden;
       height: 200px;
-      img {
-        position: absolute;
-        top: -999999px;
-        bottom: -999999px;
-        left: -999999px;
-        right: -999999px;
-        margin: auto;
-        width: 100%;
+      img{
+        max-width: inherit;
       }
+      // img {
+      //   position: absolute;
+      //   top: -999999px;
+      //   bottom: -999999px;
+      //   left: -999999px;
+      //   right: -999999px;
+      //   margin: auto;
+      //   width: 100%;
+      // }
     }
     h4 {
       font-family: $font1;

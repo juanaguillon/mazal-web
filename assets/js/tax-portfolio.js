@@ -30,11 +30,13 @@ $(window).on("load", function() {
     var imgW = jqueryImg.width();
 
     if (imgW / imgH < refRatio) {
-      parentIMG.removeClass("imgfill_h");
-      parentIMG.addClass("imgfill_w");
+      parentIMG.imagefill();
+      // parentIMG.removeClass("imgfill_h");
+      // parentIMG.addClass("imgfill_w");
     } else {
-      parentIMG.removeClass("imgfill_w");
-      parentIMG.addClass("imgfill_h");
+      parentIMG.imagefill();
+      // parentIMG.removeClass("imgfill_w");
+      // parentIMG.addClass("imgfill_h");
     }
   };
 
