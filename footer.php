@@ -1,13 +1,13 @@
   <?php if (!is_front_page()) : ?>
 
     <?php
-      $isEs = mazal_is_language();
-      if ($isEs) {
-        $suffix = "_-_es";
-      } else {
-        $suffix = "_-_en";
-      }
-      ?>
+    $isEs = mazal_is_language();
+    if ($isEs) {
+      $suffix = "_-_es";
+    } else {
+      $suffix = "_-_en";
+    }
+    ?>
 
     <footer>
 
@@ -22,29 +22,29 @@
 
             <div class="col-md-8">
               <div class="row">
-                  <div class="col-md-6 col-sm-6 col-12 footer_list_item wow fadeInDown" data-wow-delay="0.3s">
-                      <div class="footer-modulos">
-                          <div class="modulo">
-                          <h4 class="footer_title_list text-white"><?php echo mazal_get_acf_field("contacto_telefono_") ?></h4>
-                            <span class="text-white"><a class="text-white" href="tel:0316026541"><?php echo mazal_get_acf_field("telefono_valor_") ?></a></span>
-                          </div>
-                            <div class="modulo">
-                            <h4 class="footer_title_list text-white"><?php echo mazal_get_acf_field("contacto_email_") ?></h4>
-                            <span class="text-white"><?php echo mazal_get_acf_field("email_valor_") ?></span>
-                            </div>
-                      </div>
+                <div class="col-md-6 col-sm-6 col-12 footer_list_item wow fadeInDown" data-wow-delay="0.3s">
+                  <div class="footer-modulos">
+                    <div class="modulo">
+                      <h4 class="footer_title_list text-white"><?php echo mazal_get_acf_field("contacto_telefono_") ?></h4>
+                      <span class="text-white"><a class="text-white" href="tel:0316026541"><?php echo mazal_get_acf_field("telefono_valor_") ?></a></span>
                     </div>
+                    <div class="modulo">
+                      <h4 class="footer_title_list text-white"><?php echo mazal_get_acf_field("contacto_email_") ?></h4>
+                      <span class="text-white"><?php echo mazal_get_acf_field("email_valor_") ?></span>
+                    </div>
+                  </div>
+                </div>
 
                 <div class="col-md-6 col-sm-6 col-12 footer_list_item wow fadeInDown" data-wow-delay="0.6s">
-                     <div class="footer-modulos">
-                     <div class="modulo">
-                     <h4 class="footer_title_list text-white"><?php echo mazal_get_acf_field("contacto_direccion_") ?></h4>
+                  <div class="footer-modulos">
+                    <div class="modulo">
+                      <h4 class="footer_title_list text-white"><?php echo mazal_get_acf_field("contacto_direccion_") ?></h4>
                       <span class="text-white"><?php echo mazal_get_acf_field("direccion_valor_") ?></span>
-                     </div>
-                      <ul class="footer-redes">
-                        <?php mazal_get_socials() ?>
-                      </ul>
-                     </div>
+                    </div>
+                    <ul class="footer-redes">
+                      <?php mazal_get_socials() ?>
+                    </ul>
+                  </div>
                 </div>
 
                 <!-- <div data-wow-delay="0.9s" class="col-md-4 footer_list_item wow fadeInRight">
@@ -55,7 +55,7 @@
                 </div> -->
               </div>
             </div>
-            
+
           </div>
           <!-- <div class="row">
             
@@ -64,12 +64,18 @@
       </div>
       <div class="footer_foot text-center">
         <?php
-          $rightTotal = mazal_get_acf_field("copyright_");
-          $rigths1 = explode(" - ", $rightTotal)[0];
-          $rigths2 = explode(" - ", $rightTotal)[1];
-          ?>
+        $rightTotal = mazal_get_acf_field("copyright_");
+        $rigths1 = explode(" - ", $rightTotal)[0];
+        $rigths2 = explode(" - ", $rightTotal)[1];
+
+        if (mazal_is_language("es")) {
+          $desarrollo = "Desarrolado por";
+        } else {
+          $desarrollo = "Designed by";
+        }
+        ?>
         <span class="text-3x text-white"><?php echo $rigths1 ?> - <strong id="rights_footer"><?php echo $rigths2 ?></strong></span>
-        <a href="http://intuitionstudio.co/" target="_blank" class="d-flex"><span>Desarrolado por Intuition Studio </span><img src="<?php bloginfo("template_url") ?>/images/icons/logo-intuition.svg" alt=""></a>
+        <a href="http://intuitionstudio.co/" target="_blank" class="d-flex"><span><?= $desarrollo ?> Intuition Studio </span><img src="<?php bloginfo("template_url") ?>/images/icons/logo-intuition.svg" alt=""></a>
       </div>
     </footer>
 
@@ -92,7 +98,7 @@
 
   <?php
   if (is_tax("categoria") || mazal_is_portfolio_page() || is_search()) {
-    ?>
+  ?>
     <script type="text/javascript" src="<?php bloginfo('template_url') ?>/assets/js/bootstrap-multiselect.js"></script>
     <script type="text/javascript" src="<?php bloginfo('template_url') ?>/assets/js/isotope.pkgd.min.js"></script>
     <script>

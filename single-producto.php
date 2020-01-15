@@ -276,38 +276,38 @@ $producto = get_queried_object();
   </section>
 
   <section class="container related-items">
-    
+
     <div class="row m-0">
-    <?php
-    if (mazal_is_language()) : ?>
-      <h3 class="col-md-12">PRODUCTOS RELACIONADOS</h3>
-    <?php else : ?>
-      <h3 class="col-md-12">RELATED PRODUCTS</h3>
-    <?php endif; ?>
+      <?php
+      if (mazal_is_language()) : ?>
+        <h3 class="col-md-12">PRODUCTOS RELACIONADOS</h3>
+      <?php else : ?>
+        <h3 class="col-md-12">RELATED PRODUCTS</h3>
+      <?php endif; ?>
 
 
-    <?php
-    $tersRelated = get_the_terms($producto, "categoria");
-    $termsKeys = array();
-    foreach ($tersRelated as $term) {
-      $termsKeys[] = $term->term_id;
-    }
-    // printcode($termsKeys);
-    $queryRel = new WP_Query(array(
-      "post_type" => "producto",
-      "posts_per_page" => 3,
-      "orderby" => "rand",
-      "post__not_in" => array($producto->ID),
-      "tax_query" => array(
-        array(
-          'taxonomy' => 'categoria',
-          'field'    => 'term_id',
-          'terms'    => $termsKeys,
+      <?php
+      $tersRelated = get_the_terms($producto, "categoria");
+      $termsKeys = array();
+      foreach ($tersRelated as $term) {
+        $termsKeys[] = $term->term_id;
+      }
+      // printcode($termsKeys);
+      $queryRel = new WP_Query(array(
+        "post_type" => "producto",
+        "posts_per_page" => 3,
+        "orderby" => "rand",
+        "post__not_in" => array($producto->ID),
+        "tax_query" => array(
+          array(
+            'taxonomy' => 'categoria',
+            'field'    => 'term_id',
+            'terms'    => $termsKeys,
+          )
         )
-      )
-    ));
+      ));
 
-    ?>
+      ?>
       <?php
       foreach ($queryRel->posts as $relProducto) : ?>
         <div class="col-md-4 related_product_cl">
@@ -336,7 +336,7 @@ $producto = get_queried_object();
       <div class="modal_title_left">
         <i class="text-white icon-logo"></i>
 
-        
+
       </div>
       <div class="modal_title_right">
         <button class="button cuadro button_close_modal"><i class="icon-cross"></i></button>
@@ -385,17 +385,17 @@ $producto = get_queried_object();
           <div class="col-12">
             <div class="field d-flex row">
               <div class="quoted-product col-md-4">
-              <img class="img_fill w-100"  src="<?php echo get_field("imagen_de_producto", $producto)["sizes"]["medium"] ?>" alt="">
+                <img class="" src="<?php echo get_field("imagen_de_producto", $producto)["sizes"]["medium"] ?>" alt="">
               </div>
               <div class="quoted-product-info col-md-8">
-              <h4><?= $producto->post_title ?></h4>
-        <?php
-        if (get_field("mostar_referencia", $producto)) {
-        ?>
-          <span class="item-ref">Ref: <?php echo get_field("referencia", $producto) ?></span>
-        <?php
-        }
-        ?>
+                <h4><?= $producto->post_title ?></h4>
+                <?php
+                if (get_field("mostar_referencia", $producto)) {
+                ?>
+                  <span class="item-ref">Ref: <?php echo get_field("referencia", $producto) ?></span>
+                <?php
+                }
+                ?>
               </div>
             </div>
           </div>
