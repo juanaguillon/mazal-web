@@ -234,7 +234,7 @@ $producto = get_queried_object();
   <section class="container-fluid call-action">
     <div class="container">
       <div class="row m-0">
-        <div class=" col-sm-12 col-md-6 col-lg-7 call-action-name">
+        <div class=" col-sm-12 col-md-12 col-lg-7 call-action-name">
           <?php
           if (mazal_is_language()) : ?>
             <h3>Suscribete para no perderte ninguna novedad</h3>
@@ -243,7 +243,7 @@ $producto = get_queried_object();
           <?php endif; ?>
 
         </div>
-        <div class=" col-sm-12 col-md-6 col-lg-5 d-flex flex-wrap justify-content-end">
+        <div class=" col-sm-12 col-md-12 col-lg-5 d-flex flex-wrap justify-content-end">
           <div class="form-suscription">
             <input id="text_mailchimp_sub" type="text" placeholder="examplemail@gmail.com">
             <?php if (mazal_is_language()) : ?>

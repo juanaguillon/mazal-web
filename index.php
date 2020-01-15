@@ -286,10 +286,11 @@
 			
 			</p>
 			<div class="popup-button-container text-center">
-				<button class="button button-gold button-fill button-m general_button font-2  capitalize">
+				<!-- <button class="button button-gold button-fill button-m general_button font-2  capitalize">
 
-					<span class="text-black" data-title="<?= $buttonAgendar ?>"><?= $buttonAgendar ?></span>
-				</button>
+					
+				</button> -->
+				<a target="_blank" class="button button-gold button-fill button-m general_button font-2  capitalize" href="https://wa.me/573108613043?text=Hola, estoy interesado en agendar una cita, me gustaría recibir más información." id="share_whatsapp_product" class="share-whatsapp"><span class="text-black"><?= $buttonAgendar ?></span></a>
 
 			</div>
 		</div>

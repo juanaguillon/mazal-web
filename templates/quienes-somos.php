@@ -32,7 +32,7 @@ get_header();
             </h3>
           </div>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quibusdam ab autem eum magnam iste ea quis quos recusandae consequatur nulla illo, voluptatum laborum natus tempora, sunt illum delectus. Deserunt.Nisi animi aspernatur molestias, temporibus minus mollitia, beatae minima autem, ipsam itaque voluptas nostrum eum maiores dignissimos veniam nulla tempore voluptatem ullam quam ad reiciendis. Deserunt dolores nisi dolor sint.
+          <?php the_field('quienes_somos_texto'); ?>
           </p>
         </div>
       </div>
@@ -47,7 +47,7 @@ get_header();
             </h3>
           </div>
           <p class="text-white">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa molestiae aliquid accusantium quae consequatur laudantium unde enim repellendus voluptatum provident odio delectus dolores magni nisi perspiciatis sit illum, inventore cumque.
+          <?php the_field('con_quien_trabajamos'); ?>
           </p>
         </div>
       </div>
@@ -110,7 +110,7 @@ get_header();
             </h3>
           </div>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quibusdam ab autem eum magnam iste ea quis quos recusandae consequatur nulla illo, voluptatum laborum natus tempora, sunt illum delectus. Deserunt.Nisi animi aspernatur molestias, temporibus minus mollitia, beatae minima autem, ipsam itaque voluptas nostrum eum maiores dignissimos veniam nulla tempore voluptatem ullam quam ad reiciendis. Deserunt dolores nisi dolor sint.
+          <?php the_field('nuestra_historia'); ?>
           </p>
         </div>
       </div>

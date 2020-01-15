@@ -22,7 +22,6 @@
   </script>
   <!-- End Google Tag Manager -->
 
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php if (is_front_page()) : ?>
@@ -163,6 +162,13 @@
                   $linkID = pll_get_post($chLink, "es");
                 }
                 $link = get_permalink($linkID);
+                
+                if ( $link === get_permalink($chLink) ){
+                   $linkSearch = false;
+                }
+                
+                
+               
               } else if (is_tax("categoria")) {
                 $chLink =  get_queried_object()->term_id;
                 $maxParent = mazal_get_term_top_most_parent($chLink, "categoria");
@@ -192,6 +198,7 @@
                 // Obtener el home url en el lenguaje inverso
                 $formULR = mazal_is_language("es") ? "en" : "es";
                 $link = pll_home_url($formULR);
+                
               }
               ?>
               <li class="galeria <?= mazal_is_nosotros_page() ? "active" : "" ?>">
@@ -238,9 +245,9 @@
                   /**
                    * Se crea este condicional para verificar si hacer scroll o ir a la pagina de categoría.
                    */
-                  if (is_page() && !$isInnerPage) {
+                if (is_page() && !$isInnerPage) {
                     $href = "#";
-                  } else {
+                } else {
                     $href = get_term_link($childNav, "categoria");
                   }
 
