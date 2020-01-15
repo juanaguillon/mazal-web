@@ -30,6 +30,23 @@
   h4 {
     font-size: 26px;
     color: #201818;
-    font-weight: 400;
+    font-weight: 400; 
+  }
+}
+
+.dark-search{
+  border:1px solid gray !important;
+  color:$chocolate !important;
+}
+
+.search-buttons{
+  display: flex;
+  width:max-content;
+  margin: auto !important;
+  a, button{
+    margin: 0px 10px !important;
+  }
+  button:hover::before{
+    margin-left: -100% !important;  
   }
 }
