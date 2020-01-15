@@ -68,11 +68,11 @@ function __mazal_register_post_type($name, $icon, $isMale = true, $supports = ar
  * @param string $name Nombre singular de la Taxonomía.
  * @param boolean $is_male Si es true, este se tomará como taxonomia masculina. Por ejemplo, la taxonomía es "Escritor", si se asigna true a esta variable, será "El Escritor"; en caso contrario será "La Escritor"
  * @param string $prural Como será el nombre del post en prural. Ej: Notici (AS/OS/S), post(S/AS) 
- * @param boolean $asTag ¿Será una taxonomía donde se permitan taxonomias/categorías hijas?
+ * @param boolean $hierarchical ¿Será una taxonomía donde se permitan taxonomias/categorías hijas?
  * @param array $otherArgs Este será definido para ajustes de esta taxonomía. La clave "Labels" Se ajustarán y no podrán sobreescribrse.
  * @see https://codex.wordpress.org/Function_Reference/register_taxonomy
  */
-function __mazal_register_taxonomy($name, $is_male = true, $asTag = false, $prural = "s", $otherArgs = array())
+function __mazal_register_taxonomy($name, $is_male = true, $hierarchical = true, $prural = "s", $otherArgs = array())
 {
   $theName = ucfirst($name);
   $pluralName = $theName . $prural;
@@ -102,7 +102,7 @@ function __mazal_register_taxonomy($name, $is_male = true, $asTag = false, $prur
   } else {
     $args = $otherArgs;
   }
-  $args["hierarchical"] = !$asTag;
+  $args["hierarchical"] = $hierarchical;
   $args["labels"] = $labels;
   return $args;
 }
@@ -159,9 +159,12 @@ function mazal_register_the_posts_types()
       // "tipo" => __mazal_register_taxonomy("tipo", false, true),
       "categoria" => __mazal_register_taxonomy("categoria", false),
       "material" => __mazal_register_taxonomy("material", false, false, "es"),
-      "etiqueta" => __mazal_register_taxonomy("etiqueta", false, true)
+      "etiqueta" => __mazal_register_taxonomy("etiqueta", false, false)
       // "medida" => __mazal_register_taxonomy("medida", false),
       // "coleccion" => __mazal_register_taxonomy("collecion", false, false, "es"),
+    ),
+    "banner" => array(
+      "banner_categoria" => __mazal_register_taxonomy("Categoría", false, false)
     )
   );
 
