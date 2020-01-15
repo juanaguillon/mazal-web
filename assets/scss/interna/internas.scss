@@ -284,7 +284,7 @@
       width: 100%;
       margin: 0 -7px;
       li {
-        width: 20%;
+        width: 25%;
         padding: 0 15px;
 
         &:last-child {
@@ -312,6 +312,7 @@
           &:before {
             content: url("http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/drop-arrow-white.svg");
             position: absolute;
+            background: $chocolate !important;
           }
         }
         .dropdown-list {
@@ -486,7 +487,7 @@ select {
     align-items: center;
     height: 50px;
     font-size: 16px;
-    line-height: 42px;
+    line-height: 1;
     background: #f7f7f7;
     border: 1px solid rgb(226, 226, 226);
     padding: 0 40px 0 15px;
@@ -502,10 +503,12 @@ select {
       position: absolute;
       display: flex;
       align-items: center;
-      right: 20px;
-      top: 22px;
-      height: 18px;
-      width: 18px;
+      right: 0;
+      top: 50%;
+    height: 100%;
+    width: 42px;
+    background: #f7f7f7;
+    padding: 0 12px;
       transform: translateY(-50%);
       transition: transform 0.25s;
       transform-origin: center center;
@@ -637,31 +640,31 @@ select {
   display: none;
 }
 @media #{$desktop_query} {
-  .taxonomy_desc {
-    display: block;
-    padding: 0 15px;
-    font-weight: 400;
-    margin-top: 25px;
-    margin-bottom: 0;
-  }
-  .taxonomy_banner_desc {
-    display: none;
-  }
+  
+  
 }
 
 @media #{$tablet_query} {
   // .banner-categoria-content p {
   //   width: 100%;
   // }
-  .banner-categoria {
-    h2 {
-      font-size: 30px;
+  
+  .category-filter-grid .filtrado ul {
+    // padding: 0 15px;
+    li {
+      width: 50%;
+      padding: 5px 15px; 
     }
   }
-  .category-filter-grid .filtrado ul {
-    li {
-      width: 100%;
-    }
+  .taxonomy_banner_desc {
+    display: none;
+  }
+  .taxonomy_desc {
+    display: block;
+    padding: 0 15px;
+    font-weight: 400;
+    margin-top: 25px;
+    margin-bottom: 0;
   }
 }
 
@@ -674,4 +677,12 @@ select {
   .grid-item-category {
     margin: 10px;
   }
+
+  .category-filter-grid .filtrado ul {
+    
+    li {
+      width: 100%;
+    }
+  }
+
 }
