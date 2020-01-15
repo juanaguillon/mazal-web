@@ -285,7 +285,7 @@ function mazal_get_taxonomy_data($currentObject, $currentCategory, $isSubChildre
               <label class="dropdown-label" data-emplabel="<?php echo $typeOf . $childsCat->name ?>"><?php echo $typeOf . $childsCat->name ?></label>
               <div class="dropdown-list">
                 <div class="checkbox">
-                  <input data-countcat="<?= $childsCat->count ?>" data-filter="*" type="checkbox" name="dropdown-group-tipo-<?php echo $childsCat->slug ?>" class="check-all checkbox-custom" id="filter_term_<?php echo $childsCat->term_id ?>" />
+                  <input data-classonselect="<?= $childsCat->slug ?>" data-countcat="<?= $childsCat->count ?>" data-filter="*" type="checkbox" name="dropdown-group-tipo-<?php echo $childsCat->slug ?>" class="<?= $childsCat->slug ?> check check-all checkbox-custom" id="filter_term_<?php echo $childsCat->term_id ?>" />
                   <label for="filter_term_<?php echo $childsCat->term_id ?>" class="checkbox-custom-label"><?= $labelGirl ?></label>
                 </div>
                 <?php
@@ -295,7 +295,7 @@ function mazal_get_taxonomy_data($currentObject, $currentCategory, $isSubChildre
                 );
                 foreach (get_terms($argsTerms) as $subchild) : ?>
                   <div class="checkbox">
-                    <input data-countcat="<?= $subchild->count ?>" data-filter=".<?php echo $subchild->slug ?>" type="checkbox" name="dropdown-group-tipo-<?php echo $childsCat->slug ?>" class="check-all check checkbox-custom" id="filter_term_<?php echo $subchild->term_id ?>" />
+                    <input data-classonselect="<?= $childsCat->slug ?>" data-countcat="<?= $subchild->count ?>" data-filter=".<?php echo $subchild->slug ?>" type="checkbox" name="dropdown-group-tipo-<?php echo $childsCat->slug ?>" class="<?= $childsCat->slug ?> check-all check checkbox-custom" id="filter_term_<?php echo $subchild->term_id ?>" />
                     <label for="filter_term_<?php echo $subchild->term_id ?>" class="checkbox-custom-label"><?php echo $subchild->name ?></label>
                   </div>
                 <?php endforeach; ?>
@@ -311,13 +311,13 @@ function mazal_get_taxonomy_data($currentObject, $currentCategory, $isSubChildre
           <label class="dropdown-label" data-emplabel="Material">Material</label>
           <div class="dropdown-list">
             <div class="checkbox">
-              <input data-filter="*" type="checkbox" name="dropdown-group-material" class="check check-all checkbox-custom" id="material_check1" />
+              <input data-classonselect="material" data-filter="*" type="checkbox" name="dropdown-group-material" class="material check check-all checkbox-custom" id="material_check1" />
               <label for="material_check1" class="checkbox-custom-label"><?= $labelBoy ?></label>
             </div>
             <?php
             foreach ($materiales as $materialSlug => $materialTerm) : ?>
               <div class="checkbox">
-                <input data-filter=".<?php echo $materialSlug ?>" type="checkbox" name="dropdown-group-tipo-<?php echo $materialSlug ?>" class="check check-all checkbox-custom" id="filter_term_<?php echo $materialTerm->term_id ?>" />
+                <input data-classonselect="material" data-filter=".<?php echo $materialSlug ?>" type="checkbox" name="dropdown-group-tipo-<?php echo $materialSlug ?>" class="material check check-all checkbox-custom" id="filter_term_<?php echo $materialTerm->term_id ?>" />
                 <label for="filter_term_<?php echo $materialTerm->term_id ?>" class="checkbox-custom-label"><?php echo $materialTerm->name ?></label>
               </div>
             <?php endforeach; ?>

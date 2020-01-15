@@ -1,22 +1,39 @@
 <section id="section_banner_intern" class="section_high">
   <div id="section_banner_carousel">
     <?php
+
+    $bannerCategory = 0;
+
+    if (mazal_is_hogar_page()) {
+      $bannerCategory = pll_get_term(730);
+    } else if (mazal_is_arquitectura_page()) {
+      $bannerCategory = pll_get_term(725);
+    } else if (mazal_is_corporativo_page()) {
+      $bannerCategory = pll_get_term(734);
+    }
+
     $banners = new WP_Query(array(
       "post_type" => "banner",
+      "tax_query" => array(
+        array(
+          "taxonomy" => "banner_categoria",
+          "terms" => $bannerCategory
+        )
+      )
     ));
     $bannerPosts = $banners->posts;
     foreach ($bannerPosts as $banner) :
 
-      $url = get_term_link(get_field("link_banner", $banner), "categoria") ;
+      $url = get_term_link(get_field("link_banner", $banner), "categoria");
       $textoLink = get_field("texto_link_banner", $banner);
-      ?>
+    ?>
       <div class="banner_item">
         <div class="banner_image">
           <img src="<?php echo get_field("imagen_banner", $banner) ?>" alt="">
         </div>
         <div class="banner_caption">
           <div class="banner_caption_inner">
-            <h3 class="text-yellow font-1"><?php echo mb_strtoupper( $banner->post_title, "UTF-8") ?></h3>
+            <h3 class="text-yellow font-1"><?php echo mb_strtoupper($banner->post_title, "UTF-8") ?></h3>
             <p class="text-white font-2"><?php echo $banner->post_excerpt ?></p>
             <a href="<?php echo $url ?>" class="button general_button button-m mt-3 ml-0">
               <span data-title="<?php echo $textoLink ?>"><?php echo $textoLink ?></span>
@@ -40,26 +57,26 @@
     <div class="row flex-md-row flex-column-reverse">
       <div class="col-md-7 wow slideInLeft" data-wow-offset="20">
         <div class="mansory-gallery">
-          
+
           <div class="columna-1">
             <div class="mansory-item uno">
-            <img src="https://mazal.co/wp-content/uploads/2019/11/13-2_900x600_acf_cropped.jpg?v=1576681969" alt="">
+              <img src="https://mazal.co/wp-content/uploads/2019/11/13-2_900x600_acf_cropped.jpg?v=1576681969" alt="">
             </div>
             <div class="mansory-item dos">
-            <img src="https://mazal.co/wp-content/uploads/2019/11/72045331_1684827818318490_5113012670143922176_n.jpg?v=1576682307" alt="">
+              <img src="https://mazal.co/wp-content/uploads/2019/11/72045331_1684827818318490_5113012670143922176_n.jpg?v=1576682307" alt="">
             </div>
           </div>
           <div class="columna-2">
             <div class="mansory-item tres">
-            <img src="https://mazal.co/wp-content/uploads/2019/11/aa.jpg?v=1576682176" alt="">
+              <img src="https://mazal.co/wp-content/uploads/2019/11/aa.jpg?v=1576682176" alt="">
             </div>
             <div class="mansory-item cuatro">
-            <img src="https://namagazine.es/wp-content/uploads/2019/04/problemas-de-convivencia-taller-para-parejas-madrid.jpeg" alt="">
+              <img src="https://namagazine.es/wp-content/uploads/2019/04/problemas-de-convivencia-taller-para-parejas-madrid.jpeg" alt="">
             </div>
           </div>
-           
+
         </div>
-        
+
       </div>
       <div class="col-md-5 wow slideInRight" data-wow-offset="20">
         <?php
@@ -74,19 +91,19 @@
         </div>
         <p class="galeria_description font-2 text-regular no_rotate">
           <?php echo mazal_get_acf_field("quienes_texto_") ?>
-         
+
         </p>
         <?php
-        
-        if ( mazal_is_language()){
-$buttonNosot = "Ver más";
-        }else{
+
+        if (mazal_is_language()) {
+          $buttonNosot = "Ver más";
+        } else {
           $buttonNosot = "See more";
         }
-        
+
         ?>
-        <a href="<?php echo esc_url( get_permalink( pll_get_post(808))); ?>" class="button button_dark general_button font-2" style="margin:initial; width:max-content;">
-        <span class="text-black" ><?php echo $buttonNosot ?></span>
+        <a href="<?php echo esc_url(get_permalink(pll_get_post(808))); ?>" class="button button_dark general_button font-2" style="margin:initial; width:max-content;">
+          <span class="text-black"><?php echo $buttonNosot ?></span>
         </a>
       </div>
     </div>
@@ -256,7 +273,7 @@ $buttonNosot = "Ver más";
   function mazal_send_portfolio($post)
   {
     ob_start();
-    ?>
+  ?>
     <a href="<?php echo esc_url(get_permalink($post)); ?>">
       <div class="portafolio_single_image">
         <img class="img_fill" src="<?php echo get_field("imagen_de_producto", $post)["sizes"]["large"] ?>" alt="">
@@ -268,15 +285,15 @@ $buttonNosot = "Ver más";
         </div>
         <div class="portafolio_single_image_context">
           <h3 class="font-1"><?php echo $post->post_title ?></h3>
-          <p><?php 
-          $catsOfPortfolio = get_the_terms($post, "categoria");
-          $counterTerms = count($catsOfPortfolio);
-          if ( $counterTerms > 1 ){
-            $counterTerms = $counterTerms - 1;
-          }
-          $randNumber = rand(0, $counterTerms); 
-          echo $catsOfPortfolio[$randNumber]->name;
-          ?></p>
+          <p><?php
+              $catsOfPortfolio = get_the_terms($post, "categoria");
+              $counterTerms = count($catsOfPortfolio);
+              if ($counterTerms > 1) {
+                $counterTerms = $counterTerms - 1;
+              }
+              $randNumber = rand(0, $counterTerms);
+              echo $catsOfPortfolio[$randNumber]->name;
+              ?></p>
         </div>
       </div>
     </a>
@@ -314,7 +331,7 @@ $buttonNosot = "Ver más";
         <div class="portafolio_show_more_content">
           <div class="portafilio_title">
             <h3 class="text-yellow font-1 capitalize text-light">
-              <?php echo mb_strtoupper ( strtolower (mazal_get_acf_field("portafolio_titulo_")), "UTF-8") ?>
+              <?php echo mb_strtoupper(strtolower(mazal_get_acf_field("portafolio_titulo_")), "UTF-8") ?>
             </h3>
           </div>
           <div class="portafolio_button">

@@ -15,8 +15,16 @@ get_header();
       <div class="col-md-7 col-lg-5 p-0 d-flex align-items-center justify-content-center">
         <div class="categoria-contenedor desc-nosotros">
           <div class="tres60_title_container">
+            <?php
+
+            if (mazal_is_language("es")) {
+              $quienesSOmos = "QUIENES SOMOS";
+              $trabajamos = "CON QUIEN TRABAJAMOS";
+              $historia = "NUESTRA HISTORIA";
+            }
+            ?>
             <h3 class="font-1 text-light text-dark-gray">
-              QUíENES SOMOS
+              <?= $quienesSOmos ?>
             </h3>
           </div>
           <p>
@@ -31,7 +39,7 @@ get_header();
         <div class="categoria-contenedor desc-nosotros">
           <div class="tres60_title_container">
             <h3 class="font-1 text-light blanco">
-              CON QUíEN TRABAJAMOS
+              <?= $trabajamos ?>
             </h3>
           </div>
           <p class="text-white">
@@ -46,15 +54,15 @@ get_header();
             <div class="row no-gutters seccion-trabajamoscon" id="con_quien_trabajamos">
               <div class=" col-md-12 col-sm-6 col-12 col-lg-12 wow fadeInDown animated animated animated animated img-work animated" style="visibility: visible; animation-name: fadeInDown;">
                 <div class=" portafolio_single_image" style="overflow: hidden; position: relative;">
-                 <a class="trabajamos_con" href="https://mazal.co/wp-content/themes/mazal/images/interna/home.jpg">
+                  <a class="trabajamos_con" href="https://mazal.co/wp-content/themes/mazal/images/interna/home.jpg">
                     <img class="img_fill w-100" src="https://mazal.co/wp-content/themes/mazal/images/interna/home.jpg" alt="" style="position: absolute; ">
-                 </a>
+                  </a>
                 </div>
               </div>
               <div class=" col-md-12 col-sm-6 col-12 col-lg-12 wow fadeInLeft animated animated animated animated img-work animated" style="visibility: visible; animation-name: fadeInLeft;">
                 <div class=" portafolio_single_image" style="overflow: hidden; position: relative;">
                   <a class="trabajamos_con" href="https://mazal.co/wp-content/themes/mazal/images/interna/sofa.jpg">
-                      <img class="img_fill w-100" src="https://mazal.co/wp-content/themes/mazal/images/interna/sofa.jpg" alt="" style="position: absolute; ">
+                    <img class="img_fill w-100" src="https://mazal.co/wp-content/themes/mazal/images/interna/sofa.jpg" alt="" style="position: absolute; ">
                   </a>
                 </div>
               </div>
@@ -94,7 +102,7 @@ get_header();
         <div class="categoria-contenedor desc-nosotros">
           <div class="tres60_title_container">
             <h3 class="font-1 text-light text-dark-gray">
-              NUESTRA HISTORIA
+              <?= $historia ?>
             </h3>
           </div>
           <p>

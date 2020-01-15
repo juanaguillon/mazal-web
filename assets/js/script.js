@@ -532,11 +532,12 @@ function plugnsInit() {
     focusOnSelect: true
   };
 
-  $(".galeria_photo_wrap, .galeria_principal_image > a").imagefill();
+  // $(".galeria_photo_wrap, .galeria_principal_image > a").imagefill();
   $(".bef_aft_image_photo").imagefill();
   $(".dynamic_image_container").imagefill();
   $(".portafolio_single_image").imagefill();
   $(".single_linea_image").imagefill();
+  $(".image-related-item").imagefill();
 
   // $(".col-item .item").imagefill();
   // console.log($(".col-item .item"))

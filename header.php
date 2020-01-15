@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="<?php echo pll_current_language() ?>">
 
-<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <!-- Google Tag Manager -->
   <script>
     (function(w, d, s, l, i) {
@@ -21,7 +22,6 @@
   </script>
   <!-- End Google Tag Manager -->
 
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php if (is_front_page()) : ?>
@@ -69,25 +69,6 @@
       --yellowcolor: <?php echo $yellow ?>;
     }
   </style>
-
-  <script>
-    // var sectionsSelector = [
-    //   "lineas1",
-    //   "tres60",
-    //   "arq_sos",
-    //   "portafolio",
-    //   "obra_nueva",
-    //   "before_after",
-    //   "galeria",
-    //   "constructoras",
-    //   "oficinas",
-    //   "hoteles",
-    //   "centry_commercial",
-    //   "restaurantes",
-    //   "clientes",
-    //   "contacto"
-    // ];
-  </script>
 </head>
 
 <body class="<?php if (is_front_page()) echo "index_body_class" ?>">
@@ -126,14 +107,41 @@
           </div>
           <div class="header_top_right flex-center-xy">
             <ul class="header_top_list">
-                
-                <?php
-                 $maxParent = null;
+
+              <?php
+              $maxParent = null;
               $link = null;
-$linkSearch = true;
+              $linkSearch = true;
               /** Verificar si la página/taxonomía está traducida. */
               // $inTransaled = false;
-              if (is_page() || is_singular("producto")) {
+
+              if (is_singular("producto")) {
+                // Obtener la primera categoria de el actual producto
+                $termsProducto = get_the_terms(get_queried_object(), "categoria")[0];
+                $maxParent = mazal_get_term_top_most_parent($termsProducto->term_id, "categoria");
+
+                // Verificar a que página enviar, si será arquitectura, hogar o corporativo.
+                if ($maxParent->term_id == 91 || $maxParent->term_id == 97) {
+                  // Si es arquitectura
+                  $linkSend = pll_get_post(11);
+                } else if ($maxParent->term_id == 99 || $maxParent->term_id == 89) {
+                  // Si es Hogar
+                  $linkSend = pll_get_post(9);
+                } else if ($maxParent->term_id == 93 || $maxParent->term_id == 101) {
+                  // Si es Corporativo
+                  $linkSend = pll_get_post(25);
+                }
+                $chLink =  get_queried_object()->ID;
+                if (mazal_is_language("es")) {
+                  $linkID = pll_get_post($chLink, "en");
+                } else {
+                  $linkID = pll_get_post($chLink, "es");
+                }
+                $link = get_permalink($linkID);
+                if ($link === get_permalink($chLink)) {
+                  $linkSearch = false;
+                }
+              } else  if (is_page()) {
                 $maxParent = new stdClass();
                 if (mazal_is_hogar_page()) {
                   $maxParent->term_id = pll_get_term(89);
@@ -145,31 +153,10 @@ $linkSearch = true;
                   $maxParent->term_id = 0;
                 }
 
-                if (is_singular("producto")) {
 
-                  // Obtener la primera categoria de el actual producto
-                  $termsProducto = get_the_terms(get_queried_object(), "categoria")[0];
-                  $mostParent = mazal_get_term_top_most_parent($termsProducto->term_id, "categoria");
-
-                  // Verificar a que página enviar, si será arquitectura, hogar o corporativo.
-                  if ($mostParent->term_id == 91 || $mostParent->term_id == 97) {
-                    // Si es arquitectura
-                    $linkSend = pll_get_post(11);
-                  } else if ($mostParent->term_id == 99 || $mostParent->term_id == 89) {
-                    // Si es Hogar
-                    $linkSend = pll_get_post(9);
-                  } else if ($mostParent->term_id == 93 || $mostParent->term_id == 101) {
-                    // Si es Corporativo
-                    $linkSend = pll_get_post(25);
-                  }
-                  
-                  //$linkSend = get_term_link($mostParent);
-                  
-                }
 
                 $chLink =  get_queried_object()->ID;
                 if (mazal_is_language("es")) {
-                   
                   $linkID = pll_get_post($chLink, "en");
                 } else {
                   $linkID = pll_get_post($chLink, "es");
@@ -213,16 +200,11 @@ $linkSearch = true;
                 $link = pll_home_url($formULR);
                 
               }
-                ?>
+              ?>
               <li class="galeria <?= mazal_is_nosotros_page() ? "active" : "" ?>">
-                <a href="<?= esc_url(get_permalink($linkSend))  ?>?section=galeria" class="text-white" data-scroll="galeria"><?= mazal_is_language() ? "Nosotros" : "About Us" ?></a>
+                <a href="<?= esc_url(get_permalink(pll_get_post(808))) ?>" class="text-white" data-scroll="galeria"><?= mazal_is_language() ? "Nosotros" : "About Us" ?></a>
               </li>
               <?php
-
-
-             
-
-
 
               $directChilds = get_terms(array(
                 "taxonomy" => "categoria",
@@ -267,8 +249,8 @@ $linkSearch = true;
                     $href = "#";
                 } else {
                     $href = get_term_link($childNav, "categoria");
-                }
-                 
+                  }
+
                   ?>
                   <a rel="nofollow" href="<?php echo $href ?>" class="text-white" data-scroll="<?php echo $childNav->slug ?>"><?php echo $childNav->name ?></a>
                   <?php
@@ -314,47 +296,47 @@ $linkSearch = true;
 
               foreach ($ullist as $ulkey => $ullnm) :
                 $linkLI = $link;
-                if (is_tax("categoria") || is_singular("producto") ) {
-                  
-                  if (  $ulkey == 'portafolio' && is_singular("producto") ){
-                      $linkTaxMaxParent = get_term_link( $mostParent);
-                      $linkLI = "href='{$linkTaxMaxParent}'";
-                  }else{
-                      $linkLI = "href='" . esc_url(get_permalink($linkSend) . "?section=" . $ulkey)  . "'";
+                if (is_tax("categoria") || is_singular("producto")) {
+                  if ($ulkey == 'portafolio') {
+                    $linkTaxMaxParent = get_term_link($maxParent);
+                    $linkLI = "href='{$linkTaxMaxParent}'";
+                  } else {
+                    // $nosotrosLink =
+                    $linkLI = "href='" . esc_url(get_permalink($linkSend) . "?section=" . $ulkey)  . "'";
                   }
                 }
-                
-               
+
+
               ?>
                 <li class="<?php echo $ulkey ?>">
                   <a <?php echo $linkLI ?> class="text-white" data-scroll="<?php echo $ulkey ?>"><?php echo $ullnm ?></a>
                 </li>
-              <?php endforeach;
+                <?php endforeach;
               if (!is_wp_error($link)) :
                 // Debe tomar el get en caso que esté buscando en la web
                 if (is_search()) {
                   $link .= "?s=" . $_GET["s"];
                 }
-                
-                if ( $linkSearch ):
-                    ?>
-                <li class="languages_header">
-                  <a rel="nofollow" href="<?php echo esc_attr($link); ?>">
-                    <?php $isEs = mazal_is_language(); ?>
-                    <span class="language <?php echo $isEs ? "language_active" : "" ?>" id="language_es">
-                      ES
-                    </span>
-                    <span>/</span>
-                    <span class="language <?php echo !$isEs ? "language_active" : "" ?>" id="language_en">
-                      EN
-                    </span>
-                  </a>
 
-                </li>
+                if ($linkSearch) :
+                ?>
+                  <li class="languages_header">
+                    <a rel="nofollow" href="<?php echo esc_attr($link); ?>">
+                      <?php $isEs = mazal_is_language(); ?>
+                      <span class="language <?php echo $isEs ? "language_active" : "" ?>" id="language_es">
+                        ES
+                      </span>
+                      <span>/</span>
+                      <span class="language <?php echo !$isEs ? "language_active" : "" ?>" id="language_en">
+                        EN
+                      </span>
+                    </a>
+
+                  </li>
               <?php
                 endif;
-                
-               endif; ?>
+
+              endif; ?>
 
             </ul>
             <button id="icon_search" class="button button_small direct_header_button">
