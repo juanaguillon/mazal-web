@@ -384,7 +384,7 @@
         </nav>
 
         <div class="search_modal_form">
-          <button class="button button-cuadro button_abs">x</button>
+          <button class="button button-cuadro button_abs"><i class="icon-cross"></i></button>
           <div class="search_modal_form_wrap">
             <?php
             if ($isEs) {

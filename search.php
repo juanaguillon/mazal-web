@@ -31,13 +31,13 @@ if (!$exists) {
   <?php
 
   if (mazal_is_language()) {
-    $text = "No se han encontrado coincidencias";
-    $parraf = "No encontramos coincidencias con su búsqueda. Intenta con otra palabra o viaja a las páginas principales";
+    $text = "No encontramos coincidencias";
+    $parraf = "Intenta con otra palabra o viaja a las páginas principales";
     $button = "Ir a Inicio";
     $results = "Resultados encontrados";
   } else {
     $text = "No matches found";
-    $parraf = "We don't find any matches with your search. Try with another word or travel into the principal pages";
+    $parraf = "Try with another word or travel into the principal pages";
     $button = "Go Home";
     $results = "Matches found";
   }
