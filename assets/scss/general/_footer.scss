@@ -9,13 +9,15 @@ footer {
   background-color: $dorado;
   border-top: 1px solid white;
   display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     a{
       display: flex;
       align-items: center;
       width:max-content;
-      margin:0 20px ;
+      border-left: 1.5px solid white;
+      // margin:0 20px ;
       img{
         margin-left: 10px;
         height: 20px;
@@ -25,14 +27,18 @@ footer {
     font-size: 13px;
     color:white;
     width:max-content;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
   }
 }
 
-@media (max-width:780px){
+@media (max-width:534px){
   .footer_foot{
-    a{
-      margin: 10px 20px 0 20px;
-    }
+     a{
+       border:none;
+       margin-top: 10px;
+     }
   }
 }
 

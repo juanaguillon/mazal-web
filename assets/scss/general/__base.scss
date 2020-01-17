@@ -245,7 +245,7 @@ section h3 {
 
   @media #{$mobile_query} {
     display: block;
-    width: 100%;
+    // width: 100%;
   }
 
   &::before {

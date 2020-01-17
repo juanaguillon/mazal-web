@@ -71,11 +71,11 @@
         if (mazal_is_language("es")) {
           $desarrollo = "Desarrolado por";
         } else {
-          $desarrollo = "Designed by";
+          $desarrollo = "Developed by";
         }
         ?>
-        <span class="text-3x text-white"><?php echo $rigths1 ?> - <strong id="rights_footer"><?php echo $rigths2 ?></strong></span>
-        <a href="http://intuitionstudio.co/" target="_blank" class="d-flex"><span><?= $desarrollo ?> Intuition Studio </span><img src="<?php bloginfo("template_url") ?>/images/icons/logo-intuition.svg" alt=""></a>
+        <span class="text-white text-2x font-1"><?php echo $rightTotal ?></span>
+				<a href="http://intuitionstudio.co/" target="_blank" class="d-flex"><span><?= $desarrollo ?> Intuition Studio <img src="<?php bloginfo("template_url") ?>/images/icons/logo-intuition.svg" alt=""></span></a>
       </div>
     </footer>
 
