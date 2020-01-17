@@ -114,7 +114,7 @@
               $linkSearch = true;
               /** Verificar si la página/taxonomía está traducida. */
               // $inTransaled = false;
-
+              $nosotrosLink = esc_url(get_permalink(pll_get_post(808)));
               if (is_singular("producto")) {
                 // Obtener la primera categoria de el actual producto
                 $termsProducto = get_the_terms(get_queried_object(), "categoria")[0];
@@ -142,13 +142,18 @@
                   $linkSearch = false;
                 }
               } else  if (is_page()) {
+
+
                 $maxParent = new stdClass();
                 if (mazal_is_hogar_page()) {
                   $maxParent->term_id = pll_get_term(89);
+                  $nosotrosLink = "#";
                 } else if (mazal_is_arquitectura_page()) {
                   $maxParent->term_id =  pll_get_term(91);
+                  $nosotrosLink = "#";
                 } else if (mazal_is_corporativo_page()) {
                   $maxParent->term_id = pll_get_term(93);
+                  $nosotrosLink = "#";
                 } else {
                   $maxParent->term_id = 0;
                 }
@@ -198,7 +203,7 @@
               }
               ?>
               <li class="galeria <?= mazal_is_nosotros_page() ? "active" : "" ?>">
-                <a href="<?= esc_url(get_permalink(pll_get_post(808))) ?>" class="text-white" data-scroll="galeria"><?= mazal_is_language() ? "Nosotros" : "About Us" ?></a>
+                <a href="<?= $nosotrosLink ?>" class="text-white" data-scroll="galeria"><?= mazal_is_language() ? "Nosotros" : "About Us" ?></a>
               </li>
               <?php
 
@@ -264,7 +269,7 @@
                 </li>
               <?php endforeach; ?>
               <script>
-                var head_sectionsSelector = [
+                var _head__sectionsSelector = [
                   <?php
                   foreach ($directChilds as $cld) {
                     echo "'" . $cld->slug . "',";

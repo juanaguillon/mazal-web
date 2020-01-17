@@ -593,6 +593,9 @@ a.languages_toggle {
   display: none;
 }
 @media #{$desktop_query} {
+  .super_menu_comenext {
+    display: block !important;
+  }
 }
 
 @media #{$tablet_query} {
