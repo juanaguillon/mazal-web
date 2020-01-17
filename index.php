@@ -7,6 +7,7 @@
 
 <?php get_header(); ?>
 
+
 <section id="section_banner_index">
 	<div class="container-fluid p-0">
 		<div class="row no-gutters">
@@ -163,7 +164,7 @@
 		</div>
 
 		<!-- MARGEN ABAJO -->
-		<div class="banner_margin_bottom z2">
+		<div class="banner_margin_bottom z2 footer-message">
 
 			<?php
 			$isEs = mazal_is_language();
@@ -175,8 +176,20 @@
 			$rigths1 = explode(" - ", get_field("copyright" . $suffix, "option"))[0];
 			$rigths2 = explode(" - ", get_field("copyright" . $suffix, "option"))[1];
 			?>
+			<?php
+        $rightTotal = mazal_get_acf_field("copyright_");
+        $rigths1 = explode(" - ", $rightTotal)[0];
+        $rigths2 = explode(" - ", $rightTotal)[1];
+
+        if (mazal_is_language("es")) {
+          $desarrollo = "Desarrolado por";
+        } else {
+          $desarrollo = "Developed by";
+        }
+        ?>
 			<div class="banner_bottom_context text-center">
-				<span class="text-white text-2x font-1"><?php echo $rigths1 ?> - <strong><?php echo $rigths2 ?></strong></span>
+				<span class="text-white text-2x font-1"><?php echo $rightTotal ?></span>
+				<a href="http://intuitionstudio.co/" target="_blank" class="d-flex"><span><?= $desarrollo ?> Intuition Studio </span><img src="<?php bloginfo("template_url") ?>/images/icons/logo-intuition.svg" alt=""></a>
 
 			</div>
 
@@ -189,7 +202,7 @@
 		<div class="banner_margin_right z2">
 			<div class="banner_right_context">
 				<div class="aside">
-					<div class="aside_language">
+					<div class="aside_language home-ds-lang">
 						<?php
 						if (is_page() || is_singular("producto")) {
 							$chLink =  get_queried_object()->ID;
@@ -221,6 +234,10 @@
 							</span>
 						</a>
 					</div>
+					<button id="icon_search" class="button button_small direct_header_button home-ds-search">
+						<i class="icon-search text-white hover-white"></i>
+					</button>
+					
 					<button id="banner_right_toggle" class="button">
 						<i class="text-white icon-bars hover-white"></i>
 					</button>
@@ -240,6 +257,7 @@
 				</div>
 			</div>
 		</div>
+		
 
 		<!-- FINAL MARGEN DERECHA -->
 
