@@ -90,6 +90,21 @@ header {
   }
 }
 
+
+.redes-home{
+  position: initial !important;
+  display: flex;
+}
+
+.home-ds-search{
+  position: absolute;
+    top: 22px;
+    right: 100px; 
+}
+.home-ds-lang{
+  right: 160px !important; 
+}
+
 .header_top {
   display: flex;
   height: 100%;
@@ -490,15 +505,22 @@ a.languages_toggle {
 
   &.active {
     display: flex;
+    z-index: 100;
   }
   .search_modal_form_wrap {
     max-width: 550px;
     width: 100%;
   }
 }
+.home-button-close{
+ font-size: 15px !important;
+}
+
 #form_search_text {
   background: white;
   color: rgb(63, 63, 63);
+  padding: 14px;
+  margin-bottom: 30px;
 }
 .danger_form {
   padding: 0;

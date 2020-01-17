@@ -31,34 +31,52 @@ if (!$exists) {
   <?php
 
   if (mazal_is_language()) {
-    $text = "No se han encontrado coincidencias";
-    $parraf = "No encontramos coincidencias con su búsqueda. Intenta con otra palabra o viaja a las páginas principales";
+    $text = "No encontramos coincidencias";
+    $parraf = "Intenta con otra palabra o viaja a las páginas principales";
     $button = "Ir a Inicio";
     $results = "Resultados encontrados";
   } else {
     $text = "No matches found";
-    $parraf = "We don't find any matches with your search. Try with another word or travel into the principal pages";
+    $parraf = "Try with another word or travel into the principal pages";
     $button = "Go Home";
     $results = "Matches found";
   }
   if ($exists) {
-    ?>
+  ?>
     <h4 class="text-center"><?php echo $results; ?></h4>
 
     <div class="grid-item-category search_grid_category">
       <?php foreach ($allPosts as $post) {
-          mazal_single_product($post);
-        } ?>
+        mazal_single_product($post);
+      } ?>
     </div>
   <?php
   } else {
-    ?>
+    if ( mazal_is_language("es")){
+      $search = "Buscar";
+      $placeholder = "¿Qué estás buscando?";
+    }else{
+      $search = "Search";
+      $placeholder = "What are you looking for?";
+    }
+  ?>
+  
+    
     <div class="text-center">
       <h4><?php echo $text; ?></h4>
       <p><?php echo $parraf; ?></p>
-      <a href="<?php echo esc_url(home_url()) ?>" class="button general_button button_dark">
+      <form action="<?php echo home_url() ?>">
+      <div class="field">
+        <input name="s" placeholder="<?php echo $placeholder; ?>" type="text" class="text dark-search">
+      </div>
+      <div class="field search-buttons">
+        <button type="submit" class="button general_button button_dark button-fill"><span data-title="<?php echo $search; ?>"><?php echo $search; ?></span></button>
+        <a href="<?php echo esc_url(home_url()) ?>" class="button general_button button_dark ">
         <span data-title="<?php echo $button; ?>"><?php echo $button; ?></span>
       </a>
+      </div>
+    </form>
+      
     </div>
   <?php
   }

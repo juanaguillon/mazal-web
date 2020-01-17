@@ -44,7 +44,7 @@
     width: 90%;
     max-width: 500px;
     line-height: 23px;
-    text-align: left;
+    text-align: justify;  
     color: $blanco;
   }
 }
@@ -99,6 +99,15 @@
   
 }
 
+@media (max-width:1140px){
+  .tres_60_white_wrap{
+    min-height:calc(100vh - 70px); 
+    height: auto;
+    padding: 30px;
+  }
+}
+
+
 .tres60_title_container {
   @media #{$tablet_query} {
     font-size: 40px;
@@ -139,6 +148,7 @@
     height: auto;
     background: #201818;
     opacity: 1;
+    min-height: auto;
     p,
     h3 {
       margin: 8px 0;

@@ -80,10 +80,10 @@
       <script>
         function initMap() {
           var uluruFoot = {
-            lat: 4.6856936,
-            lng: -74.0569894
+            lat: 4.694950,
+            lng: -74.049690
           };
-
+          
           var color1 = [{
               "elementType": "geometry",
               "stylers": [{
@@ -241,7 +241,7 @@
 
           var icon = {
             url: "https://mazal.co/wp-content/themes/mazal/images/icons/mazal-mark.svg", // url
-            scaledSize: new google.maps.Size(85, 85), // scaled size
+            scaledSize: new google.maps.Size(65, 65), // scaled size
             origin: new google.maps.Point(0, 0), // origin
             anchor: new google.maps.Point(0, 0) // anchor
           };

@@ -78,7 +78,7 @@ function toggleTheModalToSearchInWebsite() {
     },
     search: {
       containerSelector: ".search_modal_form",
-      buttonOpen: "#icon_search",
+      buttonOpen: "#icon_search, #icon_search2",
       buttonClose: ".search_modal_form .button.button.button-cuadro"
     }
   };
