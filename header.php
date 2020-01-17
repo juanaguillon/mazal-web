@@ -151,7 +151,7 @@
                   $maxParent->term_id = pll_get_term(93);
                 } else {
                   $maxParent->term_id = 0;
-                }
+                } 
 
 
 
@@ -200,6 +200,7 @@
               <li class="galeria <?= mazal_is_nosotros_page() ? "active" : "" ?>">
                 <a href="<?= esc_url(get_permalink(pll_get_post(808))) ?>" class="text-white" data-scroll="galeria"><?= mazal_is_language() ? "Nosotros" : "About Us" ?></a>
               </li>
+              
               <?php
 
               $directChilds = get_terms(array(
@@ -384,7 +385,7 @@
         </nav>
 
         <div class="search_modal_form">
-          <button class="button button-cuadro button_abs"><i class="icon-cross"></i></button>
+          <button class="button button-cuadro button_abs "><i class="icon-cross"></i></button>
           <div class="search_modal_form_wrap">
             <?php
             if ($isEs) {
