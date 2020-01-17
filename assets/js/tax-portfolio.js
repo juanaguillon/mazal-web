@@ -94,7 +94,7 @@ $(window).on("load", function() {
     resiveGrid(filter);
   }
 
-  function updateStatus(label, result ) {
+  function updateStatus(label, result) {
     $(".dropdown").removeClass("open");
     if (result === "") {
       label.text(label.data("emplabel"));
@@ -111,8 +111,12 @@ $(window).on("load", function() {
 
     $label.on("click", e => {
       e.stopPropagation();
-      $(".dropdown").removeClass("open");
-      $(this).toggleClass("open");
+      if ($(this).hasClass("open")) {
+        $(this).toggleClass("open");
+      } else {
+        $(".dropdown").removeClass("open");
+        $(this).addClass("open");
+      }
     });
     unique.on("change", function() {
       var subcat = $(this).data("subcat");
