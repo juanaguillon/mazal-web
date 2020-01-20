@@ -391,15 +391,21 @@ select {
 }
 
 .fill-button {
-  background: $dorado;
+  background: $dorado !important;
   color: white;
   font-size: 17px;
   padding: 15px 30px;
   span {
     font-family: "Work Sans";
+    color:white !important;
     // font-weight: 500;
   }
+  &::before{
+    display: none;
+  }
 }
+
+
 
 .item-nombre-proyecto {
   color: $yellowcolor;
