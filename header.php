@@ -356,19 +356,39 @@
                   <ul id="favorites_ul_header">
                     <?php foreach ($productsFav["posts"] as $pr) : ?>
                       <li>
-                        <a rel="nofollow" href="<?php echo get_permalink($pr) ?>">
+                      <div class="checkbox">
+                              <input type="checkbox"  class="checkbox-custom" checked>
+                              <label  class="checkbox-custom-label"></label>
+                            </div>
+                        
                           <div class="single_favorite">
+                          
                             <div class="single_favorite_img">
                               <img src="<?php echo get_field("imagen_de_producto", $pr)["sizes"]["thumbnail"] ?>" alt="">
                             </div>
                             <div class="single_favorite_title">
-                              <span><?php echo $pr->post_title ?></span>
+                            <a rel="nofollow" href="<?php echo get_permalink($pr) ?>"><span><?php echo $pr->post_title ?></span></a>
+                              <div class="qty">
+                                  <span class="minus bg-dark">-</span>
+                                  <input type="number" class="count" value="1">
+                                  <span class="plus bg-dark">+</span>
+                              </div>
                             </div>
+                            
                           </div>
-                        </a>
+                        <div class="action-for-item">
+                              <a href="#" class="">
+                                <i class="icon-heart-o"></i>
+                              </a>
+                            </div>
                       </li>
                     <?php endforeach; ?>
                   </ul>
+                  <div class="cotizar-favoritos">
+                  <a href="https://mazal.co/es/quienes-somos/" class="button general_button font-2 fill-button" >
+                    <span class="">Cotizar</span>
+                  </a>
+                  </div>
                 <?php
                 endif;
                 ?>
