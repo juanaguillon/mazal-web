@@ -3,6 +3,8 @@
 /**
  * Template Name: Inicio
  */
+require "vendor/autoload.php";
+
 ?>
 
 <?php get_header(); ?>
@@ -56,7 +58,7 @@
 									if ($chilK == count($termsArch) - 1) {
 										$className = "no-borders";
 									}
-									?>
+								?>
 									<li class="<?php echo $className ?>">
 										<a class="uppercase text-white" href="<?php echo $linkArquitectura ?>?section=<?php echo $chilT->slug ?>">
 											<?php echo $chilT->name ?>
@@ -177,16 +179,16 @@
 			$rigths2 = explode(" - ", get_field("copyright" . $suffix, "option"))[1];
 			?>
 			<?php
-        $rightTotal = mazal_get_acf_field("copyright_");
-        $rigths1 = explode(" - ", $rightTotal)[0];
-        $rigths2 = explode(" - ", $rightTotal)[1];
+			$rightTotal = mazal_get_acf_field("copyright_");
+			$rigths1 = explode(" - ", $rightTotal)[0];
+			$rigths2 = explode(" - ", $rightTotal)[1];
 
-        if (mazal_is_language("es")) {
-          $desarrollo = "Desarrolado por";
-        } else {
-          $desarrollo = "Developed by";
-        }
-        ?>
+			if (mazal_is_language("es")) {
+				$desarrollo = "Desarrolado por";
+			} else {
+				$desarrollo = "Developed by";
+			}
+			?>
 			<div class="banner_bottom_context text-center">
 				<span class="text-white text-2x font-1"><?php echo $rightTotal ?></span>
 				<a href="http://intuitionstudio.co/" target="_blank" class="d-flex"><span><?= $desarrollo ?> Intuition Studio </span><img src="<?php bloginfo("template_url") ?>/images/icons/logo-intuition.svg" alt=""></a>
@@ -237,7 +239,7 @@
 					<button id="icon_search" class="button button_small direct_header_button home-ds-search">
 						<i class="icon-search text-white hover-white"></i>
 					</button>
-					
+
 					<button id="banner_right_toggle" class="button">
 						<i class="text-white icon-bars hover-white"></i>
 					</button>
@@ -257,7 +259,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 
 		<!-- FINAL MARGEN DERECHA -->
 
@@ -276,32 +278,32 @@
 			<div class="poput-title-container flex-center-xy flex-column">
 				<!-- <div class="popup-icon-container"><i class="icon-house text6x"></i></div> -->
 				<h3 class="popup-title text-center font-1 text4x">
-					<?php 
-					if ( mazal_is_language()){
+					<?php
+					if (mazal_is_language()) {
 						echo "AGENDA A UN DECORADOR DE INTERIORES";
-					}else{
+					} else {
 						echo "SCHEDULE AN INTERIOR DECORATOR";
 					}
-					 ?>
-					
+					?>
+
 				</h3>
 			</div>
 
 			<p class="popup-text text-left font-2 m-0">
-				<?php 
+				<?php
 				$buttonAgendar = "";
-				if ( mazal_is_language()){
+				if (mazal_is_language()) {
 					$buttonAgendar = "Agendar";
 					echo "Desde un pequeño consejo sobre colores hasta la renovación completa
 					de tu decoración. <br><br> Nuestros decoradores de interiores
 					están listos para ayudarte, en tienda o en la comodidad de tu hogar.";
-				}else{
+				} else {
 					$buttonAgendar = "Schedule";
 					echo "From a little advice about colors to the complete renovation of your decoration.<br><br>
 					Our interior decorators are ready to help you, in the store or in the comfort of your home.";
 				} ?>
-				
-			
+
+
 			</p>
 			<div class="popup-button-container text-center">
 				<!-- <button class="button button-gold button-fill button-m general_button font-2  capitalize">
