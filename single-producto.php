@@ -13,7 +13,7 @@ $producto = get_queried_object();
 
     <div class="direccion-pagina">
       <div class="direccion-back">
-        <a href="<?= $_SERVER['HTTP_REFERER']; ?>" class="button fill-button add">
+        <a href="<?= $_SERVER['HTTP_REFERER']; ?>" class="button add">
           <i class="icon-arrow_left"></i>
         </a>
       </div>
@@ -171,8 +171,13 @@ $producto = get_queried_object();
                 </ul>
               </div>
             </div>
+            
           <?php endif; ?>
-
+                      <div class="qty counter-2">
+                                  <span class="minus bg-dark">-</span>
+                                  <input type="number" class="count" value="1">
+                                  <span class="plus bg-dark">+</span>
+                              </div>
 
           <div class="action-for-item">
 
