@@ -156,7 +156,7 @@
                   $nosotrosLink = "#";
                 } else {
                   $maxParent->term_id = 0;
-                } 
+                }
 
 
 
@@ -205,7 +205,7 @@
               <li class="galeria <?= mazal_is_nosotros_page() ? "active" : "" ?>">
                 <a href="<?= $nosotrosLink ?>" class="text-white" data-scroll="galeria"><?= mazal_is_language() ? "Nosotros" : "About Us" ?></a>
               </li>
-              
+
               <?php
 
               $directChilds = get_terms(array(
@@ -345,7 +345,7 @@
               <i class="icon-search text-white hover-white"></i>
             </button>
 
-            <button id="icon_favorites" class="button button_small direct_header_button">
+            <div id="icon_favorites" class="button button_small direct_header_button">
               <?php
               $productsFav = mazal_get_favorite_products();
               $hasFavs = $productsFav && count($productsFav["posts"]) > 0;
@@ -356,44 +356,59 @@
                   <ul id="favorites_ul_header">
                     <?php foreach ($productsFav["posts"] as $pr) : ?>
                       <li>
-                      <div class="checkbox">
-                              <input type="checkbox"  class="checkbox-custom" checked>
-                              <label  class="checkbox-custom-label"></label>
-                            </div>
-                        
+                        <div class="checkbox">
+                          <input type="checkbox" class="checkbox-custom" checked>
+                          <label class="checkbox-custom-label active"></label>
+                        </div>
+
+                        <a rel="nofollow" href="<?php echo get_permalink($pr) ?>">
                           <div class="single_favorite">
-                          
                             <div class="single_favorite_img">
                               <img src="<?php echo get_field("imagen_de_producto", $pr)["sizes"]["thumbnail"] ?>" alt="">
                             </div>
                             <div class="single_favorite_title">
-                            <a rel="nofollow" href="<?php echo get_permalink($pr) ?>"><span><?php echo $pr->post_title ?></span></a>
+                              <span><?php echo $pr->post_title ?></span>
                               <div class="qty">
-                                  <span class="minus bg-dark">-</span>
-                                  <input type="number" class="count" value="1">
-                                  <span class="plus bg-dark">+</span>
+                                <span class="minus bg-dark">-</span>
+                                <input type="number" class="count" value="1">
+                                <span class="plus bg-dark">+</span>
                               </div>
                             </div>
-                            
                           </div>
-                        <div class="action-for-item">
-                              <a href="#" class="">
-                                <i class="icon-heart-o"></i>
-                              </a>
-                            </div>
+                        </a>
+                        <div class="action_delete">
+                          <span class="action_delete_item">
+                            <i class="icon-heart"></i>
+                          </span>
+                          <span data-delete="<?= $pr->ID ?>" class="confirm_delete_item">
+                            <?php if (mazal_is_language("es")) {
+                              echo "¿Eliminar ítem?";
+                            } else {
+                              echo "Delete item?";
+                            } ?>
+
+                          </span>
+                        </div>
                       </li>
                     <?php endforeach; ?>
                   </ul>
                   <div class="cotizar-favoritos">
-                  <a href="https://mazal.co/es/quienes-somos/" class="button general_button font-2 fill-button" >
-                    <span class="">Cotizar</span>
-                  </a>
+                    <button id="cotizar_lote" class="button general_button font-2 fill-button">
+                      <span class="">
+                        <?php
+                        if (mazal_is_language("es")) {
+                          echo "Cotizar";
+                        } else {
+                          echo "Quote";
+                        } ?>
+                      </span>
+                    </button>
                   </div>
                 <?php
                 endif;
                 ?>
               </div>
-            </button>
+            </div>
             <button class="button hover-white button_small direct_header_button" id="open_shares">
               <i class="icon-share"></i>
               <ul>
@@ -413,7 +428,7 @@
           <button class="button button-cuadro button_abs "><i class="icon-cross"></i></button>
           <div class="search_modal_form_wrap">
             <?php
-            if ($isEs) {
+            if (mazal_is_language("es")) {
               $suffix = "es";
             } else {
               $suffix = "en";
@@ -443,6 +458,93 @@
             </form>
           </div>
 
+        </div>
+
+        <div class="modal_mazal" id="modal_favorites_cotize">
+          <div class="modal_container">
+            <div class="modal_title">
+              <div class="modal_title_left">
+                <i class="text-white icon-logo"></i>
+              </div>
+              <div class="modal_title_right">
+                <button class="button cuadro button_close_modal"><i class="icon-cross"></i></button>
+              </div>
+            </div>
+            <div class="modal_bcontent">
+              <div class="loading_container white" id="cotization_lote_loading">
+                <div class="loading_spinner"></div>
+              </div>
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="fav_cotizar_wrap">
+                    <input type="hidden" id="cotize_vals" value='[{"product_name":"Lorem Ipsum amet","product_id":645,"product_link":"https://google.com/?sq=data+plus"},{"product_name":"Lorem Ipsum amet","product_id":691,"product_link":"https://www.w3schools.com/js/js_json_arrays.asp"}]'>
+                    <div class="fav_cotizar">
+                      <div class="fav_cotizar_img">
+                        <img src="https://mazal.co/wp-content/uploads/2019/11/g.jpg" alt="">
+                      </div>
+                      <div class="fav_cotizar_title">
+                        <span>Lorem, ipsum dolor.</span>
+                      </div>
+                    </div>
+                    <div class="fav_cotizar">
+                      <div class="fav_cotizar_img">
+                        <img src="https://mazal.co/wp-content/uploads/2019/11/13-1.jpg" alt="">
+                      </div>
+                      <div class="fav_cotizar_title">
+                        <span>Lorem, ipsum dolor.</span>
+                      </div>
+                    </div>
+                    <div class="fav_cotizar"></div>
+                  </div>
+                </div>
+                <div class="col-md-7">
+                  <form id="send_lote_cotizacion" data-prefix="cotization_lote_">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="field">
+                          <input id="cotization_lote_name" class="text light" placeholder="Nombres y apellidos" type="text">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="field">
+                          <input tabindex="-1" type="text" id="sprm_fld" placeholder="Omit if you are human" class="sprm_fld">
+                          <input tabindex="-1" type="text" id="sprm_fld2" placeholder="Omit if you are human" class="sprm_fld">
+                          <input id="cotization_lote_email" class="text light" placeholder="Email" type="text">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="field">
+                          <input id="cotization_lote_phone" class="text light" placeholder="Teléfono" type="number">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="field">
+                          <input id="cotization_lote_city" class="text light" placeholder="Ciudad" type="text">
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="field">
+                          <textarea id="cotization_lote_msj" rows="4" class="text light" placeholder="Mensaje" type="text"></textarea>
+                        </div>
+                        <div class="field">
+                          <div id="cotization_lote_message" class="cotizar_message">
+                            <span class="cotizar_error">Debe completar todos los campos correctamente.</span>
+                            <span class="cotizar_success">Mensaje enviado correctamente. Nos pondremos en contacto lo más pronto posible.</span>
+                          </div>
+
+                          <button type="submit" id="button_cotization_lote_producto" class="button general_button button_dark">
+                            <span data-title="Cotizar">Cotizar</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
         </div>
 
         <div class="dynamic_header_top">

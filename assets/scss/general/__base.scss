@@ -342,6 +342,7 @@ section h3 {
     padding: 22px 25px;
     justify-content: space-between;
     display: flex;
+    align-items: center;
     h4 {
       margin: 0;
       color: white;
@@ -350,6 +351,10 @@ section h3 {
       color: wheat !important;
       font-size: 15px !important;
       font-weight: bold;
+    }
+    .button_close_modal i {
+      font-size: 12px;
+      color: white;
     }
   }
   .modal_container {
@@ -393,11 +398,27 @@ section h3 {
     font-family: raleway;
     font-weight: 400;
   }
-  span {
-  }
+}
+#modal_favorites_cotize .modal_container {
+  max-width: 1080px;
+}
+.fav_cotizar_wrap {
+  margin-top: 11px;
+}
+.fav_cotizar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 13px;
+}
+.fav_cotizar_img {
+  width: 82px;
 }
 
-#modal_product_cotize {
+.fav_cotizar_title {
+  margin-left: 10px;
+}
+#modal_product_cotize,
+.modal_mazal {
   .icon-logo {
     position: absolute;
     left: 0;
