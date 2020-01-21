@@ -15,6 +15,11 @@
 // return false;
 // Final Test
 
+printf("<pre>%s</pre>", print_r($_POST, true));
+
+return false;
+
+include_once "./config.php";
 
 $nombre = $_POST['nombre'];
 $email = $_POST['email'];
@@ -48,18 +53,19 @@ try {
     $mail->SMTPAuth = true;
     $visitante->SMTPAuth = true;
 
-    $mail->Host = "mail.mazal.co";
-    $visitante->Host = "mail.mazal.co";
-    $mail->Username = "contact@mazal.co";
-    $visitante->Username = "contact@mazal.co";
-    $mail->Password = "Intuition1234%";
-    $visitante->Password = "Intuition1234%";
-    $mail->Port = 587;
-    $visitante->Port = 587;
 
-    $mail->From = "contact@mazal.co";
+    $mail->Host = $config["hostname"];
+    $visitante->Host = $config["hostname"];
+    $mail->Username = $config["hostusername"];
+    $visitante->Username = $config["hostusername"];
+    $mail->Password =  $config["hostpassword"];
+    $visitante->Password =  $config["hostpassword"];
+    $mail->Port =  $config["hostport"];
+    $visitante->Port =  $config["hostport"];
+
+    $mail->From = $config["hostusername"];
     $mail->FromName = $nombre_sitio;
-    $visitante->From = "contact@mazal.co";
+    $visitante->From = $config["hostusername"];
     $visitante->FromName = $nombre_sitio;
 
     // $mail->AddCC("silvana.camacho@mazal.co");
@@ -83,7 +89,7 @@ try {
     $visitante->CharSet = 'UTF-8';
 
     ob_start();
-    ?>
+?>
     <html>
 
     <head>
@@ -177,10 +183,10 @@ try {
 
     </html>
     <?php
-        $mensaje = ob_get_contents();
-        ob_end_clean();
-        ob_start();
-        ?>
+    $mensaje = ob_get_contents();
+    ob_end_clean();
+    ob_start();
+    ?>
 
     <html>
 
@@ -201,7 +207,7 @@ try {
                 <td width="<?php echo $imgWidth ?>" height="<?php echo $imgHeigt ?>" valign="top" align="center"><img src="<?php echo $imagen_respuesta;  ?>" width="<?php echo $imgWidth ?>" height="<?php echo $imgHeigt ?>" />
 
                   <?php
-                      if ($isReq) : ?>
+                  if ($isReq) : ?>
                     <img src="<?php echo $imgCotiza ?>" width="230"> <br>
                     Se ha generado una nueva cotización del producto <a href="<?php echo $linkURL ?>"><?php echo $productoName ?></a>, y nos pondremos en contacto con usted lo más pronto posible.
 
