@@ -7,6 +7,43 @@ var $document = $(document),
   regexEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 /* Cambiar la clase para mostrar el menú en responsive
 /*/
+
+var setCookie = function(name, value) {
+  var d = new Date();
+  var year = d.getFullYear();
+  var month = d.getMonth();
+  var day = d.getDate();
+  var c = new Date(year + 1, month, day);
+
+  var cookie = [
+    name,
+    "=",
+    JSON.stringify(value),
+    "; domain=.",
+    window.location.host.toString(),
+    "; path=/; expires=",
+    c
+  ].join("");
+  document.cookie = cookie;
+};
+var getCookie = function(name) {
+  var result = document.cookie.match(new RegExp(name + "=([^;]+)"));
+  result && (result = JSON.parse(result[1]));
+  return result;
+};
+
+var delete_cookie = function(name) {
+  document.cookie = name + "=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+};
+
+function deleteFavoriteByKey(key) {
+  var prodSaved = getCookie("productsmz");
+  return prodSaved
+    .toString() // Pasar a string en caso que sea un número
+    .replace(key, "") // Buscar el id de producto actual y eliminarlo.
+    .trim(); // Eliminar espacios inncesarios.
+}
+
 function toggleClassToMenuInResponse() {
   $(".header_top_list").removeClass("active");
   if ($window.width() <= 1300) {
@@ -70,6 +107,9 @@ function toggleDynamicDataFromNav() {
  * Activar el modal de busqueda cuando se de click en el botón de buscar en el Header
  */
 function toggleTheModalToSearchInWebsite() {
+  $(".button_close_modal").click(function() {
+    $(".modal_mazal ").removeClass("active");
+  });
   var modals = {
     productCotizar: {
       containerSelector: "#modal_product_cotize",
@@ -211,20 +251,74 @@ function sendContactMail() {
 }
 
 function sendCotizarMail() {
-  $("#send_cotizaction").submit(function(e) {
+  $("#send_cotizaction, #send_lote_cotizacion").submit(function(e) {
+    var singleCotizacionAjax = function(prefixID) {
+      var urlCotizando = $("#url_cotizar").val();
+      var imgCotizando = $("#image_cotizar").val();
+      var nameCotizando = $("#name_cotizar").val();
+
+      $.ajax({
+        // Puede ver mainURL en el archivo header.php
+        url: mailUrl,
+        method: "POST",
+        data: {
+          nombre: nombre,
+          email: email,
+          ciudad: city,
+          cell: phone,
+          mensaje: message,
+          urlCotiza: urlCotizando,
+          nameCotiza: nameCotizando,
+          imgCotiza: imgCotizando,
+          // Verificar si está haciendo peticion de cotización.
+          // Esta se hará en la ficha de producto.
+          isRequest: true
+        },
+        success: function(resp) {
+          $("#" + prefixID + "message").addClass("show");
+          $("#" + prefixID + "loading").removeClass("show");
+          console.log(resp);
+          if (resp == 1) {
+            $("#" + prefixID + "message .cotizar_error").removeClass("show");
+            $("#" + prefixID + "message .cotizar_success").addClass("show");
+          } else {
+            $("#" + prefixID + "message .cotizar_error").text(
+              "Error al enviar mensaje, intente nuevamente."
+            );
+            $("#" + prefixID + "message .cotizar_error").addClass("show");
+            $("#" + prefixID + "message .cotizar_success").removeClass("show");
+          }
+        }
+      });
+    };
+
+    var loteCotizacionajax = function() {
+      var valsJSON = JSON.parse($("#cotize_vals").val());
+      console.log(valsJSON);
+      $.ajax({
+        url: mailUrl,
+        method: "POST",
+        data: {
+          data: valsJSON
+        },
+        dataType: "json",
+        // contentType: 'application/json',
+        success: function(edata) {
+          console.log(edata);
+        }
+      });
+    };
+
     e.preventDefault();
 
-    var nombre = $("#cotization_name").val();
-    var email = String($("#cotization_email").val()).toLowerCase();
-    var phone = $("#cotization_phone").val();
-    var city = $("#cotization_city").val();
-    var message = $("#cotization_message").val();
-    var urlCotizando = $("#url_cotizar").val();
-    var imgCotizando = $("#image_cotizar").val();
-    var nameCotizando = $("#name_cotizar").val();
+    var prefixID = $(this).data("prefix");
 
-    var smp1 = $("#sprm_fld").val();
-    var smp2 = $("#sprm_fld2").val();
+    var nombre = $("#" + prefixID + "name").val();
+    var email = String($("#" + prefixID + "email").val()).toLowerCase();
+    var phone = $("#" + prefixID + "phone").val();
+    var city = $("#" + prefixID + "city").val();
+    var message = $("#" + prefixID + "msj").val();
+
     var canSend = true;
     if (
       city == "" ||
@@ -240,50 +334,16 @@ function sendCotizarMail() {
     }
 
     if (!canSend) {
-      $("#cotizar_message").addClass("show");
-      $("#cotizar_message .cotizar_error").addClass("show");
-      $("#cotizar_message .cotizar_success").removeClass("show");
+      $("#" + prefixID + "message").addClass("show");
+      $("#" + prefixID + "message .cotizar_error").addClass("show");
+      $("#" + prefixID + "message .cotizar_success").removeClass("show");
     } else {
-      $("#loading_cotizar").addClass("show");
-
-      $.ajax({
-        // Puede ver mainURL en el archivo header.php
-        url: mailUrl,
-        method: "POST",
-        data: {
-          nombre: nombre,
-          email: email,
-          ciudad: city,
-          cell: phone,
-          mensaje: message,
-          urlCotiza: urlCotizando,
-          nameCotiza: nameCotizando,
-          imgCotiza: imgCotizando,
-          data_spmr: smp1,
-          data_spmr2: smp2,
-          // Verificar si está haciendo peticion de cotización.
-          // Esta se hará en la ficha de producto.
-          isRequest: true
-        },
-        success: function(resp) {
-          $("#cotizar_message").addClass("show");
-          $("#loading_cotizar").removeClass("show");
-          console.log(resp);
-          if (resp == 1) {
-            $("#cotizar_message .cotizar_error").removeClass("show");
-            $("#cotizar_message .cotizar_success").addClass("show");
-          } else {
-            $("#cotizar_message .cotizar_error").text(
-              "Error al enviar mensaje, intente nuevamente."
-            );
-            $("#cotizar_message .cotizar_error").addClass("show");
-            $("#cotizar_message .cotizar_success").removeClass("show");
-          }
-
-          // alert("LISTO")
-          // console.log(resp);
-        }
-      });
+      $("#" + prefixID + "loading").addClass("show");
+      if (prefixID === "cotization_lote_") {
+        loteCotizacionajax();
+      } else if (prefixID === "cotization_") {
+        singleCotizacionAjax(prefixID);
+      }
     }
   });
 }
@@ -688,31 +748,6 @@ function showWhatsappInSpecificHours() {
  * En la ficha de producto es posible agregar los productos a los favoritos.
  */
 function addToFavorite() {
-  var setCookie = function(name, value) {
-    var d = new Date();
-    var year = d.getFullYear();
-    var month = d.getMonth();
-    var day = d.getDate();
-    var c = new Date(year + 1, month, day);
-
-    var cookie = [
-      name,
-      "=",
-      JSON.stringify(value),
-      "; domain=.",
-      window.location.host.toString(),
-      "; path=/; expires=",
-      c
-    ].join("");
-    document.cookie = cookie;
-  };
-
-  var getCookie = function(name) {
-    var result = document.cookie.match(new RegExp(name + "=([^;]+)"));
-    result && (result = JSON.parse(result[1]));
-    return result;
-  };
-
   $(".add-love").click(function(e) {
     e.preventDefault();
     var idProd = $(this).data("fav");
@@ -722,10 +757,7 @@ function addToFavorite() {
      * Será activo en caso que se de click en el producto que está añadido a favoritos.
      */
     if ($(this).hasClass("active")) {
-      newProdsCookies = prodSaved
-        .toString() // Pasar a string en caso que sea un número
-        .replace(idProd, "") // Buscar el id de producto actual
-        .trim(); // Eliminar espacios inncesarios.
+      newProdsCookies = deleteFavoriteByKey(idProd); // Eliminar espacios inncesarios.
     } else {
       if (prodSaved === null || prodSaved === "") {
         newProdsCookies = idProd.toString();
@@ -736,7 +768,6 @@ function addToFavorite() {
     }
 
     setCookie("productsmz", newProdsCookies);
-
     $.ajax({
       url: ajaxUrl,
       data: {
@@ -859,6 +890,11 @@ function connectToFb() {
   })(jQuery);
 }
 
+/**
+ * En la ficha de producto, existe el botón de whatsapp.
+ * Cuando está en móvil, abrirá la aplicación WhatsApp, en escritorio abrirá la pestaña de Whatsapp.
+ * Esta función hará funcionar este comportamiento
+ */
 function redirectWhatsappIfMobile() {
   var mobileAndTabletcheck = function() {
     var check = false;
@@ -906,15 +942,98 @@ function alertOnRightSearching() {
   });
 }
 
+/**
+ * Toda la funcionalidad que estará dentro el panel de Favoritos
+ * Como agregar/quitar numero de cotizaciones, cambiar estado de checkbox, eliminar favoritos
+ */
+function actionsInFavoritesPanel() {
+  $(document).ready(function() {
+    $(".count").prop("disabled", true);
+    $(".plus").on("click", function(e) {
+      e.preventDefault();
+      $(this)
+        .prev(".count")
+        .val(
+          parseInt(
+            $(this)
+              .prev(".count")
+              .val()
+          ) + 1
+        );
+    });
+    $(".minus").on("click", function(e) {
+      e.preventDefault();
+      var inputChange = $(this).next(".count");
+      inputChange.val(parseInt(inputChange.val()) - 1);
+      if (inputChange.val() == 0) {
+        inputChange.val(1);
+      }
+    });
+
+    $("#icon_favorites .checkbox-custom-label").click(function(e) {
+      e.preventDefault();
+      if ($(this).hasClass("active")) {
+        $(this).removeClass("active");
+        $(this)
+          .prev("input")
+          .prop("checked", false);
+      } else {
+        $(this).addClass("active");
+
+        $(this)
+          .prev("input")
+          .prop("checked", true);
+      }
+    });
+
+    $(".action_delete").click(function() {
+      var iEl = $(this).find("i");
+      if (iEl.hasClass("icon-heart")) {
+        iEl.removeClass("icon-heart");
+        iEl.addClass("icon-heart-o");
+      } else {
+        iEl.removeClass("icon-heart-o");
+        iEl.addClass("icon-heart");
+      }
+
+      $(this)
+        .children(".confirm_delete_item")
+        .toggleClass("show");
+    });
+
+    $(".confirm_delete_item").click(function(e) {
+      e.preventDefault();
+      var dataDelete = $(this).data("delete");
+      $(this)
+        .closest("li")
+        .remove();
+
+      var newKeys = deleteFavoriteByKey(dataDelete);
+      setCookie("productsmz", newKeys);
+    });
+
+    $("#cotizar_lote").click(function(e) {
+      $("#modal_favorites_cotize").addClass("active");
+      // $.ajax({
+      //   url: ajaxUrl,
+      //   data: {
+      //     action: "get_prods_cotize"
+      //   },
+      //   success: function(edata) {
+      //     console.log(edata);
+      //   }
+      // });
+    });
+  });
+}
+
 $window.on("load", function() {
   ScrolMapFromNavbar();
   toggleDynamicDataFromNav();
   changeTheSubmenuInHeader();
   toggleTheModalToSearchInWebsite();
-  // changeTheLanguageLabelInHeader();
   plugnsInit();
   changeCurrentImageInBeforeAfter();
-
   activeTheLineInTheHeaderMenuInScrolling();
   makeScrollIfExistsTheQueryParam();
   showWhatsappInSpecificHours();
@@ -926,22 +1045,10 @@ $window.on("load", function() {
   connectToFb();
   redirectWhatsappIfMobile();
   alertOnRightSearching();
+  actionsInFavoritesPanel();
 });
 $window.on("load resize", function() {
   makeHoverMoveInBanner();
   toggleClassToMenuInResponse();
   changeTheHeaderWhenScrolling();
-});
-
-$(document).ready(function(){
-  $('.count').prop('disabled', true);
-   $(document).on('click','.plus',function(){
-  $('.count').val(parseInt($('.count').val()) + 1 );
-  });
-    $(document).on('click','.minus',function(){
-    $('.count').val(parseInt($('.count').val()) - 1 );
-      if ($('.count').val() == 0) {
-      $('.count').val(1);
-    }
-      });
 });

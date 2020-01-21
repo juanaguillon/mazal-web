@@ -350,6 +350,7 @@
   color: #13922f;
   font-size: 17px;
   font-weight: 600;
+  text-transform: none;
   display: none;
   &.show {
     display: block;
@@ -358,6 +359,7 @@
 .cotizar_error {
   color: #921313;
   font-size: 17px;
+  text-transform: none;
   font-weight: 600;
   display: none;
   &.show {

@@ -22,11 +22,17 @@ function mazal_ajax_get_favorite_products()
   $hasFavs = $productsFav && count($productsFav["posts"]) > 0;
 ?>
   <i class="icon-heart<?php echo !$hasFavs ? "-o" : "" ?> text-white hover-white"></i>
+
   <div id="favorites_header">
     <?php if ($hasFavs) : ?>
       <ul id="favorites_ul_header">
         <?php foreach ($productsFav["posts"] as $pr) : ?>
           <li>
+            <div class="checkbox">
+              <input type="checkbox" class="checkbox-custom" checked>
+              <label class="checkbox-custom-label active"></label>
+            </div>
+
             <a rel="nofollow" href="<?php echo get_permalink($pr) ?>">
               <div class="single_favorite">
                 <div class="single_favorite_img">
@@ -34,22 +40,71 @@ function mazal_ajax_get_favorite_products()
                 </div>
                 <div class="single_favorite_title">
                   <span><?php echo $pr->post_title ?></span>
+                  <div class="qty">
+                    <span class="minus bg-dark">-</span>
+                    <input type="number" class="count" value="1">
+                    <span class="plus bg-dark">+</span>
+                  </div>
                 </div>
               </div>
             </a>
+            <div class="action_delete">
+              <span class="action_delete_item">
+                <i class="icon-heart"></i>
+              </span>
+              <span data-delete="<?= $pr->ID ?>" class="confirm_delete_item">
+                <?php if (mazal_is_language("es")) {
+                  echo "¿Eliminar ítem?";
+                } else {
+                  echo "Delete item?";
+                } ?>
+
+              </span>
+            </div>
           </li>
         <?php endforeach; ?>
       </ul>
+      <div class="cotizar-favoritos">
+        <button id="cotizar_lote" class="button general_button font-2 fill-button">
+          <span class="">
+            <?php
+            if (mazal_is_language("es")) {
+              echo "Cotizar";
+            } else {
+              echo "Quote";
+            } ?>
+          </span>
+        </button>
+      </div>
     <?php
     endif;
     ?>
   </div>
+
 <?php
   wp_die();
 }
 
 add_action("wp_ajax_get_favs", "mazal_ajax_get_favorite_products");
 add_action("wp_ajax_nopriv_get_favs", "mazal_ajax_get_favorite_products");
+
+
+/**
+ * En el panel de favoritos, se enviará esta información en el modal cuando se de click en "Cotizar"
+ * Dicha información será tomada de esta función.
+ */
+function mazal_ajax_get_products_to_cotize()
+{
+  // $products = mazal_get_favorite_products();
+  // foreach ($products["posts"] as $post) {
+  // }
+  printcode($products);
+  die();
+}
+
+add_action("wp_ajax_get_prods_cotize", "mazal_ajax_get_products_to_cotize");
+add_action("wp_ajax_nopriv_get_prods_cotize", "mazal_ajax_get_products_to_cotize");
+
 
 
 function mazal_get_favorite_products()

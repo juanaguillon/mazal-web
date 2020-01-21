@@ -1,8 +1,11 @@
-<?php $producst = mazal_get_favorite_products();  ?>
-<?php get_header(); ?>
-
-
 <?php
+
+require "vendor/autoload.php";
+
+use Intervention\Image\ImageManager as Img;
+
+get_header();
+$producst = mazal_get_favorite_products();
 $producto = get_queried_object();
 
 ?>
@@ -50,14 +53,23 @@ $producto = get_queried_object();
 
         <div class="swiper-container gallery-top">
           <div class="swiper-wrapper" id="image_product_slick">
-            <div data-src="<?= get_field("imagen_de_producto", $producto)["original_image"]["url"] ?>" class="item_image_product swiper-slide item-swipper-image" style="background-image:url(<?php echo get_field("imagen_de_producto", $producto)["sizes"]["large"] ?>)">
+            <?php
+            $imgInstace = new Img();
+            $urlFull = (string) $imgInstace->make(get_field("imagen_de_producto", $producto)["original_image"]["url"])->encode("data-url");
+            $urlLarge = (string) $imgInstace->make(get_field("imagen_de_producto", $producto)["sizes"]["large"])->encode("data-url");
+            // printcode($d2);
+
+            ?>
+            <div data-src="<?= $urlFull ?>" class="item_image_product swiper-slide item-swipper-image" style="background-image:url(<?= $urlLarge ?>)">
               <div class="swiper-zoom-container" data-swiper-zoom="5">
               </div>
             </div>
             <?php
             $galeria = get_field("galeria", $producto);
             if ($galeria && count($galeria) > 0) :
+
               foreach ($galeria as $imgGall) :
+
             ?>
                 <div data-src="<?= $imgGall["url"] ?>" class="swiper-slide item_image_product item-swipper-image" style="background-image:url(<?php echo $imgGall["sizes"]["large"] ?>)">
                   <div class="swiper-zoom-container" data-swiper-zoom="5">
@@ -348,10 +360,10 @@ $producto = get_queried_object();
       </div>
     </div>
     <div class="modal_bcontent">
-      <div class="loading_container" id="loading_cotizar">
+      <div class="loading_container white" id="cotization_loading">
         <div class="loading_spinner"></div>
       </div>
-      <form id="send_cotizaction">
+      <form id="send_cotizaction" data-prefix="cotization_">
         <input type="hidden" id="image_cotizar" value="<?php echo get_field("imagen_de_producto", $producto)["sizes"]["medium"] ?>">
         <input type="hidden" id="url_cotizar" value=<?php echo get_permalink($producto) ?>>
         <input type="hidden" id="name_cotizar" value="<?php echo $producto->post_title ?>">
@@ -411,8 +423,6 @@ $producto = get_queried_object();
           </div>
           <div class="col-md-6">
             <div class="field">
-              <input tabindex="-1" type="text" id="sprm_fld" placeholder="Omit if you are human" class="sprm_fld">
-              <input tabindex="-1" type="text" id="sprm_fld2" placeholder="Omit if you are human" class="sprm_fld">
               <input id="cotization_email" class="text light" placeholder="<?php echo $emailph ?>" type="text">
             </div>
           </div>
@@ -428,10 +438,10 @@ $producto = get_queried_object();
           </div>
           <div class="col-12">
             <div class="field">
-              <textarea id="cotization_message" rows="4" class="text light" placeholder="<?php echo $messagePh ?>" type="text"></textarea>
+              <textarea id="cotization_msj" rows="4" class="text light" placeholder="<?php echo $messagePh ?>" type="text"></textarea>
             </div>
             <div class="field">
-              <div id="cotizar_message" class="cotizar_message">
+              <div id="cotization_message" class="cotizar_message">
                 <?php
                 $mensajeError = "";
                 $mensajeSuccess = "";
@@ -443,12 +453,12 @@ $producto = get_queried_object();
                   $mensajeSuccess = "Message send successfully. We will get in touch as soon as possible.";
                 }
                 ?>
-                <span class="cotizar_error"><?php echo $mensajeError ?></span>
-                <span class="cotizar_success"><?php echo $mensajeSuccess ?></span>
+                <span class="cotizar_error"><?= $mensajeError ?></span>
+                <span class="cotizar_success"><?= $mensajeSuccess ?></span>
               </div>
 
-              <button type="submit" id="button_cotizar_producto" href="https://mazal.co/en" class="button general_button">
-                <span data-title="<?php echo $buttonReq ?>"><?php echo $buttonReq ?></span>
+              <button type="submit" id="button_cotization_producto" class="button general_button button_dark">
+                <span data-title="<?= $buttonReq ?>"><?= $buttonReq ?></span>
               </button>
             </div>
           </div>
