@@ -125,6 +125,11 @@ function mazal_ajax_get_products_to_cotize()
       <div class="fav_cotizar_title">
         <span><?= $post->post_title !== "" ? $post->post_title : " - " ?> <strong>X<?= $ids[$keyQuamtity]["quantity"] ?></strong></span>
       </div>
+      <div class="fav_cotizar_delete">
+        <button data-delete="<?= $post->ID ?>" class="delete_favorite">
+          <i class="icon-cross"></i>
+        </button>
+      </div>
     </div>
   <?php endforeach; ?>
   <input type="hidden" id="cotize_vals" value='<?php echo json_encode($arrJson) ?>'>

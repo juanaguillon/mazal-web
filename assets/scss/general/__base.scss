@@ -407,10 +407,25 @@ section h3 {
 .fav_cotizar_wrap {
   margin-top: 11px;
 }
+.fav_cotizar_delete button{
+	border: none;
+	padding: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: white;
+  border-radius: 50%;
+  cursor: pointer;
+  text-align: center;
+  i{
+    font-size: 9px;
+  }
+}
 .fav_cotizar {
   display: flex;
   align-items: center;
   margin-bottom: 13px;
+  justify-content: space-between;
 }
 .fav_cotizar_img {
   width: 82px;

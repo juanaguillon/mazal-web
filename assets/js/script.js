@@ -315,7 +315,6 @@ function sendCotizarMail() {
         success: function(edata) {
           $("#" + prefixID + "message").addClass("show");
           $("#" + prefixID + "loading").removeClass("show");
-          console.log(edata);
           if (edata == 1) {
             $("#" + prefixID + "message .cotizar_error").removeClass("show");
             $("#" + prefixID + "message .cotizar_success").addClass("show");
@@ -969,6 +968,14 @@ function alertOnRightSearching() {
  * Como agregar/quitar numero de cotizaciones, cambiar estado de checkbox, eliminar favoritos
  */
 function actionsInFavoritesPanel() {
+  $(".count").unbind("click");
+  $(".plus").unbind("click");
+  $(".minus").unbind("click");
+  $("#icon_favorites .checkbox-custom-label").unbind("click");
+  $(".action_delete").unbind("click");
+  $(".confirm_delete_item").unbind("click");
+  $("#cotizar_lote").unbind("click");
+
   $(document).ready(function() {
     $(".count").prop("disabled", true);
     $(".plus").on("click", function(e) {
@@ -1069,6 +1076,14 @@ function actionsInFavoritesPanel() {
         success: function(edata) {
           console.log(edata);
           $("#fav_cotizar_wrap").html(edata);
+          $(".delete_favorite").unbind("click");
+          $(".delete_favorite").click(function(e) {
+            e.preventDefault();
+            var delKey = $(this).data("delete");
+            var reusultWithoytKey = deleteFavoriteByKey(delKey)
+            setCookie("productsmz", reusultWithoytKey);
+            $(this).closest(".fav_cotizar").remove()
+          });
         }
       });
     });

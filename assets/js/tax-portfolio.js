@@ -31,12 +31,8 @@ $(window).on("load", function() {
 
     if (imgW / imgH < refRatio) {
       parentIMG.imagefill();
-      // parentIMG.removeClass("imgfill_h");
-      // parentIMG.addClass("imgfill_w");
     } else {
       parentIMG.imagefill();
-      // parentIMG.removeClass("imgfill_w");
-      // parentIMG.addClass("imgfill_h");
     }
   };
 
@@ -99,9 +95,6 @@ $(window).on("load", function() {
     if (result === "") {
       label.text(label.data("emplabel"));
     }
-    // if (!result.length) {
-    //   label.text(label.data("emplabel"));
-    // }
   }
 
   $el.each(function(i, element) {
@@ -128,35 +121,18 @@ $(window).on("load", function() {
       $("#sublist_children_" + subcat).addClass("show");
       $("#current_category").val(filter.replace(".", ""));
       $label.text(text);
-      // $grid.isotope({
-      //   filter: filter
-      // });
       resiveGrid(filter);
     });
 
     // Estos inputs serán visiblen el portafolio, se representan con el color "Dorado (Marrón)"
-    // $inputsPort.on("change", function() {
-    //   var subcatContent = $(this).data("subcat_content");
-    //   var encampsuld = $(this).data("encapsuled");
-    //   $("." + encampsuld + ".subcat_content_portfolio").removeClass("show");
-    //   $("#subcat_content_" + subcatContent).addClass("show");
-
-    //   $grid.isotope({
-    //     itemSelector: ".col-item",
-    //     layoutMode: "fitRows"
-    //   });
-    // });
 
     $inputs.on("change", function() {
-      // var checkeds = [];
-
       /**
        * MOstrar los labels +1 o +2, etcera
        * Ejemplo: Arquitectura, DIseño interior, Hogar, Mostrará "Arquitectura +2" en el label
        */
       var text = "";
-      // $inputs.each(function(e) {
-      // console.log("X");
+
       if ($(this).prop("checked")) {
         // checkeds.push($(this));
         var classesToUncheck = $(this).data("classonselect");
@@ -166,20 +142,8 @@ $(window).on("load", function() {
           .first()
           .next()
           .text();
-        // return;
       }
-      // });
 
-      // console.log(text);
-      // if (checkeds.length > 0) {
-      //   // var text = checkeds[0]
-      //   //   .first()
-      //   //   .next()
-      //   //   .text();
-      //   // if (checkeds.length > 1) {
-      //   //   text += " " + (checkeds.length - 1) + "+";
-      //   // }
-      // }
       $label.text(text);
       updateStatus($label, text);
 
@@ -189,17 +153,6 @@ $(window).on("load", function() {
       if ($(this).data("filter") !== "*") {
         filtering += $(this).data("filter");
       }
-      var isFirst = true;
-      // $inputs.each(function(i) {
-      //   if ($(this).prop("checked")) {
-      //     if (isFirst) {
-      //       filtering += $(this).data("filter");
-      //       isFirst = false;
-      //     } else {
-      //       filtering += "," + $(this).data("filter");
-      //     }
-      //   }
-      // });
       resiveGrid(filtering);
     });
     $(document).on("click touchstart", function(e) {
