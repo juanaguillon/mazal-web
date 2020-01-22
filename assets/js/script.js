@@ -109,6 +109,7 @@ function toggleDynamicDataFromNav() {
 function toggleTheModalToSearchInWebsite() {
   $(".button_close_modal").click(function() {
     $(".modal_mazal ").removeClass("active");
+    $("body").css("overflow-y", "visible");
   });
   var modals = {
     productCotizar: {
@@ -250,6 +251,10 @@ function sendContactMail() {
   });
 }
 
+/**
+ * Enviar cotización de un producto o cotización de multiples productos.
+ * Debe tener en cuenta que en la ficha de producto puede salir el modal para cotizar un solo producto, o en el header, la lista de multiples cotizaciones.
+ */
 function sendCotizarMail() {
   $("#send_cotizaction, #send_lote_cotizacion").submit(function(e) {
     var singleCotizacionAjax = function(prefixID) {
@@ -292,19 +297,35 @@ function sendCotizarMail() {
       });
     };
 
-    var loteCotizacionajax = function() {
+    var loteCotizacionajax = function(prefixID) {
       var valsJSON = JSON.parse($("#cotize_vals").val());
-      console.log(valsJSON);
       $.ajax({
         url: mailUrl,
         method: "POST",
         data: {
-          data: valsJSON
+          products: valsJSON,
+          nombre: nombre,
+          email: email,
+          ciudad: city,
+          cell: phone,
+          mensaje: message,
+          is_request_lote: true
         },
         dataType: "json",
-        // contentType: 'application/json',
         success: function(edata) {
+          $("#" + prefixID + "message").addClass("show");
+          $("#" + prefixID + "loading").removeClass("show");
           console.log(edata);
+          if (edata == 1) {
+            $("#" + prefixID + "message .cotizar_error").removeClass("show");
+            $("#" + prefixID + "message .cotizar_success").addClass("show");
+          } else {
+            $("#" + prefixID + "message .cotizar_error").text(
+              "Error al enviar mensaje, intente nuevamente."
+            );
+            $("#" + prefixID + "message .cotizar_error").addClass("show");
+            $("#" + prefixID + "message .cotizar_success").removeClass("show");
+          }
         }
       });
     };
@@ -340,7 +361,7 @@ function sendCotizarMail() {
     } else {
       $("#" + prefixID + "loading").addClass("show");
       if (prefixID === "cotization_lote_") {
-        loteCotizacionajax();
+        loteCotizacionajax(prefixID);
       } else if (prefixID === "cotization_") {
         singleCotizacionAjax(prefixID);
       }
@@ -775,6 +796,7 @@ function addToFavorite() {
       },
       success: function(res) {
         $("#icon_favorites").html(res);
+        actionsInFavoritesPanel();
       }
     });
 
@@ -984,6 +1006,13 @@ function actionsInFavoritesPanel() {
           .prev("input")
           .prop("checked", true);
       }
+      if (!$("#icon_favorites .checkbox-custom-label.active").length) {
+        $("#cotizar_lote_error_minimum").addClass("show");
+        $("#cotizar_lote").attr("disabled", "disabled");
+      } else {
+        $("#cotizar_lote_error_minimum").removeClass("show");
+        $("#cotizar_lote").removeAttr("disabled", "disabled");
+      }
     });
 
     $(".action_delete").click(function() {
@@ -1014,15 +1043,34 @@ function actionsInFavoritesPanel() {
 
     $("#cotizar_lote").click(function(e) {
       $("#modal_favorites_cotize").addClass("active");
-      // $.ajax({
-      //   url: ajaxUrl,
-      //   data: {
-      //     action: "get_prods_cotize"
-      //   },
-      //   success: function(edata) {
-      //     console.log(edata);
-      //   }
-      // });
+      $("body").css("overflow-y", "hidden");
+
+      var ids = [];
+      $(".favorites_checkbox:checked").each(function() {
+        var quantity = $(this)
+          .parent()
+          .next("a")
+          .find(".count")
+          .val();
+        var objProd = {
+          id: $(this).val(),
+          quantity: quantity
+        };
+        ids.push(objProd);
+      });
+
+      $.ajax({
+        url: ajaxUrl,
+        // dataType: "json",
+        data: {
+          ids: ids,
+          action: "get_prods_cotize"
+        },
+        success: function(edata) {
+          console.log(edata);
+          $("#fav_cotizar_wrap").html(edata);
+        }
+      });
     });
   });
 }

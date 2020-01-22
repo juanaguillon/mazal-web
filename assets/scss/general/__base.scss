@@ -87,6 +87,9 @@ section h3 {
   &.button_small {
     padding: 7px 13px;
   }
+  &:disabled {
+    opacity: 0.5;
+  }
 }
 .button,
 .button:hover,
@@ -325,7 +328,6 @@ section h3 {
   width: 100%;
   left: 0;
   background: #000000d1;
-  // backdrop-filter: blur(7px);
   height: 100%;
   display: none;
   align-items: center;
@@ -400,7 +402,7 @@ section h3 {
   }
 }
 #modal_favorites_cotize .modal_container {
-  max-width: 1080px;
+  max-width: 900px;
 }
 .fav_cotizar_wrap {
   margin-top: 11px;
@@ -416,6 +418,13 @@ section h3 {
 
 .fav_cotizar_title {
   margin-left: 10px;
+}
+#cotizar_lote_error_minimum {
+  text-align: center;
+  margin-bottom: 10px;
+  letter-spacing: 0.3px;
+  font-size: 13px;
+  font-weight: 500;
 }
 #modal_product_cotize,
 .modal_mazal {
@@ -522,6 +531,12 @@ form {
     img.right {
       transform: translateX(-100%);
     }
+  }
+}
+
+@media #{$tablet_query} {
+  .modal_mazal {
+    align-items: start;
   }
 }
 

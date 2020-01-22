@@ -357,7 +357,7 @@
                     <?php foreach ($productsFav["posts"] as $pr) : ?>
                       <li>
                         <div class="checkbox">
-                          <input type="checkbox" class="checkbox-custom" checked>
+                          <input type="checkbox" class="checkbox-custom favorites_checkbox" value="<?= $pr->ID ?>" checked>
                           <label class="checkbox-custom-label active"></label>
                         </div>
 
@@ -393,14 +393,19 @@
                     <?php endforeach; ?>
                   </ul>
                   <div class="cotizar-favoritos">
+                    <?php
+                    if (mazal_is_language("es")) {
+                      $message = "Debe seleccionar al menos un producto para cotizar.";
+                      $cotizar = "Cotizar";
+                    } else {
+                      $message = "You must select at least a product to quote.";
+                      $cotizar = "Quote";
+                    }
+                    ?>
+                    <span id="cotizar_lote_error_minimum" class="cotizar_error"><?= $message ?></span>
                     <button id="cotizar_lote" class="button general_button font-2 fill-button">
                       <span class="">
-                        <?php
-                        if (mazal_is_language("es")) {
-                          echo "Cotizar";
-                        } else {
-                          echo "Quote";
-                        } ?>
+                        <?= $cotizar ?>
                       </span>
                     </button>
                   </div>
@@ -475,49 +480,32 @@
                 <div class="loading_spinner"></div>
               </div>
               <div class="row">
-                <div class="col-md-5">
-                  <div class="fav_cotizar_wrap">
-                    <input type="hidden" id="cotize_vals" value='[{"product_name":"Lorem Ipsum amet","product_id":645,"product_link":"https://google.com/?sq=data+plus"},{"product_name":"Lorem Ipsum amet","product_id":691,"product_link":"https://www.w3schools.com/js/js_json_arrays.asp"}]'>
-                    <div class="fav_cotizar">
-                      <div class="fav_cotizar_img">
-                        <img src="https://mazal.co/wp-content/uploads/2019/11/g.jpg" alt="">
-                      </div>
-                      <div class="fav_cotizar_title">
-                        <span>Lorem, ipsum dolor.</span>
-                      </div>
-                    </div>
-                    <div class="fav_cotizar">
-                      <div class="fav_cotizar_img">
-                        <img src="https://mazal.co/wp-content/uploads/2019/11/13-1.jpg" alt="">
-                      </div>
-                      <div class="fav_cotizar_title">
-                        <span>Lorem, ipsum dolor.</span>
-                      </div>
-                    </div>
-                    <div class="fav_cotizar"></div>
+                <div class="col-md-6">
+                  <h4>Lista de cotización</h4>
+                  <div id="fav_cotizar_wrap" class="fav_cotizar_wrap">
                   </div>
                 </div>
-                <div class="col-md-7">
+                <div class="col-md-6">
                   <form id="send_lote_cotizacion" data-prefix="cotization_lote_">
                     <div class="row">
-                      <div class="col-md-6">
+                      <div class="col-12">
                         <div class="field">
                           <input id="cotization_lote_name" class="text light" placeholder="Nombres y apellidos" type="text">
                         </div>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-12">
                         <div class="field">
                           <input tabindex="-1" type="text" id="sprm_fld" placeholder="Omit if you are human" class="sprm_fld">
                           <input tabindex="-1" type="text" id="sprm_fld2" placeholder="Omit if you are human" class="sprm_fld">
                           <input id="cotization_lote_email" class="text light" placeholder="Email" type="text">
                         </div>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-12">
                         <div class="field">
                           <input id="cotization_lote_phone" class="text light" placeholder="Teléfono" type="number">
                         </div>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-12">
                         <div class="field">
                           <input id="cotization_lote_city" class="text light" placeholder="Ciudad" type="text">
                         </div>
@@ -529,7 +517,7 @@
                         <div class="field">
                           <div id="cotization_lote_message" class="cotizar_message">
                             <span class="cotizar_error">Debe completar todos los campos correctamente.</span>
-                            <span class="cotizar_success">Mensaje enviado correctamente. Nos pondremos en contacto lo más pronto posible.</span>
+                            <span class="cotizar_success">Mensaje enviado correctamente. Nos pondremos en contacto con usted lo más pronto posible.</span>
                           </div>
 
                           <button type="submit" id="button_cotization_lote_producto" class="button general_button button_dark">

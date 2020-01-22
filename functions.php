@@ -29,7 +29,7 @@ function mazal_ajax_get_favorite_products()
         <?php foreach ($productsFav["posts"] as $pr) : ?>
           <li>
             <div class="checkbox">
-              <input type="checkbox" class="checkbox-custom" checked>
+              <input type="checkbox" class="checkbox-custom favorites_checkbox" value="<?= $pr->ID ?>" checked>
               <label class="checkbox-custom-label active"></label>
             </div>
 
@@ -65,14 +65,19 @@ function mazal_ajax_get_favorite_products()
         <?php endforeach; ?>
       </ul>
       <div class="cotizar-favoritos">
+        <?php
+        if (mazal_is_language("es")) {
+          $message = "Debe seleccionar al menos un producto para cotizar.";
+          $cotizar = "Cotizar";
+        } else {
+          $message = "You must select at least a product to quote.";
+          $cotizar = "Quote";
+        }
+        ?>
+        <span id="cotizar_lote_error_minimum" class="cotizar_error"><?= $message ?></span>
         <button id="cotizar_lote" class="button general_button font-2 fill-button">
           <span class="">
-            <?php
-            if (mazal_is_language("es")) {
-              echo "Cotizar";
-            } else {
-              echo "Quote";
-            } ?>
+            <?= $cotizar ?>
           </span>
         </button>
       </div>
@@ -81,7 +86,7 @@ function mazal_ajax_get_favorite_products()
     ?>
   </div>
 
-<?php
+  <?php
   wp_die();
 }
 
@@ -95,10 +100,36 @@ add_action("wp_ajax_nopriv_get_favs", "mazal_ajax_get_favorite_products");
  */
 function mazal_ajax_get_products_to_cotize()
 {
-  // $products = mazal_get_favorite_products();
-  // foreach ($products["posts"] as $post) {
-  // }
-  printcode($products);
+  $products = mazal_get_favorite_products();
+  // $ids = explode(",", );
+  $ids = $_GET["ids"];
+  $arrJson = array();
+  ob_start();
+  foreach ($products["posts"] as $kp => $post) :
+    if (!in_array($post->ID, array_column($ids, "id"))) continue;
+
+    $keyQuamtity = array_search($post->ID, array_column($ids, "id"));
+    // if ( in_array($post->ID, ""))
+    $arrJson[] = array(
+      "product_name" =>  $post->post_title !== "" ? $post->post_title : " - ",
+      "product_id" => $post->ID,
+      "product_link" => get_permalink($post),
+      "product_quantity" => $ids[$keyQuamtity]["quantity"]
+    );
+  ?>
+
+    <div class="fav_cotizar">
+      <div class="fav_cotizar_img">
+        <img src="<?= get_field("imagen_de_producto", $post)["sizes"]["thumbnail"] ?>" alt="">
+      </div>
+      <div class="fav_cotizar_title">
+        <span><?= $post->post_title !== "" ? $post->post_title : " - " ?> <strong>X<?= $ids[$keyQuamtity]["quantity"] ?></strong></span>
+      </div>
+    </div>
+  <?php endforeach; ?>
+  <input type="hidden" id="cotize_vals" value='<?php echo json_encode($arrJson) ?>'>
+<?php
+  echo ob_get_clean();
   die();
 }
 
