@@ -404,9 +404,21 @@ section h3 {
 #modal_favorites_cotize .modal_container {
   max-width: 900px;
 }
+
+.lista-cotizacion{
+  font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
 .fav_cotizar_wrap {
   margin-top: 11px;
 }
+
+.fav_cotizar_delete{
+  margin-left: 20px;
+}
+
 .fav_cotizar_delete button{
 	border: none;
 	padding: 8px;
@@ -428,11 +440,12 @@ section h3 {
   justify-content: space-between;
 }
 .fav_cotizar_img {
-  width: 82px;
+  width: 55px;
 }
 
 .fav_cotizar_title {
   margin-left: 10px;
+    width: calc(100% - 80px);
 }
 #cotizar_lote_error_minimum {
   text-align: center;
