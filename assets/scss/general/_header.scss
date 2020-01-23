@@ -586,7 +586,8 @@ a.languages_toggle {
   }
 }
 .action_delete {
-  width: 64px;
+  width: 30px;
+    margin-left: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -621,7 +622,7 @@ a.languages_toggle {
   }
   .single_favorite {
     display: flex;
-    align-items: center;
+    align-items: start;
     padding: 5px;
 
     &:hover {
@@ -658,10 +659,10 @@ a.languages_toggle {
     }
   }
   .single_favorite_title {
-    padding: 0 7px;
+    padding: 0 10px;
     font-size: 15px;
-    width: 120px;
-    text-align: center;
+    width: 150px;
+    text-align: left;
     & > span {
       margin-bottom: 5px;
       display: block;
@@ -709,7 +710,9 @@ a.languages_toggle {
     width: 18px;
     height: 18px;
     color: $chocolate;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 24px;
     line-height: 0.9 !important;
   }
@@ -724,13 +727,18 @@ a.languages_toggle {
   }
 }
 
+
+.qty{
+  display: flex;
+}
+
 .qty .count {
   color: #000;
-  display: inline-block;
+  display: flex;
   vertical-align: top;
   font-size: 13px;
-  font-weight: 700;
-  line-height: 23px;
+  font-weight: 500;
+  line-height: 1;
   padding: 0 2px;
   min-width: 23px;
   text-align: center;
@@ -769,6 +777,23 @@ input::-webkit-inner-spin-button {
 }
 .qty input:disabled {
   background-color: white;
+}
+
+
+.counter-2{
+  display: flex;
+  .plus, .minus{
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+  }
+  .count{
+    width:40px;
+    font-size: 15px;
+  }
 }
 
 .cotizar-favoritos {
