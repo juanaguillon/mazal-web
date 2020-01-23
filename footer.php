@@ -75,7 +75,7 @@
         }
         ?>
         <span class="text-white text-2x font-1"><?php echo $rightTotal ?></span>
-				<a href="http://intuitionstudio.co/" target="_blank" class="d-flex"><span><?= $desarrollo ?> Intuition Studio <img src="<?php bloginfo("template_url") ?>/images/icons/logo-intuition.svg" alt=""></span></a>
+        <a href="http://intuitionstudio.co/" target="_blank" class="d-flex"><span><?= $desarrollo ?> Intuition Studio <img src="<?php bloginfo("template_url") ?>/images/icons/logo-intuition.svg" alt=""></span></a>
       </div>
     </footer>
 
@@ -83,6 +83,8 @@
 
   </main>
 
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <script src="<?php bloginfo('template_url') ?>/assets/js/core.min.js"></script>
   <script src="<?php bloginfo('template_url') ?>/assets/js/supermenu.js"></script>
   <script src="<?php bloginfo('template_url') ?>/assets/js/script.js"></script>
@@ -99,6 +101,7 @@
   <?php
   if (is_tax("categoria") || mazal_is_portfolio_page() || is_search()) {
   ?>
+
     <script type="text/javascript" src="<?php bloginfo('template_url') ?>/assets/js/bootstrap-multiselect.js"></script>
     <script type="text/javascript" src="<?php bloginfo('template_url') ?>/assets/js/isotope.pkgd.min.js"></script>
     <script>

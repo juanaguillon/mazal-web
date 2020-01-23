@@ -3,13 +3,12 @@
     height: 530px;
     min-height: auto;
   }
-   .lineas_container {
-     
-     &.lefting {
-       flex-direction: column-reverse;
-       display: flex;
-     }
-   }
+  .lineas_container {
+    &.lefting {
+      flex-direction: column-reverse;
+      display: flex;
+    }
+  }
   .banner_image {
     height: 100%;
     img {
@@ -101,8 +100,6 @@
   // .portafolio_single_image_context {
   //   transform: translateY(0%);
   // }
-
-  
 }
 
 @media (max-width: 768px) {
@@ -179,6 +176,7 @@
   #mapFoot {
     // height: 70vh;
     min-height: 400px;
+    height: 100%;
   }
   .mazal_logo_footer img {
     max-width: 290px;
@@ -212,5 +210,4 @@
   .portafolio_show_more_wrap {
     height: 40vh;
   }
-  
 }

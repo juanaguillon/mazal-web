@@ -77,7 +77,7 @@ try {
 
     // $mail->AddCC("silvana.camacho@mazal.co");
     // $mail->AddCC("sebastian.camacho@mazal.co");
-    $mail->AddCC("juanaguilloncar@hotmail.com");
+    $mail->AddCC("tavocreativo@gmail.com");
     $visitante->AddAddress($email);
 
     $mail->IsHTML(true);
@@ -154,7 +154,7 @@ try {
 
 
 
-                  <table width="384" border="1" align="center" cellpadding="3" cellspacing="0" bordercolor="#000" style="font-family: Arial, Helvetica, sans-serif;">
+                  <table width="480" border="1" align="center" cellpadding="3" cellspacing="0" bordercolor="#000" style="font-family: Arial, Helvetica, sans-serif;">
 
                     <tr>
                       <td width="84"><span><strong>Nombre</strong></span></td>

@@ -101,7 +101,7 @@
     top: 0em !important;
     text-align: left;
     line-height: 1.1;
-    	color: $chocolate;
+    color: $chocolate;
     span {
       position: static;
     }
@@ -126,56 +126,62 @@
 //   }
 // }
 
-
-.mansory-gallery{
+.mansory-gallery {
   display: flex;
-  height: 70vh; 
-  .columna-1{
-    width:40%;
+  height: 600px;
+  .columna-1 {
+    width: 40%;
+    height: 100%;
   }
-  .columna-2{
-    width:60%;
+  .columna-2 {
+    width: 60%;
+    height: 100%;
+    margin-left: 8px;
   }
-  .mansory-item{
+  .mansory-item {
     position: relative;
     overflow: hidden;
     margin: 10px 5px;
-    width:calc(100% - 10px);
-    img{
-      position:absolute;
-      top:-999999px;
-      left:-999999px;
-      right:-999999px;
-      bottom:-999999px;
-      margin:auto;
-      max-width: initial;  
+    width: 100%;
+    // width: calc(100% - 10px);
+    img {
+      position: absolute;
+      top: -999999px;
+      left: -999999px;
+      right: -999999px;
+      bottom: -999999px;
+      margin: auto;
+      max-width: initial;
     }
-    
   }
-  .uno{
-    height: calc(60% - 10px);
-    
+  // .uno {
+  //   height: calc(60% - 10px);
+  // }
+  // .dos {
+  //   height: calc(40% - 10px);
+  // }
+  // .tres {
+  //   height: calc(38% - 10px);
+  // }
+  // .cuatro {
+  //   height: calc(62% - 10px);
+  // }
+  .uno {
+    height: 60%;
   }
-  .dos{
-    
-    height: calc(40% - 10px);
-    
-    
+  .dos {
+    height: 40%;
   }
-  .tres{
-    
-    height: calc(38% - 10px);
-    
+  .tres {
+    height: 38%;
   }
-  .cuatro{
-    
-    height: calc(62% - 10px);
-    
+  .cuatro {
+    height: 62%;
   }
 }
 
 @media #{$mobile_query} {
-  .mansory-gallery{
+  .mansory-gallery {
     height: 350px;
   }
 }

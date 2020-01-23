@@ -53,6 +53,7 @@
     var mailUrl = "<?php echo get_template_directory_uri() . "/includes/envioform.php" ?>"
     var chimpUrl = "<?php echo get_template_directory_uri() . "/includes/addmailchimpmail.php" ?>"
     var ajaxUrl = "<?php echo admin_url("admin-ajax.php") ?>"
+    var isSpanish = <?php echo mazal_is_language() ? "true" : "false" ?>
   </script>
 
   <?php
