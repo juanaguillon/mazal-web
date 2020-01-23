@@ -336,7 +336,7 @@ section h3 {
     display: flex;
   }
   .modal_bcontent {
-    padding: 9px 25px;
+    padding: 20px;
     position: relative;
   }
   .modal_title {
@@ -412,7 +412,9 @@ section h3 {
 }
 
 .fav_cotizar_wrap {
-  margin-top: 11px;
+  margin-top: 10px;
+  overflow-y: scroll; 
+  max-height: 330px;
 }
 
 .fav_cotizar_delete{

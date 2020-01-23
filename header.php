@@ -481,7 +481,14 @@
               </div>
               <div class="row">
                 <div class="col-md-6">
-                  <h4>Lista de cotización</h4>
+                <?php
+                if (mazal_is_language("es")) {
+                  $listacotizacion = "Lista de cotización";
+                } else {
+                  $listacotizacion = "Quote List";
+                }
+                ?>
+                  <h4 class="lista-cotizacion"><?= $listacotizacion ?></h4>
                   <div id="fav_cotizar_wrap" class="fav_cotizar_wrap">
                   </div>
                 </div>

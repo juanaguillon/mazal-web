@@ -142,7 +142,7 @@
 .item-features {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   .feature {
     span:first-child {
       font-weight: 500;
@@ -153,6 +153,10 @@
       color: #000;
     }
   }
+}
+
+.color-item-feature{
+  margin-bottom: 20px;  
 }
 
 .color-scheme-item {
