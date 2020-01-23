@@ -8,6 +8,12 @@ body {
   overflow-x: hidden;
 }
 
+@media (max-width:768px){
+  body{
+    font-size: 17px;
+  }
+}
+
 h1,
 h2,
 h3,
@@ -341,13 +347,17 @@ section h3 {
   }
   .modal_title {
     background: $dorado;
-    padding: 22px 25px;
+    padding: 22px 20px;
     justify-content: space-between;
     display: flex;
     align-items: center;
     h4 {
       margin: 0;
       color: white;
+      font-weight: 600;
+    font-size: 22px;
+    text-align: left;
+      
     }
     span {
       color: wheat !important;
@@ -409,11 +419,12 @@ section h3 {
   font-size: 18px;
     margin-bottom: 20px;
     font-weight: 600;
+    text-align: left; 
 }
 
 .fav_cotizar_wrap {
   margin-top: 10px;
-  overflow-y: scroll; 
+  overflow-y: auto; 
   max-height: 330px;
 }
 
@@ -422,13 +433,12 @@ section h3 {
 }
 
 .fav_cotizar_delete button{
-	border: none;
-	padding: 8px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background: white;
-  border-radius: 50%;
+  border: 1px solid gray;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
   cursor: pointer;
   text-align: center;
   i{
@@ -448,6 +458,8 @@ section h3 {
 .fav_cotizar_title {
   margin-left: 10px;
     width: calc(100% - 80px);
+    display: flex;
+    flex-direction: column;
 }
 #cotizar_lote_error_minimum {
   text-align: center;

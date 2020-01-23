@@ -123,7 +123,11 @@ function mazal_ajax_get_products_to_cotize()
         <img src="<?= get_field("imagen_de_producto", $post)["sizes"]["thumbnail"] ?>" alt="">
       </div>
       <div class="fav_cotizar_title">
-        <span><?= $post->post_title !== "" ? $post->post_title : " - " ?> <strong>X<?= $ids[$keyQuamtity]["quantity"] ?></strong></span>
+        <span><?= $post->post_title !== "" ? $post->post_title : " - " ?></span>
+        <div>
+          <span>Unidad</span>
+        <strong>x<?= $ids[$keyQuamtity]["quantity"] ?></strong>
+        </div>
       </div>
       <div class="fav_cotizar_delete">
         <button data-delete="<?= $post->ID ?>" class="delete_favorite">

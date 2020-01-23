@@ -469,7 +469,15 @@
           <div class="modal_container">
             <div class="modal_title">
               <div class="modal_title_left">
-                <i class="text-white icon-logo"></i>
+                <!-- <i class="text-white icon-logo"></i> -->
+                <?php
+                if (mazal_is_language("es")) {
+                  $solicitudcotizacion = "Solicitud de cotización";
+                } else {
+                  $solicitudcotizacion = "Request for quotation";
+                }
+                ?>
+                  <h4 class=""><?= $solicitudcotizacion ?></h4>
               </div>
               <div class="modal_title_right">
                 <button class="button cuadro button_close_modal"><i class="icon-cross"></i></button>
@@ -483,12 +491,12 @@
                 <div class="col-md-6">
                 <?php
                 if (mazal_is_language("es")) {
-                  $listacotizacion = "Lista de cotización";
+                  $listaproductos = "Productos";
                 } else {
-                  $listacotizacion = "Quote List";
+                  $listaproductos = "Products";
                 }
                 ?>
-                  <h4 class="lista-cotizacion"><?= $listacotizacion ?></h4>
+                  <h4 class="lista-cotizacion"><?= $listaproductos ?></h4>
                   <div id="fav_cotizar_wrap" class="fav_cotizar_wrap">
                   </div>
                 </div>
