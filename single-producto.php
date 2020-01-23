@@ -2,7 +2,7 @@
 
 require "vendor/autoload.php";
 
-use Intervention\Image\ImageManager as Img;
+use Intervention\Image\ImageManagerStatic as Img;
 
 get_header();
 $producst = mazal_get_favorite_products();
@@ -54,10 +54,25 @@ $producto = get_queried_object();
         <div class="swiper-container gallery-top">
           <div class="swiper-wrapper" id="image_product_slick">
             <?php
-            $imgInstace = new Img();
-            $urlFull = (string) $imgInstace->make(get_field("imagen_de_producto", $producto)["original_image"]["url"])->encode("data-url");
-            $urlLarge = (string) $imgInstace->make(get_field("imagen_de_producto", $producto)["sizes"]["large"])->encode("data-url");
-            // printcode($d2);
+            $watermakr = Img::make(wp_get_attachment_image_src(802, "medium")[0]);
+            $watermakr->backup();
+            $watLarge = $watermakr->resize(170, null, function ($const) {
+              $const->aspectRatio();
+            });
+            $urlLarge = (string) Img::make(get_field("imagen_de_producto", $producto)["sizes"]["large"])
+              ->insert($watLarge, "bottom-right", 30, 10)
+              ->encode("data-url");
+
+            $watermakr->reset();
+
+            $watFull = $watermakr->resize(200, null, function ($const) {
+              $const->aspectRatio();
+            });
+            $urlFull = (string) Img::make(get_field("imagen_de_producto", $producto)["original_image"]["url"])
+              ->insert($watFull, "bottom-right", 10, 10)
+              ->encode("data-url");
+
+
 
             ?>
             <div data-src="<?= $urlFull ?>" class="item_image_product swiper-slide item-swipper-image" style="background-image:url(<?= $urlLarge ?>)">
@@ -67,11 +82,16 @@ $producto = get_queried_object();
             <?php
             $galeria = get_field("galeria", $producto);
             if ($galeria && count($galeria) > 0) :
-
               foreach ($galeria as $imgGall) :
+                $urlGalFull = (string) Img::make($imgGall["url"])
+                  ->insert($watFull, "bottom-right", 10, 10)
+                  ->encode("data-url");
 
+                $urlGalLarge = (string) Img::make($imgGall["sizes"]["large"])
+                  ->insert($watLarge, "bottom-right", 30, 10)
+                  ->encode("data-url");
             ?>
-                <div data-src="<?= $imgGall["url"] ?>" class="swiper-slide item_image_product item-swipper-image" style="background-image:url(<?php echo $imgGall["sizes"]["large"] ?>)">
+                <div data-src="<?= $urlGalFull ?>" class="swiper-slide item_image_product item-swipper-image" style="background-image:url(<?php echo $urlGalLarge ?>)">
                   <div class="swiper-zoom-container" data-swiper-zoom="5">
                   </div>
                 </div>
@@ -183,13 +203,13 @@ $producto = get_queried_object();
                 </ul>
               </div>
             </div>
-            
+
           <?php endif; ?>
-                      <div class="qty counter-2">
-                                  <span class="minus bg-dark">-</span>
-                                  <input type="number" class="count" value="1">
-                                  <span class="plus bg-dark">+</span>
-                              </div>
+          <div class="qty counter-2">
+            <span class="minus bg-dark">-</span>
+            <input type="number" class="count" value="1">
+            <span class="plus bg-dark">+</span>
+          </div>
 
           <div class="action-for-item">
 

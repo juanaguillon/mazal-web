@@ -655,6 +655,10 @@ a.languages_toggle {
     font-size: 15px;
     width: 120px;
     text-align: center;
+    & > span {
+      margin-bottom: 5px;
+      display: block;
+    }
     span {
       color: #000;
     }
@@ -692,18 +696,20 @@ a.languages_toggle {
   }
 }
 
-.qty.counter-2{
-  .plus, .minus{
-    width: 34px;
-    height: 34px;
+.single_favorite_title {
+  .plus,
+  .minus {
+    width: 18px;
+    height: 18px;
     color: $chocolate;
+    display: inline-block;
     font-size: 24px;
-    line-height: 32px; 
+    	line-height: 0.9 !important;
   }
-  .minus{
+  .minus {
     line-height: 30px;
   }
-  .count{
+  .count {
     font-size: 16px;
     font-weight: 500;
     font-family: "Work Sans";
@@ -722,30 +728,11 @@ a.languages_toggle {
   min-width: 23px;
   text-align: center;
 }
-.qty .plus {
-  cursor: pointer;
-  display: inline-block;
-  vertical-align: top;
-  color: white;
-  width: 22px;
-  height: 22px;
-  font: 18px/1 Arial, sans-serif;
-  line-height: 20px;
-  text-align: center;
-  border: 1px solid gray;
-  transition: all 0.2s;
-}
+.qty .plus,
 .qty .minus {
-  cursor: pointer;
-  display: inline-block;
-  vertical-align: top;
-  color: white;
-  width: 22px;
-  height: 22px;
   font: 18px/1 Arial, sans-serif;
   line-height: 20px;
   text-align: center;
-  background-clip: padding-box;
   border: 1px solid gray;
   transition: all 0.2s;
 }
