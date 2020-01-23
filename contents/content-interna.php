@@ -76,6 +76,7 @@
           </div>
 
         </div>
+      
 
       </div>
       <div class="col-md-5 wow slideInRight" data-wow-offset="20">
