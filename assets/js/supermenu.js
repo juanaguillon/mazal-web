@@ -34,6 +34,8 @@
     $(".super_menu_comenext")
       .off("click")
       .on("click", function(e) {
+        e.stopPropagation();
+        e.preventDefault();
         $(this).hide();
         $(this)
           .prev("a")
@@ -55,7 +57,9 @@
 
     $(".super_menu_comeback")
       .off("click")
-      .click(function() {
+      .click(function(e) {
+        e.stopPropagation();
+        e.preventDefault();
         $(".super_menu_item_active").removeClass("super_menu_item_active");
         $(".super_menu_comenext").css("display", "block");
         var parentLi = $(this)

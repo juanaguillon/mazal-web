@@ -61,7 +61,7 @@ function mazal_single_subcat($title, $description, $image, $link, $colNumber)
 {
 ?>
   <div class="<?php echo $colNumber ?>">
-    <a href="<?php echo $link ?>">
+    <a class="h-100 d-block w-100" href="<?php echo $link ?>">
 
       <div class="single_linea_wrapper">
         <div class="single_linea_image">
