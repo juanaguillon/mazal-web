@@ -12,15 +12,8 @@
   .banner_image {
     height: 100%;
     img {
-      height: 110%;
-      width: auto;
       max-width: inherit;
-      position: absolute;
-      left: -9999px;
-      right: -9999px;
-      top: -9999px;
       margin: auto;
-      bottom: -9999px;
     }
   }
   .banner_item {

@@ -1,13 +1,13 @@
+"use strict";
+
 $(window).on("load", function() {
   /**
    * Este archivo se usará para añadir la funcionalidad de isotope y imagefill en la taxonomia y en el portafolio.
    * Este archivo se linkea en el footer con una condificional PHP
    */
-
-  $("#chkveg").multiselect({
-    includeSelectAllOption: true
-  });
-
+  // $("#chkveg").multiselect({
+  //   includeSelectAllOption: true
+  // });
   // init Isotope
   var selectorItem = ".col-item";
   var $grid = $(".grid-item-category").isotope({
@@ -18,12 +18,12 @@ $(window).on("load", function() {
   var next_items = 3;
   var quantityElm = $("#count_actual_items_show");
 
-  var updateCount = function() {
+  var updateCount = function updateCount() {
     var actualCount = parseInt(quantityElm.val()) + next_items;
     quantityElm.val(actualCount);
   };
 
-  var resizePhoto = function(jqueryImg) {
+  var resizePhoto = function resizePhoto(jqueryImg) {
     var refRatio = 380 / 230;
     var parentIMG = jqueryImg.parent();
     var imgH = jqueryImg.height();
@@ -36,17 +36,17 @@ $(window).on("load", function() {
     }
   };
 
-  var hideItems = function(gridC) {
+  var hideItems = function hideItems(gridC) {
     var quantityCount = quantityElm.val();
     var itemsShow = gridC.isotope("getFilteredItemElements");
     var counter = 0;
     var filterClass = document
       .getElementById("load_more_filter_items")
       .getAttribute("data-filter");
-
     $(itemsShow).each(function(i, elm) {
       if (counter < parseInt(quantityCount)) {
         filterClass = filterClass.replace(".", "");
+
         if ($(this).hasClass(filterClass) || counter <= itemsShow.length) {
           var img = $(this).find("img");
           img.on("load", function() {
@@ -72,18 +72,21 @@ $(window).on("load", function() {
     $grid.isotope("layout");
   });
 
-  var resiveGrid = function(filter) {
+  var resiveGrid = function resiveGrid(filter) {
     $("#load_more_filter_items")[0].setAttribute("data-filter", filter);
     quantityElm.val(initial_items);
-    $grid.isotope({ filter: filter });
+    $grid.isotope({
+      filter: filter
+    });
     hideItems($grid);
     $grid.isotope("layout");
   };
-
   /**
    * Crear filtro de checkbox en la página interna (interna-sub.php)
    */
+
   var $el = $(".dropdown");
+
   if (isCategoria) {
     var currentSlugClassName = $("#current_category").val();
     var filter = "." + currentSlugClassName;
@@ -92,23 +95,26 @@ $(window).on("load", function() {
 
   function updateStatus(label, result) {
     $(".dropdown").removeClass("open");
+
     if (result === "") {
       label.text(label.data("emplabel"));
     }
   }
 
   $el.each(function(i, element) {
+    var _this = this;
+
     var $label = $(this).find(".dropdown-label"),
       $inputs = $(this).find(".check"),
       unique = $(this).find(".check-unique");
-
-    $label.on("click", e => {
+    $label.on("click", function(e) {
       e.stopPropagation();
-      if ($(this).hasClass("open")) {
-        $(this).toggleClass("open");
+
+      if ($(_this).hasClass("open")) {
+        $(_this).toggleClass("open");
       } else {
         $(".dropdown").removeClass("open");
-        $(this).addClass("open");
+        $(_this).addClass("open");
       }
     });
     unique.on("change", function() {
@@ -122,9 +128,7 @@ $(window).on("load", function() {
       $("#current_category").val(filter.replace(".", ""));
       $label.text(text);
       resiveGrid(filter);
-    });
-
-    // Estos inputs serán visiblen el portafolio, se representan con el color "Dorado (Marrón)"
+    }); // Estos inputs serán visiblen el portafolio, se representan con el color "Dorado (Marrón)"
 
     $inputs.on("change", function() {
       /**
@@ -145,14 +149,14 @@ $(window).on("load", function() {
       }
 
       $label.text(text);
-      updateStatus($label, text);
-
-      // ================
+      updateStatus($label, text); // ================
 
       var filtering = "." + $("#current_category").val();
+
       if ($(this).data("filter") !== "*") {
         filtering += $(this).data("filter");
       }
+
       resiveGrid(filtering);
     });
     $(document).on("click touchstart", function(e) {
@@ -161,7 +165,6 @@ $(window).on("load", function() {
       }
     });
   });
-
   $("body").click(function() {
     $(".dropdown").removeClass("open");
   });
