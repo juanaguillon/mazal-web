@@ -74,7 +74,7 @@
 
       </div>
     </div>
-    <div class="col-md-5 col-lg-6">
+    <div class="col-md-5 col-lg-6 d-block">
       <div class="map h-100" id="mapFoot"></div>
 
       <script>

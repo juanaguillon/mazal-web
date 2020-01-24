@@ -65,7 +65,7 @@ header {
 
   #icon_bars {
     @media (max-width: 991px) {
-      padding-right: 0px;
+      // padding-right: 0px;
     }
     z-index: 30;
     display: none;
@@ -196,6 +196,11 @@ header {
   span.language {
     font-size: 18px;
   }
+
+  // .banner_item{
+  //   height: calc(100vh - 70px);
+  // }
+
 }
 
 @media (max-width: 768px) {

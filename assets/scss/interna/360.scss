@@ -18,7 +18,9 @@
   }
   .button.general_button {
     margin: initial;
-    width: max-content;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: -o-fit-content;
   }
 }
 .categoria-contenedor {
@@ -102,6 +104,12 @@
     min-height: calc(100vh - 70px);
     height: auto;
     padding: 30px;
+  }
+}
+
+@media (max-width:991px){
+  .tres_60_white_wrap p{
+    width:100%;
   }
 }
 

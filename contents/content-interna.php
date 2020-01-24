@@ -103,7 +103,7 @@
         }
 
         ?>
-        <a href="<?php echo esc_url(get_permalink(pll_get_post(808))); ?>" class="button button_dark general_button font-2" style="margin:initial; width:max-content;">
+        <a href="<?php echo esc_url(get_permalink(pll_get_post(808))); ?>" class="button button_dark general_button font-2" style="margin:initial;">
           <span class="text-black"><?php echo $buttonNosot ?></span>
         </a>
       </div>

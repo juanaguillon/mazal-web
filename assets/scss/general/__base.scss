@@ -9,9 +9,17 @@ body {
   max-width: 100vw;
 }
 
+
+input, textarea, select{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0 ;
+}
+
 @media (max-width:768px){
   body{
-    font-size: 17px;
+    font-size: 17px; 
   }
 }
 
@@ -140,7 +148,9 @@ section h3 {
 .button.general_button {
   font-family: $font2;
   position: relative;
-  width: max-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: -o-fit-content;
   perspective: 400px;
   background-color: transparent;
   padding: 0;
@@ -334,7 +344,7 @@ section h3 {
   padding: 10px;
   width: 100%;
   left: 0;
-  background: #000000d1;
+  background: rgba(0, 0, 0, 0.85);
   height: 100%;
   display: none;
   align-items: center;

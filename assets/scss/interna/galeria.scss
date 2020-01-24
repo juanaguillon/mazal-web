@@ -128,21 +128,23 @@
 
 .mansory-gallery {
   display: flex;
-  height: 600px;
+  height: calc(100vh - 160px);
+  max-height: 650px;
+  
   .columna-1 {
     width: 40%;
-    height: 100%;
+    height: calc(100% - 5px);
   }
   .columna-2 {
     width: 60%;
-    height: 100%;
+    height: calc(100% - 5px);
     margin-left: 8px;
   }
   .mansory-item {
     position: relative;
     overflow: hidden;
     margin: 10px 5px;
-    width: 100%;
+    width: calc(100% - 10px);
     // width: calc(100% - 10px);
     img {
       position: absolute;
@@ -167,18 +169,25 @@
   //   height: calc(62% - 10px);
   // }
   .uno {
-    height: 60%;
+    height: calc(60% - 15px);
   }
   .dos {
-    height: 40%;
+    height: calc(40% - 15px);
   }
   .tres {
-    height: 38%;
+    height: calc(38% - 15px);
   }
   .cuatro {
-    height: 62%;
+    height: calc(62% - 15px);
   }
 }
+
+@media (max-width:991px){
+  #section_galeria{
+    min-height: auto; 
+  }
+}
+
 
 @media #{$mobile_query} {
   .mansory-gallery {
