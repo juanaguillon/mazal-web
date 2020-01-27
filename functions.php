@@ -106,11 +106,12 @@ function mazal_ajax_get_products_to_cotize()
   $arrJson = array();
   ob_start();
   foreach ($products["posts"] as $kp => $post) :
+
+    // Esta comprobación se hará para verificar si el producto está seleccionado en el checkbox de el panel de favoritos
     if (!in_array($post->ID, array_column($ids, "id"))) continue;
 
     $keyQuamtity = array_search($post->ID, array_column($ids, "id"));
-    // if ( in_array($post->ID, ""))
-    $arrJson[] = array(
+    $arrJson[$post->ID] = array(
       "product_name" =>  $post->post_title !== "" ? $post->post_title : " - ",
       "product_id" => $post->ID,
       "product_link" => get_permalink($post),
@@ -124,12 +125,16 @@ function mazal_ajax_get_products_to_cotize()
       </div>
       <div class="fav_cotizar_title">
         <span><?= $post->post_title !== "" ? $post->post_title : " - " ?></span>
-        <div>
+        <div class="fav_quantity_wrap">
           <span>Unidad</span>
-        <strong>x<?= $ids[$keyQuamtity]["quantity"] ?></strong>
+          <strong>x</strong>
+          <input class="edit_favorite_inputn" data-keynumber="<?= $post->ID ?>" type="number" value="<?= $ids[$keyQuamtity]["quantity"] ?>">
         </div>
       </div>
       <div class="fav_cotizar_delete">
+        <!-- <button class="edit_favorite">
+          <i class="icon-pencil"></i>
+        </button> -->
         <button data-delete="<?= $post->ID ?>" class="delete_favorite">
           <i class="icon-cross"></i>
         </button>

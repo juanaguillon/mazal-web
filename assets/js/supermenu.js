@@ -1,3 +1,6 @@
+/**
+ * Este archivo servirá para el comportamiento de el menu en responsive.
+ */
 (function($) {
   /*
    * directLi
@@ -5,11 +8,30 @@
    * arrowLeftClass
    * arrowRightClass
    */
+
   $.fn.superMenu = function(props) {
     var directLi = $(this).children(props.directLi),
       submenuSelector = props.submenuSelector,
       arrowLeftClass = props.arrowLeftClass,
       arrowRightClass = props.arrowRightClass;
+
+    function restoreMenu() {
+      $(".super_menu_item_active").removeClass("super_menu_item_active");
+      $(".super_menu_comenext").css("display", "block");
+      var parentLi = $(".super_menu_comeback")
+        .parent()
+        .parent(directLi);
+      directLi.css({
+        display: "flex",
+        "flex-direction": "row",
+        "align-items": "center"
+      });
+      $(submenuSelector).css("display", "none");
+      parentLi
+        .siblings()
+        .hide()
+        .fadeIn(300);
+    }
 
     directLi.each(function() {
       if ($(this).children(submenuSelector).length > 0) {
@@ -60,21 +82,11 @@
       .click(function(e) {
         e.stopPropagation();
         e.preventDefault();
-        $(".super_menu_item_active").removeClass("super_menu_item_active");
-        $(".super_menu_comenext").css("display", "block");
-        var parentLi = $(this)
-          .parent()
-          .parent(directLi);
-        directLi.css({
-          display: "flex",
-          "flex-direction": "row"
-        });
-        $(submenuSelector).css("display", "none");
-        parentLi
-          .siblings()
-
-          .hide()
-          .fadeIn(300);
+        restoreMenu();
       });
+
+    $(window).on("resize", function() {
+      restoreMenu();
+    });
   };
 })(window.jQuery);

@@ -9,17 +9,18 @@ body {
   max-width: 100vw;
 }
 
-
-input, textarea, select{
+input,
+textarea,
+select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0 ;
+  border-radius: 0;
 }
 
-@media (max-width:768px){
-  body{
-    font-size: 17px; 
+@media (max-width: 768px) {
+  body {
+    font-size: 17px;
   }
 }
 
@@ -366,9 +367,8 @@ section h3 {
       margin: 0;
       color: white;
       font-weight: 600;
-    font-size: 22px;
-    text-align: left;
-      
+      font-size: 22px;
+      text-align: left;
     }
     span {
       color: wheat !important;
@@ -406,7 +406,7 @@ section h3 {
     left: -9999px !important;
     right: -9999px !important;
     top: -9999px !important;
-    bottom: -9999px !important; 
+    bottom: -9999px !important;
     margin: auto;
     max-width: inherit;
   }
@@ -426,24 +426,24 @@ section h3 {
   max-width: 900px;
 }
 
-.lista-cotizacion{
+.lista-cotizacion {
   font-size: 18px;
-    margin-bottom: 20px;
-    font-weight: 600;
-    text-align: left; 
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-align: left;
 }
 
 .fav_cotizar_wrap {
   margin-top: 10px;
-  overflow-y: auto; 
+  overflow-y: auto;
   max-height: 330px;
 }
 
-.fav_cotizar_delete{
+.fav_cotizar_delete {
   margin-left: 20px;
 }
 
-.fav_cotizar_delete button{
+.fav_cotizar_delete button {
   border: 1px solid gray;
   padding: 8px;
   display: flex;
@@ -452,7 +452,7 @@ section h3 {
   background: none;
   cursor: pointer;
   text-align: center;
-  i{
+  i {
     font-size: 9px;
   }
 }
@@ -468,9 +468,16 @@ section h3 {
 
 .fav_cotizar_title {
   margin-left: 10px;
-    width: calc(100% - 80px);
-    display: flex;
-    flex-direction: column;
+  width: calc(100% - 80px);
+  display: flex;
+  flex-direction: column;
+}
+.fav_quantity_wrap input[type="number"] {
+  display: inline-block;
+  background: none;
+  padding: 6px 10px;
+  border: 1px solid #8c7d6c85;
+  width: 45px;
 }
 #cotizar_lote_error_minimum {
   text-align: center;

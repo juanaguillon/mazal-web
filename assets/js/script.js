@@ -896,7 +896,6 @@ function actionsInFavoritesPanel() {
           action: "get_prods_cotize"
         },
         success: function(edata) {
-          console.log(edata);
           $("#fav_cotizar_wrap").html(edata);
           $(".delete_favorite").unbind("click");
           $(".delete_favorite").click(function(e) {
@@ -907,6 +906,14 @@ function actionsInFavoritesPanel() {
             $(this)
               .closest(".fav_cotizar")
               .remove();
+          });
+
+          $(".edit_favorite_inputn").change(function() {
+            var quantiry = $(this).val();
+            var dataInput = $(this).data("keynumber");
+            var prefJson = JSON.parse($("#cotize_vals").val());
+            prefJson[dataInput]["product_quantity"] = quantiry;
+            $("#cotize_vals").val(JSON.stringify(prefJson));
           });
         }
       });
