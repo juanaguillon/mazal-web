@@ -577,7 +577,7 @@
   font-size: 10px;
   top: 8px;
   button {
-    padding: 8px !important;
+    padding: 14px !important;
     line-height: 1;
     border: none !important;
     display: flex;
@@ -638,6 +638,12 @@
     max-width: inherit;
     transition: all ease 0.5s;
     transform: scale(1);
+
+    margin: auto;
+    left: -9999px;
+    right: -9999px;
+    bottom: -9999px;
+    top: -9999px;
   }
   h3 {
     align-self: center;
@@ -691,6 +697,12 @@
     max-width: inherit;
     transition: all ease 0.4s;
     transform: scale(1);
+
+    margin: auto;
+    left: -9999px;
+    right: -9999px;
+    bottom: -9999px;
+    top: -9999px;
   }
   h3 {
     align-self: center;
@@ -926,9 +938,13 @@
       display: -webkit-flex;
 
       img {
-        width: calc(100vw);
-        height: initial;
-        // border: 20px red solid;
+        width: 100vw;
+        height: auto;
+        margin: auto;
+        left: -9999px;
+        right: -9999px;
+        bottom: -9999px;
+        top: -9999px;
       }
     }
   }

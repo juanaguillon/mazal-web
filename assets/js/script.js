@@ -438,7 +438,7 @@ function showPopupMobiliario() {
       .hide()
       .fadeIn(300);
     $(".popup_wrapper").addClass("move");
-    $(".popup_right, .popup_left").imagefill();
+    // $(".popup_right, .popup_left").imagefill();
   }
 }
 setTimeout(showPopup, 5000);
@@ -1043,7 +1043,7 @@ function plugnsInit() {
   $(".image-related-item").imagefill();
   $(".col-item .item").imagefill();
   $(".banner_image").imagefill();
-  $(".popup_right, .popup_left").imagefill();
+  // $(".popup_right, .popup_left").imagefill();
 
   $(".bf_image_sized").imageCompare();
 
