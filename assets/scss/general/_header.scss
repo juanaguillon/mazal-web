@@ -126,7 +126,7 @@ header {
   padding: 10px 0;
   a {
     font-family: $font1;
-    font-weight: 300;
+    font-weight: 400;
   }
 }
 
@@ -156,7 +156,7 @@ header {
     height: calc(100vh - 70px) !important;
     width: 80%;
     max-width: 350px;
-    background: #000000eb;
+    background: rgba(0, 0, 0, 0.9);
     align-items: flex-end !important;
     overflow-y: auto;
     overflow-x: hidden;
@@ -172,6 +172,7 @@ header {
 
     li {
       height: 50px !important;
+      align-items: center !important;
       a {
         font-size: 16px !important;
       }
@@ -222,8 +223,6 @@ header {
     padding: 1em;
     height: calc(100vh - 50px);
     width: 80%;
-    max-width: 350px;
-    background: rgba(0, 0, 0, 0.922);
     align-items: flex-end;
     overflow-y: auto;
     overflow-x: hidden;
@@ -294,15 +293,32 @@ header {
 }
 .super_menu_item_active .super_menu_comenext {
   display: none !important;
+  
 }
 .super_menu_comeback {
-  margin-bottom: 20px;
+ 
   display: none;
+  a{
+    width: 40px;
+    padding-bottom: 20px !important;
+    display: -webkit-flex !important;
+    display: -moz-flex !important;
+    display: -o-flex !important;
+    align-items: center;
+    justify-content: center; 
+  }
+  i{
+    font-size: 25px;
+  }
 }
 .super_menu_item_active {
   display: none;
   .super_menu_comeback {
-    display: block;
+    width: 100%;
+    display: -webkit-flex !important;
+    display: -moz-flex !important;
+    display: -o-flex !important;
+    justify-content: flex-end;
   }
 }
 .header_top_list > li:after {
@@ -402,6 +418,9 @@ a.languages_toggle {
       width: initial;
       font-size: 16px;
     }
+  }
+  #section_banner_intern{
+    margin-top: 70px;
   }
 }
 
@@ -565,7 +584,7 @@ a.languages_toggle {
     transition: transform 0.4s;
     transform: translateX(120%);
     position: absolute;
-    background: #000000bf;
+    background: rgba(0, 0, 0, 0.75);
     padding: 10px 15px;
     right: 0;
     display: flex;
@@ -621,7 +640,7 @@ a.languages_toggle {
   right: 0;
   top: 100%;
   width: 320px;
-  box-shadow: 0 0 3px #00000038;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4); 
   .single_favorite + .single_favorite {
     border-top: 1px solid #eaeaea;
   }
@@ -811,6 +830,9 @@ input::-webkit-inner-spin-button {
 
 .super_menu_comenext {
   display: none !important;
+  i{
+    font-size: 25px;
+  }
 }
 .header_top_submenu {
   display: none;

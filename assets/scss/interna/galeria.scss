@@ -145,7 +145,7 @@
     overflow: hidden;
     margin: 10px 5px;
     width: calc(100% - 10px);
-    // width: calc(100% - 10px);
+    // width: calc(100% - 10px);  
     img {
       position: absolute;
       top: -999999px;
@@ -182,7 +182,7 @@
   }
 }
 
-@media (max-width:991px){
+@media (max-width:1024px){
   #section_galeria{
     min-height: auto; 
   }

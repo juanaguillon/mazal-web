@@ -15,7 +15,7 @@
 
 .categoria-contenedor{
     p{
-        font-weight: 300;
+        font-weight: 300; 
     }
 }
 
@@ -39,28 +39,36 @@
         text-align: center !important;
     }
 }
-.historia-quienes-somos{
 
+.portafolio_single_image{
+    
 }
+
 
 @media (max-width:991px){
     .quienes-somos-page{
-        padding-top:50px; 
+        padding-top:70px; 
     }
     .mid-height{
         height: auto;
     }
     .full-height{
-        height: calc(100vh - 50px);
+        height: calc(100vh - 70px);
     }
 
     .desc-nosotros-img{
-        height: calc(100vh - 50px);
+        height: calc(100vh - 70px);
     }
     .historia-quienes-somos{
         // flex-direction: column-reverse;
         .portafolio_single_image{
-            height: 100%; 
+            height: 100%;
+            display: flex;
+            a{
+                display: -webkit-flex;
+                height: 100%;
+                width: 100%; 
+            }
         }
     }
     .desc-nosotros{
@@ -70,10 +78,25 @@
     }
     #con_quien_trabajamos{
         .portafolio_single_image{
-            height: calc(50vh - 25px); 
+            height: calc(50vh - 35px); 
         }
     }
 }
+
+@media (max-width:768px){
+    
+    .quienes-somos-page{
+        .portafolio_single_image{
+            height: calc(25vh - 17.5px);
+            a{
+                display: -webkit-flex;
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+}
+
 
 @media (max-width:767px){
      .desc-nosotros-img{

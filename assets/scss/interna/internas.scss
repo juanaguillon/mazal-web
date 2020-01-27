@@ -260,7 +260,7 @@
     background: $dorado !important;
     color: white;
     &:before {
-      content: url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/drop-arrow-white.svg) !important;
+      content: url(http://mazal.co/wp-content/themes/mazal/images/interna/drop-arrow-white.svg) !important;
     }
   }
   .checkbox .checkbox-custom + .checkbox-custom-label:before,
@@ -310,7 +310,7 @@
           border: none;
           box-shadow: none;
           &:before {
-            content: url("http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/drop-arrow-white.svg");
+            content: url("http://mazal.co/wp-content/themes/mazal/images/interna/drop-arrow-white.svg");
             position: absolute;
             background: $chocolate !important;
           }
@@ -426,7 +426,7 @@ select {
   flex-direction: column;
   width: calc(100% - 40px);
   &::before {
-    content: url("http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/right-arrow.svg");
+    content: url("http://mazal.co/wp-content/themes/mazal/images/interna/right-arrow.svg");
     position: absolute;
     width: 80px;
     right: 0;
@@ -505,7 +505,7 @@ select {
     transition: all 0.3s;
 
     &:before {
-      content: url("http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/drop-arrow.svg");
+      content: url("http://mazal.co/wp-content/themes/mazal/images/interna/drop-arrow.svg");
       position: absolute;
       display: flex;
       align-items: center;
@@ -577,7 +577,7 @@ select {
   }
 
   .checkbox-custom:checked + .checkbox-custom-label:after {
-    content: url("http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/checked-mark.svg");
+    content: url("http://mazal.co/wp-content/themes/mazal/images/interna/checked-mark.svg");
     position: absolute;
     top: -1px;
     left: 2px;

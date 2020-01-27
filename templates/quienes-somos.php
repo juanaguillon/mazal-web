@@ -78,25 +78,25 @@ get_header();
     </div>
     <div class="row full-height historia-quienes-somos m-0">
 
-      <div class="col-md-5 col-lg-7 p-0">
-        <div class="row no-gutters h-100" id="quienes_somos_lg">
-          <div class=" col-lg-6 col-md-12 col-sm-6 col-12 wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;">
-            <div class="portafolio_single_image" style="overflow: hidden; position: relative;">
+      <div class="col-md-5 col-lg-7 p-0 h-100" >
+        <div class="row no-gutters h-100 " id="quienes_somos_lg" >
+          <div class=" col-lg-6 col-md-12 col-sm-6 col-12 wow fadeInLeft animated"  style=" visibility: visible; animation-name: fadeInLeft;">
+            <div class="portafolio_single_image"  style="overflow: hidden; position: relative;">
               <a class="quienes_somos_link" href="https://mazal.co/wp-content/uploads/2019/11/d_720x460_acf_cropped-1.jpg?v=1576681982"><img class="img_fill" src="https://mazal.co/wp-content/uploads/2019/11/d_720x460_acf_cropped-1.jpg?v=1576681982" alt="" style="position: absolute; width: auto; height: 346.6px; top: 0px; left: -49.7009px;"></a>
             </div>
           </div>
-          <div class=" col-lg-6 col-md-12 col-sm-6 col-12 wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">
-            <div class="portafolio_single_image" style="overflow: hidden; position: relative;">
+          <div class=" col-lg-6 col-md-12 col-sm-6 col-12 wow fadeInDown animated" style=" visibility: visible; animation-name: fadeInDown;">
+            <div class="portafolio_single_image"  style="overflow: hidden; position: relative;">
               <a class="quienes_somos_link" href="https://mazal.co/wp-content/uploads/2019/11/l-631x1024.jpg?v=1576682137"><img class="img_fill" src="https://mazal.co/wp-content/uploads/2019/11/l-631x1024.jpg?v=1576682137" alt="" style="position: absolute; width: 443.1px; height: auto; top: -186.23px; left: 0px;"></a>
             </div>
           </div>
-          <div class=" col-lg-6 col-md-12 col-sm-6 col-12 wow fadeInLeft animated " style="visibility: visible; animation-name: fadeInLeft;">
-            <div class="portafolio_single_image" style="overflow: hidden; position: relative;">
+          <div class=" col-lg-6 col-md-12 col-sm-6 col-12 wow fadeInLeft animated " style=" visibility: visible; animation-name: fadeInLeft;">
+            <div class="portafolio_single_image"  style="overflow: hidden; position: relative;">
               <a class="quienes_somos_link" href="https://mazal.co/wp-content/uploads/2019/11/v-1024x686.jpg?v=1576682105"><img class="img_fill" src="https://mazal.co/wp-content/uploads/2019/11/v-1024x686.jpg?v=1576682105" alt="" style="position: absolute; width: auto; height: 346.6px; top: 0px; left: -37.137px;"></a>
             </div>
           </div>
-          <div class=" col-lg-6 col-md-12 col-sm-6 col-12 wow fadeInUp animated " style="visibility: visible; animation-name: fadeInUp;">
-            <div class="portafolio_single_image" style="overflow: hidden; position: relative;">
+          <div class=" col-lg-6 col-md-12 col-sm-6 col-12 wow fadeInUp animated " style=" visibility: visible; animation-name: fadeInUp;">
+            <div class="portafolio_single_image"  style="overflow: hidden; position: relative;">
               <a class="quienes_somos_link" href="https://mazal.co/wp-content/uploads/2019/11/e-1024x576.jpg?v=1576682163"><img class="img_fill" src="https://mazal.co/wp-content/uploads/2019/11/e-1024x576.jpg?v=1576682163" alt="" style="position: absolute; width: auto; height: 346.6px; top: 0px; left: -86.5363px;"></a>
             </div>
           </div>

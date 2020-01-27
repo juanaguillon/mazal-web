@@ -11,10 +11,12 @@
 
 .row_linea_container_left {
   margin-left: 75px;
+  height: calc(100vh - 145px); 
 }
 
 .row_linea_container_right {
   margin-right: 75px;
+  height: calc(100vh - 145px); 
 }
 
 .linea_label {
@@ -130,6 +132,7 @@
     margin-bottom: 0px;
     font-weight: lighter;
     position: relative;
+    font-weight: 300;
   }
   p {
     color: white;

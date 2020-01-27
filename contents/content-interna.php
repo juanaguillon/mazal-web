@@ -304,28 +304,27 @@
   }
 
   ?>
-  <div class="row no-gutters flex-lg-row flex-column-reverse">
-    <div class="col-lg-9">
+  <div class="row no-gutters flex-lg-row ">
+    <div class="col-md-7 col-lg-9">
 
-      <div class="row no-gutters">
-        <div class="col_portfolio col-lg-8 col-md-6 wow fadeInLeft">
+      <div class="row no-gutters images-portfolio">
+        <div class="col_portfolio col-lg-8 col-md-12 wow fadeInLeft">
           <?php echo mazal_send_portfolio($prpf1) ?>
         </div>
         <div class="col_portfolio col-lg-4 col-md-6 wow fadeInDown">
           <?php echo mazal_send_portfolio($prpf2) ?>
         </div>
-      </div>
-      <div class="row no-gutters">
         <div class="col_portfolio col-lg-4 col-md-6 wow fadeInLeft">
           <?php echo mazal_send_portfolio($prpf3) ?>
         </div>
-        <div class="col_portfolio col-lg-8 col-md-6 wow fadeInUp">
+        <div class="t-none col_portfolio col-lg-8 col-md-6 wow fadeInUp">
           <?php echo mazal_send_portfolio($prpf4) ?>
         </div>
       </div>
+      
 
     </div>
-    <div class="col-lg-3 wow fadeInRight">
+    <div class="col-md-5 col-lg-3 wow fadeInRight">
       <div class="portafolio_show_more_wrap">
         <div class="black_background"></div>
         <img class="portfolio_show_more_image h-100 w-init" src="<?php bloginfo("template_url") ?>/images/interna/image7.jpg" alt="">

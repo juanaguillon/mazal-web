@@ -49,8 +49,10 @@
 
 .search-buttons{
   display: flex;
-  width:max-content;
-  margin: auto !important;
+  width:-webkit-max-content;
+  width:-moz-max-content;
+  width:-o-max-content;
+  margin: auto !important; 
   a, button{
     margin: 0px 10px !important;
   }

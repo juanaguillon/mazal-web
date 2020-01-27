@@ -248,7 +248,7 @@ $producto = get_queried_object();
             <div class="redes-compartir">
               <ul class="d-flex">
                 <li>
-                  <a target="_blank" href="" data-link-mb="whatsapp://send?text=<?php echo esc_url(get_permalink($producto)) ?>" data-link-ds="https://wa.me/?text=<?php echo esc_url(get_permalink($producto)) ?>" id="share_whatsapp_product" class="share-whatsapp"><img src="http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/whastapp-social-media.svg" alt=""></a>
+                  <a target="_blank" href="" data-link-mb="whatsapp://send?text=<?php echo esc_url(get_permalink($producto)) ?>" data-link-ds="https://wa.me/?text=<?php echo esc_url(get_permalink($producto)) ?>" id="share_whatsapp_product" class="share-whatsapp"><img src="http://mazal.co/wp-content/themes/mazal/images/interna/whastapp-social-media.svg" alt=""></a>
                 </li>
                 <li>
                   <a class="facebook_share" data-nombre="<?php echo $producto->post_title ?>" data-descrip="<?php echo $producto->post_content ?>" data-urlimg="<?php echo get_field("imagen_de_producto", $producto)["sizes"]["medium"] ?>">

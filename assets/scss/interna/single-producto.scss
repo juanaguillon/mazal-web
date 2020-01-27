@@ -212,7 +212,7 @@
 }
 
 .call-action {
-  background-image: url(http://www.intuitionstudio.co/mazal/wp-content/themes/mazal/images/interna/background-call-action.jpg);
+  background-image: url(http://mazal.co/wp-content/themes/mazal/images/interna/background-call-action.jpg);
   background-color: #3b3b3b;
   background-blend-mode: multiply;
   background-size: cover;
@@ -237,12 +237,14 @@
       font-size: 17px;
     }
     input[type="submit"] {
-      color: #fff;
+      color: white;
       background: $dorado;
       border: none;
       height: 45px;
       font-family: $font2;
-      padding: 10px 30px;
+      padding: 10px 30px !important;
+      min-width: 120px;
+      width: 100%;
       font-size: 15px;
       cursor: pointer;
     }

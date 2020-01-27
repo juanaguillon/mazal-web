@@ -93,7 +93,7 @@
 
   .bf_image_sized {
     width: 71%;
-    height: 70vh;
+    height: calc(100vh - 550px);
   }
   .bef_aft_descriptions_container {
     padding: 0.8em;
