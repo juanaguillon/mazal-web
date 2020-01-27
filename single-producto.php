@@ -239,16 +239,20 @@ $producto = get_queried_object();
 
             <span>
               <?php
-              if (mazal_is_language()) : ?>
-                Compartir producto
-              <?php else : ?>
-                Share product
-              <?php endif; ?>
+              if (mazal_is_language()) {
+                $compartir = "Compartir producto";
+                $textWha = "Hola, me interesa conocer más de este producto " . esc_url(get_permalink($producto));
+              } else {
+                $compartir = "Share product";
+                $textWha = "Hello, i'm interesting to know more about this product " . esc_url(get_permalink($producto));
+              }
+              echo $compartir;
+              ?>
             </span>
             <div class="redes-compartir">
               <ul class="d-flex">
                 <li>
-                  <a target="_blank" href="" data-link-mb="whatsapp://send?text=<?php echo esc_url(get_permalink($producto)) ?>" data-link-ds="https://wa.me/?text=<?php echo esc_url(get_permalink($producto)) ?>" id="share_whatsapp_product" class="share-whatsapp"><img src="http://mazal.co/wp-content/themes/mazal/images/interna/whastapp-social-media.svg" alt=""></a>
+                  <a target="_blank" href="" data-link-mb="whatsapp://send?phone=573112285840&text=<?= $textWha ?>" data-link-ds="https://wa.me/573112285840?text=<?= $textWha  ?>" id="share_whatsapp_product" class="share-whatsapp"><img src="http://mazal.co/wp-content/themes/mazal/images/interna/whastapp-social-media.svg" alt=""></a>
                 </li>
                 <li>
                   <a class="facebook_share" data-nombre="<?php echo $producto->post_title ?>" data-descrip="<?php echo $producto->post_content ?>" data-urlimg="<?php echo get_field("imagen_de_producto", $producto)["sizes"]["medium"] ?>">
@@ -285,7 +289,7 @@ $producto = get_queried_object();
             <input id="text_mailchimp_sub" type="text" placeholder="examplemail@gmail.com">
             <?php if (mazal_is_language()) : ?>
 
-              <input id="send_mailchimp_sub" type="submit" value="Suscribir">
+              <input id="send_mailchimp_sub" type="submit" value="Suscribirse">
             <?php else : ?>
 
               <input id="send_mailchimp_sub" type="submit" value="Subscribe">

@@ -133,6 +133,7 @@ header {
 .header_top_left {
   width: 10%;
   z-index: 20;
+  padding-left: 15px;
 }
 .menu_logo_li {
   min-width: 120px;
@@ -201,7 +202,6 @@ header {
   // .banner_item{
   //   height: calc(100vh - 70px);
   // }
-
 }
 
 @media (max-width: 768px) {
@@ -293,21 +293,19 @@ header {
 }
 .super_menu_item_active .super_menu_comenext {
   display: none !important;
-  
 }
 .super_menu_comeback {
- 
   display: none;
-  a{
+  a {
     width: 40px;
     padding-bottom: 20px !important;
     display: -webkit-flex !important;
     display: -moz-flex !important;
     display: -o-flex !important;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
   }
-  i{
+  i {
     font-size: 25px;
   }
 }
@@ -419,7 +417,7 @@ a.languages_toggle {
       font-size: 16px;
     }
   }
-  #section_banner_intern{
+  #section_banner_intern {
     margin-top: 70px;
   }
 }
@@ -611,7 +609,7 @@ a.languages_toggle {
 }
 .action_delete {
   width: 30px;
-    margin-left: 12px;
+  margin-left: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -640,7 +638,7 @@ a.languages_toggle {
   right: 0;
   top: 100%;
   width: 320px;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4); 
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
   .single_favorite + .single_favorite {
     border-top: 1px solid #eaeaea;
   }
@@ -751,8 +749,7 @@ a.languages_toggle {
   }
 }
 
-
-.qty{
+.qty {
   display: flex;
 }
 
@@ -803,10 +800,10 @@ input::-webkit-inner-spin-button {
   background-color: white;
 }
 
-
-.counter-2{
+.counter-2 {
   display: flex;
-  .plus, .minus{
+  .plus,
+  .minus {
     width: 32px;
     height: 32px;
     justify-content: center;
@@ -814,8 +811,8 @@ input::-webkit-inner-spin-button {
     display: flex;
     cursor: pointer;
   }
-  .count{
-    width:40px;
+  .count {
+    width: 40px;
     font-size: 15px;
   }
 }
@@ -830,7 +827,7 @@ input::-webkit-inner-spin-button {
 
 .super_menu_comenext {
   display: none !important;
-  i{
+  i {
     font-size: 25px;
   }
 }
@@ -841,15 +838,16 @@ input::-webkit-inner-spin-button {
   .super_menu_comenext {
     display: block !important;
   }
+  .header_top {
+    padding: 0 0px;
+  }
 }
 
 @media #{$tablet_query} {
   .header_top_list > li:after {
     display: none;
   }
-  .header_top {
-    padding: 0 15px;
-  }
+
   .dynamic_header_top {
     display: none;
   }
