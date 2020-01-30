@@ -125,11 +125,11 @@
     {
       "@context": "http://schema.org",
       "@type": "Organization",
-      "name": "903 Producción de Eventos",
-      "url": "https://www.903.com.co",
+      "name": "Mazal | Diseño interior y Arquitectura",
+      "url": "https://www.mazal.co",
       "sameAs": [
-        "https://instagram.com/903pro",
-        "https://www.facebook.com/294452280570245"
+        "https://www.instagram.com/mazal_mobiliario_disenoint/",
+        "https://www.facebook.com/556950024439614"
       ]
     }
   </script>
