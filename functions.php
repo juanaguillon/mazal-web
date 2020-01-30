@@ -500,10 +500,20 @@ function mazal_is_portfolio_page()
 
 /**
  * Verificar si es la página de portafolio
+ * @param $slugAdd Puede asignar "corp" o "arq" para verificar si la página actual es "Quienes Somos -  Arquitectura" o "Quienes Somos - Coprportativo"
  */
-function mazal_is_nosotros_page()
+function mazal_is_nosotros_page($slugAdd = "")
 {
-  return is_page(812) || is_page(808);
+
+  if ($slugAdd == "") {
+    return is_page(879) || is_page(877) || is_page(886) || is_page(884);
+  } else {
+    if ($slugAdd == "arq") {
+      return is_page(879) || is_page(877);
+    } else if ($slugAdd == "corp") {
+      return is_page(886) || is_page(884);
+    }
+  }
 }
 
 /**

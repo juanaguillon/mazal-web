@@ -12,6 +12,13 @@
   background-position: bottom right;
   background-size: cover;
 }
+.tres360_image_wrap img {
+  // position: absolute;
+  // max-width: inherit;
+  width: auto;
+  height: 100%;
+  max-width: initial;
+}
 .tres60_button_container {
   @media #{$mobile_query} {
     width: 100%;
@@ -38,7 +45,7 @@
   align-items: center;
   justify-content: center;
   padding: 0 15px;
-  opacity: 0.93;
+  opacity: 1;
 
   p {
     font-weight: 300;
@@ -107,9 +114,9 @@
   }
 }
 
-@media (max-width:991px){
-  .tres_60_white_wrap p{
-    width:100%;
+@media (max-width: 991px) {
+  .tres_60_white_wrap p {
+    width: 100%;
   }
 }
 
