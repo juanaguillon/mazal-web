@@ -35,7 +35,7 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:200,400,700|Work+Sans:100,300,400,500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="<?php bloginfo('template_url') ?>/custom.min.css">
-  <meta name="description" content="Somos una compañía basada en diseño interior, arquitectura y productos mobiliarios.">
+  <meta name="description" content="Somos una compañía dedicada al diseño de interiores, arquitectura y productos mobiliarios de gama alta para hogares y proyectos corporativos.">
   <meta property="og:locale" content="es_ES" />
   <meta property="og:site_name" content="Mazal" />
 

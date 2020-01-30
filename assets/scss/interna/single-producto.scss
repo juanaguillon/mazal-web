@@ -513,7 +513,7 @@
     min-height: 200px;
     // margin-top: 50px;
     h2 {
-      font-size: 30px;
+      font-size: 35px;
     }
   }
 }
@@ -531,6 +531,11 @@
       margin-bottom: 10px;
     }
   }
+
+  .banner-categoria h2{
+    font-size: 30px;
+  }
+
 }
 
 #button_cotizar_producto::before {

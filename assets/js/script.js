@@ -1061,6 +1061,8 @@ function plugnsInit() {
   $(".image-related-item").imagefill();
   $(".col-item .item").imagefill();
   $(".banner_image").imagefill();
+  $(".mansory-item").imagefill();
+ 
   // $(".popup_right, .popup_left").imagefill();
 
   $(".bf_image_sized").imageCompare();

@@ -28,7 +28,7 @@ require "vendor/autoload.php";
 				<a href="<?php echo $linkArquitectura ?>">
 					<div class="banner_img_container">
 						<div class="black_background z1"></div>
-						<img class="banner_img_left img_fill img_fill_h" src="<?php echo get_field("imagen", $archTerm)["url"] ?>" alt="" />
+						<img class="banner_img_left img_fill img_fill_h" src="https://mazal.co/wp-content/uploads/2019/11/image_left-1.jpg" alt="" />
 					</div>
 
 					<div class="banner_context">
@@ -124,7 +124,7 @@ require "vendor/autoload.php";
 				</div> -->
 				<div class="banner_img_container">
 
-					<img class="banner_img_right img_fill img_fill_h" src="<?php bloginfo("template_url") ?>/images/image_right.jpg" alt="" />
+					<img class="banner_img_right img_fill img_fill_h" src="https://mazal.co/wp-content/uploads/2020/01/image_right.jpg" alt="" />
 				</div>
 
 				<div class="banner_context z2 mobiliario">
@@ -272,7 +272,7 @@ require "vendor/autoload.php";
 	<div class="popup_wrapper">
 		<div class="popup_close"><button class="button cuadro text2x"><i class="icon-cross"></i></button></div>
 		<div class="popup_left">
-			<img src="<?php bloginfo("template_url") ?>/images/image_left.jpg" alt="">
+			<img src="https://mazal.co/wp-content/uploads/2019/11/image_left-1.jpg" alt="">
 		</div>
 		<div class="popup_right">
 			<div class="poput-title-container flex-center-xy flex-column">
