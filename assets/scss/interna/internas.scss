@@ -631,6 +631,7 @@ select {
     h2 {
       font-size: 42px;
       margin-top: 0;
+      padding: 0 15px;
     }
     h5,
     p {
@@ -651,9 +652,22 @@ select {
 .taxonomy_desc {
   display: none;
 }
-@media #{$desktop_query} {
-  
-  
+
+
+@media (max-width:768px){
+  .taxonomy_banner_desc {
+    display: none;
+  }
+  .taxonomy_desc {
+    display: block; 
+    padding: 0 15px;
+    font-weight: 400;
+    margin-top: 25px;
+    margin-bottom: 0;
+  }
+  .banner-categoria h2{
+    padding: 0;
+  }
 }
 
 @media #{$tablet_query} {
@@ -668,16 +682,8 @@ select {
       padding: 5px 15px; 
     }
   }
-  .taxonomy_banner_desc {
-    display: none;
-  }
-  .taxonomy_desc {
-    display: block;
-    padding: 0 15px;
-    font-weight: 400;
-    margin-top: 25px;
-    margin-bottom: 0;
-  }
+  
+  
 }
 
 // @media (max-width: 820px) {

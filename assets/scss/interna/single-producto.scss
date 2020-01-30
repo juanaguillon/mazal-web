@@ -517,7 +517,7 @@
     min-height: 200px;
     // margin-top: 50px;
     h2 {
-      font-size: 30px;
+      font-size: 35px;
     }
   }
 }
@@ -534,6 +534,10 @@
       max-width: 100% !important;
       margin-bottom: 10px;
     }
+  }
+
+  .banner-categoria h2{
+    font-size: 30px;
   }
 
 }

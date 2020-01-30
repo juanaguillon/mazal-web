@@ -87,33 +87,35 @@
       
 
       </div>
-      <div class="col-md-5 wow slideInRight short-descripcion-nosotros" data-wow-offset="20">
+      <div class="col-md-5 wow slideInRight short-descripcion-nosotros d-flex align-items-center" data-wow-offset="20">
         <?php
 
         // Quienes | Somos
         $titleQuienes = explode(" | ", mazal_get_acf_field("quienes_titulo_")); // [0 => "Quienes",1 => "Somos"]
         ?>
+        <div>
         <div class="galeria_title_container no_rotate">
 
           <h3 class="font-1 text-yellow text-light uppercase"><span><?php echo $titleQuienes[0] ?></span><br><?php echo $titleQuienes[1] ?></h3>
 
-        </div>
-        <p class="galeria_description font-2 text-regular no_rotate">
+          </div>
+          <p class="galeria_description font-2 text-regular no_rotate">
           <?php echo mazal_get_acf_field("quienes_texto_") ?>
 
-        </p>
-        <?php
+          </p>
+          <?php
 
-        if (mazal_is_language()) {
+          if (mazal_is_language()) {
           $buttonNosot = "Ver más";
-        } else {
+          } else {
           $buttonNosot = "See more";
-        }
+          }
 
-        ?>
-        <a href="<?php echo esc_url(get_permalink(pll_get_post(808))); ?>" class="button button_dark general_button font-2" style="margin:initial;">
+          ?>
+          <a href="<?php echo esc_url(get_permalink(pll_get_post(808))); ?>" class="button button_dark general_button font-2" style="margin:initial;">
           <span class="text-black"><?php echo $buttonNosot ?></span>
-        </a>
+          </a>
+        </div>
       </div>
     </div>
   </div>

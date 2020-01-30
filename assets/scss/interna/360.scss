@@ -190,6 +190,12 @@
   }
 }
 
+@media (max-width:768px){
+  .categoria-contenedor{
+    width:100%; 
+  }
+}
+
 @media #{$mobile_query} {
   .categoria-contenedor {
     width: 100%;
