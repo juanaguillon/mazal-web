@@ -24,7 +24,7 @@ select {
   }
 }
 
-@media (max-width:550px){
+@media (max-width: 550px) {
   body {
     font-size: 16px;
   }
@@ -326,6 +326,18 @@ section h3 {
 /* Color fonts */
 .blanco {
   color: $blanco;
+}
+.direccion-back {
+  margin-bottom: 18px;
+  padding: 0 10px;
+  a {
+    display: inline-block;
+    font-size: 21px;
+    color: #000;
+    border: 1px solid;
+    padding: 4px 5px;
+    line-height: 1;
+  }
 }
 /* .button.general_button {
   font-size: 17px;

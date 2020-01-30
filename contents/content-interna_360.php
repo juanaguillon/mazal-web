@@ -24,10 +24,15 @@ function mazal_simple_content($term, $in_right = true)
 
 ?>
 
-  <section id="section_<?php echo $term->slug ?>" class="section_high tres60_section <?php if (!$in_right) echo "section_left contrast-seccion-white" ?>" style="background-image: url(<?php echo $imageES["sizes"]["large"] ?>)">
+  <!-- <section id="section_<?php echo $term->slug ?>" class="section_high tres60_section <?php if (!$in_right) echo "section_left contrast-seccion-white" ?>" style="background-image: url(<?php echo $imageES["sizes"]["large"] ?>)"> -->
+  <section id="section_<?php echo $term->slug ?>" class="section_high tres60_section <?php if (!$in_right) echo "section_left contrast-seccion-white" ?>">
     <div class="container-fluid p-0 h-100">
       <div class="row no-gutters h-100">
-        <div class="col-md-8 col-lg-6 tres60_container wow fadeInDown <?php if ($in_right) echo "offset-md-4 offset-lg-6" ?>">
+        <?php if ($in_right) : ?>
+          <div class="col-md-6 col-lg-6 tres360_image_wrap" style="background-image: url(<?php echo $imageES["sizes"]["large"] ?>); background-position: center;background-size:cover;">
+          </div>
+        <?php endif; ?>
+        <div class="col-md-6 col-lg-6 tres60_container wow fadeInDown">
           <div class="tres_60_white_wrap">
             <div class="categoria-contenedor">
               <div class="tres60_title_container">
@@ -42,6 +47,10 @@ function mazal_simple_content($term, $in_right = true)
             </div>
           </div>
         </div>
+        <?php if (!$in_right) : ?>
+          <div class="col-md-6 col-lg-6 tres360_image_wrap" style="background-image: url(<?php echo $imageES["sizes"]["large"] ?>); background-position: center;background-size:cover;">
+          </div>
+        <?php endif; ?>
       </div>
     </div>
     <img class="tres60_image_direct" src="<?= $imageES["sizes"]["large"] ?>">

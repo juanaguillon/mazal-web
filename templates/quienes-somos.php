@@ -4,12 +4,17 @@ get_header();
 ?>
 
 <section class="quienes-somos-page section_high">
+
   <div class="container-fluid p-0">
+    <div class="direccion-back">
+      <a href="<?= $_SERVER['HTTP_REFERER']; ?>" class="button add">
+        <i class="icon-arrow_left"></i>
+      </a>
+    </div>
     <div class="row full-height m-0">
 
       <div class="col-md-5 col-lg-7 p-0">
-        <div class="desc-nosotros-img">
-
+        <div class="desc-nosotros-img" style="background-image:url(<?= get_field("imagen_quienes_somos")["sizes"]["large"] ?>);">
         </div>
       </div>
       <div class="col-md-7 col-lg-5 p-0 d-flex align-items-center justify-content-center">
@@ -32,7 +37,7 @@ get_header();
             </h3>
           </div>
           <p>
-          <?php the_field('quienes_somos_texto'); ?>
+            <?php the_field('quienes_somos_texto'); ?>
           </p>
         </div>
       </div>
@@ -47,7 +52,7 @@ get_header();
             </h3>
           </div>
           <p class="text-white">
-          <?php the_field('con_quien_trabajamos'); ?>
+            <?php the_field('con_quien_trabajamos'); ?>
           </p>
         </div>
       </div>
@@ -56,17 +61,21 @@ get_header();
           <div class="col-lg-12 p-0">
 
             <div class="row no-gutters seccion-trabajamoscon" id="con_quien_trabajamos">
+              <?php
+              $galeriaTrabajamos = get_field("imagenes_quienes_trabajamos");
+
+              ?>
               <div class=" col-md-12 col-sm-6 col-12 col-lg-12 wow fadeInDown animated animated animated animated img-work animated" style="visibility: visible; animation-name: fadeInDown;">
                 <div class=" portafolio_single_image" style="overflow: hidden; position: relative;">
-                  <a class="trabajamos_con" href="https://mazal.co/wp-content/themes/mazal/images/interna/home.jpg">
-                    <img class="img_fill w-100" src="https://mazal.co/wp-content/themes/mazal/images/interna/home.jpg" alt="" style="position: absolute; ">
+                  <a class="trabajamos_con" href="<?= $galeriaTrabajamos[0]["url"] ?>">
+                    <img class="img_fill w-100" src="<?= $galeriaTrabajamos[0]["sizes"]["large"] ?>" alt="" style="position: absolute; ">
                   </a>
                 </div>
               </div>
               <div class=" col-md-12 col-sm-6 col-12 col-lg-12 wow fadeInLeft animated animated animated animated img-work animated" style="visibility: visible; animation-name: fadeInLeft;">
                 <div class=" portafolio_single_image" style="overflow: hidden; position: relative;">
-                  <a class="trabajamos_con" href="https://mazal.co/wp-content/themes/mazal/images/interna/sofa.jpg">
-                    <img class="img_fill w-100" src="https://mazal.co/wp-content/themes/mazal/images/interna/sofa.jpg" alt="" style="position: absolute; ">
+                  <a class="trabajamos_con" href="<?= $galeriaTrabajamos[1]["url"] ?>">
+                    <img class="img_fill w-100" src="<?= $galeriaTrabajamos[1]["sizes"]["large"] ?>" alt="" style="position: absolute; ">
                   </a>
                 </div>
               </div>
@@ -78,27 +87,34 @@ get_header();
     </div>
     <div class="row full-height historia-quienes-somos m-0">
 
-      <div class="col-md-5 col-lg-7 p-0 h-100" >
-        <div class="row no-gutters h-100 " id="quienes_somos_lg" >
-          <div class=" col-lg-6 col-md-12 col-sm-6 col-12 wow fadeInLeft animated"  style=" visibility: visible; animation-name: fadeInLeft;">
-            <div class="portafolio_single_image"  style="overflow: hidden; position: relative;">
-              <a class="quienes_somos_link" href="https://mazal.co/wp-content/uploads/2019/11/d_720x460_acf_cropped-1.jpg?v=1576681982"><img class="img_fill" src="https://mazal.co/wp-content/uploads/2019/11/d_720x460_acf_cropped-1.jpg?v=1576681982" alt="" style="position: absolute; width: auto; height: 346.6px; top: 0px; left: -49.7009px;"></a>
+      <div class="col-md-5 col-lg-7 p-0 h-100">
+        <div class="row no-gutters h-100 " id="quienes_somos_lg">
+
+          <?php
+          function printHistoryImage($image)
+          {
+          ?>
+            <div class="portafolio_single_image" style="overflow: hidden; position: relative;">
+              <a class="quienes_somos_link" href="<?= $image["url"] ?>">
+                <img class="img_fill" src="<?= $image["sizes"]["large"] ?>" alt="" style="position: absolute; width: auto; height: 346.6px; top: 0px; left: -49.7009px;">
+              </a>
             </div>
+          <?php
+          }
+          $histriaImages = get_field("imagenes_historia");
+          ?>
+
+          <div class=" col-lg-6 col-md-12 col-sm-6 col-12 wow fadeInLeft animated" style=" visibility: visible; animation-name: fadeInLeft;">
+            <?php printHistoryImage($histriaImages[0]) ?>
           </div>
           <div class=" col-lg-6 col-md-12 col-sm-6 col-12 wow fadeInDown animated" style=" visibility: visible; animation-name: fadeInDown;">
-            <div class="portafolio_single_image"  style="overflow: hidden; position: relative;">
-              <a class="quienes_somos_link" href="https://mazal.co/wp-content/uploads/2019/11/l-631x1024.jpg?v=1576682137"><img class="img_fill" src="https://mazal.co/wp-content/uploads/2019/11/l-631x1024.jpg?v=1576682137" alt="" style="position: absolute; width: 443.1px; height: auto; top: -186.23px; left: 0px;"></a>
-            </div>
+            <?php printHistoryImage($histriaImages[1]) ?>
           </div>
           <div class=" col-lg-6 col-md-12 col-sm-6 col-12 wow fadeInLeft animated " style=" visibility: visible; animation-name: fadeInLeft;">
-            <div class="portafolio_single_image"  style="overflow: hidden; position: relative;">
-              <a class="quienes_somos_link" href="https://mazal.co/wp-content/uploads/2019/11/v-1024x686.jpg?v=1576682105"><img class="img_fill" src="https://mazal.co/wp-content/uploads/2019/11/v-1024x686.jpg?v=1576682105" alt="" style="position: absolute; width: auto; height: 346.6px; top: 0px; left: -37.137px;"></a>
-            </div>
+            <?php printHistoryImage($histriaImages[2]) ?>
           </div>
           <div class=" col-lg-6 col-md-12 col-sm-6 col-12 wow fadeInUp animated " style=" visibility: visible; animation-name: fadeInUp;">
-            <div class="portafolio_single_image"  style="overflow: hidden; position: relative;">
-              <a class="quienes_somos_link" href="https://mazal.co/wp-content/uploads/2019/11/e-1024x576.jpg?v=1576682163"><img class="img_fill" src="https://mazal.co/wp-content/uploads/2019/11/e-1024x576.jpg?v=1576682163" alt="" style="position: absolute; width: auto; height: 346.6px; top: 0px; left: -86.5363px;"></a>
-            </div>
+            <?php printHistoryImage($histriaImages[3]) ?>
           </div>
         </div>
       </div>
@@ -110,7 +126,7 @@ get_header();
             </h3>
           </div>
           <p>
-          <?php the_field('nuestra_historia'); ?>
+            <?php the_field('nuestra_historia'); ?>
           </p>
         </div>
       </div>

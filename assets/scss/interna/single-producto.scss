@@ -13,14 +13,15 @@
   align-items: center;
   .direccion-back {
     margin-right: 18px;
+    margin: 0;
     a {
       padding: 4px 4px;
       font-size: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border:1px solid gray;
-      color:$chocolate;
+      border: 1px solid gray;
+      color: $chocolate;
       background: none;
     }
   }
@@ -55,16 +56,15 @@
 .mailchimp_message {
   // margin: auto;
   justify-content: center;
-    width: 100%;
-    display: flex;
+  width: 100%;
+  display: flex;
   p {
     // font-weight: bold;
     font-size: 18px;
     display: none;
     &.show {
       display: block;
-      margin-bottom: 0; 
-      
+      margin-bottom: 0;
     }
   }
   .message-danger {
@@ -129,8 +129,8 @@
   font-size: 35px;
   text-transform: uppercase;
   font-family: raleway;
- font-weight: 500;
-  letter-spacing: 4px; 
+  font-weight: 500;
+  letter-spacing: 4px;
 }
 
 .item-ref {
@@ -155,8 +155,8 @@
   }
 }
 
-.color-item-feature{
-  margin-bottom: 20px;  
+.color-item-feature {
+  margin-bottom: 20px;
 }
 
 .color-scheme-item {
@@ -255,7 +255,7 @@
   display: flex;
   margin-top: 15px;
   flex-wrap: wrap;
-  li{
+  li {
     margin-right: 3px;
     margin-bottom: 5px;
   }
@@ -265,7 +265,7 @@
     background: #efefef;
     border-radius: 2px;
     color: dimgrey;
-    &:hover{
+    &:hover {
       background: #dfdfdf;
     }
   }
@@ -386,7 +386,7 @@
       position: relative;
       overflow: hidden;
       height: 200px;
-      img{
+      img {
         max-width: inherit;
       }
       // img {
@@ -462,40 +462,38 @@
   bottom: 20px;
 }
 
-
-@media (max-width:1200px){
-  .action-for-item{
-    button{
+@media (max-width: 1200px) {
+  .action-for-item {
+    button {
       padding: 15px 15px !important;
     }
   }
 }
 
-@media (max-width:991px){
-  .item-information{
+@media (max-width: 991px) {
+  .item-information {
     max-width: 100%;
   }
-  #container_slick_product{
+  #container_slick_product {
     // margin-bottom: 30px;
   }
-  .action-for-item .add-love{
+  .action-for-item .add-love {
     width: calc(40% - 20px);
   }
-  
-  .pagina-producto{
+
+  .pagina-producto {
     padding-top: 70px;
   }
-  .form-suscription{
-    width:60%;
+  .form-suscription {
+    width: 60%;
     margin: auto;
     min-width: 380px;
   }
-  .call-action-name h3{
+  .call-action-name h3 {
     max-width: 100%;
     text-align: left;
-    margin-bottom: 30px;  
+    margin-bottom: 30px;
   }
-
 }
 
 // @media (max-width:850px){
@@ -503,16 +501,14 @@
 //     min-width: inherit !important;
 //   }
 // }
-@media (max-width:768px){
+@media (max-width: 768px) {
   // .pagina-producto{
   //   padding-top: 50px;
   // }
-  
 }
 
-@media (max-width:768px){
-  
-  .banner-categoria{
+@media (max-width: 768px) {
+  .banner-categoria {
     height: 28vh;
     min-height: 200px;
     // margin-top: 50px;
@@ -522,15 +518,15 @@
   }
 }
 
-@media (max-width:550px){
-  .migadepan{
+@media (max-width: 550px) {
+  .migadepan {
     padding: 0 30px !important;
   }
 
-  .form-suscription{
+  .form-suscription {
     display: block !important;
-    input{
-      width:100%;
+    input {
+      width: 100%;
       max-width: 100% !important;
       margin-bottom: 10px;
     }
@@ -542,25 +538,25 @@
 
 }
 
-#button_cotizar_producto::before{
-  display: none !important; 
+#button_cotizar_producto::before {
+  display: none !important;
 }
 
-@media (max-width:768px){
-  .item-information{
-    .action-for-item{
+@media (max-width: 768px) {
+  .item-information {
+    .action-for-item {
       justify-content: space-between;
-      .add{
-        width:70%;
+      .add {
+        width: 70%;
         margin-right: 0;
       }
-      .add-love{
-        width:30%; 
+      .add-love {
+        width: 30%;
       }
     }
   }
-  
-  .form-suscription{
+
+  .form-suscription {
     margin: auto;
     width: auto;
     min-width: auto;
@@ -569,7 +565,6 @@
     // margin: 15px 0;
     margin-bottom: 10px;
   }
-  
 }
 
 @media #{$mobile_query} {
@@ -615,13 +610,11 @@
     font-size: 23px !important;
     // margin-bottom: 0;
   }
-  
+
   .migadepan {
     margin-top: 20px;
   }
-  .item-view{
+  .item-view {
     margin-top: 20px;
   }
-
 }
-

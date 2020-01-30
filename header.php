@@ -83,7 +83,7 @@
 
       $classHeader = "";
       $showBlackBg = "";
-      if (is_singular("producto") || is_search() || is_page(812) || is_page(808)) {
+      if (is_singular("producto") || is_search() || mazal_is_nosotros_page()) {
         $showBlackBg = "display:none;";
         $classHeader = "in_scroll";
       } else {
@@ -110,6 +110,8 @@
             <ul class="header_top_list">
 
               <?php
+
+              // Max parent será un objeto con una propiedad "term_id" ( $maxParent->term_id). Este term_id determinará en termino superior relativo a la pagina actual, y mostrará una lista de las categorías hijas de dicha categoría.
               $maxParent = null;
               $link = null;
               $linkSearch = true;
@@ -143,23 +145,44 @@
                   $linkSearch = false;
                 }
               } else  if (is_page()) {
-
-
                 $maxParent = new stdClass();
+
+                $termIDHogar = pll_get_term(89);
+                $termIDArq = pll_get_term(91);
+                $termIDCorp = pll_get_term(93);
+
                 if (mazal_is_hogar_page()) {
-                  $maxParent->term_id = pll_get_term(89);
+                  $maxParent->term_id = $termIDHogar;
                   $nosotrosLink = "#";
                 } else if (mazal_is_arquitectura_page()) {
-                  $maxParent->term_id =  pll_get_term(91);
+                  $maxParent->term_id = $termIDArq;
                   $nosotrosLink = "#";
                 } else if (mazal_is_corporativo_page()) {
-                  $maxParent->term_id = pll_get_term(93);
+                  $maxParent->term_id = $termIDCorp;
                   $nosotrosLink = "#";
                 } else {
-                  $maxParent->term_id = 0;
+
+                  if (mazal_is_nosotros_page() && isset($_GET["subsection"])) {
+                    $getSection = $_GET["subsection"];
+                    switch ($getSection) {
+                      case 'arq':
+                        $maxParent->term_id = $termIDArq;
+                        break;
+                      case 'corp':
+                        $maxParent->term_id = $termIDCorp;
+                        break;
+                      case 'hogar':
+                        $maxParent->term_id = $termIDHogar;
+                        break;
+
+                      default:
+                        $maxParent->term_id = $termIDArq;
+                        break;
+                    }
+                  } else {
+                    $maxParent->term_id = 0;
+                  }
                 }
-
-
 
                 $chLink =  get_queried_object()->ID;
                 if (mazal_is_language("es")) {
@@ -248,7 +271,7 @@
                   /**
                    * Se crea este condicional para verificar si hacer scroll o ir a la pagina de categoría.
                    */
-                  if (is_page() && !$isInnerPage) {
+                  if (is_page() && !$isInnerPage && !mazal_is_nosotros_page()) {
                     $href = "#";
                   } else {
                     $href = get_term_link($childNav, "categoria");
@@ -478,7 +501,7 @@
                   $solicitudcotizacion = "Request for quotation";
                 }
                 ?>
-                  <h4 class=""><?= $solicitudcotizacion ?></h4>
+                <h4 class=""><?= $solicitudcotizacion ?></h4>
               </div>
               <div class="modal_title_right">
                 <button class="button cuadro button_close_modal"><i class="icon-cross"></i></button>
@@ -490,13 +513,13 @@
               </div>
               <div class="row">
                 <div class="col-md-6">
-                <?php
-                if (mazal_is_language("es")) {
-                  $listaproductos = "Productos";
-                } else {
-                  $listaproductos = "Products";
-                }
-                ?>
+                  <?php
+                  if (mazal_is_language("es")) {
+                    $listaproductos = "Productos";
+                  } else {
+                    $listaproductos = "Products";
+                  }
+                  ?>
                   <h4 class="lista-cotizacion"><?= $listaproductos ?></h4>
                   <div id="fav_cotizar_wrap" class="fav_cotizar_wrap">
                   </div>
