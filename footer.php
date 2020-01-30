@@ -121,6 +121,19 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TL9XL53" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "name": "903 Producción de Eventos",
+      "url": "https://www.903.com.co",
+      "sameAs": [
+        "https://instagram.com/903pro",
+        "https://www.facebook.com/294452280570245"
+      ]
+    }
+  </script>
+
   </body>
 
   </html>
