@@ -107,7 +107,7 @@ if (count($ancest) > 1) {
     <a href="<?= $_SERVER['HTTP_REFERER']; ?>" class="button add">
       <i class="icon-arrow_left"></i>
     </a>
-    Atras
+    Atrás
   </div>
 
   <?php mazal_get_taxonomy_data($currentObject, $currentCategory, $isSubChildren); ?>

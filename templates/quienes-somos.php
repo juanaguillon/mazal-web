@@ -19,7 +19,7 @@ get_header();
             <a href="<?= $_SERVER['HTTP_REFERER']; ?>" class="button add">
               <i class="icon-arrow_left"></i>
             </a>
-            Atras
+            Atrás
           </div>
           <div class="tres60_title_container">
             <?php
