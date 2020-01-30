@@ -101,7 +101,13 @@ if (count($ancest) > 1) {
 </section>
 <p class="taxonomy_desc"><?php echo wp_kses_post($currentObject->description) ?></p>
 
+
 <section class="category-filter-grid container">
+  <div class="direccion-back">
+    <a href="<?= $_SERVER['HTTP_REFERER']; ?>" class="button add">
+      <i class="icon-arrow_left"></i>
+    </a>
+  </div>
 
   <?php mazal_get_taxonomy_data($currentObject, $currentCategory, $isSubChildren); ?>
 

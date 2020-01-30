@@ -1,5 +1,6 @@
 var $document = $(document),
   $window = $(window),
+  wideWidth = 1250,
   desktopWidth = 996,
   tabletWidth = 768,
   mobileWidth = 548,
@@ -361,6 +362,8 @@ function sendCotizarMail() {
 /* ========================= */
 /** Crear scroll en el navbar principal */
 function ScrolMapFromNavbar() {
+  // $window.on("resize", function() {
+  // if ($window.width() > wideWidth) {
   $(".header_top_list li a").click(function(e) {
     var attr = $(this).attr("href");
     if (typeof attr === typeof undefined || attr == "#") {
@@ -376,6 +379,10 @@ function ScrolMapFromNavbar() {
       );
     }
   });
+  // }else{
+  //  $(".header_top_list li a").off("click")
+  // }
+  // });
 }
 /** Movimiento de hover en el banner.*/
 function makeHoverMoveInBanner() {
@@ -464,12 +471,16 @@ $(".mobiliario").click(function(e) {
  * Agregar el trigger de los submenu en el header de Index.
  */
 function changeTheSubmenuInHeader() {
-  $(".header_top_list").superMenu({
-    directLi: "li",
-    submenuSelector: ".header_top_submenu",
-    arrowLeftClass: "icon-arrow_left text-white",
-    arrowRightClass: "icon-arrow_right text-white"
-  });
+  if ($window.width() < wideWidth) {
+    $(".header_top_list").superMenu({
+      directLi: "li",
+      submenuSelector: ".header_top_submenu",
+      arrowLeftClass: "icon-arrow_left text-white",
+      arrowRightClass: "icon-arrow_right text-white"
+    });
+  } else {
+    ScrolMapFromNavbar();
+  }
 }
 // /** =========================== */
 // /** FINAL PAGINA INDEX */
@@ -1104,7 +1115,6 @@ window.onload = function() {
   toggleTheModalToSearchInWebsite();
   sendContactMail();
   sendCotizarMail();
-  ScrolMapFromNavbar();
   makeHoverMoveInBanner();
   changeTheSubmenuInHeader();
   changeCurrentImageInBeforeAfter();

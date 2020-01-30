@@ -49,14 +49,14 @@
     <button class="button" id="banner_nav_next"><i class="icon-arrow_right"></i></button>
   </div> -->
   <div class="banner_caption_v2">
-          <div class="banner_caption_inner">
-            <h3 class="text-yellow font-1"><?php echo mb_strtoupper($banner->post_title, "UTF-8") ?></h3>
-            <p class="text-white font-2"><?php echo $banner->post_excerpt ?></p>
-            <a href="<?php echo $url ?>" class="button general_button button-m mt-3 ml-0">
-              <span data-title="<?php echo $textoLink ?>"><?php echo $textoLink ?></span>
-            </a>
-          </div>
-        </div> 
+    <div class="banner_caption_inner">
+      <h3 class="text-yellow font-1"><?php echo mb_strtoupper($banner->post_title, "UTF-8") ?></h3>
+      <p class="text-white font-2"><?php echo $banner->post_excerpt ?></p>
+      <a href="<?php echo $url ?>" class="button general_button button-m mt-3 ml-0">
+        <span data-title="<?php echo $textoLink ?>"><?php echo $textoLink ?></span>
+      </a>
+    </div>
+  </div>
 </section>
 
 
@@ -84,7 +84,7 @@
           </div>
 
         </div>
-      
+
 
       </div>
       <div class="col-md-5 wow slideInRight short-descripcion-nosotros" data-wow-offset="20">
@@ -110,8 +110,16 @@
           $buttonNosot = "See more";
         }
 
+        if (mazal_is_arquitectura_page()) {
+          $postNosotros = esc_url(get_permalink(pll_get_post(877))) . "?subsection=arq";
+        } else if (mazal_is_corporativo_page()) {
+          $postNosotros = esc_url(get_permalink(pll_get_post(884))) . "?subsection=corp";
+        } else if (mazal_is_hogar_page()) {
+          $postNosotros = esc_url(get_permalink(pll_get_post(884))) . "?subsection=hogar";
+        }
+
         ?>
-        <a href="<?php echo esc_url(get_permalink(pll_get_post(808))); ?>" class="button button_dark general_button font-2" style="margin:initial;">
+        <a href="<?php echo $postNosotros; ?>" class="button button_dark general_button font-2" style="margin:initial;">
           <span class="text-black"><?php echo $buttonNosot ?></span>
         </a>
       </div>
@@ -329,7 +337,7 @@
           <?php echo mazal_send_portfolio($prpf4) ?>
         </div>
       </div>
-      
+
 
     </div>
     <div class="col-md-5 col-lg-3 wow fadeInRight">

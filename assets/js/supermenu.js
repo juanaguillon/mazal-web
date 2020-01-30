@@ -33,10 +33,39 @@
         .fadeIn(300);
     }
 
+    function comeNextAction(e, elm) {
+      e.stopPropagation();
+      e.preventDefault();
+      if (elm.hasClass("super_menu_comenext")) {
+        elm.hide();
+      }
+      var currentLi = elm.parent("li");
+      currentLi.siblings().css("display", "none");
+      currentLi.css({
+        display: "flex",
+        "flex-direction": "column",
+        "align-items": "flex-end"
+      });
+      currentLi.addClass("super_menu_item_active");
+      var submenu = elm.siblings(submenuSelector);
+      submenu.css({
+        display: "block",
+        "margin-top": "13px"
+      });
+    }
+
     directLi.each(function() {
       if ($(this).children(submenuSelector).length > 0) {
         var submenu = $(this).children(submenuSelector);
         submenu.css("display", "none");
+        $(this)
+          .children("a")
+          .unbind("click")
+          .click(function(e) {
+            e.preventDefault()
+            e.stopPropagation();
+            comeNextAction(e, $(this))
+          });
 
         submenu
           .prev("a")
@@ -56,25 +85,7 @@
     $(".super_menu_comenext")
       .off("click")
       .on("click", function(e) {
-        e.stopPropagation();
-        e.preventDefault();
-        $(this).hide();
-        $(this)
-          .prev("a")
-          .addClass("super_menu_title_active");
-        var currentLi = $(this).parent("li");
-        currentLi.siblings().css("display", "none");
-        currentLi.css({
-          display: "flex",
-          "flex-direction": "column",
-          "align-items": "flex-end"
-        });
-        currentLi.addClass("super_menu_item_active");
-        var submenu = $(this).prev(submenuSelector);
-        submenu.css({
-          display: "block",
-          "margin-top": "13px"
-        });
+        comeNextAction(e, $(this));
       });
 
     $(".super_menu_comeback")

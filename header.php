@@ -271,7 +271,7 @@
                   /**
                    * Se crea este condicional para verificar si hacer scroll o ir a la pagina de categoría.
                    */
-                  if (is_page() && !$isInnerPage) {
+                  if (is_page() && !$isInnerPage && !mazal_is_nosotros_page()) {
                     $href = "#";
                   } else {
                     $href = get_term_link($childNav, "categoria");
