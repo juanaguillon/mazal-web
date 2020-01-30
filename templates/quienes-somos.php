@@ -6,11 +6,7 @@ get_header();
 <section class="quienes-somos-page section_high">
 
   <div class="container-fluid p-0">
-    <div class="direccion-back">
-      <a href="<?= $_SERVER['HTTP_REFERER']; ?>" class="button add">
-        <i class="icon-arrow_left"></i>
-      </a>
-    </div>
+
     <div class="row full-height m-0">
 
       <div class="col-md-5 col-lg-7 p-0">
@@ -19,6 +15,12 @@ get_header();
       </div>
       <div class="col-md-7 col-lg-5 p-0 d-flex align-items-center justify-content-center">
         <div class="categoria-contenedor desc-nosotros">
+          <div class="direccion-back">
+            <a href="<?= $_SERVER['HTTP_REFERER']; ?>" class="button add">
+              <i class="icon-arrow_left"></i>
+            </a>
+            Atras
+          </div>
           <div class="tres60_title_container">
             <?php
 

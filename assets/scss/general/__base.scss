@@ -330,10 +330,13 @@ section h3 {
 .direccion-back {
   margin-bottom: 18px;
   padding: 0 10px;
+  display: flex;
+  align-items: center;
   a {
     display: inline-block;
     font-size: 21px;
     color: #000;
+    margin-right: 10px;
     border: 1px solid;
     padding: 4px 5px;
     line-height: 1;
