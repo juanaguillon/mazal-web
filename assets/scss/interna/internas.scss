@@ -2,6 +2,12 @@
   position: relative;
 }
 
+.banner_caption_v2{
+  display: none;
+}
+
+
+
 .banner-categoria {
   height: 60vh;
   background-color: #656565;
@@ -689,6 +695,32 @@ select {
     li {
       width: 100%;
     }
+  }
+  .banner_caption{
+    display: none;
+  }
+  .banner_caption_v2{
+    display: flex;
+    min-height: calc(26vh - 70px);
+    height: 100%;
+    .banner_caption_inner{
+      background: $chocolate;
+      width: 100%;
+      padding: 45px 25px;
+    }
+    
+    h3{
+      font-weight: 400;
+    }
+  }
+
+  .banner_item{
+    height: calc(100vh - 290px);
+  }
+
+  #section_banner_intern{
+    min-height:400px;
+    height: calc(100vh - 70px);
   }
 
 }

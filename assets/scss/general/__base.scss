@@ -24,6 +24,12 @@ select {
   }
 }
 
+@media (max-width:550px){
+  body {
+    font-size: 16px;
+  }
+}
+
 h1,
 h2,
 h3,

@@ -31,6 +31,10 @@
   }
 }
 
+.short-descripcion-nosotros{
+  padding-top: 0px ;
+  padding-bottom: 40px;
+}
 .arrow_galeria {
   position: absolute;
   z-index: 10;
@@ -113,6 +117,7 @@
   padding-top: 90px;
   color: rgb(41, 41, 41);
   line-height: 23px;
+  text-align: justify;
   &.no_rotate {
     padding-left: 0px !important;
     padding-top: 0px !important;

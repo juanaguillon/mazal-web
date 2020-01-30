@@ -44,11 +44,19 @@
     <?php endforeach; ?>
 
   </div>
-  <div class="banner_navigation_buttons">
+  <!-- <div class="banner_navigation_buttons">
     <button class="button" id="banner_nav_prev"><i class="icon-arrow_left"></i></button>
     <button class="button" id="banner_nav_next"><i class="icon-arrow_right"></i></button>
-  </div>
-
+  </div> -->
+  <div class="banner_caption_v2">
+          <div class="banner_caption_inner">
+            <h3 class="text-yellow font-1"><?php echo mb_strtoupper($banner->post_title, "UTF-8") ?></h3>
+            <p class="text-white font-2"><?php echo $banner->post_excerpt ?></p>
+            <a href="<?php echo $url ?>" class="button general_button button-m mt-3 ml-0">
+              <span data-title="<?php echo $textoLink ?>"><?php echo $textoLink ?></span>
+            </a>
+          </div>
+        </div> 
 </section>
 
 
@@ -79,7 +87,7 @@
       
 
       </div>
-      <div class="col-md-5 wow slideInRight" data-wow-offset="20">
+      <div class="col-md-5 wow slideInRight short-descripcion-nosotros" data-wow-offset="20">
         <?php
 
         // Quienes | Somos
