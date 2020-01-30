@@ -38,9 +38,9 @@
 	<nav class="header_top">
 		<div class="header_top_left">
 			<div class="menu_logo_li">
-				<h1 class="menu_logo">
+				<h1 class="menu_logo" title="Mazal | Diseño interior y Arquitectura" style="font-size: 0.1px">
 					<a class="text-white">
-						<i class="icon-logo"></i>
+						<i class="icon-logo"></i> Mazal | Diseño interior y Arquitectura
 					</a>
 				</h1>
 			</div>
