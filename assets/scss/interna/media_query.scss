@@ -1,6 +1,6 @@
 @media (max-width: 991px) {
-  .images-portfolio .t-none{
-    display: none; 
+  .images-portfolio .t-none {
+    display: none;
   }
   #section_banner_intern {
     min-height: 530px;
@@ -41,6 +41,7 @@
   .row_linea_container_right {
     margin-left: 0px;
     margin-right: 0px;
+    height: inherit;
   }
 
   #section_lineas2 .lineas_container {
@@ -69,8 +70,6 @@
     padding-right: 40px;
   }
 
-  
-  
   .portafolio_single_image {
     // .black_background {
     //   opacity: 1;
@@ -88,18 +87,17 @@
   // .portafolio_single_image_context {
   //   transform: translateY(0%);
   // }
-
 }
 
-#mapFoot{
-  height:100% ;
-  min-height:  calc(100vh - 70px);
+#mapFoot {
+  height: 100%;
+  min-height: calc(100vh - 70px);
 }
-@media (max-width:767px){
+@media (max-width: 767px) {
   #mapFoot {
     // height: 70vh;
     min-height: 400px;
-    height: 100%; 
+    height: 100%;
   }
 
   .portfolio_show_more_image {
@@ -113,7 +111,6 @@
   .portafolio_show_more_wrap {
     height: 245px;
   }
-
 }
 
 @media (max-width: 768px) {
@@ -187,7 +184,6 @@
     margin: auto;
   }
 
-  
   .mazal_logo_footer img {
     max-width: 290px;
   }
