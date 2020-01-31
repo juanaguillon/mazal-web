@@ -98,7 +98,7 @@
         <nav class="header_top">
           <div class="header_top_left">
             <div class="menu_logo_li">
-              <h1 class="menu_logo" title="Mazal | Diseño interior y Arquitectura" style="font-size: 0.1px;">
+              <h1 class="menu_logo" title="Mazal | Diseño interior y Arquitectura" style="font-size: 0px;">
                 <a class="text-white d-flex" href="<?php echo esc_attr(home_url())  ?>">
                   <i class="icon-logo"></i>Mazal | Diseño interior y Arquitectura
                 </a>
