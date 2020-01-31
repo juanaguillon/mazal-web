@@ -39,11 +39,19 @@
 .banner_image {
   height: 100%;
   width: 100%;
+  position: relative;
 }
 .banner_image img {
   display: block;
-  // width: 100%;
   max-width: initial;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  left: -9999px;
+  right: -9999px;
+  top: -9999px;
+  bottom: -9999px;
+  margin: auto;
 }
 #section_banner_intern .slick-dots {
   bottom: 1.5em;

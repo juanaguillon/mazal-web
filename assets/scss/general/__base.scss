@@ -333,13 +333,19 @@ section h3 {
   display: flex;
   align-items: center;
   a {
-    display: inline-block;
-    font-size: 21px;
     color: #000;
-    margin-right: 10px;
-    border: 1px solid;
-    padding: 4px 5px;
-    line-height: 1;
+    display: flex;
+    padding: 0;
+    align-items: center;
+    i {
+      display: inline-block;
+      font-size: 21px;
+      color: #000;
+      margin-right: 10px;
+      border: 1px solid;
+      padding: 4px 5px;
+      line-height: 1;
+    }
   }
 }
 /* .button.general_button {

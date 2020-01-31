@@ -364,6 +364,7 @@ function sendCotizarMail() {
 function ScrolMapFromNavbar() {
   // $window.on("resize", function() {
   // if ($window.width() > wideWidth) {
+  $(".header_top_list li a").off("click");
   $(".header_top_list li a").click(function(e) {
     var attr = $(this).attr("href");
     if (typeof attr === typeof undefined || attr == "#") {
@@ -1060,9 +1061,9 @@ function plugnsInit() {
   $(".single_linea_image").imagefill();
   $(".image-related-item").imagefill();
   $(".col-item .item").imagefill();
-  $(".banner_image").imagefill();
+  // $(".banner_image").imagefill();
   $(".mansory-item").imagefill();
- 
+
   // $(".popup_right, .popup_left").imagefill();
 
   $(".bf_image_sized").imageCompare();

@@ -15,12 +15,10 @@
     margin-right: 18px;
     margin: 0;
     a {
-      padding: 4px 4px;
       font-size: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid gray;
       color: $chocolate;
       background: none;
     }
@@ -532,10 +530,9 @@
     }
   }
 
-  .banner-categoria h2{
+  .banner-categoria h2 {
     font-size: 30px;
   }
-
 }
 
 #button_cotizar_producto::before {

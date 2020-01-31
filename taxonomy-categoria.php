@@ -104,10 +104,13 @@ if (count($ancest) > 1) {
 
 <section class="category-filter-grid container">
   <div class="direccion-back">
+
     <a href="<?= $_SERVER['HTTP_REFERER']; ?>" class="button add">
       <i class="icon-arrow_left"></i>
+      <span>
+        Atrás
+      </span>
     </a>
-    Atrás
   </div>
 
   <?php mazal_get_taxonomy_data($currentObject, $currentCategory, $isSubChildren); ?>
