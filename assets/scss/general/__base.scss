@@ -17,7 +17,9 @@ select {
   appearance: none;
   border-radius: 0;
 }
-
+p{
+  text-align: justify;
+}
 @media (max-width: 768px) {
   body {
     font-size: 17px;

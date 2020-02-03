@@ -91,6 +91,26 @@ if (count($ancest) > 1) {
 <section class="banner-categoria banner-interna" style="background-image:url(<?php echo $image["url"] ?>)">
   <div class="black_background"></div>
   <div class="banner-categoria-content">
+  <?php 
+  $maxParentTax = mazal_get_term_top_most_parent($currentCategory, "categoria");
+  $maxIDTaxInCurrentLanguage = pll_get_term($maxParentTax->term_id, "es");
+
+  switch ($maxIDTaxInCurrentLanguage) {
+    case 89:
+      $idURL = 9;
+      break;
+    case 91:
+      $idURL = 11;
+      break;
+    case 93:
+      $idURL = 25;
+      break;
+    default:
+      $idURL = 9;
+      break;
+  }
+  
+   ?>
     <h2 class="fw-4"><?php echo strtoupper($currentObject->name) ?></h2>
     <?php if ($isSubChildren) : ?>
       <h5><?php echo $currentCategory->name ?></h5>
@@ -101,11 +121,10 @@ if (count($ancest) > 1) {
 </section>
 <p class="taxonomy_desc"><?php echo wp_kses_post($currentObject->description) ?></p>
 
-
 <section class="category-filter-grid container">
   <div class="direccion-back">
 
-    <a href="<?= $_SERVER['HTTP_REFERER']; ?>" class="button add">
+    <a href="<?= esc_url(get_permalink( $idURL )); ?>" class="button add">
       <i class="icon-arrow_left"></i>
       <span>
         Atrás

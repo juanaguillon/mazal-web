@@ -10,13 +10,36 @@ get_header();
     <div class="row full-height m-0">
 
       <div class="col-md-5 col-lg-7 p-0">
+        <?php
+        $idurl = 11;
+        if (isset($_GET["subsection"])) {
+          $subsection = $_GET["subsection"];
+          switch ($subsection) {
+            case 'arq':
+              $idurl = 11;
+              break;
+            case 'corp':
+              $idurl = 25;
+              break;
+            case 'hogar':
+              $idurl = 9;
+              break;
+
+            default:
+              $idurl = 11;
+              break;
+          }
+        }
+        $url = esc_url(get_permalink( pll_get_post($idurl) ));
+
+        ?>
         <div class="desc-nosotros-img" style="background-image:url(<?= get_field("imagen_quienes_somos")["sizes"]["large"] ?>);">
         </div>
       </div>
       <div class="col-md-7 col-lg-5 p-0 d-flex align-items-center justify-content-center">
         <div class="categoria-contenedor desc-nosotros">
           <div class="direccion-back">
-            <a href="<?= $_SERVER['HTTP_REFERER']; ?>" class="button add">
+            <a href="<?= $url ?>" class="button add">
               <i class="icon-arrow_left"></i>
             </a>
             Atrás

@@ -153,7 +153,8 @@ function toggleTheModalToSearchInWebsite() {
     .keydown(function(event) {
       if (event.type === "keydown") {
         if (event.keyCode === 27) {
-          $("#modal_product_cotize, .search_modal_form").removeClass("active");
+          $(".modal_mazal").removeClass("active");
+          $("body").css("overflow-x","visible");
         }
       }
     });
@@ -472,6 +473,8 @@ $(".mobiliario").click(function(e) {
  * Agregar el trigger de los submenu en el header de Index.
  */
 function changeTheSubmenuInHeader() {
+  ScrolMapFromNavbar();
+
   if ($window.width() < wideWidth) {
     $(".header_top_list").superMenu({
       directLi: "li",
