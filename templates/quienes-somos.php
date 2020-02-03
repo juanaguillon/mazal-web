@@ -30,7 +30,7 @@ get_header();
               break;
           }
         }
-        $url = esc_url(get_permalink( pll_get_post($idurl) ));
+        $url = esc_url(get_permalink(pll_get_post($idurl)));
 
         ?>
         <div class="desc-nosotros-img" style="background-image:url(<?= get_field("imagen_quienes_somos")["sizes"]["large"] ?>);">
@@ -42,23 +42,19 @@ get_header();
             <a href="<?= $url ?>" class="button add">
               <i class="icon-arrow_left"></i>
             </a>
-            Atrás
+            <?php
+            if (mazal_is_language("es")) {
+              $atras = "Atrás";
+            } else {
+              $atras = "Back";
+            }
+            echo $atras;
+            ?>
           </div>
           <div class="tres60_title_container">
-            <?php
-
-            if (mazal_is_language("es")) {
-              $quienesSOmos = "QUIENES SOMOS";
-              $trabajamos = "CON QUIÉN TRABAJAMOS";
-              $historia = "NUESTRA HISTORIA";
-            } else {
-              $quienesSOmos = "WHO WE ARE";
-              $trabajamos = "WHO WE WORK WITH";
-              $historia = "OUR HISTORY";
-            }
-            ?>
+           
             <h3 class="font-1 text-light text-dark-gray">
-              <?= $quienesSOmos ?>
+              <?= get_field("titulo_quienes_somos") ?>
             </h3>
           </div>
           <p>
@@ -73,7 +69,7 @@ get_header();
         <div class="categoria-contenedor desc-nosotros">
           <div class="tres60_title_container">
             <h3 class="font-1 text-light blanco">
-              <?= $trabajamos ?>
+              <?= get_field("titulo_quien_trabajamos") ?>
             </h3>
           </div>
           <p class="text-white">
@@ -147,7 +143,7 @@ get_header();
         <div class="categoria-contenedor desc-nosotros">
           <div class="tres60_title_container">
             <h3 class="font-1 text-light text-dark-gray">
-              <?= $historia ?>
+              <?= get_field("titulo_nuestra_historia") ?>
             </h3>
           </div>
           <p>
