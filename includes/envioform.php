@@ -75,8 +75,8 @@ try {
     $visitante->From = "contacto@mazal.co";
     $visitante->FromName = $nombre_sitio;
 
-    // $mail->AddCC("silvana.camacho@mazal.co");
-    // $mail->AddCC("sebastian.camacho@mazal.co");
+    $mail->AddCC("silvana.camacho@mazal.co");
+    $mail->AddCC("sebastian.camacho@mazal.co");
     $mail->AddCC("tavocreativo@gmail.com");
     $visitante->AddAddress($email);
 

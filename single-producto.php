@@ -173,7 +173,7 @@ $producto = get_queried_object();
               if ($tagProds && count($tagProds) > 0) {
                 foreach ($tagProds as $tag) {
               ?>
-                  <li class="tag_prod tag_<?= $tag->slug ?>"><a href="<?= get_term_link($tag, "etiqueta") ?>"><?= $tag->name ?></a></li>
+                  <li class="tag_prod tag_<?= $tag->slug ?>"><?= $tag->name ?></li>
               <?php
                 }
               }

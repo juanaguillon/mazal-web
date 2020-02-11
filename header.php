@@ -83,7 +83,7 @@
 
       $classHeader = "";
       $showBlackBg = "";
-      if (is_singular("producto") || is_search() || mazal_is_nosotros_page()) {
+      if (is_singular("producto") || is_search() || mazal_is_nosotros_page() || is_404()) {
         $showBlackBg = "display:none;";
         $classHeader = "in_scroll";
       } else {
