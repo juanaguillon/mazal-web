@@ -83,7 +83,7 @@
 
       $classHeader = "";
       $showBlackBg = "";
-      if (is_singular("producto") || is_search() || mazal_is_nosotros_page()) {
+      if (is_singular("producto") || is_search() || mazal_is_nosotros_page() || is_404()) {
         $showBlackBg = "display:none;";
         $classHeader = "in_scroll";
       } else {
@@ -117,7 +117,7 @@
               $linkSearch = true;
               /** Verificar si la página/taxonomía está traducida. */
               // $inTransaled = false;
-              $nosotrosLink = esc_url(get_permalink(pll_get_post(808)));
+              $nosotrosLink = esc_url(get_permalink(pll_get_post(877)));
               if (is_singular("producto")) {
                 // Obtener la primera categoria de el actual producto
                 $termsProducto = get_the_terms(get_queried_object(), "categoria")[0];
@@ -197,18 +197,22 @@
                 }
               } else if (is_tax("categoria")) {
                 $chLink =  get_queried_object()->term_id;
+
                 $maxParent = mazal_get_term_top_most_parent($chLink, "categoria");
 
                 // Verificar a que página enviar, si será arquitectura, hogar o corporativo.
                 if ($maxParent->term_id == 91 || $maxParent->term_id == 97) {
                   // Si es arquitectura
                   $linkSend = pll_get_post(11);
+                  $nosotrosLink .= "?subsection=arq";
                 } else if ($maxParent->term_id == 99 || $maxParent->term_id == 89) {
                   // Si es Hogar
                   $linkSend = pll_get_post(9);
+                  $nosotrosLink .= "?subsection=hogar";
                 } else if ($maxParent->term_id == 93 || $maxParent->term_id == 101) {
                   // Si es Corporativo
                   $linkSend = pll_get_post(25);
+                  $nosotrosLink .= "?subsection=corp";
                 }
 
                 if (mazal_is_language()) {
@@ -225,6 +229,7 @@
                 $formULR = mazal_is_language("es") ? "en" : "es";
                 $link = pll_home_url($formULR);
               }
+
               ?>
               <li class="galeria <?= mazal_is_nosotros_page() ? "active" : "" ?>">
                 <a href="<?= $nosotrosLink ?>" class="text-white" data-scroll="galeria"><?= mazal_is_language() ? "Nosotros" : "About Us" ?></a>
