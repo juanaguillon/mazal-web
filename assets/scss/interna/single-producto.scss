@@ -248,6 +248,14 @@
   }
 }
 
+@media (max-width:550px){
+  .call-action{
+    input[type="submit"]{
+      width:100% !important; 
+    }
+  }
+}
+
 #tags_product {
   display: flex;
   margin-top: 15px;

@@ -305,7 +305,7 @@
         max-width: 280px;
         font-size: 20px;
         border: none;
-        font-family: quicksand;
+        font-family: quicksand;  
       }
 
       .first-filter {
@@ -635,7 +635,7 @@ select {
     }
     h5,
     p {
-      padding: 0 15px;
+      // padding: 0 15px;
     }
   }
   .category-filter-grid .filtrado ul {
@@ -727,6 +727,6 @@ select {
   #section_banner_intern{
     min-height:400px;
     height: calc(100vh - 70px);
-  }
+  }  
 
 }

@@ -327,9 +327,18 @@ section h3 {
 .blanco {
   color: $blanco;
 }
+
+.pagina-producto{
+  .direccion-back{
+   padding: 0;
+  }
+}
+
+
+
 .direccion-back {
   margin-bottom: 18px;
-  padding: 0 10px;
+  padding: 0 8px;
   display: flex;
   align-items: center;
   a {
@@ -346,6 +355,12 @@ section h3 {
       padding: 4px 5px;
       line-height: 1;
     }
+  }
+}
+
+@media(max-width:991px){
+  .direccion-back{
+    padding: 0 15px;
   }
 }
 /* .button.general_button {

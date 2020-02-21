@@ -958,6 +958,15 @@
   }
 }
 
+@media (max-width:768px){
+  .banner_margin_right{
+    background: none; 
+  }
+  .banner_bottom_context{
+    background: none; 
+  }
+}
+
 @media #{$tablet_query} {
   .popup_container {
     padding: 0 15px;

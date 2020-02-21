@@ -79,7 +79,7 @@
               <img src="https://mazal.co/wp-content/uploads/2019/11/aa.jpg?v=1576682176" alt="">
             </div>
             <div class="mansory-item cuatro">
-              <img src="https://namagazine.es/wp-content/uploads/2019/04/problemas-de-convivencia-taller-para-parejas-madrid.jpeg" alt="">
+              <img src="https://mazal.co/wp-content/uploads/2020/01/home.jpeg" alt="">
             </div>
           </div>
 
